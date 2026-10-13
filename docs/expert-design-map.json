@@ -1,0 +1,2621 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "plan": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  },
+  "status": "P1_design_not_expert_implementation",
+  "selection": {
+    "entry_owner": "阿极",
+    "inputs": [
+      "structured_category",
+      "required_capabilities",
+      "current_input_types",
+      "anti_triggers",
+      "admitted_release"
+    ],
+    "outcomes": [
+      "selected",
+      "none",
+      "ambiguous"
+    ],
+    "leaf": "专业IO/验收不同才独立叶",
+    "method": "同叶的条件方法，不新增模型实例",
+    "style": "只绑定授权表现槽，不能改事实/权限/验收",
+    "workflow": "负责人引用共享叶，唯一集成owner；角色图非默认spawn",
+    "max_default_methods": 2,
+    "required_instructions": "必需闭包不能为预算删除",
+    "spawn_permission": "design_does_not_authorize_delegation"
+  },
+  "responsibilities": [
+    {
+      "baseline_id": "code-repair",
+      "kind": "workflow",
+      "design_target": "WF-BUGFIX",
+      "inputs": [
+        "Symptom",
+        "EnvironmentLock",
+        "InputRef"
+      ],
+      "outputs": [
+        "Patch",
+        "RegressionReport"
+      ],
+      "professional_acceptance": "根因依据、原失败复现与独立回归",
+      "anti_trigger": "只有代码审查请求不启动修复",
+      "atom_refs": [
+        "P01",
+        "P03",
+        "P04",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "根因依据、原失败复现与独立回归",
+        "inputs": "Symptom+EnvironmentLock+InputRef",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Patch+RegressionReport",
+        "acceptance": "根因依据、原失败复现与独立回归"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1894
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "code-review",
+      "kind": "leaf",
+      "design_target": "software.quality/code-review",
+      "inputs": [
+        "ScopedDiff",
+        "BehaviorSpec"
+      ],
+      "outputs": [
+        "LineFinding",
+        "ValidationReport"
+      ],
+      "professional_acceptance": "具体改动锚点、可触发后果、独立于作者",
+      "anti_trigger": "不代写实现或泛评整仓",
+      "atom_refs": [
+        "G01",
+        "G03",
+        "J06",
+        "J07"
+      ],
+      "five_elements": {
+        "goal": "具体改动锚点、可触发后果、独立于作者",
+        "inputs": "ScopedDiff+BehaviorSpec",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "LineFinding+ValidationReport",
+        "acceptance": "具体改动锚点、可触发后果、独立于作者"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1895
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "research",
+      "kind": "workflow",
+      "design_target": "WF-RESEARCH",
+      "inputs": [
+        "Question",
+        "DecisionNeeded",
+        "Constraints"
+      ],
+      "outputs": [
+        "ResearchDecision",
+        "ClaimSources"
+      ],
+      "professional_acceptance": "一手/反证/版本适用性及剩余缺口",
+      "anti_trigger": "已有有效结论覆盖问题时不重复搜索",
+      "atom_refs": [
+        "C01",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "five_elements": {
+        "goal": "一手/反证/版本适用性及剩余缺口",
+        "inputs": "Question+DecisionNeeded+Constraints",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ResearchDecision+ClaimSources",
+        "acceptance": "一手/反证/版本适用性及剩余缺口"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1896
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "document-deck",
+      "kind": "workflow",
+      "design_target": "WF-OFFICE",
+      "inputs": [
+        "Format",
+        "SourceRefs",
+        "PreserveSet"
+      ],
+      "outputs": [
+        "EditableArtifact",
+        "RenderEvidence"
+      ],
+      "professional_acceptance": "目标格式可解析、可编辑、非目标保全",
+      "anti_trigger": "静态图片不当可编辑PPTX",
+      "atom_refs": [
+        "J01",
+        "J02",
+        "J05",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "目标格式可解析、可编辑、非目标保全",
+        "inputs": "Format+SourceRefs+PreserveSet",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "EditableArtifact+RenderEvidence",
+        "acceptance": "目标格式可解析、可编辑、非目标保全"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1897
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "writing",
+      "kind": "workflow",
+      "design_target": "WF-WRITING",
+      "inputs": [
+        "Brief",
+        "FactLock",
+        "ChannelProfile"
+      ],
+      "outputs": [
+        "Draft",
+        "FactReview"
+      ],
+      "professional_acceptance": "窄体裁、目的、观点与事实保持",
+      "anti_trigger": "不以万能写作人设跨所有体裁",
+      "atom_refs": [
+        "N01",
+        "N03",
+        "N07",
+        "N08"
+      ],
+      "five_elements": {
+        "goal": "窄体裁、目的、观点与事实保持",
+        "inputs": "Brief+FactLock+ChannelProfile",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Draft+FactReview",
+        "acceptance": "窄体裁、目的、观点与事实保持"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1898
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "data-analysis",
+      "kind": "leaf",
+      "design_target": "data/statistics",
+      "inputs": [
+        "DatasetRef",
+        "MetricDefinition",
+        "Question"
+      ],
+      "outputs": [
+        "AnalysisArtifact",
+        "ReproducibleCalculations"
+      ],
+      "professional_acceptance": "口径/样本/公式/不确定性可回溯",
+      "anti_trigger": "无数据不杜撰统计结论",
+      "atom_refs": [
+        "C03",
+        "C04",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "口径/样本/公式/不确定性可回溯",
+        "inputs": "DatasetRef+MetricDefinition+Question",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "AnalysisArtifact+ReproducibleCalculations",
+        "acceptance": "口径/样本/公式/不确定性可回溯"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1899
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "frontend-visual",
+      "kind": "workflow",
+      "design_target": "WF-WEB",
+      "inputs": [
+        "UserFlow",
+        "DesignSpec",
+        "BehaviorSpec"
+      ],
+      "outputs": [
+        "FrontendArtifact",
+        "BrowserEvidence"
+      ],
+      "professional_acceptance": "功能/视觉/可用性分开审查",
+      "anti_trigger": "只需视觉方案不启动代码实现",
+      "atom_refs": [
+        "A03",
+        "P06",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "功能/视觉/可用性分开审查",
+        "inputs": "UserFlow+DesignSpec+BehaviorSpec",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "FrontendArtifact+BrowserEvidence",
+        "acceptance": "功能/视觉/可用性分开审查"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1900
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "incident-diagnosis",
+      "kind": "leaf",
+      "design_target": "assurance/root-cause",
+      "inputs": [
+        "Symptom",
+        "ObservedEvidence",
+        "EnvironmentLock"
+      ],
+      "outputs": [
+        "DiagnosisEvidence",
+        "RemainingGap"
+      ],
+      "professional_acceptance": "区分假说/因果证据/相关性",
+      "anti_trigger": "不把所有故障归为安全事件",
+      "atom_refs": [
+        "C05",
+        "P03",
+        "P04"
+      ],
+      "five_elements": {
+        "goal": "区分假说/因果证据/相关性",
+        "inputs": "Symptom+ObservedEvidence+EnvironmentLock",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "DiagnosisEvidence+RemainingGap",
+        "acceptance": "区分假说/因果证据/相关性"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1901
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "image-creation",
+      "kind": "workflow",
+      "design_target": "WF-IMAGE",
+      "inputs": [
+        "Brief",
+        "IdentityLocks",
+        "Rights",
+        "ProviderProfile"
+      ],
+      "outputs": [
+        "ImageArtifact",
+        "VisualReview"
+      ],
+      "professional_acceptance": "真实文件/保持项/动作能力与免费范围",
+      "anti_trigger": "有prompt不算生图、有文本响应不算图像能力",
+      "atom_refs": [
+        "I04",
+        "J03",
+        "N04",
+        "O08"
+      ],
+      "five_elements": {
+        "goal": "真实文件/保持项/动作能力与免费范围",
+        "inputs": "Brief+IdentityLocks+Rights+ProviderProfile",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ImageArtifact+VisualReview",
+        "acceptance": "真实文件/保持项/动作能力与免费范围"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1902
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "video-production",
+      "kind": "workflow",
+      "design_target": "WF-VIDEO",
+      "inputs": [
+        "VideoBrief",
+        "StoryPlan",
+        "Rights"
+      ],
+      "outputs": [
+        "TimelineManifest",
+        "Export",
+        "ProjectRefs"
+      ],
+      "professional_acceptance": "MusicCue/Shot/Timeline/Sound版本一致且实际输出",
+      "anti_trigger": "单次生成不当完整制作链",
+      "atom_refs": [
+        "N06",
+        "O01",
+        "O04",
+        "O08"
+      ],
+      "five_elements": {
+        "goal": "MusicCue/Shot/Timeline/Sound版本一致且实际输出",
+        "inputs": "VideoBrief+StoryPlan+Rights",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "TimelineManifest+Export+ProjectRefs",
+        "acceptance": "MusicCue/Shot/Timeline/Sound版本一致且实际输出"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1903
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "evolution-review",
+      "kind": "governance",
+      "design_target": "WF-GOVERNANCE",
+      "inputs": [
+        "ScopedCandidate",
+        "SourceEvidence",
+        "CurrentRelease"
+      ],
+      "outputs": [
+        "EvolutionProposal",
+        "CompleteImpact"
+      ],
+      "professional_acceptance": "全表现/全消费者/回归/撤销闭合",
+      "anti_trigger": "不接管生产任务或直接改活动版",
+      "atom_refs": [
+        "L05",
+        "M06",
+        "M07",
+        "M08"
+      ],
+      "five_elements": {
+        "goal": "全表现/全消费者/回归/撤销闭合",
+        "inputs": "ScopedCandidate+SourceEvidence+CurrentRelease",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "EvolutionProposal+CompleteImpact",
+        "acceptance": "全表现/全消费者/回归/撤销闭合"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1904
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "file-operations",
+      "kind": "leaf",
+      "design_target": "operations/file-operations",
+      "inputs": [
+        "BoundedPath",
+        "EffectSpec",
+        "PreserveSet"
+      ],
+      "outputs": [
+        "ArtifactManifest",
+        "OperationEvidence"
+      ],
+      "professional_acceptance": "实际路径/owner/不覆盖用户源文件",
+      "anti_trigger": "无删除授权不清理用户文件",
+      "atom_refs": [
+        "B03",
+        "B04",
+        "B05",
+        "I07"
+      ],
+      "five_elements": {
+        "goal": "实际路径/owner/不覆盖用户源文件",
+        "inputs": "BoundedPath+EffectSpec+PreserveSet",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ArtifactManifest+OperationEvidence",
+        "acceptance": "实际路径/owner/不覆盖用户源文件"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1905
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "automation-design",
+      "kind": "workflow",
+      "design_target": "WF-AUTOMATION",
+      "inputs": [
+        "AuthorizedSchedule",
+        "Action",
+        "Scope"
+      ],
+      "outputs": [
+        "HostScheduleRef",
+        "Receipt"
+      ],
+      "professional_acceptance": "宿主原生排程/时区/授权/停用",
+      "anti_trigger": "未要求定时不造后台watcher",
+      "atom_refs": [
+        "B03",
+        "I05",
+        "I06"
+      ],
+      "five_elements": {
+        "goal": "宿主原生排程/时区/授权/停用",
+        "inputs": "AuthorizedSchedule+Action+Scope",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "HostScheduleRef+Receipt",
+        "acceptance": "宿主原生排程/时区/授权/停用"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1906
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "requirement-decomposition",
+      "kind": "method",
+      "design_target": "business/requirement-analysis",
+      "inputs": [
+        "UserRequest",
+        "VisibleInputs"
+      ],
+      "outputs": [
+        "RequirementSnapshotProposal"
+      ],
+      "professional_acceptance": "四问转可检目标、交付与验收；由阿极确认",
+      "anti_trigger": "方法不成为第二沟通入口",
+      "atom_refs": [
+        "A01",
+        "A02",
+        "A03",
+        "A04"
+      ],
+      "five_elements": {
+        "goal": "四问转可检目标、交付与验收；由阿极确认",
+        "inputs": "UserRequest+VisibleInputs",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "RequirementSnapshotProposal",
+        "acceptance": "四问转可检目标、交付与验收；由阿极确认"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1907
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "studio-owner",
+      "kind": "leaf",
+      "design_target": "business/studio-positioning",
+      "inputs": [
+        "BusinessFacts",
+        "Audience",
+        "Constraints"
+      ],
+      "outputs": [
+        "PositioningProposal"
+      ],
+      "professional_acceptance": "事实与咨询建议分开，范围/资源明确",
+      "anti_trigger": "不虚构企业业绩或用户决策",
+      "atom_refs": [
+        "N01",
+        "C03",
+        "B06"
+      ],
+      "five_elements": {
+        "goal": "事实与咨询建议分开，范围/资源明确",
+        "inputs": "BusinessFacts+Audience+Constraints",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "PositioningProposal",
+        "acceptance": "事实与咨询建议分开，范围/资源明确"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1908
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "business-library",
+      "kind": "workflow",
+      "design_target": "WF-BUSINESS",
+      "inputs": [
+        "BusinessFacts",
+        "MultiFormatDeliverables"
+      ],
+      "outputs": [
+        "VersionedBusinessPack"
+      ],
+      "professional_acceptance": "同事实锁跨格式一致/可编辑/保全",
+      "anti_trigger": "文件数量不代替商务成果",
+      "atom_refs": [
+        "N03",
+        "J05",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "同事实锁跨格式一致/可编辑/保全",
+        "inputs": "BusinessFacts+MultiFormatDeliverables",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "VersionedBusinessPack",
+        "acceptance": "同事实锁跨格式一致/可编辑/保全"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1909
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "client-proposal",
+      "kind": "leaf",
+      "design_target": "business/proposal",
+      "inputs": [
+        "ConfirmedScope",
+        "CostBasis",
+        "RiskRefs"
+      ],
+      "outputs": [
+        "ProposalArtifact"
+      ],
+      "professional_acceptance": "范围/阶段/费用依据/风险不混承诺",
+      "anti_trigger": "不代表用户发送/签约/付款",
+      "atom_refs": [
+        "A02",
+        "A03",
+        "B03",
+        "C03"
+      ],
+      "five_elements": {
+        "goal": "范围/阶段/费用依据/风险不混承诺",
+        "inputs": "ConfirmedScope+CostBasis+RiskRefs",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ProposalArtifact",
+        "acceptance": "范围/阶段/费用依据/风险不混承诺"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1910
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "multi-platform-distribution",
+      "kind": "method",
+      "design_target": "writing/distribution-rewrite",
+      "inputs": [
+        "ApprovedDraft",
+        "CurrentChannelProfiles"
+      ],
+      "outputs": [
+        "ChannelDrafts"
+      ],
+      "professional_acceptance": "观点/事实不变、渠道限制当前有效",
+      "anti_trigger": "改稿不等于对外发布",
+      "atom_refs": [
+        "N03",
+        "N08",
+        "B03"
+      ],
+      "five_elements": {
+        "goal": "观点/事实不变、渠道限制当前有效",
+        "inputs": "ApprovedDraft+CurrentChannelProfiles",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ChannelDrafts",
+        "acceptance": "观点/事实不变、渠道限制当前有效"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1911
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "topic-selection",
+      "kind": "method",
+      "design_target": "writing/topic-selection",
+      "inputs": [
+        "Audience",
+        "BusinessGoal",
+        "CandidateEvidence"
+      ],
+      "outputs": [
+        "TopicProposal"
+      ],
+      "professional_acceptance": "评分有适用范围/理由/反例",
+      "anti_trigger": "四维评分不是全球路由硬门",
+      "atom_refs": [
+        "N01",
+        "C04",
+        "D02"
+      ],
+      "five_elements": {
+        "goal": "评分有适用范围/理由/反例",
+        "inputs": "Audience+BusinessGoal+CandidateEvidence",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "TopicProposal",
+        "acceptance": "评分有适用范围/理由/反例"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1912
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "template-curator",
+      "kind": "leaf",
+      "design_target": "learning/template-curation",
+      "inputs": [
+        "SatisfiedSamples",
+        "VariableExamples",
+        "Constraints"
+      ],
+      "outputs": [
+        "TemplateProposal"
+      ],
+      "professional_acceptance": "固定结构/typed变量/反例/效果来源",
+      "anti_trigger": "不把偶然内容固化共同规则",
+      "atom_refs": [
+        "E02",
+        "E03",
+        "E04",
+        "M06"
+      ],
+      "five_elements": {
+        "goal": "固定结构/typed变量/反例/效果来源",
+        "inputs": "SatisfiedSamples+VariableExamples+Constraints",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "TemplateProposal",
+        "acceptance": "固定结构/typed变量/反例/效果来源"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1913
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "knowledge-base-qa",
+      "kind": "method",
+      "design_target": "research/evidence-synthesis",
+      "inputs": [
+        "Question",
+        "AuthorizedKnowledgeRefs"
+      ],
+      "outputs": [
+        "Answer",
+        "ClaimBindings",
+        "Gaps"
+      ],
+      "professional_acceptance": "答案每项有来源，缺出处明确未知",
+      "anti_trigger": "不用题名或摘要补原文事实",
+      "atom_refs": [
+        "C01",
+        "C03",
+        "K03"
+      ],
+      "five_elements": {
+        "goal": "答案每项有来源，缺出处明确未知",
+        "inputs": "Question+AuthorizedKnowledgeRefs",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Answer+ClaimBindings+Gaps",
+        "acceptance": "答案每项有来源，缺出处明确未知"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1914
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "contract-risk",
+      "kind": "leaf",
+      "design_target": "business/contract-risk",
+      "inputs": [
+        "ContractRef",
+        "Jurisdiction",
+        "Goal"
+      ],
+      "outputs": [
+        "RiskFinding",
+        "ReviewReferral"
+      ],
+      "professional_acceptance": "条款定位/法域/不确定性，必要专业复核",
+      "anti_trigger": "不冒充正式法律意见或签约授权",
+      "atom_refs": [
+        "C04",
+        "B03",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "条款定位/法域/不确定性，必要专业复核",
+        "inputs": "ContractRef+Jurisdiction+Goal",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "RiskFinding+ReviewReferral",
+        "acceptance": "条款定位/法域/不确定性，必要专业复核"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1915
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "delivery-acceptance",
+      "kind": "leaf",
+      "design_target": "business/delivery-management",
+      "inputs": [
+        "DeliverableSpecs",
+        "CurrentArtifacts",
+        "Checks"
+      ],
+      "outputs": [
+        "AcceptanceProposal",
+        "CoverageGap"
+      ],
+      "professional_acceptance": "商务接收与工程验证角色独立",
+      "anti_trigger": "不让商务满意分抵消硬失败",
+      "atom_refs": [
+        "J05",
+        "J06",
+        "J07"
+      ],
+      "five_elements": {
+        "goal": "商务接收与工程验证角色独立",
+        "inputs": "DeliverableSpecs+CurrentArtifacts+Checks",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "AcceptanceProposal+CoverageGap",
+        "acceptance": "商务接收与工程验证角色独立"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1916
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "dashboard-review",
+      "kind": "workflow",
+      "design_target": "WF-DATA",
+      "inputs": [
+        "Metrics",
+        "DatasetRef",
+        "BusinessQuestion"
+      ],
+      "outputs": [
+        "Dashboard",
+        "AnalysisReview"
+      ],
+      "professional_acceptance": "口径/可视化/业务解读分工",
+      "anti_trigger": "漂亮看板不证明指标准确",
+      "atom_refs": [
+        "C03",
+        "N01",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "口径/可视化/业务解读分工",
+        "inputs": "Metrics+DatasetRef+BusinessQuestion",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Dashboard+AnalysisReview",
+        "acceptance": "口径/可视化/业务解读分工"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1917
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "workbench-builder",
+      "kind": "workflow",
+      "design_target": "WF-WEB",
+      "inputs": [
+        "UserFlows",
+        "DataModel",
+        "OfflineExportRequirements"
+      ],
+      "outputs": [
+        "Workbench",
+        "BrowserEvidence"
+      ],
+      "professional_acceptance": "数据/离线/导出/实际操作",
+      "anti_trigger": "不因名为工作台重建第二宿主",
+      "atom_refs": [
+        "A03",
+        "P06",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "数据/离线/导出/实际操作",
+        "inputs": "UserFlows+DataModel+OfflineExportRequirements",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Workbench+BrowserEvidence",
+        "acceptance": "数据/离线/导出/实际操作"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1918
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "studio-producer",
+      "kind": "workflow",
+      "design_target": "WF-VIDEO",
+      "inputs": [
+        "VideoBrief",
+        "AdoptedInputs",
+        "Budget"
+      ],
+      "outputs": [
+        "WorkflowPlan",
+        "IntegratedDelivery"
+      ],
+      "professional_acceptance": "统一交付owner、共享专家/版本交接",
+      "anti_trigger": "不永久占有媒体专家池",
+      "atom_refs": [
+        "F04",
+        "H06",
+        "J05"
+      ],
+      "five_elements": {
+        "goal": "统一交付owner、共享专家/版本交接",
+        "inputs": "VideoBrief+AdoptedInputs+Budget",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "WorkflowPlan+IntegratedDelivery",
+        "acceptance": "统一交付owner、共享专家/版本交接"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1919
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "screenwriter",
+      "kind": "leaf",
+      "design_target": "fiction/adaptation",
+      "inputs": [
+        "SourceText",
+        "FactLock",
+        "Narrator",
+        "StoryGoal"
+      ],
+      "outputs": [
+        "StoryPlan",
+        "Dialogue"
+      ],
+      "professional_acceptance": "原意/角色/视角/情节因果保全",
+      "anti_trigger": "商业短稿选相应文案叶而非默认小说专家",
+      "atom_refs": [
+        "N02",
+        "N03",
+        "N04",
+        "N05"
+      ],
+      "five_elements": {
+        "goal": "原意/角色/视角/情节因果保全",
+        "inputs": "SourceText+FactLock+Narrator+StoryGoal",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "StoryPlan+Dialogue",
+        "acceptance": "原意/角色/视角/情节因果保全"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1920
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "visual-storyboard",
+      "kind": "leaf",
+      "design_target": "video/montage-board",
+      "inputs": [
+        "AdoptedStory",
+        "MusicCue",
+        "AssetLocks"
+      ],
+      "outputs": [
+        "ShotPlan"
+      ],
+      "professional_acceptance": "动作/场景/时点/运镜与cue有依赖",
+      "anti_trigger": "不代写provider最终参数语法",
+      "atom_refs": [
+        "N04",
+        "O01",
+        "O04"
+      ],
+      "five_elements": {
+        "goal": "动作/场景/时点/运镜与cue有依赖",
+        "inputs": "AdoptedStory+MusicCue+AssetLocks",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ShotPlan",
+        "acceptance": "动作/场景/时点/运镜与cue有依赖"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1921
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "art-director",
+      "kind": "leaf",
+      "design_target": "visual/style-direction",
+      "inputs": [
+        "Brief",
+        "StyleChoices",
+        "Rights",
+        "IdentityLocks"
+      ],
+      "outputs": [
+        "StyleSpec",
+        "AssetBriefs"
+      ],
+      "professional_acceptance": "审美方向与资产验收具体，权限事实不变",
+      "anti_trigger": "风格包不复制成整套专家",
+      "atom_refs": [
+        "F08",
+        "N04",
+        "N07"
+      ],
+      "five_elements": {
+        "goal": "审美方向与资产验收具体，权限事实不变",
+        "inputs": "Brief+StyleChoices+Rights+IdentityLocks",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "StyleSpec+AssetBriefs",
+        "acceptance": "审美方向与资产验收具体，权限事实不变"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1922
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "ai-workflow-engineer",
+      "kind": "workflow",
+      "design_target": "WF-SOFTWARE",
+      "inputs": [
+        "ServiceBehavior",
+        "InterfaceProfiles",
+        "EnvironmentLock"
+      ],
+      "outputs": [
+        "IntegrationArtifact",
+        "BoundaryEvidence"
+      ],
+      "professional_acceptance": "生态/API/取消/权利/真实动作分专项",
+      "anti_trigger": "不造万能AIGC专家或第二代理平台",
+      "atom_refs": [
+        "P01",
+        "P06",
+        "I04"
+      ],
+      "five_elements": {
+        "goal": "生态/API/取消/权利/真实动作分专项",
+        "inputs": "ServiceBehavior+InterfaceProfiles+EnvironmentLock",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "IntegrationArtifact+BoundaryEvidence",
+        "acceptance": "生态/API/取消/权利/真实动作分专项"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1923
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "post-production",
+      "kind": "workflow",
+      "design_target": "WF-VIDEO",
+      "inputs": [
+        "AdoptedShotAssets",
+        "MusicCue",
+        "TimelineRequirements"
+      ],
+      "outputs": [
+        "Timeline",
+        "Color",
+        "Export"
+      ],
+      "professional_acceptance": "源采用/时间单位/转场/实际导出及工程",
+      "anti_trigger": "不改原故事事实或用prompt代替剪辑",
+      "atom_refs": [
+        "J04",
+        "O01",
+        "O03",
+        "O08"
+      ],
+      "five_elements": {
+        "goal": "源采用/时间单位/转场/实际导出及工程",
+        "inputs": "AdoptedShotAssets+MusicCue+TimelineRequirements",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Timeline+Color+Export",
+        "acceptance": "源采用/时间单位/转场/实际导出及工程"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1924
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "voice-audio",
+      "kind": "workflow",
+      "design_target": "WF-AUDIO",
+      "inputs": [
+        "AdoptedTimeline",
+        "Dialogue",
+        "SRT",
+        "MusicStems"
+      ],
+      "outputs": [
+        "SoundPackage",
+        "Project",
+        "OfflineRender"
+      ],
+      "professional_acceptance": "对白/环境/拟音/音乐共享叶，唯一声音owner",
+      "anti_trigger": "不修改音频设备或声称混音为分轨",
+      "atom_refs": [
+        "O02",
+        "O04",
+        "O05",
+        "O07"
+      ],
+      "five_elements": {
+        "goal": "对白/环境/拟音/音乐共享叶，唯一声音owner",
+        "inputs": "AdoptedTimeline+Dialogue+SRT+MusicStems",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "SoundPackage+Project+OfflineRender",
+        "acceptance": "对白/环境/拟音/音乐共享叶，唯一声音owner"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1925
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "content-operations",
+      "kind": "workflow",
+      "design_target": "WF-PUBLISH",
+      "inputs": [
+        "ApprovedContent",
+        "Metrics",
+        "PlatformProfile",
+        "Grant"
+      ],
+      "outputs": [
+        "OperationsProposal",
+        "AuthorizedReceipt"
+      ],
+      "professional_acceptance": "运营建议与真实发布动作、费用分开",
+      "anti_trigger": "没有明确发布许可只交稿",
+      "atom_refs": [
+        "C03",
+        "N08",
+        "B03",
+        "I05"
+      ],
+      "five_elements": {
+        "goal": "运营建议与真实发布动作、费用分开",
+        "inputs": "ApprovedContent+Metrics+PlatformProfile+Grant",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "OperationsProposal+AuthorizedReceipt",
+        "acceptance": "运营建议与真实发布动作、费用分开"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1926
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "video-copywriter",
+      "kind": "leaf",
+      "design_target": "writing/short-video-copy",
+      "inputs": [
+        "Brief",
+        "FactLock",
+        "PlatformProfile",
+        "Narrator"
+      ],
+      "outputs": [
+        "Script",
+        "ReadbackNotes"
+      ],
+      "professional_acceptance": "文案功能/口播/平台与事实保持",
+      "anti_trigger": "视频钩子不强加代码或办公",
+      "atom_refs": [
+        "N01",
+        "N02",
+        "N03",
+        "N05"
+      ],
+      "five_elements": {
+        "goal": "文案功能/口播/平台与事实保持",
+        "inputs": "Brief+FactLock+PlatformProfile+Narrator",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Script+ReadbackNotes",
+        "acceptance": "文案功能/口播/平台与事实保持"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1927
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comic-storyboard",
+      "kind": "method",
+      "design_target": "video/montage-board",
+      "inputs": [
+        "AdaptedStory",
+        "PanelConstraints",
+        "MusicCueIfRelevant"
+      ],
+      "outputs": [
+        "PanelShotPlan"
+      ],
+      "professional_acceptance": "漫画格/对白/视觉连续性方法",
+      "anti_trigger": "无独立专业差异不克隆叶节点",
+      "atom_refs": [
+        "N04",
+        "N05",
+        "O04"
+      ],
+      "five_elements": {
+        "goal": "漫画格/对白/视觉连续性方法",
+        "inputs": "AdaptedStory+PanelConstraints+MusicCueIfRelevant",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "PanelShotPlan",
+        "acceptance": "漫画格/对白/视觉连续性方法"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1928
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "skill-packager",
+      "kind": "leaf",
+      "design_target": "governance/skill-packaging",
+      "inputs": [
+        "AdmittedDefinition",
+        "Assets",
+        "SourceLocks"
+      ],
+      "outputs": [
+        "PackageManifest",
+        "LicenseBundle"
+      ],
+      "professional_acceptance": "入口/依赖/许可/hash/实际验证一致",
+      "anti_trigger": "仅目录可见不算可调用",
+      "atom_refs": [
+        "M03",
+        "M05",
+        "M07"
+      ],
+      "five_elements": {
+        "goal": "入口/依赖/许可/hash/实际验证一致",
+        "inputs": "AdmittedDefinition+Assets+SourceLocks",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "PackageManifest+LicenseBundle",
+        "acceptance": "入口/依赖/许可/hash/实际验证一致"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1929
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "course-design",
+      "kind": "leaf",
+      "design_target": "learning/course-design",
+      "inputs": [
+        "LearnerGoal",
+        "Sources",
+        "MeasurableOutcomes"
+      ],
+      "outputs": [
+        "CoursePlan",
+        "Exercises",
+        "Rubric"
+      ],
+      "professional_acceptance": "受众/测量目标/知识出处/练习证据",
+      "anti_trigger": "课程大纲不是学习效果",
+      "atom_refs": [
+        "N01",
+        "C03",
+        "A03"
+      ],
+      "five_elements": {
+        "goal": "受众/测量目标/知识出处/练习证据",
+        "inputs": "LearnerGoal+Sources+MeasurableOutcomes",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "CoursePlan+Exercises+Rubric",
+        "acceptance": "受众/测量目标/知识出处/练习证据"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1930
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "learning-coach",
+      "kind": "workflow",
+      "design_target": "WF-LEARNING",
+      "inputs": [
+        "LessonSources",
+        "LearnerEvidence",
+        "Goal"
+      ],
+      "outputs": [
+        "Explanation",
+        "Practice",
+        "MasteryReview"
+      ],
+      "professional_acceptance": "讲解和掌握度评估分开",
+      "anti_trigger": "无证据不宣称掌握，不固定三问",
+      "atom_refs": [
+        "C03",
+        "L03",
+        "J06"
+      ],
+      "five_elements": {
+        "goal": "讲解和掌握度评估分开",
+        "inputs": "LessonSources+LearnerEvidence+Goal",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Explanation+Practice+MasteryReview",
+        "acceptance": "讲解和掌握度评估分开"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1931
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "publication-delivery",
+      "kind": "workflow",
+      "design_target": "WF-PUBLISH",
+      "inputs": [
+        "ApprovedDraft",
+        "ExplicitPublishGrant",
+        "CurrentTarget"
+      ],
+      "outputs": [
+        "PublicationReceipt",
+        "Readback"
+      ],
+      "professional_acceptance": "明确平台/身份/范围/结果回读",
+      "anti_trigger": "保存草稿不当已发布、不得擅发",
+      "atom_refs": [
+        "B03",
+        "I05",
+        "I06"
+      ],
+      "five_elements": {
+        "goal": "明确平台/身份/范围/结果回读",
+        "inputs": "ApprovedDraft+ExplicitPublishGrant+CurrentTarget",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "PublicationReceipt+Readback",
+        "acceptance": "明确平台/身份/范围/结果回读"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1932
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "media-quality-review",
+      "kind": "leaf",
+      "design_target": "assurance/delivery-review",
+      "inputs": [
+        "MediaRefs",
+        "RequiredProfiles",
+        "Requirements"
+      ],
+      "outputs": [
+        "ValidationReport",
+        "LocalizedFinding"
+      ],
+      "professional_acceptance": "实际解析/播放/版本/声画/专业审查",
+      "anti_trigger": "不自验自己的制作产物",
+      "atom_refs": [
+        "J02",
+        "J06",
+        "J07",
+        "O08"
+      ],
+      "five_elements": {
+        "goal": "实际解析/播放/版本/声画/专业审查",
+        "inputs": "MediaRefs+RequiredProfiles+Requirements",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ValidationReport+LocalizedFinding",
+        "acceptance": "实际解析/播放/版本/声画/专业审查"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1933
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "software-reverse",
+      "kind": "leaf",
+      "design_target": "software.behavior/behavior-analysis",
+      "inputs": [
+        "AuthorizedInterface",
+        "ObservedBehavior",
+        "Scope"
+      ],
+      "outputs": [
+        "BehaviorSpec",
+        "EvidenceGaps"
+      ],
+      "professional_acceptance": "独立行为重建、权限、覆盖",
+      "anti_trigger": "不复制旧实现或从UI名称猜实现",
+      "atom_refs": [
+        "B03",
+        "P02",
+        "C04"
+      ],
+      "five_elements": {
+        "goal": "独立行为重建、权限、覆盖",
+        "inputs": "AuthorizedInterface+ObservedBehavior+Scope",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "BehaviorSpec+EvidenceGaps",
+        "acceptance": "独立行为重建、权限、覆盖"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1934
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "software-architecture",
+      "kind": "leaf",
+      "design_target": "software.architecture/module-design",
+      "inputs": [
+        "BehaviorSpec",
+        "Constraints",
+        "ExistingBoundaries"
+      ],
+      "outputs": [
+        "ModuleDesign",
+        "InterfaceContracts"
+      ],
+      "professional_acceptance": "最小稳定边界与取消/错误/权威明确",
+      "anti_trigger": "不为未来想象堆服务/总线",
+      "atom_refs": [
+        "D02",
+        "D03",
+        "P06"
+      ],
+      "five_elements": {
+        "goal": "最小稳定边界与取消/错误/权威明确",
+        "inputs": "BehaviorSpec+Constraints+ExistingBoundaries",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "ModuleDesign+InterfaceContracts",
+        "acceptance": "最小稳定边界与取消/错误/权威明确"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1935
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "code-implementation",
+      "kind": "selector",
+      "design_target": "software.languages",
+      "inputs": [
+        "BehaviorSpec",
+        "TargetEcosystem",
+        "Scope"
+      ],
+      "outputs": [
+        "SelectedLanguageLeaf"
+      ],
+      "professional_acceptance": "明确语言/目标接口/非目标保持",
+      "anti_trigger": "不额外造万能实现专家",
+      "atom_refs": [
+        "F02",
+        "F03",
+        "F05"
+      ],
+      "five_elements": {
+        "goal": "明确语言/目标接口/非目标保持",
+        "inputs": "BehaviorSpec+TargetEcosystem+Scope",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "SelectedLanguageLeaf",
+        "acceptance": "明确语言/目标接口/非目标保持"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1936
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "python-engineer",
+      "kind": "leaf",
+      "design_target": "software.languages/python",
+      "inputs": [
+        "EnvironmentLock",
+        "BehaviorSpec",
+        "ScopedCode"
+      ],
+      "outputs": [
+        "PythonPatch",
+        "Tests"
+      ],
+      "professional_acceptance": "目标解释器/依赖/类型/异常/测试",
+      "anti_trigger": "不把Python整个项目改Rust",
+      "atom_refs": [
+        "P01",
+        "P06",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "目标解释器/依赖/类型/异常/测试",
+        "inputs": "EnvironmentLock+BehaviorSpec+ScopedCode",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "PythonPatch+Tests",
+        "acceptance": "目标解释器/依赖/类型/异常/测试"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1937
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "rust-engineer",
+      "kind": "leaf",
+      "design_target": "software.languages/rust",
+      "inputs": [
+        "EnvironmentLock",
+        "BehaviorSpec",
+        "OwnershipBoundary"
+      ],
+      "outputs": [
+        "RustPatch",
+        "Tests"
+      ],
+      "professional_acceptance": "所有权/Result/资源/必要FFI可审",
+      "anti_trigger": "无必要不加unsafe/异步运行时",
+      "atom_refs": [
+        "P01",
+        "P06",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "所有权/Result/资源/必要FFI可审",
+        "inputs": "EnvironmentLock+BehaviorSpec+OwnershipBoundary",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "RustPatch+Tests",
+        "acceptance": "所有权/Result/资源/必要FFI可审"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1938
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "go-engineer",
+      "kind": "leaf",
+      "design_target": "software.languages/go",
+      "inputs": [
+        "EnvironmentLock",
+        "BehaviorSpec",
+        "Protocol"
+      ],
+      "outputs": [
+        "GoPatch",
+        "Tests"
+      ],
+      "professional_acceptance": "协议/并发/取消/资源释放",
+      "anti_trigger": "保留原生态，不统一宿主状态",
+      "atom_refs": [
+        "P01",
+        "P06",
+        "H08"
+      ],
+      "five_elements": {
+        "goal": "协议/并发/取消/资源释放",
+        "inputs": "EnvironmentLock+BehaviorSpec+Protocol",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "GoPatch+Tests",
+        "acceptance": "协议/并发/取消/资源释放"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1939
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "cpp-engineer",
+      "kind": "leaf",
+      "design_target": "software.languages/cpp",
+      "inputs": [
+        "EnvironmentLock",
+        "ABI",
+        "NumericDeviceContract"
+      ],
+      "outputs": [
+        "CppPatch",
+        "NumericTests"
+      ],
+      "professional_acceptance": "ABI/内存/设备/数值容差/回退",
+      "anti_trigger": "不能用smoke替代数值验证",
+      "atom_refs": [
+        "P01",
+        "P06",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "ABI/内存/设备/数值容差/回退",
+        "inputs": "EnvironmentLock+ABI+NumericDeviceContract",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "CppPatch+NumericTests",
+        "acceptance": "ABI/内存/设备/数值容差/回退"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1940
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-reverse",
+      "kind": "leaf",
+      "design_target": "comfyui.analysis/node-analysis",
+      "inputs": [
+        "AuthorizedNodes",
+        "TargetAPI",
+        "EnvironmentLock"
+      ],
+      "outputs": [
+        "NodeBehaviorSpec"
+      ],
+      "professional_acceptance": "注册入口/张量类型/错误/数据流",
+      "anti_trigger": "不得复制源码实现",
+      "atom_refs": [
+        "P01",
+        "P02",
+        "P07"
+      ],
+      "five_elements": {
+        "goal": "注册入口/张量类型/错误/数据流",
+        "inputs": "AuthorizedNodes+TargetAPI+EnvironmentLock",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "NodeBehaviorSpec",
+        "acceptance": "注册入口/张量类型/错误/数据流"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1941
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-workflow",
+      "kind": "leaf",
+      "design_target": "comfyui.analysis/workflow-analysis",
+      "inputs": [
+        "WorkflowRef",
+        "ActualRegistry",
+        "APIProfile"
+      ],
+      "outputs": [
+        "WorkflowBehaviorSpec"
+      ],
+      "professional_acceptance": "UI/API/图数据一致、连线和执行依赖",
+      "anti_trigger": "静态workflow JSON不证明真实图成功",
+      "atom_refs": [
+        "P02",
+        "P06",
+        "P07"
+      ],
+      "five_elements": {
+        "goal": "UI/API/图数据一致、连线和执行依赖",
+        "inputs": "WorkflowRef+ActualRegistry+APIProfile",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "WorkflowBehaviorSpec",
+        "acceptance": "UI/API/图数据一致、连线和执行依赖"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1942
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-python-node",
+      "kind": "leaf",
+      "design_target": "comfyui.implementation/node-python",
+      "inputs": [
+        "NodeBehaviorSpec",
+        "TensorContract",
+        "TargetAPI"
+      ],
+      "outputs": [
+        "NodePackage",
+        "ActualGraphEvidence"
+      ],
+      "professional_acceptance": "真实注册/输入输出/错误/数值/取消",
+      "anti_trigger": "import成功不等于节点可调用",
+      "atom_refs": [
+        "P01",
+        "P06",
+        "P07",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "真实注册/输入输出/错误/数值/取消",
+        "inputs": "NodeBehaviorSpec+TensorContract+TargetAPI",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "NodePackage+ActualGraphEvidence",
+        "acceptance": "真实注册/输入输出/错误/数值/取消"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1943
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-rust-extension",
+      "kind": "leaf",
+      "design_target": "comfyui.implementation/rust-binding",
+      "inputs": [
+        "MeasuredHotspot",
+        "NodeContract",
+        "ABIBoundary"
+      ],
+      "outputs": [
+        "RustExtension",
+        "Fallback",
+        "NumericEvidence"
+      ],
+      "professional_acceptance": "只改已证热点、所有权/异常/线程界",
+      "anti_trigger": "无热点证据不引入FFI",
+      "atom_refs": [
+        "P01",
+        "P04",
+        "P06",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "只改已证热点、所有权/异常/线程界",
+        "inputs": "MeasuredHotspot+NodeContract+ABIBoundary",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "RustExtension+Fallback+NumericEvidence",
+        "acceptance": "只改已证热点、所有权/异常/线程界"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1944
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-go-integration",
+      "kind": "leaf",
+      "design_target": "comfyui.implementation/go-bridge",
+      "inputs": [
+        "ExternalProtocol",
+        "TaskCancel",
+        "TargetAPI"
+      ],
+      "outputs": [
+        "GoBridge",
+        "IntegrationEvidence"
+      ],
+      "professional_acceptance": "外部服务边界、幂等/查询/取消",
+      "anti_trigger": "不增加第二军团任务DB",
+      "atom_refs": [
+        "P06",
+        "I03",
+        "I06",
+        "H08"
+      ],
+      "five_elements": {
+        "goal": "外部服务边界、幂等/查询/取消",
+        "inputs": "ExternalProtocol+TaskCancel+TargetAPI",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "GoBridge+IntegrationEvidence",
+        "acceptance": "外部服务边界、幂等/查询/取消"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1945
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-cpp-kernel",
+      "kind": "leaf",
+      "design_target": "comfyui.implementation/cpp-kernel",
+      "inputs": [
+        "KernelSpec",
+        "DeviceNumericTolerance",
+        "ABI"
+      ],
+      "outputs": [
+        "CppKernel",
+        "ReferenceComparison"
+      ],
+      "professional_acceptance": "最小算子/CPU设备回退/数值容差",
+      "anti_trigger": "性能宣传不代替当前实测",
+      "atom_refs": [
+        "P01",
+        "P04",
+        "P06",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "最小算子/CPU设备回退/数值容差",
+        "inputs": "KernelSpec+DeviceNumericTolerance+ABI",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "CppKernel+ReferenceComparison",
+        "acceptance": "最小算子/CPU设备回退/数值容差"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1946
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-packaging",
+      "kind": "leaf",
+      "design_target": "comfyui.quality/environment-packaging",
+      "inputs": [
+        "AdmittedNodePackage",
+        "DependencyLocks",
+        "Licenses"
+      ],
+      "outputs": [
+        "InstallablePackage",
+        "CleanEnvironmentEvidence"
+      ],
+      "professional_acceptance": "精确依赖/许可/干净环境/目标注册",
+      "anti_trigger": "压缩包存在不等于可安装",
+      "atom_refs": [
+        "M03",
+        "M05",
+        "M07",
+        "P07"
+      ],
+      "five_elements": {
+        "goal": "精确依赖/许可/干净环境/目标注册",
+        "inputs": "AdmittedNodePackage+DependencyLocks+Licenses",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "InstallablePackage+CleanEnvironmentEvidence",
+        "acceptance": "精确依赖/许可/干净环境/目标注册"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1947
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-debug-performance",
+      "kind": "leaf",
+      "design_target": "comfyui.quality/debug-profile",
+      "inputs": [
+        "Symptom",
+        "EnvironmentLock",
+        "Workload"
+      ],
+      "outputs": [
+        "Diagnosis",
+        "MeasuredProfile",
+        "FixScope"
+      ],
+      "professional_acceptance": "已有根因先查，决定性缺口复现与单位范围",
+      "anti_trigger": "不做一般语言性能竞赛",
+      "atom_refs": [
+        "P01",
+        "P03",
+        "P04",
+        "P08"
+      ],
+      "five_elements": {
+        "goal": "已有根因先查，决定性缺口复现与单位范围",
+        "inputs": "Symptom+EnvironmentLock+Workload",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "Diagnosis+MeasuredProfile+FixScope",
+        "acceptance": "已有根因先查，决定性缺口复现与单位范围"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1948
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-test-verification",
+      "kind": "leaf",
+      "design_target": "comfyui.quality/integration-test",
+      "inputs": [
+        "ActualRegistry",
+        "Workflows",
+        "NumericCases",
+        "Requirements"
+      ],
+      "outputs": [
+        "IntegrationValidation",
+        "FailureEvidence"
+      ],
+      "professional_acceptance": "真实节点/真实图/异常/数值/资源",
+      "anti_trigger": "不以Office或smoke代Comfy验收",
+      "atom_refs": [
+        "P07",
+        "P08",
+        "J06",
+        "J07"
+      ],
+      "five_elements": {
+        "goal": "真实节点/真实图/异常/数值/资源",
+        "inputs": "ActualRegistry+Workflows+NumericCases+Requirements",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "IntegrationValidation+FailureEvidence",
+        "acceptance": "真实节点/真实图/异常/数值/资源"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1949
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "baseline_id": "comfyui-distillation",
+      "kind": "leaf",
+      "design_target": "comfyui.analysis/fusion-design",
+      "inputs": [
+        "TwoBehaviorSpecs",
+        "Rights",
+        "OverlapEvidence"
+      ],
+      "outputs": [
+        "FusionDesign",
+        "PreservedDifferences"
+      ],
+      "professional_acceptance": "行为重叠/单一新实现/专业差异",
+      "anti_trigger": "并排包装不算融合",
+      "atom_refs": [
+        "P02",
+        "P05",
+        "P06"
+      ],
+      "five_elements": {
+        "goal": "行为重叠/单一新实现/专业差异",
+        "inputs": "TwoBehaviorSpecs+Rights+OverlapEvidence",
+        "process": "按workflow-contracts当前领域流程；程序先检权限/版本/真实输入，缺口返负责人",
+        "output": "FusionDesign+PreservedDifferences",
+        "acceptance": "行为重叠/单一新实现/专业差异"
+      },
+      "provenance": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 1950
+      },
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint to leader; external unknown queried, native slot retained until trusted close",
+      "expert_body": "not_written",
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    }
+  ]
+}

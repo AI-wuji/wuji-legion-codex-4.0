@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "revision": 3,
+  "release": "p2-native-preparation-1",
+  "state": "prepared",
+  "runtime_admission": false,
+  "effectiveness": "not_run",
+  "phase": "P2",
+  "catalog_status": "minimum_candidates_not_P3_or_active_release",
+  "mandatory_invariants": [
+    "aji_only_communication",
+    "minimum_correct_path",
+    "white_hat",
+    "research_before_experiment",
+    "scope_and_exact_version",
+    "independent_acceptance",
+    "unknown_retains_slot",
+    "no_fee_unknown_no_submission",
+    "no_model_fallback"
+  ],
+  "source_policy": "Use reviewed methods only; no old implementation, configuration, template, database or test imported.",
+  "baseline": {
+    "path": "docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  },
+  "id": "p2/engineering/bounded-change",
+  "kind": "engineering",
+  "design_scope": [
+    "WF-SOFTWARE bounded file change",
+    "WF-BUGFIX minimal repair"
+  ],
+  "five_elements": {
+    "goal": "在明确授权的文件边界内实现锁定目标行为；修复时只改变有根因依据的最小范围，不扩成整仓重写。",
+    "inputs": [
+      "BehaviorSpec与具体目标文件/保持项",
+      "已采用且当前有效的源码InputRef及read/write边界",
+      "EnvironmentLock；修复另有Symptom、已有来源结论及决定性缺口"
+    ],
+    "process": [
+      "先复用当前来源账与公开适用实践及反证，足够即决策；不重新做语言选型实验。",
+      "列接口、依赖及失败机制；未解决且影响决策的缺口才提出最小复现/检查。",
+      "仅在节点分配范围新写补丁；保留非目标行为及原生态，不能自行发布、装插件、付费或改设备。",
+      "产物提交精确文件/hash/版本、逐项行为对应、实际执行日志与未运行项目；验收交独立职责，不以自评分通过。"
+    ],
+    "output": [
+      "Patch或限定新文件产物提案",
+      "BehaviorTrace：目标行为到文件/符号/变化依据",
+      "RegressionSet及原始执行证据引用；未跑明确not_run",
+      "缺口/失败/取消检查点，绑定节点/输入/产物版本"
+    ],
+    "acceptance": [
+      "范围与保持项全部满足；新文件必须真实存在可回读，文本不是文件成功证明。",
+      "目标行为和受影响回归有实际匹配结果，缺料/未运行/硬失败不能被表扬或总分覆盖。",
+      "producer与validator分离，验收绑定当前artifact/hash/revision；原生关闭另核，不随业务完成释放槽。"
+    ]
+  },
+  "required_checks": [
+    "engineering.scope-preserved",
+    "engineering.behavior-current",
+    "engineering.regression-current"
+  ],
+  "anti_triggers": [
+    "仅要求代码评审时不代写实现",
+    "无具体行为/授权源码时不造补丁",
+    "仅需技术建议时不调用执行型专家"
+  ],
+  "failure_contract": {
+    "missing_input": "BLOCKED_INPUT with exact missing ref; return to owner",
+    "unsupported_host": "HOST_UNKNOWN; do not dispatch or auto fallback",
+    "failed_check": "FAIL with localized behavior/symbol and actual evidence",
+    "unknown_action": "retain unknown and slot; query trusted original invocation before any retry",
+    "cancel": "return version-bound checkpoint to owner; no killing user processes"
+  },
+  "atom_refs": [
+    "P01",
+    "P03",
+    "P04",
+    "P08"
+  ],
+  "field_origins": {
+    "five_elements": {
+      "path": "docs/expert-design-map.json",
+      "sha256": "575744fc656bf079e153c48482812dd5f3a433934930da659cab31e6fa1035de",
+      "pointer": "/responsibilities/0/five_elements"
+    },
+    "software_scope": {
+      "path": "docs/workflow-contracts.md",
+      "sha256": "6098ac42f4b10461a0007dd47e8c23903d8e78ebd558a909dca76f3c26eca691",
+      "lines": [
+        8,
+        9
+      ]
+    },
+    "methods": [
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/120/method_source_bindings",
+        "candidate_id": "P01"
+      },
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/122/method_source_bindings",
+        "candidate_id": "P03"
+      },
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/123/method_source_bindings",
+        "candidate_id": "P04"
+      },
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/127/method_source_bindings",
+        "candidate_id": "P08"
+      }
+    ],
+    "G2_minimum": {
+      "path": "docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+      "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+      "version": "1.6",
+      "lines": [
+        1485,
+        1497
+      ]
+    }
+  }
+}

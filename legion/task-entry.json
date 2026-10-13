@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "name": "wuji-legion-4-0",
+  "entry": "skills/wuji-legion-4-0/SKILL.md",
+  "routes": {
+    "chat": null,
+    "rewrite": null,
+    "engineering": "skills/wuji-legion-4-0/references/engineering.md",
+    "research": "skills/wuji-legion-4-0/references/research.md",
+    "documents": "skills/wuji-legion-4-0/references/documents.md",
+    "media": "skills/wuji-legion-4-0/references/media.md",
+    "evolution": "skills/wuji-legion-4-0/references/evolution.md"
+  },
+  "installed": false,
+  "automatic_discovery_enabled": false,
+  "P7": false,
+  "authority": "Task-relevant instruction loading only; routing is not model execution or tool permission."
+}

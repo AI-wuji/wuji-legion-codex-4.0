@@ -1,0 +1,4398 @@
+{
+  "schema_version": 1,
+  "release": "p3-catalog-1",
+  "assemblies": [
+    {
+      "candidate_id": "A01",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "结果目标抽取",
+        "input": "用户要求",
+        "output": "OutcomeSpec提案",
+        "consumer_and_counterexample": "区分“要Excel”与要解决的问题；阿极/商单/研究"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2283,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2283,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_course",
+          "source_id": "COURSE:2a2169837032dc8ba9fc",
+          "path": "C:\\Users\\Administrator\\.codex\\attachments\\c36774fd-9993-42b0-8eb7-b90c2aea2afc\\已粘贴的文本.txt",
+          "sha256": "ecb6b23810e6b4d1d6f598feaf3c0cc6c171a8c7e84d87c29268259490b432c7",
+          "lines": [
+            191,
+            207
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "结果目标与文件形式分开；结构化OutcomeSpec为4.0批准设计，不继承课程措辞"
+        }
+      ],
+      "consumers": [
+        "requirement-decomposition"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "A02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "交付物枚举",
+        "input": "已确认范围",
+        "output": "DeliverableSpec列表",
+        "consumer_and_counterexample": "不漏文件/工程/报告；负责人/办公/软件"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2284,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2284,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_authorized_WorkBuddy_text_cache",
+          "source_id": "RESEARCH:ca98750442a100cb49a2",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\_kdocs_w5w6.md",
+          "sha256": "2dbbacbfb801bed82cd43b38c8e9123df8adbf8a7717ffccceb17093bd66734d",
+          "lines": [
+            1103,
+            1113
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "需求四问中的交付范围；DeliverableSpec列表类型由4.0独立设计"
+        }
+      ],
+      "consumers": [
+        "client-proposal",
+        "requirement-decomposition"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "A03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "满意标准具象化",
+        "input": "目标+交付物",
+        "output": "AcceptanceSpec提案",
+        "consumer_and_counterexample": "不接受只写“高质量”；阿极/所有交付"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2285,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2285,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_course",
+          "source_id": "COURSE:2a2169837032dc8ba9fc",
+          "path": "C:\\Users\\Administrator\\.codex\\attachments\\c36774fd-9993-42b0-8eb7-b90c2aea2afc\\已粘贴的文本.txt",
+          "sha256": "ecb6b23810e6b4d1d6f598feaf3c0cc6c171a8c7e84d87c29268259490b432c7",
+          "lines": [
+            191,
+            207
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "满意标准须可解释，示例金额与周期不作为全局默认"
+        }
+      ],
+      "consumers": [
+        "client-proposal",
+        "course-design",
+        "frontend-visual",
+        "requirement-decomposition",
+        "workbench-builder"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "A04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "误解风险定位",
+        "input": "用户话语+候选解读",
+        "output": "AmbiguityItem",
+        "consumer_and_counterexample": "不把推断当确认；阿极/设计/需求"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2286,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2286,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_course",
+          "source_id": "COURSE:2a2169837032dc8ba9fc",
+          "path": "C:\\Users\\Administrator\\.codex\\attachments\\c36774fd-9993-42b0-8eb7-b90c2aea2afc\\已粘贴的文本.txt",
+          "sha256": "ecb6b23810e6b4d1d6f598feaf3c0cc6c171a8c7e84d87c29268259490b432c7",
+          "lines": [
+            191,
+            207
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "需求理解中的风险定位，不把自己的猜测变成用户确认"
+        }
+      ],
+      "consumers": [
+        "requirement-decomposition"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "B03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "动作授权适配",
+        "input": "受限授权+action/effect",
+        "output": "ActionDecision",
+        "consumer_and_counterexample": "内容认可不等于付费/发送许可；所有工具"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2298,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2298,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_course",
+          "source_id": "COURSE:2a2169837032dc8ba9fc",
+          "path": "C:\\Users\\Administrator\\.codex\\attachments\\c36774fd-9993-42b0-8eb7-b90c2aea2afc\\已粘贴的文本.txt",
+          "sha256": "ecb6b23810e6b4d1d6f598feaf3c0cc6c171a8c7e84d87c29268259490b432c7",
+          "lines": [
+            441,
+            457
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "电脑任务动作与确认边界；认可内容不等于允许收费或发送"
+        }
+      ],
+      "consumers": [
+        "automation-design",
+        "client-proposal",
+        "content-operations",
+        "contract-risk",
+        "file-operations",
+        "multi-platform-distribution",
+        "publication-delivery",
+        "software-reverse"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "B04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "实际路径边界检查",
+        "input": "解析目标+允许根",
+        "output": "BoundedPath/拒绝",
+        "consumer_and_counterexample": "相对路径/链接/大小写不能绕界；文件/代码/办公"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2299,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2299,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-PATH",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-PATH.html",
+          "sha256": "6be966976f0590d095057ecebe95cd2d57a2665d17804609e2724d1189e6ee0c",
+          "url": "https://doc.rust-lang.org/std/fs/fn.canonicalize.html",
+          "locator": "symbolic links",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "解析现有父目录和链接后按路径组件判界；不存在路径和TOCTOU另拒绝，canonicalize不是完整沙箱",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "B04"
+          }
+        }
+      ],
+      "consumers": [
+        "file-operations"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "B05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "唯一产物写owner判定",
+        "input": "artifact_ref+assignment",
+        "output": "OwnerDecision",
+        "consumer_and_counterexample": "阅读权限不代表可改他人文件；专家/编辑/调度"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2300,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2300,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:670460244f56e388e3eb",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\prompt-meta-team-team-lead.md",
+          "sha256": "3a4fd8bc3ac52a601a316781a0694d152b7a283b8bb42ca784cb9f2d0714db71",
+          "lines": [
+            19,
+            28
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "明确专业产物owner，阅读权限不是写权"
+        }
+      ],
+      "consumers": [
+        "file-operations"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "B06",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "决定权来源检查",
+        "input": "提案来源+目标权威",
+        "output": "AuthorityDecision",
+        "consumer_and_counterexample": "模型总结不能升级为用户决定；阿极/store/治理"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2301,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2301,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-PROV",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-PROV.html",
+          "sha256": "5c925c21bc96c285b25017c3b90d82cf74251d07713b71fcb81ca60f873c9e88",
+          "url": "https://www.w3.org/TR/prov-dm/",
+          "locator": "Attribution",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "来源归属与决定权分开；工具观察不覆盖用户决定，权威优先级来自用户规范",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "B06"
+          }
+        }
+      ],
+      "consumers": [
+        "studio-owner"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "C01",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "来源定位可读性判定",
+        "input": "locator+读取结果",
+        "output": "可定位/缺损",
+        "consumer_and_counterexample": "网址或文件名不是正文；研究/蒸馏/知识库"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2309,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2309,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-MCP-TOOLS",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-MCP-TOOLS.html",
+          "sha256": "e79ed710ae994d937bf508bfd37fd5786b0bd7c79c8da27d87b4362201fd59c8",
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "locator": "Tool Result",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "资源链接/工具结果与已取得正文分开，缺正文是独立缺口",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "C01"
+          }
+        }
+      ],
+      "consumers": [
+        "knowledge-base-qa",
+        "research"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "C03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "声明证据绑定",
+        "input": "factual_claim+source_ref",
+        "output": "ClaimBinding",
+        "consumer_and_counterexample": "无覆盖证据标未核实；报告/技术结论/文案事实"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2311,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2311,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:b0591db12c1a8d69c124",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\objective-critic.md",
+          "sha256": "8c0fb3d28674dcde4df436748718b615fd75cc45ceb2a922708a9d293c3fe2da",
+          "lines": [
+            62,
+            79
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "问题和产物证据绑定；无证据猜测不冒充实测"
+        }
+      ],
+      "consumers": [
+        "client-proposal",
+        "content-operations",
+        "course-design",
+        "dashboard-review",
+        "data-analysis",
+        "knowledge-base-qa",
+        "learning-coach",
+        "research",
+        "studio-owner"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "C04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "证据适用范围检查",
+        "input": "claim+证据范围/时效",
+        "output": "ApplicabilityDecision",
+        "consumer_and_counterexample": "某版本的证据不能证明所有版本；API/规则/经验"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2312,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2312,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:670460244f56e388e3eb",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\prompt-meta-team-team-lead.md",
+          "sha256": "3a4fd8bc3ac52a601a316781a0694d152b7a283b8bb42ca784cb9f2d0714db71",
+          "lines": [
+            87,
+            108
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "源版本与hash绑定，证据仅覆盖所引用内容"
+        }
+      ],
+      "consumers": [
+        "contract-risk",
+        "data-analysis",
+        "research",
+        "software-reverse",
+        "topic-selection"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "C05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "反证冲突定位",
+        "input": "同范围声明与证据",
+        "output": "ConflictItem",
+        "consumer_and_counterexample": "不以更长论述掩盖相反证据；研究/白帽/根因"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2313,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2313,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:b0591db12c1a8d69c124",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\objective-critic.md",
+          "sha256": "8c0fb3d28674dcde4df436748718b615fd75cc45ceb2a922708a9d293c3fe2da",
+          "read_status": "read-complete",
+          "total_lines": 160,
+          "read_scope": [
+            [
+              1,
+              160
+            ]
+          ],
+          "lines": [
+            62,
+            79
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "硬门先于主观分；冲突保留范围和相反证据，不凑规定问题数",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "C05"
+          }
+        }
+      ],
+      "consumers": [
+        "incident-diagnosis",
+        "research"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "D02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "已有能力复用判定",
+        "input": "目标接口+已验证候选",
+        "output": "ReuseDecision",
+        "consumer_and_counterexample": "同名工具不等于兼容；软件/模板/负责人"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2323,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2323,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_course",
+          "source_id": "COURSE:2a2169837032dc8ba9fc",
+          "path": "C:\\Users\\Administrator\\.codex\\attachments\\c36774fd-9993-42b0-8eb7-b90c2aea2afc\\已粘贴的文本.txt",
+          "sha256": "ecb6b23810e6b4d1d6f598feaf3c0cc6c171a8c7e84d87c29268259490b432c7",
+          "lines": [
+            211,
+            218
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "复用已有成员并依阶段需要组队；专家仍共享而非永久团员"
+        }
+      ],
+      "consumers": [
+        "software-architecture",
+        "topic-selection"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "D03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "无必要节点剪枝",
+        "input": "DAG+验收需求",
+        "output": "PruneProposal",
+        "consumer_and_counterexample": "不删安全/真实验证必需节点；负责人/参谋部"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2324,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2324,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:93a2cdd1717d552cbf31",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\eval\\preflight.md",
+          "sha256": "30e509dcb9bb781789dd0380fc03de7c207b26a7e6222ef8e5c3bdd23cbc50cd",
+          "lines": [
+            3,
+            5
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "确定性检查先于主观评价；具体程序由4.0新写"
+        }
+      ],
+      "consumers": [
+        "software-architecture"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "E02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "固定结构识别",
+        "input": "满意样例+专业约束",
+        "output": "FixedStructure提案",
+        "consumer_and_counterexample": "不能把偶然数据固化成模板；模板沉淀/女娲"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2336,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2336,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "COURSE:2a2169837032dc8ba9fc",
+          "path": "C:\\Users\\Administrator\\.codex\\attachments\\c36774fd-9993-42b0-8eb7-b90c2aea2afc\\已粘贴的文本.txt",
+          "sha256": "ecb6b23810e6b4d1d6f598feaf3c0cc6c171a8c7e84d87c29268259490b432c7",
+          "read_status": "read-complete",
+          "total_lines": 473,
+          "read_scope": [
+            [
+              1,
+              473
+            ]
+          ],
+          "lines": [
+            182,
+            189
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "满意样例只形成固定结构候选，一次满意不是共享准入",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "E02"
+          }
+        }
+      ],
+      "consumers": [
+        "template-curator"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "E03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "变量槽提取",
+        "input": "固定结构+变化例",
+        "output": "TypedSlots提案",
+        "consumer_and_counterexample": "变量有类型/默认/范围，不任意覆写；专家/文档"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2337,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2337,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "RESEARCH:ca98750442a100cb49a2",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\_kdocs_w5w6.md",
+          "sha256": "2dbbacbfb801bed82cd43b38c8e9123df8adbf8a7717ffccceb17093bd66734d",
+          "read_status": "read-complete",
+          "total_lines": 2761,
+          "read_scope": [
+            [
+              1,
+              2761
+            ]
+          ],
+          "lines": [
+            603,
+            622
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "五要素结构与任务变量分开；槽类型和范围是4.0独立设计",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "E03"
+          }
+        }
+      ],
+      "consumers": [
+        "template-curator"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "E04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "具名槽绑定合法性",
+        "input": "slot_spec+task_value",
+        "output": "SlotBinding",
+        "consumer_and_counterexample": "越界值明确失败；风格/方法/参数"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2338,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2338,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-SCHEMA",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-SCHEMA.html",
+          "sha256": "dda3af56bb8943e6ccf407235e910518fae8f1324d4b27d81290293606608285",
+          "url": "https://json-schema.org/understanding-json-schema/reference/combining",
+          "locator": "allOf",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "具名槽值同时满足锁定约束，不采用最后覆盖获胜",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "E04"
+          }
+        }
+      ],
+      "consumers": [
+        "template-curator"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "F02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "多级类别下钻",
+        "input": "父类别+区分条件",
+        "output": "叶节点候选",
+        "consumer_and_counterexample": "不漏未覆盖范围，歧义不装唯一；专家池"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2349,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2349,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-OPENVIKING",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-OPENVIKING.md",
+          "sha256": "e35487b366fc28aaac93f3a0e6ed89e18b944b3499cd65fad04b44ca001b200f",
+          "url": "https://raw.githubusercontent.com/volcengine/OpenViking/main/README.md",
+          "locator": "directory",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "层级导航由类型边界下钻，目录存在不代表模型执行",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "F02"
+          }
+        }
+      ],
+      "consumers": [
+        "code-implementation"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "F03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "能力需求匹配",
+        "input": "required_capabilities+已准入能力",
+        "output": "候选",
+        "consumer_and_counterexample": "README口号不算可用能力；专家/工具池"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2350,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2350,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-MCP-TOOLS",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-MCP-TOOLS.html",
+          "sha256": "e79ed710ae994d937bf508bfd37fd5786b0bd7c79c8da27d87b4362201fd59c8",
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "locator": "inputSchema",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "匹配真实接口与已核能力，功能宣传不能满足required_capabilities",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "F03"
+          }
+        }
+      ],
+      "consumers": [
+        "code-implementation"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "F04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "输入输出兼容选择",
+        "input": "上游类型+下游接口",
+        "output": "CompatibleCandidates",
+        "consumer_and_counterexample": "同名格式不同版本不能盲连；工具/负责人"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2351,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2351,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-MCP-TOOLS",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-MCP-TOOLS.html",
+          "sha256": "e79ed710ae994d937bf508bfd37fd5786b0bd7c79c8da27d87b4362201fd59c8",
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "locator": "outputSchema",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "上下游schema必须兼容，只有同名不是证据",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "F04"
+          }
+        }
+      ],
+      "consumers": [
+        "studio-producer"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "F05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "反触发过滤",
+        "input": "task_features+anti_triggers",
+        "output": "排除原因",
+        "consumer_and_counterexample": "专业词出现不代表需要该专家；MoE"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2352,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2352,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "RESEARCH:ca98750442a100cb49a2",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\_kdocs_w5w6.md",
+          "sha256": "2dbbacbfb801bed82cd43b38c8e9123df8adbf8a7717ffccceb17093bd66734d",
+          "read_status": "read-complete",
+          "total_lines": 2761,
+          "read_scope": [
+            [
+              1,
+              2761
+            ]
+          ],
+          "lines": [
+            1935,
+            2002
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "适用/反触发进入专业契约，不靠词频把用户任务强拉进专家流程",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "F05"
+          }
+        }
+      ],
+      "consumers": [
+        "code-implementation"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "F08",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "专业方法/风格适配选择",
+        "input": "专业配方+用户选择",
+        "output": "适用包引用",
+        "consumer_and_counterexample": "只装相关包，风格不改事实权限；写作/视觉/代码"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2355,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2355,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "RESEARCH:ca98750442a100cb49a2",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\_kdocs_w5w6.md",
+          "sha256": "2dbbacbfb801bed82cd43b38c8e9123df8adbf8a7717ffccceb17093bd66734d",
+          "read_status": "read-complete",
+          "total_lines": 2761,
+          "read_scope": [
+            [
+              1,
+              2761
+            ]
+          ],
+          "lines": [
+            1730,
+            1766
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "观点边界与表达方法分开；只装当前适用风格且不改事实权限",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "F08"
+          }
+        }
+      ],
+      "consumers": [
+        "art-director"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "G01",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "精确引用解析",
+        "input": "ExactRef+锁定目录",
+        "output": "目标修订",
+        "consumer_and_counterexample": "不静默跳到latest；全部图/角色"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2361,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2361,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:670460244f56e388e3eb",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\prompt-meta-team-team-lead.md",
+          "sha256": "3a4fd8bc3ac52a601a316781a0694d152b7a283b8bb42ca784cb9f2d0714db71",
+          "lines": [
+            87,
+            108
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "回读精确版本；RevisionRef结构和事务实现为4.0批准设计"
+        }
+      ],
+      "consumers": [
+        "code-review"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "G03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "上游当前有效性（guard/upstream-current）",
+        "input": "上游精确引用+当前状态",
+        "output": "CurrentDecision",
+        "consumer_and_counterexample": "hash正确但上游已废止仍拒绝；全部交接"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2363,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2363,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-PROV",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-PROV.html",
+          "sha256": "5c925c21bc96c285b25017c3b90d82cf74251d07713b71fcb81ca60f873c9e88",
+          "url": "https://www.w3.org/TR/prov-dm/",
+          "locator": "Invalidation",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "完整hash引用仍须检查当前撤销/过期状态",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "G03"
+          }
+        }
+      ],
+      "consumers": [
+        "code-review"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "H06",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "可执行并行冲突判定",
+        "input": "读写集合+依赖",
+        "output": "ConflictDecision",
+        "consumer_and_counterexample": "父子路径/同目标不并发写；全部角色"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2379,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2379,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-SQLITE-ISOLATION",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-SQLITE-ISOLATION.html",
+          "sha256": "23395653f04984e4310b287ed548202d874e06ecd2cba17f32b2714e5b7ebef7",
+          "url": "https://www.sqlite.org/isolation.html",
+          "locator": "single writer",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "并发写资源显式冲突；模型分支独立不等于SQLite多写者并发",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "H06"
+          }
+        }
+      ],
+      "consumers": [
+        "studio-producer"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "H08",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "安全取消位置选择",
+        "input": "当前阶段+工具取消能力",
+        "output": "CancelPlan",
+        "consumer_and_counterexample": "只处理本任务，不杀用户进程；宿主/工具"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2381,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2381,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-TEMPORAL",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-TEMPORAL.html",
+          "sha256": "befc7e8ab52882cf4e11911a24ffb64c2294bfc44f3d02e719528c59bd75cf3d",
+          "url": "https://docs.temporal.io/activity-execution",
+          "locator": "Cancellation",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "取消给执行方清理机会，不以请求返回当已结束",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "H08"
+          }
+        }
+      ],
+      "consumers": [
+        "comfyui-go-integration",
+        "go-engineer"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "I03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "幂等事件重复判定",
+        "input": "event_key+已有记录",
+        "output": "ReplayDecision",
+        "consumer_and_counterexample": "已付费提交不换键盲重试；工具/状态"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2389,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2389,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-SQLITE-FK",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-SQLITE-FK.html",
+          "sha256": "f9cc6cefbdf18e07893b036365a2f3ca2a9a81fa41ed0849c7e4df214ccca8c0",
+          "url": "https://www.sqlite.org/foreignkeys.html",
+          "locator": "UNIQUE",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "事件键唯一且payload身份核对；同键不同内容拒绝而非静默成功",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "I03"
+          }
+        }
+      ],
+      "consumers": [
+        "comfyui-go-integration"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "I04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "当前能力档案适配",
+        "input": "操作要求+provider profile",
+        "output": "CapabilityFit",
+        "consumer_and_counterexample": "未支持参数不硬塞；图像/视频/Office/宿主"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2390,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2390,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-MCP-TOOLS",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-MCP-TOOLS.html",
+          "sha256": "e79ed710ae994d937bf508bfd37fd5786b0bd7c79c8da27d87b4362201fd59c8",
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "locator": "inputSchema",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "调用前用当前能力档案绑定版本、限制和实际输入",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "I04"
+          }
+        }
+      ],
+      "consumers": [
+        "ai-workflow-engineer",
+        "image-creation"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "I05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "真实调用绑定",
+        "input": "锁定action+宿主结果",
+        "output": "InvocationBinding",
+        "consumer_and_counterexample": "不接受准备契约作为调用；CLI/API/MCP/UI"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2391,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2391,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-MCP-TOOLS",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-MCP-TOOLS.html",
+          "sha256": "e79ed710ae994d937bf508bfd37fd5786b0bd7c79c8da27d87b4362201fd59c8",
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "locator": "isError",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "实际宿主事件/result关联锁定动作；工具出错不记执行成功",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "I05"
+          }
+        }
+      ],
+      "consumers": [
+        "automation-design",
+        "content-operations",
+        "publication-delivery"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "I06",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "未知提交恢复判定",
+        "input": "断线结果+可查询状态",
+        "output": "RecoveryDecision",
+        "consumer_and_counterexample": "unknown先查询，不能重复收费；外部工具"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2392,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2392,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-TEMPORAL",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-TEMPORAL.html",
+          "sha256": "befc7e8ab52882cf4e11911a24ffb64c2294bfc44f3d02e719528c59bd75cf3d",
+          "url": "https://docs.temporal.io/activity-execution",
+          "locator": "Task Token",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "断线/丢回执先查询稳定执行标识，无法查询则unknown阻断，不盲付费重试",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "I06"
+          }
+        }
+      ],
+      "consumers": [
+        "automation-design",
+        "comfyui-go-integration",
+        "publication-delivery"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "I07",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "进程资源归属检查",
+        "input": "process/resource_ref+创建证据",
+        "output": "OwnedResource",
+        "consumer_and_counterexample": "不能按名字关闭其它软件；UI/渲染/子代理"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2393,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2393,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-TEMPORAL",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-TEMPORAL.html",
+          "sha256": "befc7e8ab52882cf4e11911a24ffb64c2294bfc44f3d02e719528c59bd75cf3d",
+          "url": "https://docs.temporal.io/activity-execution",
+          "locator": "resources",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "只有创建证据和本任务owner的资源才可收束，不接管用户进程",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "I07"
+          }
+        }
+      ],
+      "consumers": [
+        "file-operations"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "J01",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "实际产物可读性检查",
+        "input": "artifact_ref+读取/打开结果",
+        "output": "ReadableArtifact",
+        "consumer_and_counterexample": "文件名或预期路径不证明存在；所有交付"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2400,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2400,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:93a2cdd1717d552cbf31",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\eval\\preflight.md",
+          "sha256": "30e509dcb9bb781789dd0380fc03de7c207b26a7e6222ef8e5c3bdd23cbc50cd",
+          "lines": [
+            3,
+            5
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "交付先有可检查产物；实际可读性由真实文件检查而非原评测文本证明"
+        }
+      ],
+      "consumers": [
+        "document-deck"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "J02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "产物格式可解析检查",
+        "input": "文件+目标格式",
+        "output": "FormatResult",
+        "consumer_and_counterexample": "扩展名不能冒充真实类型；办公/媒体/软件"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2401,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2401,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:34062ac52b256741100e",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\video-editing-architect.md",
+          "sha256": "3ecfa456ee6cac060735218f3860d32df1370137d605bd9632ecf717029e5b77",
+          "read_status": "read-complete",
+          "total_lines": 115,
+          "read_scope": [
+            [
+              1,
+              115
+            ]
+          ],
+          "lines": [
+            81,
+            110
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "导出文件与工程分开检查，真实解析不以扩展名或prompt替代",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "J02"
+          }
+        }
+      ],
+      "consumers": [
+        "document-deck",
+        "media-quality-review"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "J03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "素材使用权适配",
+        "input": "rights_record+用途",
+        "output": "RightsDecision",
+        "consumer_and_counterexample": "可下载不等于可商用/可发布；视频/声音/图像"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2402,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2402,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_normative_requirement_not_empirical_evidence",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2402,
+            "kind": "approved_semantic_proposal",
+            "section": "11.3"
+          },
+          "read_status": "approved_design",
+          "distillation_decision": "用途和素材权利逐项适配；未知权利不复制，法律疑点转复核",
+          "relationship": "user_normative_design_not_external_validation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "J03"
+          }
+        }
+      ],
+      "consumers": [
+        "image-creation"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "J04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "正式采用资格（guard/adopted-input）",
+        "input": "exact_artifact+adoption_record",
+        "output": "AdoptionDecision",
+        "consumer_and_counterexample": "已生成但未采用不能进入正式下游；媒体/交接"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2403,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2403,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:670460244f56e388e3eb",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\prompt-meta-team-team-lead.md",
+          "sha256": "3a4fd8bc3ac52a601a316781a0694d152b7a283b8bb42ca784cb9f2d0714db71",
+          "read_status": "read-complete",
+          "total_lines": 238,
+          "read_scope": [
+            [
+              1,
+              238
+            ]
+          ],
+          "lines": [
+            87,
+            108
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "只有明确采用且当前版本产物才作正式输入，候选不解锁下游",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "J04"
+          }
+        }
+      ],
+      "consumers": [
+        "post-production"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "J05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "必需交付覆盖检查",
+        "input": "DeliverableSpecs+ArtifactManifest",
+        "output": "CoverageGap",
+        "consumer_and_counterexample": "源工程/可编辑性不被成片替代；负责人/验收"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2404,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2404,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_course",
+          "source_id": "COURSE:2a2169837032dc8ba9fc",
+          "path": "C:\\Users\\Administrator\\.codex\\attachments\\c36774fd-9993-42b0-8eb7-b90c2aea2afc\\已粘贴的文本.txt",
+          "sha256": "ecb6b23810e6b4d1d6f598feaf3c0cc6c171a8c7e84d87c29268259490b432c7",
+          "lines": [
+            399,
+            435
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "用途、步骤、输出与失败边界；4.0项目与素材交付覆盖另列"
+        }
+      ],
+      "consumers": [
+        "business-library",
+        "delivery-acceptance",
+        "document-deck",
+        "studio-producer"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "J06",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "检验与产物版本绑定",
+        "input": "report+artifact/hash/revision",
+        "output": "ValidationBinding",
+        "consumer_and_counterexample": "旧报告不贴新文件；代码/办公/媒体"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2405,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2405,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:b0591db12c1a8d69c124",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\objective-critic.md",
+          "sha256": "8c0fb3d28674dcde4df436748718b615fd75cc45ceb2a922708a9d293c3fe2da",
+          "lines": [
+            62,
+            79
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "问题指向当次产物及版本，不批改未实际输出的文件"
+        }
+      ],
+      "consumers": [
+        "business-library",
+        "code-review",
+        "comfyui-test-verification",
+        "contract-risk",
+        "dashboard-review",
+        "data-analysis",
+        "delivery-acceptance",
+        "document-deck",
+        "frontend-visual",
+        "learning-coach",
+        "media-quality-review",
+        "workbench-builder"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "J07",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "硬失败阻断判定",
+        "input": "required_check_results+评价",
+        "output": "HardGate",
+        "consumer_and_counterexample": "高主观分不能抵消失败；复合审查/交付"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2406,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2406,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:b0591db12c1a8d69c124",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\objective-critic.md",
+          "sha256": "8c0fb3d28674dcde4df436748718b615fd75cc45ceb2a922708a9d293c3fe2da",
+          "lines": [
+            104,
+            151
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "硬门先行，高分不能盖住硬失败；检查清单按领域选择"
+        }
+      ],
+      "consumers": [
+        "code-review",
+        "comfyui-test-verification",
+        "delivery-acceptance",
+        "media-quality-review"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "K03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "锚点与必要原文选择",
+        "input": "query+source_anchors",
+        "output": "ExcerptSet",
+        "consumer_and_counterexample": "摘要不能代替代码/台词主输入；专家"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2415,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2415,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:670460244f56e388e3eb",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\prompt-meta-team-team-lead.md",
+          "sha256": "3a4fd8bc3ac52a601a316781a0694d152b7a283b8bb42ca784cb9f2d0714db71",
+          "lines": [
+            87,
+            108
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "必需原文与约束投影分开；摘要不得替换用户台词或源码"
+        }
+      ],
+      "consumers": [
+        "knowledge-base-qa"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "L03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "经验适用条件界定",
+        "input": "事件+版本/反例",
+        "output": "ApplicabilitySpec提案",
+        "consumer_and_counterexample": "一次成功不推广全部任务；女娲/专业owner"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2428,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2428,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "FOREIGN:d08f32b9392dacbc0186",
+          "path": "E:\\下载\\新建文件夹\\外来skill\\skill共享\\expert-interview-extraction\\SKILL.md",
+          "sha256": "22be5ad10f4881b3832ff061532c764f183a94e9c47abba1c1cc21ad93b10031",
+          "read_status": "read-complete",
+          "total_lines": 75,
+          "read_scope": [
+            [
+              1,
+              75
+            ]
+          ],
+          "lines": [
+            50,
+            75
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "知识单元保留适用条件、来源、披露权限和待核；事实与经验类型分开",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "L03"
+          }
+        }
+      ],
+      "consumers": [
+        "learning-coach"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "L05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "技术/经验增量比较",
+        "input": "候选+当前语义",
+        "output": "DeltaProposal",
+        "consumer_and_counterexample": "重复来源不再添同义能力；女娲"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2430,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2430,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:1a481a0e4b7ac1be01cc",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\skill-evolution-architect.md",
+          "sha256": "5d86b1dab25c54d84fb5328a0afe75fbbd375fcb168be4fad209518767c64f5d",
+          "lines": [
+            92,
+            130
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "更新前后有回归与专业差异检查，不能直接覆盖正式能力"
+        }
+      ],
+      "consumers": [
+        "evolution-review"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "M03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "许可使用方式适配",
+        "input": "license+拟用方式",
+        "output": "LicenseDecision",
+        "consumer_and_counterexample": "蒸馏不豁免版权，疑点转专门复核；准入"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2441,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2441,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_normative_requirement_not_empirical_evidence",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2441,
+            "kind": "approved_semantic_proposal",
+            "section": "12.5"
+          },
+          "read_status": "approved_design",
+          "distillation_decision": "按实际使用方式审许可，方法蒸馏不宣称法律豁免；依赖许可全文另核",
+          "relationship": "user_normative_design_not_external_validation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "M03"
+          }
+        }
+      ],
+      "consumers": [
+        "comfyui-packaging",
+        "skill-packager"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "M05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "必需资产保全检查",
+        "input": "adopted_method/tool+asset_specs",
+        "output": "AssetCoverage",
+        "consumer_and_counterexample": "一句规则不能替代脚本/模板/字体；能力准入"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2443,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2443,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:1a481a0e4b7ac1be01cc",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\skill-evolution-architect.md",
+          "sha256": "5d86b1dab25c54d84fb5328a0afe75fbbd375fcb168be4fad209518767c64f5d",
+          "lines": [
+            92,
+            130
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "执行资产完备性须另查，入口已读不代表脚本/字体/许可已齐"
+        }
+      ],
+      "consumers": [
+        "comfyui-packaging",
+        "skill-packager"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "M06",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "完整回归范围生成",
+        "input": "变更闭包+实现绑定",
+        "output": "RequiredTestSet",
+        "consumer_and_counterexample": "不漏程序/schema/模型表现；升级"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2444,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2444,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:1a481a0e4b7ac1be01cc",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\skill-evolution-architect.md",
+          "sha256": "5d86b1dab25c54d84fb5328a0afe75fbbd375fcb168be4fad209518767c64f5d",
+          "read_status": "read-complete",
+          "total_lines": 178,
+          "read_scope": [
+            [
+              1,
+              178
+            ]
+          ],
+          "lines": [
+            92,
+            130
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "变更映射全部消费者及程序/schema/专业回归，不只挑容易通过项",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "M06"
+          }
+        }
+      ],
+      "consumers": [
+        "evolution-review",
+        "template-curator"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "M07",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "发布包一致性检查",
+        "input": "源/锁/生成物/注册/包",
+        "output": "ReleaseConsistency",
+        "consumer_and_counterexample": "源新版ZIP旧版必须拒绝；发布/安装"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2445,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2445,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-CARGO-REPRO",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-CARGO-REPRO.html",
+          "sha256": "cc3858cb5974e41ae7247b180e4533f973280b30e274a79326f488253d93ca49",
+          "url": "https://doc.rust-lang.org/cargo/commands/cargo-build.html",
+          "locator": "--frozen",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "一致源/精确锁/派生产物/注册hash才能打包；冻结依赖不等于包本身已测",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "M07"
+          }
+        }
+      ],
+      "consumers": [
+        "comfyui-packaging",
+        "evolution-review",
+        "skill-packager"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "M08",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "可恢复发布目标检查",
+        "input": "restore_ref+验证/撤销状态",
+        "output": "RestoreEligibility",
+        "consumer_and_counterexample": "不恢复已安全撤销版；升级/部署"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2446,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2446,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-PROV",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-PROV.html",
+          "sha256": "5c925c21bc96c285b25017c3b90d82cf74251d07713b71fcb81ca60f873c9e88",
+          "url": "https://www.w3.org/TR/prov-dm/",
+          "locator": "Invalidation",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "恢复目标要已验证且未安全撤销；回退代码不能自动降级DB或撤回副作用",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "M08"
+          }
+        }
+      ],
+      "consumers": [
+        "evolution-review"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N01",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "受众与使用场景绑定",
+        "input": "Brief",
+        "output": "AudienceIntent",
+        "consumer_and_counterexample": "不同受众不直接同稿；写作/设计/视频"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2452,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2452,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_authorized_WorkBuddy_text_cache",
+          "source_id": "RESEARCH:ca98750442a100cb49a2",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\_kdocs_w5w6.md",
+          "sha256": "2dbbacbfb801bed82cd43b38c8e9123df8adbf8a7717ffccceb17093bd66734d",
+          "lines": [
+            1730,
+            1766
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "内容意图与表达边界明确，不默认修改用户观点或虚构作者经历"
+        }
+      ],
+      "consumers": [
+        "course-design",
+        "dashboard-review",
+        "studio-owner",
+        "topic-selection",
+        "video-copywriter",
+        "writing"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "叙述视角/身份绑定",
+        "input": "用户选择+事实边界",
+        "output": "NarratorSpec",
+        "consumer_and_counterexample": "解说身份不得冒充真实资质；文案/对白/视频"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2453,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2453,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:a63fe5d5a1cd57d0d6fd",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\narrative-architect.md",
+          "sha256": "476354ac389cac9a882420fcf4e540405e44ef47c04027ce4a812c4f750e2b6e",
+          "read_status": "read-complete",
+          "total_lines": 167,
+          "read_scope": [
+            [
+              1,
+              167
+            ]
+          ],
+          "lines": [
+            17,
+            39
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "原创/改编和叙述身份明确，不冒充真实资质或作者亲历",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "N02"
+          }
+        }
+      ],
+      "consumers": [
+        "screenwriter",
+        "video-copywriter"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "不可变事实提取",
+        "input": "确认材料",
+        "output": "FactLock提案",
+        "consumer_and_counterexample": "原创设定与外部事实分开；小说改编/研究/商业"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2454,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2454,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:a63fe5d5a1cd57d0d6fd",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\narrative-architect.md",
+          "sha256": "476354ac389cac9a882420fcf4e540405e44ef47c04027ce4a812c4f750e2b6e",
+          "lines": [
+            17,
+            39
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "原素材改编与原创输入区别；用户事实、台词与创作建议不混写"
+        }
+      ],
+      "consumers": [
+        "business-library",
+        "multi-platform-distribution",
+        "screenwriter",
+        "video-copywriter",
+        "writing"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "实体身份一致性检查",
+        "input": "entity_refs+产物",
+        "output": "IdentityConsistency",
+        "consumer_and_counterexample": "同角色名不同人物不自动合并；长文/视觉/配音"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2455,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2455,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_WorkBuddy_method",
+          "source_id": "WB-SOURCE:9b9ba363d26758aecb89",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\visual-asset-designer.md",
+          "sha256": "b9ed497adb341fc248b2c29334b4d12e41d5f9bc77130e402aac54d67aa43194",
+          "lines": [
+            18,
+            28
+          ],
+          "read_status": "read-complete",
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "稳定资产身份与可变状态分开；具体ID schema在4.0独立设计"
+        }
+      ],
+      "consumers": [
+        "art-director",
+        "comic-storyboard",
+        "image-creation",
+        "screenwriter",
+        "visual-storyboard"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "段落功能标注",
+        "input": "专业文本",
+        "output": "NarrativeFunction提案",
+        "consumer_and_counterexample": "仅用于适用叙事，不强塞办公报告；写作/分镜"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2456,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2456,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:a63fe5d5a1cd57d0d6fd",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\narrative-architect.md",
+          "sha256": "476354ac389cac9a882420fcf4e540405e44ef47c04027ce4a812c4f750e2b6e",
+          "read_status": "read-complete",
+          "total_lines": 167,
+          "read_scope": [
+            [
+              1,
+              167
+            ]
+          ],
+          "lines": [
+            53,
+            59
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "叙事段落功能用于适用故事，不把固定幕/金句强套办公报告",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "N05"
+          }
+        }
+      ],
+      "consumers": [
+        "comic-storyboard",
+        "screenwriter",
+        "video-copywriter"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N06",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "情绪/能量曲线投影",
+        "input": "情节段落+目的",
+        "output": "RhythmIntent提案",
+        "consumer_and_counterexample": "非一首BGM硬铺，不保证算法自动审美；视频/配乐"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2457,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2457,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_authorized_WorkBuddy_summary_not_original_material",
+          "source_id": "RESEARCH:a25f64c2bccce80ad883",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\deep_悦蓝成片与声音.md",
+          "sha256": "c7552924d8bef4da95232c982711c74a5195070411b36add3a1be1ccdd753d69",
+          "read_status": "read-complete",
+          "total_lines": 339,
+          "read_scope": [
+            [
+              1,
+              339
+            ]
+          ],
+          "lines": [
+            138,
+            177
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "情绪/歌曲结构与画面联合预编排；用户决定音乐先于详细分镜，混音仍后置",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "N06"
+          }
+        }
+      ],
+      "consumers": [
+        "video-production"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N07",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "表现风格一致性检查",
+        "input": "选中style_spec+产物",
+        "output": "StyleFinding",
+        "consumer_and_counterexample": "风格不能覆盖事实/授权；写作/视觉/音视频"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2458,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2458,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:9b9ba363d26758aecb89",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\visual-asset-designer.md",
+          "sha256": "b9ed497adb341fc248b2c29334b4d12e41d5f9bc77130e402aac54d67aa43194",
+          "read_status": "read-complete",
+          "total_lines": 132,
+          "read_scope": [
+            [
+              1,
+              132
+            ]
+          ],
+          "lines": [
+            18,
+            28
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "采用style的保持项约束当前产物；风格不覆盖事实、版权和授权",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "N07"
+          }
+        }
+      ],
+      "consumers": [
+        "art-director",
+        "writing"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "N08",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "目标渠道限制核对",
+        "input": "当前channel_profile+内容",
+        "output": "ChannelFit",
+        "consumer_and_counterexample": "不把课程数字当永久平台规则；分发/办公/视频"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2459,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2459,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_authorized_WorkBuddy_summary_not_original_material",
+          "source_id": "RESEARCH:a25f64c2bccce80ad883",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\deep_悦蓝成片与声音.md",
+          "sha256": "c7552924d8bef4da95232c982711c74a5195070411b36add3a1be1ccdd753d69",
+          "read_status": "read-complete",
+          "total_lines": 339,
+          "read_scope": [
+            [
+              1,
+              339
+            ]
+          ],
+          "lines": [
+            199,
+            266
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "平台画幅/字幕/导出检查按目标当前profile，教程数值不做永久常量",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "N08"
+          }
+        }
+      ],
+      "consumers": [
+        "content-operations",
+        "multi-platform-distribution",
+        "writing"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "O01",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "精确时间量转换",
+        "input": "TimeQuantity+frame/sample/tick基准",
+        "output": "TargetTime",
+        "consumer_and_counterexample": "单位与基准显式，舍入策略可查；字幕/剪辑/声音"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2465,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2465,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-FFMPEG-TIME",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-FFMPEG-TIME.html",
+          "sha256": "c05194b95b70774de8fcb8e8b74358a94c5e93c0e98e0ecb96ea4cccdef70640",
+          "url": "https://ffmpeg.org/doxygen/trunk/group__lavu__math.html",
+          "locator": "av_rescale_q_rnd",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "显式有理数时间基和舍入；不混frame/sample/tick，REAPER秒边界注明误差",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "O01"
+          }
+        }
+      ],
+      "consumers": [
+        "post-production",
+        "video-production",
+        "visual-storyboard"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "O02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "时间窗口适配检查",
+        "input": "event_span+允许窗口/误差",
+        "output": "WindowFit",
+        "consumer_and_counterexample": "对白越窗明确缺口，不靠估计字数；配音/字幕"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2466,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2466,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:c5ae4a36ac8928b6c512",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\storyboard-director.md",
+          "sha256": "9ec8494040cecb7e7be757639b0b5b6754454918e5dd6f6714f1186993ab14a0",
+          "read_status": "read-complete",
+          "total_lines": 230,
+          "read_scope": [
+            [
+              1,
+              230
+            ]
+          ],
+          "lines": [
+            95,
+            137
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "叙事段落/生成单元时长分型；对白窗口靠实测不是字数估计",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "O02"
+          }
+        }
+      ],
+      "consumers": [
+        "voice-audio"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "O03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "片段总时长对账",
+        "input": "clip_spans+转场规则+目标",
+        "output": "DurationBalance",
+        "consumer_and_counterexample": "转场重叠不重复算时长；分镜/剪辑/导出"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2467,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2467,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_authorized_WorkBuddy_summary_not_original_material",
+          "source_id": "RESEARCH:a25f64c2bccce80ad883",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\deep_悦蓝成片与声音.md",
+          "sha256": "c7552924d8bef4da95232c982711c74a5195070411b36add3a1be1ccdd753d69",
+          "read_status": "read-complete",
+          "total_lines": 339,
+          "read_scope": [
+            [
+              1,
+              339
+            ]
+          ],
+          "lines": [
+            48,
+            103
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "时间线关系和转场重叠对账，并行动作不重复累加成总长",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "O03"
+          }
+        }
+      ],
+      "consumers": [
+        "post-production"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "O04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "时间锚点引用绑定",
+        "input": "cue/镜头/台词+timeline_revision",
+        "output": "AnchorBinding",
+        "consumer_and_counterexample": "时间线改版使相关声音检查失效；全视频链"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2468,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2468,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:afecb5daea1afe94f85e",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\soundstage-architect.md",
+          "sha256": "3b7cc62000f019859c3d73bdf54c077ed159a56a41e96d4c89621121f054c51f",
+          "read_status": "read-complete",
+          "total_lines": 157,
+          "read_scope": [
+            [
+              1,
+              157
+            ]
+          ],
+          "lines": [
+            64,
+            115
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "声音事件绑定采用时间线版本和cue，相关版本变化定点失效",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "O04"
+          }
+        }
+      ],
+      "consumers": [
+        "comic-storyboard",
+        "video-production",
+        "visual-storyboard",
+        "voice-audio"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "O05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "轨道角色/路由绑定",
+        "input": "adopted_stems+track/bus_spec",
+        "output": "TrackBinding",
+        "consumer_and_counterexample": "不把混合音频称分轨；REAPER/剪映/导出"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2469,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2469,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-REAPER",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-REAPER.html",
+          "sha256": "558a5559fc8937dd7ecb309c3d236f59c844f3920c9c2f706d082d3a461a21f6",
+          "url": "https://www.reaper.fm/sdk/reascript/reascripthelp.html",
+          "locator": "GetMediaTrackInfo_Value",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "轨道/路由可查；混合音频不冒称原生分轨，工程与媒体一同验收",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "O05"
+          }
+        }
+      ],
+      "consumers": [
+        "voice-audio"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "O07",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "工程资源引用可解析检查",
+        "input": "project+media_refs",
+        "output": "MissingAssetReport",
+        "consumer_and_counterexample": "草稿打开有素材才可继续编辑；剪映/REAPER"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2471,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2471,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-REAPER",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-REAPER.html",
+          "sha256": "558a5559fc8937dd7ecb309c3d236f59c844f3920c9c2f706d082d3a461a21f6",
+          "url": "https://www.reaper.fm/sdk/reascript/reascripthelp.html",
+          "locator": "GetMediaItemTake_Source",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "工程素材引用须真实存在可解析；打开工程不等于全部素材可编辑",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "O07"
+          }
+        }
+      ],
+      "consumers": [
+        "voice-audio"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "O08",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "实测输出profile核对",
+        "input": "rendered_file+目标能力profile",
+        "output": "OutputFit",
+        "consumer_and_counterexample": "真实时长/画幅/音轨测量，不能只看prompt；导出"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2472,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2472,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_authorized_WorkBuddy_summary_not_original_material",
+          "source_id": "RESEARCH:a25f64c2bccce80ad883",
+          "path": "C:\\Users\\Administrator\\WorkBuddy\\2026-09-30-11-17-38\\research\\deep_悦蓝成片与声音.md",
+          "sha256": "c7552924d8bef4da95232c982711c74a5195070411b36add3a1be1ccdd753d69",
+          "read_status": "read-complete",
+          "total_lines": 339,
+          "read_scope": [
+            [
+              1,
+              339
+            ]
+          ],
+          "lines": [
+            224,
+            266
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "导出时长/画幅/编码/音轨和项目交付分别实测，不以参数表当成成片",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "O08"
+          }
+        }
+      ],
+      "consumers": [
+        "image-creation",
+        "media-quality-review",
+        "post-production",
+        "video-production"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P01",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "可复现环境快照",
+        "input": "目标宿主/依赖/设备观测",
+        "output": "EnvironmentLock",
+        "consumer_and_counterexample": "不硬照搬已过时版本；代码/ComfyUI/工具"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2478,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2478,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "FOREIGN:1dcb594c1721c5d0dd24",
+          "path": "E:\\下载\\新建文件夹\\外来skill\\skills基础版\\comfyui-rob-startup-fix-精简版.md",
+          "sha256": "5eca44a17c96fa0b0b44eddb44ea6c6919ce6357a2cdbdc32e946f86f01ad5a0",
+          "read_status": "read-complete",
+          "total_lines": 116,
+          "read_scope": [
+            [
+              1,
+              116
+            ]
+          ],
+          "lines": [
+            36,
+            51
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "固定宿主/依赖/输入环境观测；案例版本不是永久正确版本",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P01"
+          }
+        }
+      ],
+      "consumers": [
+        "ai-workflow-engineer",
+        "code-repair",
+        "comfyui-cpp-kernel",
+        "comfyui-debug-performance",
+        "comfyui-python-node",
+        "comfyui-reverse",
+        "comfyui-rust-extension",
+        "cpp-engineer",
+        "go-engineer",
+        "python-engineer",
+        "rust-engineer"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P02",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "对外行为契约提取",
+        "input": "授权源码/公开接口/观察",
+        "output": "BehaviorSpec提案",
+        "consumer_and_counterexample": "不从UI名字猜全部实现；逆推/融合/测试"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2479,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2479,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-COMFY",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-COMFY.html",
+          "sha256": "9ebc24848ea1c11e27cbde4e954e83796a92046b9f009a2254af27eee070f58b",
+          "url": "https://docs.comfy.org/development/comfyui-server/comms_routes",
+          "locator": "/object_info",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "从原始节点schema/接口观察形成行为契约，不从名字猜实现",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P02"
+          }
+        }
+      ],
+      "consumers": [
+        "comfyui-distillation",
+        "comfyui-reverse",
+        "comfyui-workflow",
+        "software-reverse"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P03",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "复现用例可重复检查",
+        "input": "症状+环境+输入",
+        "output": "ReproductionResult",
+        "consumer_and_counterexample": "无复现不假定根因；Bug/性能/兼容"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2480,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2480,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "FOREIGN:1dcb594c1721c5d0dd24",
+          "path": "E:\\下载\\新建文件夹\\外来skill\\skills基础版\\comfyui-rob-startup-fix-精简版.md",
+          "sha256": "5eca44a17c96fa0b0b44eddb44ea6c6919ce6357a2cdbdc32e946f86f01ad5a0",
+          "read_status": "read-complete",
+          "total_lines": 116,
+          "read_scope": [
+            [
+              1,
+              116
+            ]
+          ],
+          "lines": [
+            27,
+            51
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "最小用例与同条件交叉结果复现；不能因WinError1114直接套唯一根因",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P03"
+          }
+        }
+      ],
+      "consumers": [
+        "code-repair",
+        "comfyui-debug-performance",
+        "incident-diagnosis"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P04",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "根因实验区分力检查",
+        "input": "hypothesis+实验/反证",
+        "output": "DiagnosisEvidence",
+        "consumer_and_counterexample": "不把相关性写成确定根因；修复/调优"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2481,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2481,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "FOREIGN:1dcb594c1721c5d0dd24",
+          "path": "E:\\下载\\新建文件夹\\外来skill\\skills基础版\\comfyui-rob-startup-fix-精简版.md",
+          "sha256": "5eca44a17c96fa0b0b44eddb44ea6c6919ce6357a2cdbdc32e946f86f01ad5a0",
+          "read_status": "read-complete",
+          "total_lines": 116,
+          "read_scope": [
+            [
+              1,
+              116
+            ]
+          ],
+          "lines": [
+            36,
+            51
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "先查适用公开解释及反证，决定性缺口才做区分假设的最小实验",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P04"
+          }
+        }
+      ],
+      "consumers": [
+        "code-repair",
+        "comfyui-cpp-kernel",
+        "comfyui-debug-performance",
+        "comfyui-rust-extension",
+        "incident-diagnosis"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P05",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "专业实现重叠比较",
+        "input": "两份行为/接口",
+        "output": "OverlapDelta提案",
+        "consumer_and_counterexample": "不把并排包装当融合；ComfyUI/软件"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2482,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2482,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:1a481a0e4b7ac1be01cc",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\skill-evolution-architect.md",
+          "sha256": "5d86b1dab25c54d84fb5328a0afe75fbbd375fcb168be4fad209518767c64f5d",
+          "read_status": "read-complete",
+          "total_lines": 178,
+          "read_scope": [
+            [
+              1,
+              178
+            ]
+          ],
+          "lines": [
+            92,
+            130
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "重叠矩阵看行为/IO/专业差异，包并排不当融合",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P05"
+          }
+        }
+      ],
+      "consumers": [
+        "comfyui-distillation"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P06",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "接口/协议边界检查",
+        "input": "producer/consumer schema+ABI/profile",
+        "output": "BoundaryFit",
+        "consumer_and_counterexample": "Python/Rust/Go/C++差异不靠统一人设消失；集成"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2483,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2483,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-MCP-TOOLS",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-MCP-TOOLS.html",
+          "sha256": "e79ed710ae994d937bf508bfd37fd5786b0bd7c79c8da27d87b4362201fd59c8",
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "locator": "outputSchema",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "接口/schema/ABI由实际producer/consumer约束，不靠统一语言消除生态差异",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P06"
+          }
+        }
+      ],
+      "consumers": [
+        "ai-workflow-engineer",
+        "comfyui-cpp-kernel",
+        "comfyui-distillation",
+        "comfyui-go-integration",
+        "comfyui-python-node",
+        "comfyui-rust-extension",
+        "comfyui-workflow",
+        "cpp-engineer",
+        "frontend-visual",
+        "go-engineer",
+        "python-engineer",
+        "rust-engineer",
+        "software-architecture",
+        "workbench-builder"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P07",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "目标宿主注册探针",
+        "input": "包+目标宿主当前契约",
+        "output": "RegistrationResult",
+        "consumer_and_counterexample": "import成功不代表节点真实注册可见；ComfyUI/插件"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2484,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2484,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "primary_method_documentation_selected_sections",
+          "source_id": "STD-COMFY",
+          "path": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/primary-method-snapshots/STD-COMFY.html",
+          "sha256": "9ebc24848ea1c11e27cbde4e954e83796a92046b9f009a2254af27eee070f58b",
+          "url": "https://docs.comfy.org/development/comfyui-server/comms_routes",
+          "locator": "/object_info/{node_class}",
+          "read_status": "selected_sections_read_not_entire_webpage",
+          "adoption_scope": "reference_only_no_upstream_code_template_or_runtime_import",
+          "distillation_decision": "import与真实宿主注册可见分开；实际动作留P4，不安装未知插件证明通过",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P07"
+          }
+        }
+      ],
+      "consumers": [
+        "comfyui-packaging",
+        "comfyui-python-node",
+        "comfyui-reverse",
+        "comfyui-test-verification",
+        "comfyui-workflow"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    },
+    {
+      "candidate_id": "P08",
+      "layer": "L1",
+      "shared_definition": {
+        "name": "最小回归影响选择",
+        "input": "变更符号/行为+测试关系",
+        "output": "RegressionSet",
+        "consumer_and_counterexample": "正确失败用例被覆盖，不全量跑无关域；所有软件"
+      },
+      "source_evidence": {
+        "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+        "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+        "line": 2485,
+        "kind": "approved_semantic_proposal"
+      },
+      "method_source_bindings": [
+        {
+          "fields": [
+            "name",
+            "input",
+            "output",
+            "consumer_and_counterexample",
+            "professional_difference"
+          ],
+          "source_kind": "approved_4.0_typed_semantics",
+          "source_ref": {
+            "path": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+            "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+            "line": 2485,
+            "kind": "approved_semantic_proposal"
+          }
+        },
+        {
+          "fields": [
+            "method_intent",
+            "professional_difference"
+          ],
+          "source_kind": "user_supplied_read_method",
+          "source_id": "WB-SOURCE:1a481a0e4b7ac1be01cc",
+          "path": "C:\\Users\\Administrator\\.workbuddy\\plugins\\marketplaces\\my-experts\\plugins\\prompt-meta-team\\agents\\skill-evolution-architect.md",
+          "sha256": "5d86b1dab25c54d84fb5328a0afe75fbbd375fcb168be4fad209518767c64f5d",
+          "read_status": "read-complete",
+          "total_lines": 178,
+          "read_scope": [
+            [
+              1,
+              178
+            ]
+          ],
+          "lines": [
+            92,
+            130
+          ],
+          "adoption_scope": "method_only_no_old_template_config_code_or_test_import",
+          "distillation_decision": "按受影响行为与失败模式选择回归，用户失败要可定位验收且不修无关域",
+          "relationship": "method_intent_support_not_complete_4_0_implementation",
+          "review_declaration": {
+            "path": "E:/wuji-projects/wuji-legion-codex-4.0/docs/p0-method-bindings.json",
+            "sha256": "6cc1abd6da6fc50f5458b5fc474d663c2aa891ee98470837483b5fffeb9a2713",
+            "candidate_id": "P08"
+          }
+        }
+      ],
+      "consumers": [
+        "code-repair",
+        "comfyui-cpp-kernel",
+        "comfyui-debug-performance",
+        "comfyui-python-node",
+        "comfyui-rust-extension",
+        "comfyui-test-verification",
+        "cpp-engineer",
+        "python-engineer",
+        "rust-engineer"
+      ],
+      "runtime_admission": false,
+      "effectiveness": "not_run"
+    }
+  ]
+}

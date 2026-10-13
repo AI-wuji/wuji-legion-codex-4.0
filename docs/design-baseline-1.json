@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "baseline-1.1",
+  "baseline": {
+    "plan": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  },
+  "frozen_at": "2026-10-03T10:12:57.073Z",
+  "phase_id": "P1",
+  "gate": "G1",
+  "status": "frozen_design_not_runtime_release",
+  "files": [
+    {
+      "path": "docs/execution-baseline.json",
+      "sha256": "05603d54b3541ad53fca424cac7ccf8a0c5ef868424eb9c70e8df44f46a44c02",
+      "bytes": 1357
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "e0c962e1f22650b38ccf27ca8524285ad326a58b63a8bf9a007ad7007eed200b",
+      "bytes": 10128
+    },
+    {
+      "path": "docs/graph-data-model.md",
+      "sha256": "a0848e528492d1d378f1f91b02572186264692ecdd9a8f3bd8f85100ad93d332",
+      "bytes": 6021
+    },
+    {
+      "path": "docs/atom-composition-spec.md",
+      "sha256": "7cde2d50ba6dda2a5211346918c9fddeaae8a239704559fd282a1e2a2bbac21e",
+      "bytes": 5871
+    },
+    {
+      "path": "docs/workflow-contracts.md",
+      "sha256": "6098ac42f4b10461a0007dd47e8c23903d8e78ebd558a909dca76f3c26eca691",
+      "bytes": 5259
+    },
+    {
+      "path": "docs/evolution-impact-spec.md",
+      "sha256": "5988cfd7d53c15813c68421e602888d90392b9b8974a49a2b28100dbbccdd280",
+      "bytes": 2126
+    },
+    {
+      "path": "docs/cli-state-contracts.md",
+      "sha256": "38a859f8b8b313b005c1f014f2e21d357c2a48b2cedf2b8857b824559627ac79",
+      "bytes": 6280
+    },
+    {
+      "path": "docs/adr/001-research-before-experiment.md",
+      "sha256": "ad3e740b7f922270c3e27b8d56553c5657648eb0081e20486a808cdef1ada671",
+      "bytes": 5315
+    },
+    {
+      "path": "docs/adr/002-release-and-scope-authority.md",
+      "sha256": "cc99fd5ab1aca4b5f0b5a48db879f9d227acd95ddf413fc8e3679c5179ada4dd",
+      "bytes": 1579
+    },
+    {
+      "path": "docs/requirement-design-map.json",
+      "sha256": "b6b3254dee804b47b65a8c891553de20a81e03c3d0ead1a89e027c8fe532ca97",
+      "bytes": 55289
+    },
+    {
+      "path": "docs/acceptance-map.json",
+      "sha256": "7487ca726e5fd0f1dfa2c2a9a7fa1ca0f3d8e22ac141f6d8be2c9acdcb29cf8a",
+      "bytes": 49051
+    },
+    {
+      "path": "docs/expert-design-map.json",
+      "sha256": "575744fc656bf079e153c48482812dd5f3a433934930da659cab31e6fa1035de",
+      "bytes": 101296
+    },
+    {
+      "path": "docs/atom-design-map.json",
+      "sha256": "30567cdf81e7ff2b694e23002cbdbef18fef5ed38929f18a047b936950db81de",
+      "bytes": 329284
+    },
+    {
+      "path": "docs/design-walkthroughs.json",
+      "sha256": "f4b0065a394f2ea31646a79331b619b0e40253a53ff77e5def60c56bbd777c28",
+      "bytes": 13340
+    },
+    {
+      "path": "docs/p0-installation-delta-2026-10-03.md",
+      "sha256": "53fcdbe664db7cf03eea9c9c0461f9cad9723a44b3ac9b544a187b3a24df7778",
+      "bytes": 4195
+    },
+    {
+      "path": "schemas/contracts.schema.json",
+      "sha256": "ea64c1960eb31723ee7d3e328e812315e18a07091b87a6962a8f1272cca2469a",
+      "bytes": 86454
+    },
+    {
+      "path": "schemas/atom-semantics.schema.json",
+      "sha256": "82f3aa8f318932a47d09196e31bb526825ed9a1e2e323b6226851a5ce04b18aa",
+      "bytes": 312137
+    },
+    {
+      "path": "tools/dependency-audit/Cargo.toml",
+      "sha256": "6fde9d53b659cfff76e2f8ad644137366fe77657e3f65938edd62836e0dd482a",
+      "bytes": 408
+    },
+    {
+      "path": "tools/dependency-audit/Cargo.lock",
+      "sha256": "bd259ed6eaf9d71225191ca318c1c77aac12452fd7bb4d3d327ee8a56763fd07",
+      "bytes": 6645
+    },
+    {
+      "path": "docs/design-deltas/001-schema-alias-hash.md",
+      "sha256": "d8cab25e7bc395bd06cfcb406d4a598ac479f2c6b6393015f3df62b279a0f631",
+      "bytes": 1170
+    }
+  ],
+  "review": "outputs/p1/g1-review-2026-10-03.json",
+  "actual_runtime_manifest": false,
+  "mutability": "Do not edit frozen files silently. Required changes need scoped delta/refreeze and regression. Stage reports/source observations are outside this design manifest.",
+  "prior_manifest": "outputs/p1/design-baseline-1.json",
+  "delta": "docs/design-deltas/001-schema-alias-hash.md"
+}

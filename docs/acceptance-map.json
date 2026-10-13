@@ -1,0 +1,1584 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "plan": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  },
+  "status": "acceptance_specs_not_test_execution",
+  "tests": [
+    {
+      "id": "T01",
+      "name": "简单问答",
+      "requirement_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R05",
+        "R29",
+        "R41",
+        "R45",
+        "R63",
+        "R72"
+      ],
+      "normal_spec": "直达、短答、必要事实核查",
+      "negative_spec": "建staff图/查全专家",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T02",
+      "name": "普通改写",
+      "requirement_ids": [
+        "R03"
+      ],
+      "normal_spec": "忠实内容、合适文风",
+      "negative_spec": "开军团大会",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T03",
+      "name": "错误前提",
+      "requirement_ids": [
+        "R02",
+        "R04"
+      ],
+      "normal_spec": "阿极指出并给可行路径",
+      "negative_spec": "奉承/编证据",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T04",
+      "name": "资料不可读",
+      "requirement_ids": [
+        "R35",
+        "R57"
+      ],
+      "normal_spec": "真实缺口和范围影响",
+      "negative_spec": "标题补正文",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T05",
+      "name": "专业分层检索",
+      "requirement_ids": [
+        "R01",
+        "R09"
+      ],
+      "normal_spec": "命中相应类别和叶节点",
+      "negative_spec": "全正文常驻",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T06",
+      "name": "专家歧义",
+      "requirement_ids": [
+        "R01",
+        "R09"
+      ],
+      "normal_spec": "缩小条件或阿极复核",
+      "negative_spec": "词面计数冒充置信度",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T07",
+      "name": "跨领域组队",
+      "requirement_ids": [
+        "R10"
+      ],
+      "normal_spec": "引用共享专家、明确依赖",
+      "negative_spec": "克隆同名专家",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T08",
+      "name": "双负责人并行",
+      "requirement_ids": [
+        "R10",
+        "R12"
+      ],
+      "normal_spec": "独立交付物、统一验收",
+      "negative_spec": "写同文件",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T09",
+      "name": "任意角色实例并发",
+      "requirement_ids": [
+        "R08",
+        "R12"
+      ],
+      "normal_spec": "独立任务/权限/上下文",
+      "negative_spec": "并发突破总预算",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T10",
+      "name": "路径/写冲突",
+      "requirement_ids": [
+        "R12"
+      ],
+      "normal_spec": "canonicalize/锁/拒绝越界",
+      "negative_spec": "symlink/大小写绕过",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T11",
+      "name": "需求中途变化",
+      "requirement_ids": [
+        "R43"
+      ],
+      "normal_spec": "局部失效、旧回执拒绝",
+      "negative_spec": "清空全链或旧图复活",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T12",
+      "name": "重复事件",
+      "requirement_ids": [
+        "R51"
+      ],
+      "normal_spec": "幂等状态、不重复动作",
+      "negative_spec": "多次提交付费请求",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T13",
+      "name": "调用后断线",
+      "requirement_ids": [
+        "R36",
+        "R51"
+      ],
+      "normal_spec": "查状态/隔离unknown",
+      "negative_spec": "盲重试",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T14",
+      "name": "lease过期",
+      "requirement_ids": [
+        "R51"
+      ],
+      "normal_spec": "不接受旧attempt完成",
+      "negative_spec": "重复owner",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T15",
+      "name": "取消/退出",
+      "requirement_ids": [
+        "R11",
+        "R31"
+      ],
+      "normal_spec": "停在安全点、宿主关闭证据",
+      "negative_spec": "杀用户无关进程",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T16",
+      "name": "worker完成未关闭",
+      "requirement_ids": [
+        "R11",
+        "R31"
+      ],
+      "normal_spec": "记录待释放并处理",
+      "negative_spec": "继续占用配额却说退出",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T17",
+      "name": "伪造receipt",
+      "requirement_ids": [
+        "R51"
+      ],
+      "normal_spec": "拒绝无真实宿主/工具引用",
+      "negative_spec": "JSON自证",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T18",
+      "name": "产物hash/版本变更",
+      "requirement_ids": [
+        "R51",
+        "R67"
+      ],
+      "normal_spec": "验收失效与重新验证",
+      "negative_spec": "旧评审贴新文件",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T19",
+      "name": "review空转",
+      "requirement_ids": [
+        "R33",
+        "R67"
+      ],
+      "normal_spec": "缺陷有证据，有限返工",
+      "negative_spec": "强制凑三个问题",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T20",
+      "name": "大输出/预算",
+      "requirement_ids": [
+        "R05",
+        "R54",
+        "R64"
+      ],
+      "normal_spec": "可回读、错误不丢",
+      "negative_spec": "无提示裁剪或强删安全字段",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T21",
+      "name": "经验积累",
+      "requirement_ids": [
+        "R14"
+      ],
+      "normal_spec": "修正进入合适scope并被相关任务使用",
+      "negative_spec": "直接变通用真理",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T22",
+      "name": "用户/项目隔离",
+      "requirement_ids": [
+        "R15",
+        "R48"
+      ],
+      "normal_spec": "ACL与scope重新检查",
+      "negative_spec": "跨项目误用偏好/私有事实",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T23",
+      "name": "经验撤销",
+      "requirement_ids": [
+        "R65"
+      ],
+      "normal_spec": "下次不再命中",
+      "negative_spec": "缓存继续注入",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T24",
+      "name": "更新治理",
+      "requirement_ids": [
+        "R17",
+        "R67"
+      ],
+      "normal_spec": "来源/许可/回归/单一发布版",
+      "negative_spec": "在途热覆盖",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T25",
+      "name": "ComfyUI Python节点",
+      "requirement_ids": [
+        "R21"
+      ],
+      "normal_spec": "注册与真实图输出",
+      "negative_spec": "仅import成功",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T26",
+      "name": "ComfyUI多语言边界",
+      "requirement_ids": [
+        "R20",
+        "R22",
+        "R29",
+        "R41",
+        "R44",
+        "R45",
+        "R49",
+        "R51",
+        "R63",
+        "R66",
+        "R72"
+      ],
+      "normal_spec": "数值/FFI/设备/取消验证",
+      "negative_spec": "为炫技引多语言",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T27",
+      "name": "插件融合",
+      "requirement_ids": [
+        "R20",
+        "R21",
+        "R22",
+        "R44",
+        "R49",
+        "R51",
+        "R66"
+      ],
+      "normal_spec": "一个目标契约，重复实现消解",
+      "negative_spec": "多包简单并排",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T28",
+      "name": "软件Bug",
+      "requirement_ids": [
+        "R21",
+        "R33"
+      ],
+      "normal_spec": "复现/根因/最小修复/新回归",
+      "negative_spec": "无复现全量重写",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T29",
+      "name": "Office文件",
+      "requirement_ids": [
+        "R28"
+      ],
+      "normal_spec": "内容/公式/可编辑/渲染通过",
+      "negative_spec": "只生成文件名",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T30",
+      "name": "研究结论",
+      "requirement_ids": [
+        "R04",
+        "R35"
+      ],
+      "normal_spec": "来源/日期/反证/缺口可追溯",
+      "negative_spec": "高质量来源口号",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T31",
+      "name": "短篇/长篇/平台文案",
+      "requirement_ids": [
+        "R24"
+      ],
+      "normal_spec": "不同专业方法与验收",
+      "negative_spec": "万能writing模板",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T32",
+      "name": "片花/片头片尾",
+      "requirement_ids": [
+        "R23",
+        "R24"
+      ],
+      "normal_spec": "按交付类型省略不必要节点",
+      "negative_spec": "强套漫剧世界观",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T33",
+      "name": "视频节奏与BGM",
+      "requirement_ids": [
+        "R23",
+        "R25"
+      ],
+      "normal_spec": "情绪cue/过渡/音乐让位",
+      "negative_spec": "一首硬铺或几秒换曲",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T34",
+      "name": "音频驱动",
+      "requirement_ids": [
+        "R23",
+        "R26"
+      ],
+      "normal_spec": "实际音乐标记与预剪/镜头对齐",
+      "negative_spec": "只凭prompt叫音频驱动",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T35",
+      "name": "时间线替声",
+      "requirement_ids": [
+        "R23",
+        "R26"
+      ],
+      "normal_spec": "SRT/对白时窗/实际时长/口型差异披露",
+      "negative_spec": "假装严格对齐",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T36",
+      "name": "剪映草稿",
+      "requirement_ids": [
+        "R23",
+        "R27"
+      ],
+      "normal_spec": "当前软件打开/编辑/保存",
+      "negative_spec": "文件存在即支持",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T37",
+      "name": "REAPER声场",
+      "requirement_ids": [
+        "R23",
+        "R27"
+      ],
+      "normal_spec": "轨道/自动化/空间/总线/渲染/重开",
+      "negative_spec": "pan当完整三维",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T38",
+      "name": "生成服务",
+      "requirement_ids": [
+        "R13",
+        "R23",
+        "R36",
+        "R61"
+      ],
+      "normal_spec": "当前能力/授权/实际文件/采用",
+      "negative_spec": "偏好或免费传言冒充执行",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T39",
+      "name": "模型和档位",
+      "requirement_ids": [
+        "R18",
+        "R19",
+        "R34"
+      ],
+      "normal_spec": "用户provider、真实可见请求、未知字段如实",
+      "negative_spec": "ChatGPT误判/静默换模",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T40",
+      "name": "排程/发布",
+      "requirement_ids": [
+        "R36"
+      ],
+      "normal_spec": "宿主机制/明确授权/结果",
+      "negative_spec": "擅自发信发帖",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T41",
+      "name": "空闲与压力",
+      "requirement_ids": [
+        "R31"
+      ],
+      "normal_spec": "无驻留军团进程；限并发；取消可清理",
+      "negative_spec": "全池MCP/模型常开",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T42",
+      "name": "发布与安装",
+      "requirement_ids": [
+        "R17",
+        "R32"
+      ],
+      "normal_spec": "源/包/索引/注册/版本/hash一致",
+      "negative_spec": "项目成功当已安装",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T43",
+      "name": "新会话自动触发",
+      "requirement_ids": [
+        "R01",
+        "R32"
+      ],
+      "normal_spec": "无需点专家，真实动作",
+      "negative_spec": "只说已开启",
+      "gate": "G7",
+      "execution_class": "separately_authorized_new_session",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T44",
+      "name": "恢复安装",
+      "requirement_ids": [
+        "R32",
+        "R56"
+      ],
+      "normal_spec": "仅恢复受影响文件，保存用户后续改动",
+      "negative_spec": "全目录覆盖",
+      "gate": "G7",
+      "execution_class": "separately_authorized_new_session",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T45",
+      "name": "公共五要素模板复用",
+      "requirement_ids": [
+        "R06",
+        "R37",
+        "R52",
+        "R70"
+      ],
+      "normal_spec": "多专家/负责人引用一次；有效契约齐全、专业差异保持",
+      "negative_spec": "复制正文或丢专业验收",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T46",
+      "name": "确定性组装/出处",
+      "requirement_ids": [
+        "R37",
+        "R38",
+        "R44",
+        "R49",
+        "R51",
+        "R52"
+      ],
+      "normal_spec": "同输入锁/编译器同内容哈希；逐字段可解释",
+      "negative_spec": "非确定拼接或来源不明",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T47",
+      "name": "菱形依赖/多版本",
+      "requirement_ids": [
+        "R38",
+        "R50"
+      ],
+      "normal_spec": "同版本去重且保留路径；不兼容版本显式拒绝",
+      "negative_spec": "重复规则或静默择新",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T48",
+      "name": "循环/缺失原子",
+      "requirement_ids": [
+        "R38"
+      ],
+      "normal_spec": "构建门报具体环/引用；不派发",
+      "negative_spec": "无限递归或忽略缺失",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T49",
+      "name": "专业差异/槽覆盖",
+      "requirement_ids": [
+        "R04",
+        "R44",
+        "R49",
+        "R51"
+      ],
+      "normal_spec": "只改允许槽；必需白帽/验收不可删",
+      "negative_spec": "风格或专家覆写硬规则",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T50",
+      "name": "原子权限/scope",
+      "requirement_ids": [
+        "R48"
+      ],
+      "normal_spec": "保持任务授权上限；私有经验不跨域",
+      "negative_spec": "公共升级暗增工具权限",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T51",
+      "name": "公共升级完整传播",
+      "requirement_ids": [
+        "R39"
+      ],
+      "normal_spec": "全适用消费者重组/回归；一次发布启用",
+      "negative_spec": "只更新几个或未测算成功",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T52",
+      "name": "大影响闭包/损坏索引",
+      "requirement_ids": [
+        "R39"
+      ],
+      "normal_spec": "超20消费者分页完整校验；缺失先修索引",
+      "negative_spec": "用截断查询当完整影响",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T53",
+      "name": "发布中断/在途/撤回",
+      "requirement_ids": [
+        "R17",
+        "R43"
+      ],
+      "normal_spec": "指针与清单一致；旧任务固定；恢复未撤销版",
+      "negative_spec": "混版本派发/偷偷热改",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T54",
+      "name": "技术/经验范围泛化",
+      "requirement_ids": [
+        "R14",
+        "R40",
+        "R42"
+      ],
+      "normal_spec": "两通道同门；领域或全局有证据与反例",
+      "negative_spec": "单次修正普遍化",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T55",
+      "name": "最新上游采用核实",
+      "requirement_ids": [
+        "R29",
+        "R41"
+      ],
+      "normal_spec": "日期/最新稳定/采用锁/差异/例外齐全",
+      "negative_spec": "按旧缓存称最新或盲装HEAD",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T56",
+      "name": "技术与执行资产承接",
+      "requirement_ids": [
+        "R16",
+        "R41",
+        "R45",
+        "R70"
+      ],
+      "normal_spec": "全来源有去向；方法/脚本/资产分别验证",
+      "negative_spec": "以提示词代替真实软件能力",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T57",
+      "name": "原子化成本/冷态",
+      "requirement_ids": [
+        "R03",
+        "R05",
+        "R44",
+        "R64"
+      ],
+      "normal_spec": "无关原子不进热契约；不增加常驻服务；必要正文实际提供",
+      "negative_spec": "只给ID假定模型知道规则",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T58",
+      "name": "过细/过度泛化",
+      "requirement_ids": [
+        "R44"
+      ],
+      "normal_spec": "抽取有消费者/基础理由、可测接口；无益拆分合并",
+      "negative_spec": "每行建池或万能专家",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T59",
+      "name": "原子/值/包/配方分层",
+      "requirement_ids": [
+        "R37",
+        "R46",
+        "R47"
+      ],
+      "normal_spec": "单责任原子有独立失败；五要素/白帽为组合",
+      "negative_spec": "整模板改名原子或每字段开代理",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T60",
+      "name": "语义归并/专业差异",
+      "requirement_ids": [
+        "R44",
+        "R50"
+      ],
+      "normal_spec": "同义异文可提合并；同名异义拒绝",
+      "negative_spec": "用字符串相似替代语义检查",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T61",
+      "name": "多种表现与实现",
+      "requirement_ids": [
+        "R37",
+        "R49"
+      ],
+      "normal_spec": "同一语义ID；schema/程序/指令/绑定分别验证",
+      "negative_spec": "程序过测就称模型必然遵守",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T62",
+      "name": "最小必要依赖闭包",
+      "requirement_ids": [
+        "R05",
+        "R50"
+      ],
+      "normal_spec": "条件包剪枝；必需检查全保留；一份热契约",
+      "negative_spec": "128次读取/推理/子代理",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T63",
+      "name": "共享与私有实例隔离",
+      "requirement_ids": [
+        "R15",
+        "R48"
+      ],
+      "normal_spec": "模板/方法可共享；用户数据按scope读取",
+      "negative_spec": "把实例偏好混进公共规则",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T64",
+      "name": "时间量/版本/权威语义",
+      "requirement_ids": [
+        "R48"
+      ],
+      "normal_spec": "有单位/时基/舍入；采用/当前/哈希分开",
+      "negative_spec": "帧率当采样率、hash当采用",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T65",
+      "name": "多入口真实能力",
+      "requirement_ids": [
+        "R13",
+        "R22",
+        "R66"
+      ],
+      "normal_spec": "CLI/API/MCP/UI各有当前能力/授权/回执",
+      "negative_spec": "只换入口就称完成或绕权限",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T66",
+      "name": "逻辑拆分与事务完整",
+      "requirement_ids": [
+        "R30",
+        "R47",
+        "R51"
+      ],
+      "normal_spec": "校验领取提交不可竞态；外部unknown可恢复",
+      "negative_spec": "小函数各开CLI破坏事务",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T67",
+      "name": "共享升级全表现覆盖",
+      "requirement_ids": [
+        "R39",
+        "R49",
+        "R52"
+      ],
+      "normal_spec": "原子→包→角色/图/实现/测试闭包完整",
+      "negative_spec": "提示词升级而代码/适配仍旧",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T68",
+      "name": "动态配额与并发竞态",
+      "requirement_ids": [
+        "R12",
+        "R53"
+      ],
+      "normal_spec": "配置3/策略2/压力1钳制；并发claim原子预留，未知余量处理真实拒绝",
+      "negative_spec": "固定4、按角色分额度、未知时假称有槽",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T69",
+      "name": "完成未关与未知释放",
+      "requirement_ids": [
+        "R11",
+        "R31",
+        "R53"
+      ],
+      "normal_spec": "completed-open/closing/release_unverified仍占槽；确认释放才归还，记录宿主证据",
+      "negative_spec": "节点成功或关闭请求接收就归还槽位",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T70",
+      "name": "预算语义与证据大小",
+      "requirement_ids": [
+        "R54",
+        "R64"
+      ],
+      "normal_spec": "4096历史输出不截坏JSON；完整证据可回读；240000/90000不算计费硬限",
+      "negative_spec": "截断回执、删除证据、以压缩阈值承诺费用",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T71",
+      "name": "配置有效层与目录预算",
+      "requirement_ids": [
+        "R54"
+      ],
+      "normal_spec": "configured/observed/effective/unknown分开；窗口不明不算5440；更新后观察失效",
+      "negative_spec": "套另一模型272000、磁盘值冒充有效值",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T72",
+      "name": "目录缺项与第三方模型",
+      "requirement_ids": [
+        "R18",
+        "R19",
+        "R34",
+        "R55"
+      ],
+      "normal_spec": "保持6.1 Sol；元数据/宿主/提供商/真实输出分层，费用授权内取得证据",
+      "negative_spec": "缺slug就换模或仅目录列表算生成成功",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T73",
+      "name": "profiles/默认与逐任务档位",
+      "requirement_ids": [
+        "R18",
+        "R34",
+        "R55"
+      ],
+      "normal_spec": "medium/high/xhigh实际请求与结果可查；主线程不支持热切换时走已验证通道",
+      "negative_spec": "三个profile或一个default就宣布自动换档",
+      "gate": "G2",
+      "execution_class": "protocol_plus_actual_native_host",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T74",
+      "name": "安装态退场及冲突安全恢复",
+      "requirement_ids": [
+        "R32",
+        "R56"
+      ],
+      "normal_spec": "developer指令等逐项快照/语义diff；新会话G7；失败恢复保护用户新增修改",
+      "negative_spec": "全删指令/数据库、旧会话自证生效、全覆盖配置",
+      "gate": "G7",
+      "execution_class": "separately_authorized_new_session",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T75",
+      "name": "混合文档/视频阅读覆盖",
+      "requirement_ids": [
+        "R35",
+        "R57",
+        "R58",
+        "R70"
+      ],
+      "normal_spec": "非锁原件、页/片段定位、OCR缺口、sampled/partial明确；required范围闭合",
+      "negative_spec": "315均图片PPT、抽取当精读、抽样当通读",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T76",
+      "name": "历史路径和镜像包等价",
+      "requirement_ids": [
+        "R58"
+      ],
+      "normal_spec": "失效D路径有重定向；58入口/57哈希及必需脚本资产分别核验",
+      "negative_spec": "入口相等就宣称全包可互换",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T77",
+      "name": "知识/经验/任务事实隔离",
+      "requirement_ids": [
+        "R14",
+        "R15",
+        "R59"
+      ],
+      "normal_spec": "独立类型/权限/生命周期，经验引用知识版本；跨scope晋升可审计",
+      "negative_spec": "用户偏好成全局事实、全资料当经验、复制双库真源",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T78",
+      "name": "文本/视觉/媒体动作分工",
+      "requirement_ids": [
+        "R60"
+      ],
+      "normal_spec": "GPT负责默认文本/视觉，Agnes图像优先、视频按需；健康/能力逐动作记",
+      "negative_spec": "Agnes支持文本就接管阿极、看图成功即生图可用",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T79",
+      "name": "免费约束与可选GPT生图key",
+      "requirement_ids": [
+        "R36",
+        "R61"
+      ],
+      "normal_spec": "额度核查、备用不激活、原通道不变；费用变化停止该动作",
+      "negative_spec": "自动收费fallback、轮key、metadata当免费证据",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T80",
+      "name": "REAPER文件声场与隔离配置",
+      "requirement_ids": [
+        "R27",
+        "R62"
+      ],
+      "normal_spec": "分轨/总线/自动化/离线导出/工程重开；只在独立项目范围写",
+      "negative_spec": "任意模板FX写入用户全局配置或启用麦克风监听",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T81",
+      "name": "声卡麦克风保护",
+      "requirement_ids": [
+        "R27",
+        "R62"
+      ],
+      "normal_spec": "不改默认端点/驱动/设置，不打开capture，不装虚拟路由；无法验证隔离则停",
+      "negative_spec": "独占设备影响日常麦克风却称成功、擅自修系统来适配",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T82",
+      "name": "补充调研承接",
+      "requirement_ids": [
+        "R05",
+        "R16",
+        "R29",
+        "R41",
+        "R45",
+        "R63",
+        "R72"
+      ],
+      "normal_spec": "每候选有来源/版本/处理/模块/验收，与基线归一化",
+      "negative_spec": "报告另存就说已融合，20链接当20可用工具",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T83",
+      "name": "分层投影与直达路径",
+      "requirement_ids": [
+        "R03",
+        "R09",
+        "R64"
+      ],
+      "normal_spec": "清晰任务直达；必要原文提供；摘要过期拒绝；耗时/往返可测",
+      "negative_spec": "强制总目录下钻、只给ID、热字节少却空转更多",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T84",
+      "name": "知识/经验条目delta",
+      "requirement_ids": [
+        "R40",
+        "R65"
+      ],
+      "normal_spec": "expected_revision/幂等/scope有效；源变动复核相关消费者",
+      "negative_spec": "全量改写丢专业细节、次数当正确、偏好自动普适",
+      "gate": "G5",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T85",
+      "name": "工具发现与真实绑定",
+      "requirement_ids": [
+        "R13",
+        "R20",
+        "R22",
+        "R66"
+      ],
+      "normal_spec": "server/tool/schema/version/身份绑定；接口变化失效；目标明确",
+      "negative_spec": "同名误调、全目录fallback、默认云端收费",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T86",
+      "name": "蒸馏有效性准入/退役",
+      "requirement_ids": [
+        "R33",
+        "R42",
+        "R67"
+      ],
+      "normal_spec": "固定真实验收、专业覆盖/开销/失败证据；无效候选不激活",
+      "negative_spec": "模板好看当效果、主观分抵消硬失败、双生产A/B",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T87",
+      "name": "音乐前置联合职责",
+      "requirement_ids": [
+        "R24",
+        "R25",
+        "R68"
+      ],
+      "normal_spec": "基础Story/情绪→真实MusicCue/预剪→详细Shot；跨池owner与交接明确",
+      "negative_spec": "音频专家包办、后期随便贴BGM、每拍强制切镜",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T88",
+      "name": "视频依赖变更回传",
+      "requirement_ids": [
+        "R25",
+        "R26",
+        "R68"
+      ],
+      "normal_spec": "cue/镜头/时间线/stem引用有效；最小相关下游失效/重验",
+      "negative_spec": "只改音乐漏同步、改一台词全片重做",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T89",
+      "name": "用户可见真实执行摘要",
+      "requirement_ids": [
+        "R02",
+        "R69"
+      ],
+      "normal_spec": "结果/验证/未做与宿主记录一致；小聊天简答",
+      "negative_spec": "prepared当完成、目录人数当代理数、隐藏阻断",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T90",
+      "name": "课程/技术字段承接",
+      "requirement_ids": [
+        "R06",
+        "R16",
+        "R35",
+        "R45",
+        "R57",
+        "R58",
+        "R70"
+      ],
+      "normal_spec": "原文定位、必需阅读、当前资产/方法去向逐项可查",
+      "negative_spec": "只读4个说全做、课程替掉有用技术、文件名补内容",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T91",
+      "name": "窄专业/风格包/角色实例",
+      "requirement_ids": [
+        "R08",
+        "R10",
+        "R30",
+        "R71"
+      ],
+      "normal_spec": "专业差异有IO/工具/验收；风格不改硬约束；所有必要实例有图",
+      "negative_spec": "万能专家、风格克隆、多负责人重复写权",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T92",
+      "name": "本地与API/DSH宿主边界",
+      "requirement_ids": [
+        "R19",
+        "R72"
+      ],
+      "normal_spec": "host_class/schema/有效观察准确；不能支持的字段不声明已生效",
+      "negative_spec": "托管API上限当本机额度、DSH模式移植桌面",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T93",
+      "name": "聊天最新决定与授权",
+      "requirement_ids": [
+        "R05",
+        "R20",
+        "R29",
+        "R34",
+        "R35",
+        "R41",
+        "R45",
+        "R57",
+        "R58",
+        "R63",
+        "R70",
+        "R72"
+      ],
+      "normal_spec": "附录G去向完整，旧路由/小模型/编制不复活；P7独立批准",
+      "negative_spec": "把历史关机/推送/卸载请求当当前自动指令",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T94",
+      "name": "全新4.0重写边界",
+      "requirement_ids": [
+        "R07",
+        "R45"
+      ],
+      "normal_spec": "新目录/源码/配置/测试独立写；原始第三方依赖有来源锁与许可",
+      "negative_spec": "从此前项目直接复制实现/模板/测试/DB或跑旧二进制冒充4.0",
+      "gate": "G6",
+      "execution_class": "deterministic_and_task_relevant_evidence",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    },
+    {
+      "id": "T95",
+      "name": "OfficeCLI实际接入",
+      "requirement_ids": [
+        "R28"
+      ],
+      "normal_spec": "唯一原始来源/版本/实际入口及有界文件动作验证，缺安装授权则标未完成",
+      "negative_spec": "仅在清单列名或用别的文档工具声称OfficeCLI已安装",
+      "gate": "G4",
+      "execution_class": "actual_professional_artifact",
+      "protocol_mock_is_native_proof": false,
+      "test_code_written": false,
+      "runtime_execution": "not_run",
+      "evidence_refs": []
+    }
+  ]
+}

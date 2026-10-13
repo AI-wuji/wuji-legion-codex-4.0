@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "status": "manual_design_walkthrough_not_runtime_or_native_test",
+  "date": "2026-10-03",
+  "baseline": {
+    "plan": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  },
+  "observations_submitted": 0,
+  "design_results": [
+    {
+      "id": "W01",
+      "scenario": "小聊天",
+      "workflow": "S0",
+      "delivery_owner": "阿极",
+      "normal_path": [
+        "用户要一句解释→内存Outcome/AnswerShape",
+        "核无工具动作/不需外部资料",
+        "直接答，不建库、不staff、不spawn"
+      ],
+      "abnormal_path": [
+        "解释转为执行删除→B03无授权",
+        "不执行，说明缺授权；不得把S0许可延伸"
+      ],
+      "requirement_ids": [
+        "R02",
+        "R03",
+        "R05"
+      ],
+      "test_ids": [
+        "T01",
+        "T02",
+        "T57"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W02",
+      "scenario": "复杂修复",
+      "workflow": "WF-BUGFIX",
+      "delivery_owner": "lead.bugfix",
+      "normal_path": [
+        "当前授权代码/environment/input锁→查来源账与公开根因",
+        "公开证据够用直接决定；决定性缺口才复现",
+        "根因提案→限定写owner实现→独立回归→当前hash验收"
+      ],
+      "abnormal_path": [
+        "两节点写同路径→H06阻断并发",
+        "修复后文件变hash→J06使原验证失效",
+        "无新证据连2次/extra retry满6→停止原节点检查点"
+      ],
+      "requirement_ids": [
+        "R12",
+        "R29",
+        "R51"
+      ],
+      "test_ids": [
+        "T10",
+        "T18",
+        "T28",
+        "T62"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W03",
+      "scenario": "ComfyUI融合",
+      "workflow": "WF-COMFY",
+      "delivery_owner": "lead.comfyui",
+      "normal_path": [
+        "两授权插件各提取注册/行为/张量/错误边界",
+        "重叠差异P05→新统一设计；不复制旧源码",
+        "实际环境注册节点→真实图/数值/异常→可安装包"
+      ],
+      "abnormal_path": [
+        "只有import smoke→P07 registration unknown",
+        "实际GPU/节点不可见→相关门blocked，不能Office代替",
+        "许可不明资产不导入，保留cold"
+      ],
+      "requirement_ids": [
+        "R20",
+        "R22",
+        "R44",
+        "R45"
+      ],
+      "test_ids": [
+        "T26",
+        "T27",
+        "T28",
+        "T29"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W04",
+      "scenario": "无资料调研",
+      "workflow": "WF-RESEARCH",
+      "delivery_owner": "lead.research",
+      "normal_path": [
+        "阿极确认question/decision/constraints",
+        "已有来源账查无覆盖→全网一手/原实践/反证",
+        "记录适用性/剩余缺口；外部结论不标local-executed"
+      ],
+      "abnormal_path": [
+        "同名项目身份不唯一→hold不猜",
+        "只搜到目录/摘要→C01未正文，claim未核实",
+        "新结果不改决定即停止搜索，不称全网没有"
+      ],
+      "requirement_ids": [
+        "R41",
+        "R63",
+        "R72"
+      ],
+      "test_ids": [
+        "T23",
+        "T82",
+        "T93"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W05",
+      "scenario": "片头制作",
+      "workflow": "WF-VIDEO",
+      "delivery_owner": "lead.video",
+      "normal_path": [
+        "目的/品牌/rights→短Story/节奏目标",
+        "有权利实际MusicCue或明确不适用音乐→Shot/资产",
+        "实际生成/剪辑/export→profile/可编辑工程审查"
+      ],
+      "abnormal_path": [
+        "免费接口/权利unknown→不提交生成",
+        "只有prompt/预计输出路径→J01不通过",
+        "无音乐需求可省相关节点，不能省实际输出验收"
+      ],
+      "requirement_ids": [
+        "R24",
+        "R25",
+        "R60",
+        "R61"
+      ],
+      "test_ids": [
+        "T31",
+        "T78",
+        "T79"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W06",
+      "scenario": "音乐驱动短片",
+      "workflow": "WF-VIDEO",
+      "delivery_owner": "lead.video",
+      "normal_path": [
+        "Story facts/narrator→music-selection/beat-analysis实际cue",
+        "采用cue→预剪→详细Shot→生成→Timeline",
+        "声音owner消费当前Timeline/dialogue/SRT/stems→独立声画验收"
+      ],
+      "abnormal_path": [
+        "换phrase→相关预剪/Shot时点/声音/export失效",
+        "Story事实/无关图像保持",
+        "不以每拍切镜或一条BGM全铺代替情绪方法"
+      ],
+      "requirement_ids": [
+        "R24",
+        "R25",
+        "R68"
+      ],
+      "test_ids": [
+        "T33",
+        "T87",
+        "T88"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W07",
+      "scenario": "剪映时间线替声",
+      "workflow": "WF-AUDIO",
+      "delivery_owner": "lead.audio",
+      "normal_path": [
+        "当前工程/media refs可读→分轨/混音能力实际profile",
+        "对白窗/样本时基/锚点→新声音包→限域时间线替换",
+        "离线工程重开、素材相对定位、实际时长/口型/字幕验收"
+      ],
+      "abnormal_path": [
+        "混音文件不可拆→不能声称stem替换",
+        "换第3句只对应窗口/SRT/自动化/export失效",
+        "隔离配置/无capture不能证明→不启动REAPER/不改声卡"
+      ],
+      "requirement_ids": [
+        "R26",
+        "R27",
+        "R62"
+      ],
+      "test_ids": [
+        "T34",
+        "T80",
+        "T81",
+        "T88"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W08",
+      "scenario": "Excel加PPT",
+      "workflow": "WF-OFFICE/WF-DATA",
+      "delivery_owner": "lead.office",
+      "normal_path": [
+        "共享数据/口径fact refs→统计计算",
+        "一个表格owner写公式，一个deck owner读采用表生成原生可编辑图",
+        "独立公式/解析/渲染与非目标保全，合入统一交付"
+      ],
+      "abnormal_path": [
+        "deck不能读未adopted新表→J04阻断",
+        "两个owner写同文件→H06串行或拆写范围",
+        "OfficeCLI未真实准入→T95保留未完成，不用别工具冒称"
+      ],
+      "requirement_ids": [
+        "R28",
+        "R48",
+        "R51"
+      ],
+      "test_ids": [
+        "T10",
+        "T25",
+        "T55",
+        "T95"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W09",
+      "scenario": "并行冲突",
+      "workflow": "execution-claim",
+      "delivery_owner": "参谋部",
+      "normal_path": [
+        "两个独立node同事务核DAG/owner/路径集合",
+        "可信有效capacity≥2才分配2个slot与intent",
+        "事务外执行；独立文件各验收，各slot待真实close"
+      ],
+      "abnormal_path": [
+        "父子目录写或同目标大小写别名→冲突不并发",
+        "有效capacity unknown→native spawn blocked",
+        "进程在intent提交后断→unknown/query，不能重发"
+      ],
+      "requirement_ids": [
+        "R12",
+        "R51",
+        "R53"
+      ],
+      "test_ids": [
+        "T10",
+        "T13",
+        "T68",
+        "T71"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W10",
+      "scenario": "中途需求变更",
+      "workflow": "revision-invalidate",
+      "delivery_owner": "阿极",
+      "normal_path": [
+        "新用户决定受信event→定位RequirementDelta",
+        "CAS增graph版/完整下游失效，一事务提交",
+        "负责人仅重排受影响节点；当前输入精确refs重编契约"
+      ],
+      "abnormal_path": [
+        "旧attempt回执来→STALE_RECEIPT不能复活",
+        "图作废不释放宿主槽，不强杀未知动作",
+        "无关成果保持有效；模型推断不能新用户决定"
+      ],
+      "requirement_ids": [
+        "R37",
+        "R51",
+        "R65"
+      ],
+      "test_ids": [
+        "T11",
+        "T12",
+        "T50",
+        "T84"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W11",
+      "scenario": "代理退出失败",
+      "workflow": "host-lifecycle",
+      "delivery_owner": "宿主适配",
+      "normal_path": [
+        "业务完成open→completed_open",
+        "发授权close→closing→可信closed观察",
+        "记录release evidence后归还slot"
+      ],
+      "abnormal_path": [
+        "close超时→release_unverified仍占槽",
+        "租约过期/CLI进程退出≠native closed",
+        "可信quota不可见→保留blocked，不能冒称槽已空"
+      ],
+      "requirement_ids": [
+        "R11",
+        "R53",
+        "R55"
+      ],
+      "test_ids": [
+        "T15",
+        "T16",
+        "T69",
+        "T72"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W12",
+      "scenario": "公共原子升级全影响",
+      "workflow": "WF-GOVERNANCE",
+      "delivery_owner": "女娲",
+      "normal_path": [
+        "G03 changed ref→全部反向边遍历",
+        "schema/program/model/native bindings与所有包/配方/图/测试锁成完整集",
+        "全部适用回归证据后manifest持久→一次active registry事务"
+      ],
+      "abnormal_path": [
+        "20条分页有next_cursor→IMPACT_INCOMPLETE禁止发布",
+        "只改Markdown或生成物hash不符→M06/M07拒绝",
+        "在途任务仍固定旧release；安全撤销才阻断新动作"
+      ],
+      "requirement_ids": [
+        "R46",
+        "R52",
+        "R65"
+      ],
+      "test_ids": [
+        "T48",
+        "T50",
+        "T58",
+        "T84"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    },
+    {
+      "id": "W13",
+      "scenario": "跨scope经验晋升中断",
+      "workflow": "scope-evolution",
+      "delivery_owner": "女娲",
+      "normal_path": [
+        "project candidate审查/脱敏/范围→transfer_pending冻结",
+        "authorized target用稳定transfer_id幂等落库并ack",
+        "source核ack转read-only reference；引用目标唯一可写实体"
+      ],
+      "abnormal_path": [
+        "target写完source崩溃→query同transfer_id，不再新建条目",
+        "私有偏好无共享许可→B01/B03拒绝晋升",
+        "撤销目标后查询/编译/claim不复用缓存旧成功"
+      ],
+      "requirement_ids": [
+        "R48",
+        "R59",
+        "R65"
+      ],
+      "test_ids": [
+        "T22",
+        "T51",
+        "T77",
+        "T84"
+      ],
+      "review_result": "design_path_closed_with_explicit_blocked_boundaries",
+      "runtime_verification": "not_run"
+    }
+  ],
+  "review_findings": [
+    {
+      "id": "P1-F01",
+      "issue": "ExactRef没有schema版本且release可空",
+      "resolution": "公共ExactRef schema_version必填，release非空",
+      "status": "design_fixed_not_product_tested"
+    },
+    {
+      "id": "P1-F02",
+      "issue": "TimeBase缺原点，fps不能用时间量混代",
+      "resolution": "origin_ref必填，Rate独立frame/sample/tick per second",
+      "status": "design_fixed_not_product_tested"
+    },
+    {
+      "id": "P1-F03",
+      "issue": "EffectSpec/EvidenceRef/DecisionRecord等L0只有文字没schema",
+      "resolution": "补有限L0 typed defs及ActionContract effect_spec",
+      "status": "design_fixed_not_product_tested"
+    },
+    {
+      "id": "P1-F04",
+      "issue": "回执/验证未完整图版本输入和要求精确refs",
+      "resolution": "ExecutionReceipt精确任务/图/attempt/lease/input/release/event字段及ValidationReport requirement_refs",
+      "status": "design_fixed_not_product_tested"
+    },
+    {
+      "id": "P1-F05",
+      "issue": "大JSON分块上下文重复导致部分文件Extra data",
+      "resolution": "唯一patch tail重建，严格JSON重复key/尾部检查纳入G1审计",
+      "status": "design_fixed_not_product_tested"
+    }
+  ],
+  "boundaries": [
+    "No paid request",
+    "No worker spawned",
+    "No microphone/audio settings touched",
+    "No Codex install change",
+    "No independent runtime validation"
+  ]
+}

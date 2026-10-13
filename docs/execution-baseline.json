@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "version": "1.7",
+  "plan": "E:/wuji-projects/wuji-legion-codex-4.0/docs/wuji-legion-4.0-execution-plan-v1.7-2026-10-04.md",
+  "sha256": "52728b6976ae206d2a315cd9aacb5f25425e8afa647aa1dbe4c43d1c94001a6d",
+  "approved_date": "2026-10-04",
+  "approval": "用户明确要求改进1.6并按任务优先、轻量军团而非另造Codex的方向继续执行；保留功能与安全验收，调整顺序和实现方式",
+  "prior_baseline": {
+    "version": "1.6",
+    "plan": "E:/wuji-projects/wuji-legion-codex-4.0/docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "manifest": "docs/execution-baseline-v1.6.json",
+    "manifest_sha256": "05603d54b3541ad53fca424cac7ccf8a0c5ef868424eb9c70e8df44f46a44c02",
+    "retained_read_only": true
+  },
+  "authorized_design_supersessions": {
+    "docs/execution-baseline.json": {
+      "historical_snapshot": "docs/execution-baseline-v1.6.json",
+      "historical_sha256": "05603d54b3541ad53fca424cac7ccf8a0c5ef868424eb9c70e8df44f46a44c02",
+      "reason": "2026-10-04用户明确批准方案修订；其他P1冻结文件不覆盖"
+    }
+  },
+  "core_language": "Rust",
+  "state_storage": "SQLite",
+  "product_boundary": "one Aji entry plus task-relevant skills and existing tools; Rust/SQLite remain small helpers, not a replacement host",
+  "execution_order_map": "docs/plan-execution-map-v1.7.json",
+  "research_policy": "external-practice-first; experiment only decisive evidence gaps",
+  "material_scope": "WorkBuddy summaries first; L2 own notes as needed; other originals, no duplicate beautified decks",
+  "approved_stages": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "P7": "separate_approval",
+  "shutdown": false,
+  "preserved_baseline_counts": {
+    "requirements": 72,
+    "acceptance_scenarios": 95,
+    "responsibilities": 57,
+    "historical_sources": 104,
+    "atom_candidates": 128,
+    "conversation_topics": 48
+  },
+  "authorized_model_policy_revision": {
+    "date": "2026-10-08",
+    "authority": "用户明确要求按当前选择基准、难题只升档修改，并授权作为项目内容一并修改",
+    "delta": "docs/design-deltas/028-current-selection-baseline-and-upgrade-only-2026-10-08.md",
+    "policy": "用户当前项目对话选定model+effort为基准；普通任务继承，难题按需请求gpt-6.1-sol high，特别复杂或反复定位无进展xhigh；不要求基准先失败，不重复切换或把xhigh降high；难题完成回用户基准，用户新选择更新基准",
+    "execution_boundary": "仅现有宿主原生显式调用/委派；主对话不可切换须说明边界；requested/configured/observed/effective分开，不可核验为unknown；无备用链、不盲重试、不默认付费",
+    "evidence_boundary": "保留可见历史、工具真实回执、路径/hash与副作用状态；文档修订不是自动换模实测",
+    "superseded_active_plan_sha256": "e2566ae6327e72d62b0a56ea16ace83d1c4981aeb8223cbf50d1c957b658f824",
+    "historical_hashes_and_acceptance_states": "unchanged",
+    "model_requests": "not_run",
+    "scope": "活动方案、项目入口与Skill、原生请求继承与观察边界；本机入口同步单独实施，不纳入公开配置快照"
+  },
+  "boundary": "Approval changes product boundary and execution order, not completed gates, runtime admission, 95 acceptance requirements or P7 protection."
+}

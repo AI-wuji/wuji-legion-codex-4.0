@@ -1,0 +1,3937 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:wuji4:contracts:baseline-1",
+  "title": "Wuji4 finite contract schema design",
+  "description": "P1 finite schema; shape cannot prove scope, authority, real host or effectiveness. Runtime validates cross-field bindings and current observation. No general JSON Schema engine claimed.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "RequirementSnapshot"
+        },
+        "payload": {
+          "$ref": "#/$defs/RequirementSnapshot"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "WorkflowPlan"
+        },
+        "payload": {
+          "$ref": "#/$defs/WorkflowPlan"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "RoleTaskGraph"
+        },
+        "payload": {
+          "$ref": "#/$defs/RoleTaskGraph"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ActionContract"
+        },
+        "payload": {
+          "$ref": "#/$defs/ActionContract"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "InvocationContract"
+        },
+        "payload": {
+          "$ref": "#/$defs/InvocationContract"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ExecutionReceipt"
+        },
+        "payload": {
+          "$ref": "#/$defs/ExecutionReceipt"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "HostCapabilities"
+        },
+        "payload": {
+          "$ref": "#/$defs/HostCapabilities"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "HostSlotReservation"
+        },
+        "payload": {
+          "$ref": "#/$defs/HostSlotReservation"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "SourceCoverageRecord"
+        },
+        "payload": {
+          "$ref": "#/$defs/SourceCoverageRecord"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "InstallationDisposition"
+        },
+        "payload": {
+          "$ref": "#/$defs/InstallationDisposition"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ArtifactManifest"
+        },
+        "payload": {
+          "$ref": "#/$defs/ArtifactManifest"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ValidationReport"
+        },
+        "payload": {
+          "$ref": "#/$defs/ValidationReport"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ExperienceCandidate"
+        },
+        "payload": {
+          "$ref": "#/$defs/ExperienceCandidate"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "KnowledgeRecord"
+        },
+        "payload": {
+          "$ref": "#/$defs/KnowledgeRecord"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ResourceProjection"
+        },
+        "payload": {
+          "$ref": "#/$defs/ResourceProjection"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ResourceDelta"
+        },
+        "payload": {
+          "$ref": "#/$defs/ResourceDelta"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "TimelineManifest"
+        },
+        "payload": {
+          "$ref": "#/$defs/TimelineManifest"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "StoryPlan"
+        },
+        "payload": {
+          "$ref": "#/$defs/StoryPlan"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "MusicCuePlan"
+        },
+        "payload": {
+          "$ref": "#/$defs/MusicCuePlan"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ShotPlan"
+        },
+        "payload": {
+          "$ref": "#/$defs/ShotPlan"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "SoundPackage"
+        },
+        "payload": {
+          "$ref": "#/$defs/SoundPackage"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ExecutionSummary"
+        },
+        "payload": {
+          "$ref": "#/$defs/ExecutionSummary"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ReleaseManifest"
+        },
+        "payload": {
+          "$ref": "#/$defs/ReleaseManifest"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "CapabilityAtom"
+        },
+        "payload": {
+          "$ref": "#/$defs/CapabilityAtom"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "CapabilityBundle"
+        },
+        "payload": {
+          "$ref": "#/$defs/CapabilityBundle"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "AtomImplementation"
+        },
+        "payload": {
+          "$ref": "#/$defs/AtomImplementation"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "AssemblyDefinition"
+        },
+        "payload": {
+          "$ref": "#/$defs/AssemblyDefinition"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "CompositionManifest"
+        },
+        "payload": {
+          "$ref": "#/$defs/CompositionManifest"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "EvolutionProposal"
+        },
+        "payload": {
+          "$ref": "#/$defs/EvolutionProposal"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "contract_type": {
+          "const": "ResearchDecision"
+        },
+        "payload": {
+          "$ref": "#/$defs/ResearchDecision"
+        },
+        "metadata": {
+          "$ref": "#/$defs/ObjectMeta"
+        }
+      },
+      "required": [
+        "schema_version",
+        "contract_type",
+        "payload",
+        "metadata"
+      ],
+      "additionalProperties": false
+    }
+  ],
+  "$defs": {
+    "ExactRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "release": {
+          "type": "string",
+          "maxLength": 1024,
+          "minLength": 1
+        },
+        "schema_version": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "scope",
+        "revision",
+        "sha256",
+        "release",
+        "schema_version"
+      ],
+      "additionalProperties": false
+    },
+    "TimeQuantity": {
+      "type": "object",
+      "properties": {
+        "numerator": {
+          "type": "integer"
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unit": {
+          "enum": [
+            "second",
+            "frame",
+            "sample",
+            "tick"
+          ]
+        },
+        "basis_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rounding": {
+          "enum": [
+            "exact",
+            "floor",
+            "ceil",
+            "nearest_even"
+          ]
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator",
+        "unit",
+        "basis_ref",
+        "rounding"
+      ],
+      "additionalProperties": false
+    },
+    "Budget": {
+      "type": "object",
+      "properties": {
+        "max_candidates": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_query_objects": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_hops": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "target_contract_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "target_evidence_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "hard_bytes_limit": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "measured_tokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effective_token_limit": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "wall_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "max_parallel_workers": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "max_extra_retries": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "max_point_revisions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "max_no_progress": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "max_candidates",
+        "max_query_objects",
+        "max_hops",
+        "target_contract_bytes",
+        "target_evidence_bytes",
+        "hard_bytes_limit",
+        "measured_tokens",
+        "effective_token_limit",
+        "wall_ms",
+        "max_parallel_workers",
+        "max_extra_retries",
+        "max_point_revisions",
+        "max_no_progress"
+      ],
+      "additionalProperties": false
+    },
+    "TaskNode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "role_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "read_roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "write_roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "acceptance_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "ready",
+            "claimed",
+            "running",
+            "produced",
+            "validating",
+            "succeeded",
+            "blocked",
+            "failed",
+            "cancel_requested",
+            "cancelled",
+            "superseded"
+          ]
+        },
+        "execution_form": {
+          "enum": [
+            "model",
+            "program",
+            "native_action"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "role_ref",
+        "owner",
+        "revision",
+        "inputs",
+        "read_roots",
+        "write_roots",
+        "acceptance_ids",
+        "status",
+        "execution_form"
+      ],
+      "additionalProperties": false
+    },
+    "GraphEdge": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "to": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "predicate": {
+          "const": "depends-on"
+        }
+      },
+      "required": [
+        "from",
+        "to",
+        "predicate"
+      ],
+      "additionalProperties": false
+    },
+    "Goal": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "authority": {
+          "enum": [
+            "user_explicit",
+            "host_observed",
+            "external_evidence",
+            "model_inference",
+            "review_proposal"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "authority",
+        "source_refs"
+      ],
+      "additionalProperties": false
+    },
+    "ClipSpan": {
+      "type": "object",
+      "properties": {
+        "clip_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "start": {
+          "$ref": "#/$defs/TimeQuantity"
+        },
+        "end": {
+          "$ref": "#/$defs/TimeQuantity"
+        },
+        "transition_overlap": {
+          "$ref": "#/$defs/TimeQuantity"
+        }
+      },
+      "required": [
+        "clip_ref",
+        "start",
+        "end",
+        "transition_overlap"
+      ],
+      "additionalProperties": false
+    },
+    "RequirementSnapshot": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "goals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Goal"
+          },
+          "minItems": 1
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "acceptance": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "task_id",
+        "scope",
+        "revision",
+        "goals",
+        "constraints",
+        "acceptance",
+        "source_refs"
+      ],
+      "additionalProperties": false
+    },
+    "WorkflowPlan": {
+      "type": "object",
+      "properties": {
+        "workflow_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "catalog_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaskNode"
+          },
+          "minItems": 1
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GraphEdge"
+          }
+        },
+        "budget": {
+          "$ref": "#/$defs/Budget"
+        }
+      },
+      "required": [
+        "workflow_id",
+        "version",
+        "catalog_version",
+        "nodes",
+        "edges",
+        "budget"
+      ],
+      "additionalProperties": false
+    },
+    "RoleTaskGraph": {
+      "type": "object",
+      "properties": {
+        "role_instance_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "parent_graph_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaskNode"
+          },
+          "minItems": 1
+        },
+        "input_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "role_instance_id",
+        "parent_graph_id",
+        "revision",
+        "nodes",
+        "input_refs"
+      ],
+      "additionalProperties": false
+    },
+    "ActionContract": {
+      "type": "object",
+      "properties": {
+        "action_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "tool": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expert": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input_schema": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "output_schema": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "read_scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "write_scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "authorization": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "side_effects": {
+          "enum": [
+            "read_only",
+            "project_write",
+            "external_reversible",
+            "external_irreversible",
+            "paid",
+            "unknown"
+          ]
+        },
+        "effect_spec": {
+          "$ref": "#/$defs/EffectSpec"
+        }
+      },
+      "required": [
+        "action_id",
+        "tool",
+        "expert",
+        "input_schema",
+        "output_schema",
+        "read_scope",
+        "write_scope",
+        "authorization",
+        "side_effects",
+        "effect_spec"
+      ],
+      "additionalProperties": false
+    },
+    "InvocationContract": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "graph_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lease": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "role_contract_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "context_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "requested_model": {
+          "const": "gpt-6.1-sol"
+        },
+        "requested_effort": {
+          "enum": [
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "deadline_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "task_id",
+        "node_id",
+        "attempt_id",
+        "graph_revision",
+        "lease",
+        "role_contract_hash",
+        "context_refs",
+        "requested_model",
+        "requested_effort",
+        "deadline_utc_ms"
+      ],
+      "additionalProperties": false
+    },
+    "ExecutionReceipt": {
+      "type": "object",
+      "properties": {
+        "contract_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "host_execution_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "host_class": {
+          "enum": [
+            "codex_native",
+            "trusted_tool",
+            "test_local"
+          ]
+        },
+        "observed_status": {
+          "enum": [
+            "started",
+            "produced",
+            "failed",
+            "cancelled",
+            "unknown"
+          ]
+        },
+        "artifact_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "failure_kind": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observed_at_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "received_at_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "graph_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lease": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "input_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "release_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "event_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "contract_id",
+        "host_execution_ref",
+        "host_class",
+        "observed_status",
+        "artifact_refs",
+        "failure_kind",
+        "observed_at_utc_ms",
+        "received_at_utc_ms",
+        "task_id",
+        "node_id",
+        "attempt_id",
+        "graph_revision",
+        "lease",
+        "input_hash",
+        "release_ref",
+        "event_key"
+      ],
+      "additionalProperties": false
+    },
+    "HostCapabilities": {
+      "type": "object",
+      "properties": {
+        "host_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "executable_path": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "config_layers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "requested_provider": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "requested_model": {
+          "const": "gpt-6.1-sol"
+        },
+        "requested_effort": {
+          "enum": [
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "capability_observations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "quota_snapshot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "budget_semantics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "observed_at_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "invalidation_keys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "host_id",
+        "version",
+        "executable_path",
+        "config_layers",
+        "requested_provider",
+        "requested_model",
+        "requested_effort",
+        "capability_observations",
+        "quota_snapshot",
+        "budget_semantics",
+        "observed_at_utc_ms",
+        "invalidation_keys"
+      ],
+      "additionalProperties": false
+    },
+    "HostSlotReservation": {
+      "type": "object",
+      "properties": {
+        "reservation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "session_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "cap_snapshot_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "state": {
+          "enum": [
+            "reserved",
+            "prepared",
+            "dispatching",
+            "open",
+            "completed_open",
+            "closing",
+            "release_unverified",
+            "closed"
+          ]
+        },
+        "host_agent_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "release_evidence_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "reservation_id",
+        "session_ref",
+        "task_id",
+        "node_id",
+        "attempt_id",
+        "cap_snapshot_ref",
+        "state",
+        "host_agent_ref",
+        "release_evidence_ref"
+      ],
+      "additionalProperties": false
+    },
+    "SourceCoverageRecord": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "path": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "container": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "version": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "unit": {
+          "enum": [
+            "file",
+            "line",
+            "page",
+            "slide",
+            "time_ms",
+            "member"
+          ]
+        },
+        "unit_range": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "extractor": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "extractor_version": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "read_status": {
+          "enum": [
+            "discovered",
+            "extracted",
+            "read_complete",
+            "read_partial",
+            "sampled",
+            "blocked",
+            "excluded"
+          ]
+        },
+        "missing_parts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "alias_of": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "source_id",
+        "path",
+        "container",
+        "sha256",
+        "version",
+        "unit",
+        "unit_range",
+        "extractor",
+        "extractor_version",
+        "read_status",
+        "missing_parts",
+        "alias_of",
+        "provenance",
+        "reviewer"
+      ],
+      "additionalProperties": false
+    },
+    "InstallationDisposition": {
+      "type": "object",
+      "properties": {
+        "absolute_target": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "key": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "effective_layer": {
+          "enum": [
+            "configured",
+            "observed",
+            "effective",
+            "unknown"
+          ]
+        },
+        "before_hash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "semantic_diff": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "disposition": {
+          "enum": [
+            "retain",
+            "rewrite",
+            "retire",
+            "no_touch"
+          ]
+        },
+        "authorization_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "snapshot_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "restore_check": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "absolute_target",
+        "key",
+        "owner",
+        "effective_layer",
+        "before_hash",
+        "semantic_diff",
+        "disposition",
+        "authorization_ref",
+        "snapshot_ref",
+        "restore_check"
+      ],
+      "additionalProperties": false
+    },
+    "ArtifactManifest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "path": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "upstream_versions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "adoption_status": {
+          "enum": [
+            "candidate",
+            "produced",
+            "adopted",
+            "superseded",
+            "revoked"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "path",
+        "sha256",
+        "version",
+        "owner",
+        "upstream_versions",
+        "adoption_status",
+        "bytes"
+      ],
+      "additionalProperties": false
+    },
+    "ValidationReport": {
+      "type": "object",
+      "properties": {
+        "artifact": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "requirement_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "result": {
+          "enum": [
+            "PASS",
+            "REVISE",
+            "BLOCKED",
+            "REBUILD"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "validator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requirement_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 4096
+        },
+        "required_check_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 4096
+        }
+      },
+      "required": [
+        "artifact",
+        "requirement_ids",
+        "checks",
+        "result",
+        "evidence_refs",
+        "validator",
+        "requirement_refs",
+        "required_check_ids"
+      ],
+      "additionalProperties": false
+    },
+    "ExperienceCandidate": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "trigger": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "method": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "counterexamples": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "expiry_utc_ms": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "professional_method",
+            "team_workflow",
+            "user_preference",
+            "failure_condition"
+          ]
+        },
+        "knowledge_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "scope",
+        "trigger",
+        "method",
+        "evidence",
+        "counterexamples",
+        "expiry_utc_ms",
+        "type",
+        "knowledge_refs"
+      ],
+      "additionalProperties": false
+    },
+    "KnowledgeRecord": {
+      "type": "object",
+      "properties": {
+        "knowledge_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "location": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority": {
+          "enum": [
+            "user_explicit",
+            "host_observed",
+            "external_evidence",
+            "model_inference",
+            "review_proposal"
+          ]
+        },
+        "claim": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "method": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "derived_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "freshness": {
+          "enum": [
+            "current",
+            "stale",
+            "unknown"
+          ]
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "knowledge_id",
+        "scope",
+        "source_refs",
+        "location",
+        "sha256",
+        "authority",
+        "claim",
+        "method",
+        "derived_refs",
+        "freshness",
+        "conflicts"
+      ],
+      "additionalProperties": false
+    },
+    "ResourceProjection": {
+      "type": "object",
+      "properties": {
+        "object_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "brief": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "overview_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "release": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "auth_scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "expiry_utc_ms": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "object_ref",
+        "type",
+        "scope",
+        "brief",
+        "overview_ref",
+        "source_ref",
+        "release",
+        "auth_scope",
+        "expiry_utc_ms"
+      ],
+      "additionalProperties": false
+    },
+    "ResourceDelta": {
+      "type": "object",
+      "properties": {
+        "target_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "target_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "operation": {
+          "enum": [
+            "add",
+            "update",
+            "merge",
+            "retire"
+          ]
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "idempotency_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "revalidation_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "target_type",
+        "target_id",
+        "operation",
+        "expected_revision",
+        "scope",
+        "evidence",
+        "reason",
+        "idempotency_key",
+        "revalidation_refs"
+      ],
+      "additionalProperties": false
+    },
+    "TimelineManifest": {
+      "type": "object",
+      "properties": {
+        "timeline_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "timebase": {
+          "$ref": "#/$defs/TimeBase"
+        },
+        "frame_rate": {
+          "$ref": "#/$defs/Rate"
+        },
+        "clip_spans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ClipSpan"
+          }
+        },
+        "retiming_map": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "story_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "shot_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "music_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "timeline_id",
+        "revision",
+        "timebase",
+        "frame_rate",
+        "clip_spans",
+        "retiming_map",
+        "story_refs",
+        "shot_refs",
+        "music_refs",
+        "owner"
+      ],
+      "additionalProperties": false
+    },
+    "StoryPlan": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "segment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "duration_target": {
+          "$ref": "#/$defs/TimeQuantity"
+        },
+        "narrative_functions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "emotion_curve": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "invariants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "voice_roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "text",
+        "version",
+        "segment_ids",
+        "duration_target",
+        "narrative_functions",
+        "emotion_curve",
+        "invariants",
+        "voice_roles"
+      ],
+      "additionalProperties": false
+    },
+    "MusicCuePlan": {
+      "type": "object",
+      "properties": {
+        "cue_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "story_segment_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "emotion": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "density": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "asset": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rights": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "start": {
+          "$ref": "#/$defs/TimeQuantity"
+        },
+        "end": {
+          "$ref": "#/$defs/TimeQuantity"
+        },
+        "transition": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "phrase_anchors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "beat_anchors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "ducking": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "lock_level": {
+          "enum": [
+            "intent",
+            "draft",
+            "adopted"
+          ]
+        }
+      },
+      "required": [
+        "cue_id",
+        "story_segment_ref",
+        "emotion",
+        "density",
+        "asset",
+        "rights",
+        "start",
+        "end",
+        "transition",
+        "phrase_anchors",
+        "beat_anchors",
+        "ducking",
+        "lock_level"
+      ],
+      "additionalProperties": false
+    },
+    "ShotPlan": {
+      "type": "object",
+      "properties": {
+        "shot_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "story_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "music_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "start": {
+          "$ref": "#/$defs/TimeQuantity"
+        },
+        "end": {
+          "$ref": "#/$defs/TimeQuantity"
+        },
+        "camera": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "action": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "visual_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "dialogue_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "srt_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sound_intent": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "transition": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "generation_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "shot_id",
+        "story_refs",
+        "music_refs",
+        "start",
+        "end",
+        "camera",
+        "action",
+        "visual_refs",
+        "dialogue_ref",
+        "srt_ref",
+        "sound_intent",
+        "transition",
+        "generation_requirements"
+      ],
+      "additionalProperties": false
+    },
+    "SoundPackage": {
+      "type": "object",
+      "properties": {
+        "target_timeline_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "music_cue_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "srt_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "dialogue_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "stems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "buses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "automation_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "render_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "validation": {
+          "$ref": "#/$defs/ExactRef"
+        }
+      },
+      "required": [
+        "target_timeline_ref",
+        "music_cue_refs",
+        "srt_refs",
+        "dialogue_refs",
+        "stems",
+        "buses",
+        "automation_refs",
+        "render_refs",
+        "validation"
+      ],
+      "additionalProperties": false
+    },
+    "ExecutionSummary": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "release": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "route_class": {
+          "enum": [
+            "S0",
+            "S1",
+            "S2"
+          ]
+        },
+        "executed_actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "host_result_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "verified_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "not_done": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "next_action": {
+          "type": "string",
+          "maxLength": 1024
+        }
+      },
+      "required": [
+        "task",
+        "release",
+        "route_class",
+        "executed_actions",
+        "host_result_refs",
+        "verified_artifacts",
+        "not_done",
+        "next_action"
+      ],
+      "additionalProperties": false
+    },
+    "ReleaseManifest": {
+      "type": "object",
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "catalog": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "schema": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "restore_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "package_id",
+        "version",
+        "files",
+        "catalog",
+        "schema",
+        "dependencies",
+        "tests",
+        "restore_info"
+      ],
+      "additionalProperties": false
+    },
+    "CapabilityAtom": {
+      "type": "object",
+      "properties": {
+        "atom_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "asset_class": {
+          "const": "L1"
+        },
+        "operation_kind": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "applicability": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "allowed_slots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "required_checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "implementation_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "license_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "atom_id",
+        "asset_class",
+        "operation_kind",
+        "version",
+        "sha256",
+        "inputs",
+        "outputs",
+        "applicability",
+        "dependencies",
+        "conflicts",
+        "allowed_slots",
+        "required_checks",
+        "implementation_refs",
+        "provenance",
+        "license_refs",
+        "tests"
+      ],
+      "additionalProperties": false
+    },
+    "CapabilityBundle": {
+      "type": "object",
+      "properties": {
+        "bundle_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "atom_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "conditional_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "required_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "bundle_id",
+        "version",
+        "atom_refs",
+        "conditional_refs",
+        "required_refs",
+        "bindings"
+      ],
+      "additionalProperties": false
+    },
+    "AtomImplementation": {
+      "type": "object",
+      "properties": {
+        "atom_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "execution_form": {
+          "enum": [
+            "schema",
+            "program",
+            "model",
+            "native_action"
+          ]
+        },
+        "implementation_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "input_schema": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "output_schema": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "side_effects": {
+          "enum": [
+            "none",
+            "read_only",
+            "project_write",
+            "external_reversible",
+            "external_irreversible",
+            "paid",
+            "unknown"
+          ]
+        },
+        "evidence_policy": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "fixture_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "atom_ref",
+        "execution_form",
+        "implementation_ref",
+        "input_schema",
+        "output_schema",
+        "side_effects",
+        "evidence_policy",
+        "fixture_refs"
+      ],
+      "additionalProperties": false
+    },
+    "AssemblyDefinition": {
+      "type": "object",
+      "properties": {
+        "consumer_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "base_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "bundle_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "atom_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "professional_delta": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "slot_values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "task_selectors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "consumer_id",
+        "version",
+        "base_refs",
+        "bundle_refs",
+        "atom_refs",
+        "professional_delta",
+        "slot_values",
+        "task_selectors"
+      ],
+      "additionalProperties": false
+    },
+    "CompositionManifest": {
+      "type": "object",
+      "properties": {
+        "release": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "compiler_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "lock": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "consumer_hashes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "field_origins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "dependency_index_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "release",
+        "compiler_version",
+        "schema_version",
+        "lock",
+        "consumer_hashes",
+        "field_origins",
+        "dependency_index_hash"
+      ],
+      "additionalProperties": false
+    },
+    "EvolutionProposal": {
+      "type": "object",
+      "properties": {
+        "channel": {
+          "enum": [
+            "new_source",
+            "real_experience"
+          ]
+        },
+        "change_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "benefit_evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "impact_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "required_tests": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "permission_diff": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "rollback_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "channel",
+        "change_refs",
+        "scope",
+        "benefit_evidence",
+        "impact_refs",
+        "required_tests",
+        "permission_diff",
+        "rollback_ref"
+      ],
+      "additionalProperties": false
+    },
+    "ResearchDecision": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "decision_needed": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "prior_source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "matching_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "external_evidence_kind": {
+          "enum": [
+            "primary_doc",
+            "implementation",
+            "original_paper",
+            "independent_report",
+            "user_material",
+            "unknown"
+          ]
+        },
+        "counterevidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "applicability": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "decision": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "remaining_gap": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 1024
+        },
+        "experiment_needed": {
+          "type": "boolean"
+        },
+        "experiment_reason": {
+          "type": "string",
+          "maxLength": 65536
+        }
+      },
+      "required": [
+        "question",
+        "decision_needed",
+        "prior_source_refs",
+        "matching_constraints",
+        "external_evidence_kind",
+        "counterevidence_refs",
+        "applicability",
+        "decision",
+        "remaining_gap",
+        "experiment_needed",
+        "experiment_reason"
+      ],
+      "additionalProperties": false
+    },
+    "PositiveRational": {
+      "type": "object",
+      "properties": {
+        "numerator": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "additionalProperties": false
+    },
+    "Rate": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/PositiveRational"
+        },
+        "unit": {
+          "enum": [
+            "frame",
+            "sample",
+            "tick"
+          ]
+        },
+        "per_unit": {
+          "const": "second"
+        },
+        "profile_ref": {
+          "$ref": "#/$defs/ExactRef"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "per_unit",
+        "profile_ref"
+      ],
+      "additionalProperties": false
+    },
+    "TimeBase": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "enum": [
+            "second",
+            "frame",
+            "sample",
+            "tick"
+          ]
+        },
+        "rate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin_ref": {
+          "$ref": "#/$defs/ExactRef"
+        }
+      },
+      "required": [
+        "unit",
+        "rate",
+        "origin_ref"
+      ],
+      "additionalProperties": false
+    },
+    "ObjectMeta": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "authority": {
+          "enum": [
+            "user_explicit",
+            "host_observed",
+            "external_evidence",
+            "model_inference",
+            "review_proposal"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        },
+        "created_at_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "updated_at_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "valid_until_utc_ms": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "classification": {
+          "enum": [
+            "public",
+            "user_private",
+            "project_private",
+            "secret_reference_only"
+          ]
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "parent_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 1024
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "scope",
+        "schema_version",
+        "revision",
+        "owner",
+        "authority",
+        "status",
+        "source_refs",
+        "evidence_refs",
+        "created_at_utc_ms",
+        "updated_at_utc_ms",
+        "valid_until_utc_ms",
+        "classification",
+        "content_hash",
+        "parent_refs"
+      ],
+      "additionalProperties": false
+    },
+    "EvidenceRef": {
+      "type": "object",
+      "properties": {
+        "object": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "observation_kind": {
+          "enum": [
+            "user_event",
+            "host_event",
+            "file_read",
+            "tool_result",
+            "primary_document",
+            "model_proposal",
+            "test_local"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "observed_at_utc_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "valid_until_utc_ms": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "applies_to": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 4096
+        },
+        "grade": {
+          "enum": [
+            "primary",
+            "user_normative",
+            "local_execution",
+            "independent_review",
+            "unverified"
+          ]
+        },
+        "source_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "object",
+        "observation_kind",
+        "locator",
+        "observed_at_utc_ms",
+        "valid_until_utc_ms",
+        "applies_to",
+        "grade",
+        "source_hash"
+      ],
+      "additionalProperties": false
+    },
+    "InputBinding": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "role": {
+          "enum": [
+            "primary",
+            "constraint",
+            "reference"
+          ]
+        },
+        "required_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 4096
+        },
+        "adoption_record": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "input",
+        "role",
+        "required_fields",
+        "adoption_record",
+        "required"
+      ],
+      "additionalProperties": false
+    },
+    "DecisionRecord": {
+      "type": "object",
+      "properties": {
+        "decision_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "source_event": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "authority": {
+          "enum": [
+            "user_explicit",
+            "review_proposal",
+            "host_observed"
+          ]
+        },
+        "applies_to": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 4096
+        },
+        "decision": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "supersedes": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revoked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "decision_id",
+        "source_event",
+        "authority",
+        "applies_to",
+        "decision",
+        "supersedes",
+        "revoked"
+      ],
+      "additionalProperties": false
+    },
+    "EffectSpec": {
+      "type": "object",
+      "properties": {
+        "action_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "effect_class": {
+          "enum": [
+            "none",
+            "read_only",
+            "project_write",
+            "external_reversible",
+            "external_irreversible",
+            "paid",
+            "unknown"
+          ]
+        },
+        "read_roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32768
+          },
+          "maxItems": 4096
+        },
+        "write_roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32768
+          },
+          "maxItems": 4096
+        },
+        "idempotency": {
+          "enum": [
+            "event_only",
+            "provider_key",
+            "none",
+            "unknown"
+          ]
+        },
+        "query_capability": {
+          "enum": [
+            "stable_request_id",
+            "stable_resource_id",
+            "none",
+            "unknown"
+          ]
+        },
+        "cancellation": {
+          "enum": [
+            "before_dispatch",
+            "provider_cancel",
+            "not_reversible",
+            "unknown"
+          ]
+        },
+        "authorization_ref": {
+          "$ref": "#/$defs/ExactRef"
+        }
+      },
+      "required": [
+        "action_id",
+        "effect_class",
+        "read_roots",
+        "write_roots",
+        "idempotency",
+        "query_capability",
+        "cancellation",
+        "authorization_ref"
+      ],
+      "additionalProperties": false
+    },
+    "Finding": {
+      "type": "object",
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "object": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "cause": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 4096
+        },
+        "defect_severity": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ]
+        },
+        "phase_id": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5",
+            "P6",
+            "P7"
+          ]
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "affected": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 4096
+        }
+      },
+      "required": [
+        "finding_id",
+        "object",
+        "cause",
+        "evidence",
+        "defect_severity",
+        "phase_id",
+        "owner",
+        "affected"
+      ],
+      "additionalProperties": false
+    },
+    "MethodApplicability": {
+      "type": "object",
+      "properties": {
+        "method_ref": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 4096
+        },
+        "includes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 4096
+        },
+        "excludes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 4096
+        },
+        "parameter_schema": {
+          "$ref": "#/$defs/ExactRef"
+        },
+        "counterexamples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExactRef"
+          },
+          "maxItems": 4096
+        },
+        "valid_versions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 65536
+          },
+          "maxItems": 4096
+        }
+      },
+      "required": [
+        "method_ref",
+        "preconditions",
+        "includes",
+        "excludes",
+        "parameter_schema",
+        "counterexamples",
+        "valid_versions"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,1694 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "plan": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  },
+  "status": "P1_design_only_not_runtime_verification",
+  "requirements": [
+    {
+      "id": "R01",
+      "requirement": "用户无需懂技能或选专家",
+      "module": "selector",
+      "contract_schema": "#/$defs/WorkflowPlan",
+      "data_invariant": "只在锁定release和typed类别内匹配trigger/anti-trigger、已准入IO；输出selected/none/ambiguous；S0不热装无关正文",
+      "implementation_path_proposal": "src/selector.rs",
+      "test_ids": [
+        "T01",
+        "T05",
+        "T06",
+        "T43"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/WorkflowPlan"
+      ]
+    },
+    {
+      "id": "R02",
+      "requirement": "阿极唯一沟通入口",
+      "module": "policy",
+      "contract_schema": "#/$defs/RoleTaskGraph",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T01",
+        "T03",
+        "T89"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/RoleTaskGraph"
+      ]
+    },
+    {
+      "id": "R03",
+      "requirement": "小任务直达",
+      "module": "selector",
+      "contract_schema": "#/$defs/ExecutionSummary",
+      "data_invariant": "只在锁定release和typed类别内匹配trigger/anti-trigger、已准入IO；输出selected/none/ambiguous；S0不热装无关正文",
+      "implementation_path_proposal": "src/selector.rs",
+      "test_ids": [
+        "T01",
+        "T02",
+        "T57",
+        "T83"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ExecutionSummary"
+      ]
+    },
+    {
+      "id": "R04",
+      "requirement": "阿极内置白帽",
+      "module": "policy",
+      "contract_schema": "#/$defs/ResearchDecision",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T03",
+        "T30",
+        "T49"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ResearchDecision"
+      ]
+    },
+    {
+      "id": "R05",
+      "requirement": "PonyTail 全角色贯彻",
+      "module": "policy",
+      "contract_schema": "#/$defs/CapabilityBundle",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T01",
+        "T20",
+        "T57",
+        "T62",
+        "T82",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CapabilityBundle"
+      ]
+    },
+    {
+      "id": "R06",
+      "requirement": "课程框架统一",
+      "module": "composer",
+      "contract_schema": "#/$defs/AssemblyDefinition",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T45",
+        "T90"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/AssemblyDefinition"
+      ]
+    },
+    {
+      "id": "R07",
+      "requirement": "新目录全部重写",
+      "module": "release",
+      "contract_schema": "#/$defs/ReleaseManifest",
+      "data_invariant": "精确依赖许可/锁/源码/生成物/包hash一致；manifest先持久后单指针发布；恢复未撤销兼容目标，P7精确hash patch另批准",
+      "implementation_path_proposal": "src/release.rs",
+      "test_ids": [
+        "T94"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ReleaseManifest"
+      ]
+    },
+    {
+      "id": "R08",
+      "requirement": "所有角色有任务图",
+      "module": "scheduler",
+      "contract_schema": "#/$defs/RoleTaskGraph",
+      "data_invariant": "DAG前置正式采用/验收，owner读写冲突、lease/clock/retry任务账/有效capacity；业务结束不释放原生slot",
+      "implementation_path_proposal": "src/scheduler.rs",
+      "test_ids": [
+        "T09",
+        "T91"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/RoleTaskGraph"
+      ]
+    },
+    {
+      "id": "R09",
+      "requirement": "专家多级目录",
+      "module": "catalog",
+      "contract_schema": "#/$defs/ResourceProjection",
+      "data_invariant": "不可变catalog定义和manifest为唯一权威；active指针仅registry；leaf/method/style/workflow分型；共享专家无永久owner",
+      "implementation_path_proposal": "src/catalog.rs",
+      "test_ids": [
+        "T05",
+        "T06",
+        "T83"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ResourceProjection"
+      ]
+    },
+    {
+      "id": "R10",
+      "requirement": "负责人池与预置组队",
+      "module": "catalog",
+      "contract_schema": "#/$defs/WorkflowPlan",
+      "data_invariant": "不可变catalog定义和manifest为唯一权威；active指针仅registry；leaf/method/style/workflow分型；共享专家无永久owner",
+      "implementation_path_proposal": "src/catalog.rs",
+      "test_ids": [
+        "T07",
+        "T08",
+        "T91"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/WorkflowPlan"
+      ]
+    },
+    {
+      "id": "R11",
+      "requirement": "MoE 按需、用完即退",
+      "module": "host",
+      "contract_schema": "#/$defs/HostSlotReservation",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T15",
+        "T16",
+        "T69"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/HostSlotReservation"
+      ]
+    },
+    {
+      "id": "R12",
+      "requirement": "任意角色必要时并发",
+      "module": "scheduler",
+      "contract_schema": "#/$defs/WorkflowPlan",
+      "data_invariant": "DAG前置正式采用/验收，owner读写冲突、lease/clock/retry任务账/有效capacity；业务结束不释放原生slot",
+      "implementation_path_proposal": "src/scheduler.rs",
+      "test_ids": [
+        "T08",
+        "T09",
+        "T10",
+        "T68"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/WorkflowPlan"
+      ]
+    },
+    {
+      "id": "R13",
+      "requirement": "工具池自动选择",
+      "module": "host",
+      "contract_schema": "#/$defs/ActionContract",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T38",
+        "T65",
+        "T85"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ActionContract"
+      ]
+    },
+    {
+      "id": "R14",
+      "requirement": "专业和组织经验",
+      "module": "governance",
+      "contract_schema": "#/$defs/ExperienceCandidate",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T21",
+        "T54",
+        "T77"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ExperienceCandidate"
+      ]
+    },
+    {
+      "id": "R15",
+      "requirement": "用户习惯有范围",
+      "module": "policy",
+      "contract_schema": "#/$defs/ExperienceCandidate",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T22",
+        "T63",
+        "T77"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ExperienceCandidate"
+      ]
+    },
+    {
+      "id": "R16",
+      "requirement": "技术蒸馏不能遗漏",
+      "module": "governance",
+      "contract_schema": "#/$defs/EvolutionProposal",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T56",
+        "T82",
+        "T90"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/EvolutionProposal"
+      ]
+    },
+    {
+      "id": "R17",
+      "requirement": "不保留双套专家",
+      "module": "catalog",
+      "contract_schema": "#/$defs/ReleaseManifest",
+      "data_invariant": "不可变catalog定义和manifest为唯一权威；active指针仅registry；leaf/method/style/workflow分型；共享专家无永久owner",
+      "implementation_path_proposal": "src/catalog.rs",
+      "test_ids": [
+        "T24",
+        "T42",
+        "T53"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ReleaseManifest"
+      ]
+    },
+    {
+      "id": "R18",
+      "requirement": "6.1 Sol 中/高/极高",
+      "module": "host",
+      "contract_schema": "#/$defs/InvocationContract",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T39",
+        "T72",
+        "T73"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/InvocationContract"
+      ]
+    },
+    {
+      "id": "R19",
+      "requirement": "第三方 API",
+      "module": "host",
+      "contract_schema": "#/$defs/HostCapabilities",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T39",
+        "T72",
+        "T92"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/HostCapabilities"
+      ]
+    },
+    {
+      "id": "R20",
+      "requirement": "不引入判断小模型",
+      "module": "policy",
+      "contract_schema": "#/$defs/HostCapabilities",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T26",
+        "T27",
+        "T85",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/HostCapabilities"
+      ]
+    },
+    {
+      "id": "R21",
+      "requirement": "ComfyUI 逆推/融合/开发",
+      "module": "adapters/comfyui",
+      "contract_schema": "#/$defs/ActionContract",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/comfyui/README.md",
+      "test_ids": [
+        "T25",
+        "T27",
+        "T28"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ActionContract"
+      ]
+    },
+    {
+      "id": "R22",
+      "requirement": "Python/Rust/Go/C++ 协作",
+      "module": "adapters/interop",
+      "contract_schema": "#/$defs/ActionContract",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/interop/README.md",
+      "test_ids": [
+        "T26",
+        "T27",
+        "T65",
+        "T85"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ActionContract"
+      ]
+    },
+    {
+      "id": "R23",
+      "requirement": "全类型视频",
+      "module": "adapters/video",
+      "contract_schema": "#/$defs/WorkflowPlan",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/video/README.md",
+      "test_ids": [
+        "T32",
+        "T33",
+        "T34",
+        "T35",
+        "T36",
+        "T37",
+        "T38"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/WorkflowPlan"
+      ]
+    },
+    {
+      "id": "R24",
+      "requirement": "先情报视角风格",
+      "module": "catalog",
+      "contract_schema": "#/$defs/StoryPlan",
+      "data_invariant": "不可变catalog定义和manifest为唯一权威；active指针仅registry；leaf/method/style/workflow分型；共享专家无永久owner",
+      "implementation_path_proposal": "src/catalog.rs",
+      "test_ids": [
+        "T31",
+        "T32",
+        "T87"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/StoryPlan"
+      ]
+    },
+    {
+      "id": "R25",
+      "requirement": "节奏、蒙太奇、分段 BGM",
+      "module": "adapters/video",
+      "contract_schema": "#/$defs/MusicCuePlan",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/video/README.md",
+      "test_ids": [
+        "T33",
+        "T87",
+        "T88"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/MusicCuePlan"
+      ]
+    },
+    {
+      "id": "R26",
+      "requirement": "音频驱动与后期替声",
+      "module": "adapters/audio",
+      "contract_schema": "#/$defs/TimelineManifest",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/audio/README.md",
+      "test_ids": [
+        "T34",
+        "T35",
+        "T88"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/TimelineManifest"
+      ]
+    },
+    {
+      "id": "R27",
+      "requirement": "剪映与 REAPER",
+      "module": "adapters/audio",
+      "contract_schema": "#/$defs/SoundPackage",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/audio/README.md",
+      "test_ids": [
+        "T36",
+        "T37",
+        "T80",
+        "T81"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/SoundPackage"
+      ]
+    },
+    {
+      "id": "R28",
+      "requirement": "OfficeCLI 等实际调用",
+      "module": "adapters/office",
+      "contract_schema": "#/$defs/ArtifactManifest",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/office/README.md",
+      "test_ids": [
+        "T29",
+        "T95"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ArtifactManifest"
+      ]
+    },
+    {
+      "id": "R29",
+      "requirement": "最新来源优先审查",
+      "module": "governance",
+      "contract_schema": "#/$defs/SourceCoverageRecord",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T01",
+        "T26",
+        "T55",
+        "T82",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/SourceCoverageRecord"
+      ]
+    },
+    {
+      "id": "R30",
+      "requirement": "图谱接口流程先设计",
+      "module": "store",
+      "contract_schema": "#/$defs/WorkflowPlan",
+      "data_invariant": "typed表/外键/唯一键/短BEGIN IMMEDIATE；CAS图版、event同key同hash幂等；claim/lease/slot/intent及版本失效/验证关联原子提交",
+      "implementation_path_proposal": "src/store.rs",
+      "test_ids": [
+        "T66",
+        "T91"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/WorkflowPlan"
+      ]
+    },
+    {
+      "id": "R31",
+      "requirement": "低资源无残留",
+      "module": "host",
+      "contract_schema": "#/$defs/HostSlotReservation",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T15",
+        "T16",
+        "T41",
+        "T69"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/HostSlotReservation"
+      ]
+    },
+    {
+      "id": "R32",
+      "requirement": "项目不等于安装生效",
+      "module": "release",
+      "contract_schema": "#/$defs/InstallationDisposition",
+      "data_invariant": "精确依赖许可/锁/源码/生成物/包hash一致；manifest先持久后单指针发布；恢复未撤销兼容目标，P7精确hash patch另批准",
+      "implementation_path_proposal": "src/release.rs",
+      "test_ids": [
+        "T42",
+        "T43",
+        "T44",
+        "T74"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/InstallationDisposition"
+      ]
+    },
+    {
+      "id": "R33",
+      "requirement": "复查遗漏和 Bug",
+      "module": "evidence",
+      "contract_schema": "#/$defs/ValidationReport",
+      "data_invariant": "实际文件/parser/当前hash与requirement exact ref；独立producer≠validator；必需硬门AND；完成摘要不可混prepared/produced/accepted",
+      "implementation_path_proposal": "src/evidence.rs",
+      "test_ids": [
+        "T19",
+        "T28",
+        "T86"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ValidationReport"
+      ]
+    },
+    {
+      "id": "R34",
+      "requirement": "不做模型 A/B",
+      "module": "host",
+      "contract_schema": "#/$defs/InvocationContract",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T39",
+        "T72",
+        "T73",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/InvocationContract"
+      ]
+    },
+    {
+      "id": "R35",
+      "requirement": "不从缺资料编答案",
+      "module": "evidence",
+      "contract_schema": "#/$defs/SourceCoverageRecord",
+      "data_invariant": "实际文件/parser/当前hash与requirement exact ref；独立producer≠validator；必需硬门AND；完成摘要不可混prepared/produced/accepted",
+      "implementation_path_proposal": "src/evidence.rs",
+      "test_ids": [
+        "T04",
+        "T30",
+        "T75",
+        "T90",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/SourceCoverageRecord"
+      ]
+    },
+    {
+      "id": "R36",
+      "requirement": "审批后再执行",
+      "module": "policy",
+      "contract_schema": "#/$defs/ActionContract",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T13",
+        "T38",
+        "T40",
+        "T79"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ActionContract"
+      ]
+    },
+    {
+      "id": "R37",
+      "requirement": "共用规则/模板/方法/图谱/代码原子化",
+      "module": "composer",
+      "contract_schema": "#/$defs/CapabilityAtom",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T45",
+        "T46",
+        "T59",
+        "T61"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CapabilityAtom"
+      ]
+    },
+    {
+      "id": "R38",
+      "requirement": "组装可解释、确定性、可追溯",
+      "module": "composer",
+      "contract_schema": "#/$defs/CompositionManifest",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T46",
+        "T47",
+        "T48"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CompositionManifest"
+      ]
+    },
+    {
+      "id": "R39",
+      "requirement": "公共升级覆盖全部适用消费者",
+      "module": "governance",
+      "contract_schema": "#/$defs/EvolutionProposal",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T51",
+        "T52",
+        "T67"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/EvolutionProposal"
+      ]
+    },
+    {
+      "id": "R40",
+      "requirement": "新技术与经验两条进化入口统一治理",
+      "module": "governance",
+      "contract_schema": "#/$defs/EvolutionProposal",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T54",
+        "T84"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/EvolutionProposal"
+      ]
+    },
+    {
+      "id": "R41",
+      "requirement": "使用前核实最新上游并锁定采用版",
+      "module": "governance",
+      "contract_schema": "#/$defs/ReleaseManifest",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T01",
+        "T26",
+        "T55",
+        "T56",
+        "T82",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ReleaseManifest"
+      ]
+    },
+    {
+      "id": "R42",
+      "requirement": "有益方法按证据扩大适用范围",
+      "module": "governance",
+      "contract_schema": "#/$defs/ExperienceCandidate",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T54",
+        "T86"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ExperienceCandidate"
+      ]
+    },
+    {
+      "id": "R43",
+      "requirement": "快速传播不热改在途任务",
+      "module": "scheduler",
+      "contract_schema": "#/$defs/CompositionManifest",
+      "data_invariant": "DAG前置正式采用/验收，owner读写冲突、lease/clock/retry任务账/有效capacity；业务结束不释放原生slot",
+      "implementation_path_proposal": "src/scheduler.rs",
+      "test_ids": [
+        "T11",
+        "T53"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CompositionManifest"
+      ]
+    },
+    {
+      "id": "R44",
+      "requirement": "最小有意义模块，不过度原子化",
+      "module": "composer",
+      "contract_schema": "#/$defs/CapabilityAtom",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T26",
+        "T27",
+        "T46",
+        "T49",
+        "T57",
+        "T58",
+        "T60"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CapabilityAtom"
+      ]
+    },
+    {
+      "id": "R45",
+      "requirement": "保留有用技术但重写此前封装",
+      "module": "governance",
+      "contract_schema": "#/$defs/SourceCoverageRecord",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T01",
+        "T26",
+        "T56",
+        "T82",
+        "T90",
+        "T93",
+        "T94"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/SourceCoverageRecord"
+      ]
+    },
+    {
+      "id": "R46",
+      "requirement": "基础值/语义原子/组合包/角色明确分层",
+      "module": "composer",
+      "contract_schema": "#/$defs/CapabilityBundle",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T59"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CapabilityBundle"
+      ]
+    },
+    {
+      "id": "R47",
+      "requirement": "复合规则拆成独立可失败责任",
+      "module": "contracts",
+      "contract_schema": "#/$defs/AtomImplementation",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "src/contracts.rs",
+      "test_ids": [
+        "T59",
+        "T66"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/AtomImplementation"
+      ]
+    },
+    {
+      "id": "R48",
+      "requirement": "共享语义不共享私有实例和专业裁决",
+      "module": "policy",
+      "contract_schema": "#/$defs/ExactRef",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T22",
+        "T50",
+        "T63",
+        "T64"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ExactRef"
+      ]
+    },
+    {
+      "id": "R49",
+      "requirement": "一个语义契约可以绑定多种实现",
+      "module": "composer",
+      "contract_schema": "#/$defs/AtomImplementation",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T26",
+        "T27",
+        "T46",
+        "T49",
+        "T61",
+        "T67"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/AtomImplementation"
+      ]
+    },
+    {
+      "id": "R50",
+      "requirement": "按语义归并，按依赖闭包最小装载",
+      "module": "composer",
+      "contract_schema": "#/$defs/CompositionManifest",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T47",
+        "T60",
+        "T62"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CompositionManifest"
+      ]
+    },
+    {
+      "id": "R51",
+      "requirement": "状态事务与真实外部动作不能碎片化",
+      "module": "store",
+      "contract_schema": "#/$defs/InvocationContract",
+      "data_invariant": "typed表/外键/唯一键/短BEGIN IMMEDIATE；CAS图版、event同key同hash幂等；claim/lease/slot/intent及版本失效/验证关联原子提交",
+      "implementation_path_proposal": "src/store.rs",
+      "test_ids": [
+        "T12",
+        "T13",
+        "T14",
+        "T17",
+        "T18",
+        "T26",
+        "T27",
+        "T46",
+        "T49",
+        "T66"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/InvocationContract"
+      ]
+    },
+    {
+      "id": "R52",
+      "requirement": "模板/schema/代码/验证共享可追溯定义",
+      "module": "contracts",
+      "contract_schema": "#/$defs/CompositionManifest",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "src/contracts.rs",
+      "test_ids": [
+        "T45",
+        "T46",
+        "T67"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/CompositionManifest"
+      ]
+    },
+    {
+      "id": "R53",
+      "requirement": "并发按有效配额准入、退出确认后释放",
+      "module": "scheduler",
+      "contract_schema": "#/$defs/HostSlotReservation",
+      "data_invariant": "DAG前置正式采用/验收，owner读写冲突、lease/clock/retry任务账/有效capacity；业务结束不释放原生slot",
+      "implementation_path_proposal": "src/scheduler.rs",
+      "test_ids": [
+        "T68",
+        "T69"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/HostSlotReservation"
+      ]
+    },
+    {
+      "id": "R54",
+      "requirement": "宿主预算有语义、有效层与证据",
+      "module": "context",
+      "contract_schema": "#/$defs/HostCapabilities",
+      "data_invariant": "ACL先于候选/摘要，scope/release/input hash查询身份；必要原文与指令闭包不删；brief可回读；bytes和unknown tokens分开",
+      "implementation_path_proposal": "src/context.rs",
+      "test_ids": [
+        "T20",
+        "T70",
+        "T71"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/HostCapabilities"
+      ]
+    },
+    {
+      "id": "R55",
+      "requirement": "第三方模型与逐任务档位真实验证",
+      "module": "host",
+      "contract_schema": "#/$defs/InvocationContract",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T72",
+        "T73"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/InvocationContract"
+      ]
+    },
+    {
+      "id": "R56",
+      "requirement": "安装态指令精确退场与安全恢复",
+      "module": "release",
+      "contract_schema": "#/$defs/InstallationDisposition",
+      "data_invariant": "精确依赖许可/锁/源码/生成物/包hash一致；manifest先持久后单指针发布；恢复未撤销兼容目标，P7精确hash patch另批准",
+      "implementation_path_proposal": "src/release.rs",
+      "test_ids": [
+        "T44",
+        "T74"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/InstallationDisposition"
+      ]
+    },
+    {
+      "id": "R57",
+      "requirement": "资料覆盖可定位，抽样与完整阅读分开",
+      "module": "evidence",
+      "contract_schema": "#/$defs/SourceCoverageRecord",
+      "data_invariant": "实际文件/parser/当前hash与requirement exact ref；独立producer≠validator；必需硬门AND；完成摘要不可混prepared/produced/accepted",
+      "implementation_path_proposal": "src/evidence.rs",
+      "test_ids": [
+        "T04",
+        "T75",
+        "T90",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/SourceCoverageRecord"
+      ]
+    },
+    {
+      "id": "R58",
+      "requirement": "历史路径重定向、镜像按完整包核验",
+      "module": "governance",
+      "contract_schema": "#/$defs/SourceCoverageRecord",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T75",
+        "T76",
+        "T90",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/SourceCoverageRecord"
+      ]
+    },
+    {
+      "id": "R59",
+      "requirement": "知识库与经验池独立语义/权限/生命周期",
+      "module": "governance",
+      "contract_schema": "#/$defs/KnowledgeRecord",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T77"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/KnowledgeRecord"
+      ]
+    },
+    {
+      "id": "R60",
+      "requirement": "GPT视觉/文本与媒体生成服务分工",
+      "module": "host",
+      "contract_schema": "#/$defs/ActionContract",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T78"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ActionContract"
+      ]
+    },
+    {
+      "id": "R61",
+      "requirement": "免费媒体偏好与独立可选凭据",
+      "module": "policy",
+      "contract_schema": "#/$defs/ActionContract",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T38",
+        "T79"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ActionContract"
+      ]
+    },
+    {
+      "id": "R62",
+      "requirement": "REAPER集成不接管声卡麦克风",
+      "module": "adapters/audio",
+      "contract_schema": "#/$defs/SoundPackage",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/audio/README.md",
+      "test_ids": [
+        "T80",
+        "T81"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/SoundPackage"
+      ]
+    },
+    {
+      "id": "R63",
+      "requirement": "补充调研进入同一来源账和实施阶段",
+      "module": "governance",
+      "contract_schema": "#/$defs/ResearchDecision",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T01",
+        "T26",
+        "T82",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ResearchDecision"
+      ]
+    },
+    {
+      "id": "R64",
+      "requirement": "分层投影有清晰任务直达与原文回读",
+      "module": "context",
+      "contract_schema": "#/$defs/ResourceProjection",
+      "data_invariant": "ACL先于候选/摘要，scope/release/input hash查询身份；必要原文与指令闭包不删；brief可回读；bytes和unknown tokens分开",
+      "implementation_path_proposal": "src/context.rs",
+      "test_ids": [
+        "T20",
+        "T57",
+        "T70",
+        "T83"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ResourceProjection"
+      ]
+    },
+    {
+      "id": "R65",
+      "requirement": "知识与经验条目delta、源更新复核",
+      "module": "governance",
+      "contract_schema": "#/$defs/ResourceDelta",
+      "data_invariant": "knowledge/task fact/typed experience独立；scope delta CAS/幂等；完整影响含全部实现/消费者/测试；ack移交防双可写；准入及撤销独立",
+      "implementation_path_proposal": "src/governance.rs",
+      "test_ids": [
+        "T23",
+        "T84"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/evolution-impact-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ResourceDelta"
+      ]
+    },
+    {
+      "id": "R66",
+      "requirement": "工具按需发现并绑定真实接口与身份",
+      "module": "host",
+      "contract_schema": "#/$defs/ActionContract",
+      "data_invariant": "requested/configured/observed/effective分开；固定6.1-sol三档不降档；可信身份/配额/费用/关闭缺观察则unknown；未知提交query不重发",
+      "implementation_path_proposal": "src/host.rs",
+      "test_ids": [
+        "T26",
+        "T27",
+        "T65",
+        "T85"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ActionContract"
+      ]
+    },
+    {
+      "id": "R67",
+      "requirement": "专家/方法有实际效果与安全独立门",
+      "module": "evidence",
+      "contract_schema": "#/$defs/ValidationReport",
+      "data_invariant": "实际文件/parser/当前hash与requirement exact ref；独立producer≠validator；必需硬门AND；完成摘要不可混prepared/produced/accepted",
+      "implementation_path_proposal": "src/evidence.rs",
+      "test_ids": [
+        "T19",
+        "T24",
+        "T86",
+        "T18"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ValidationReport"
+      ]
+    },
+    {
+      "id": "R68",
+      "requirement": "音乐前置跨专业职责与回传明确",
+      "module": "adapters/video",
+      "contract_schema": "#/$defs/MusicCuePlan",
+      "data_invariant": "一个具体动作profile和schema/version/identity/授权；原生态工具不重写，不反向写DB；真实产物/查询取消与音频保护分开",
+      "implementation_path_proposal": "adapters/video/README.md",
+      "test_ids": [
+        "T87",
+        "T88"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/MusicCuePlan"
+      ]
+    },
+    {
+      "id": "R69",
+      "requirement": "军团真实执行可见而不啰嗦",
+      "module": "context",
+      "contract_schema": "#/$defs/ExecutionSummary",
+      "data_invariant": "ACL先于候选/摘要，scope/release/input hash查询身份；必要原文与指令闭包不删；brief可回读；bytes和unknown tokens分开",
+      "implementation_path_proposal": "src/context.rs",
+      "test_ids": [
+        "T89"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ExecutionSummary"
+      ]
+    },
+    {
+      "id": "R70",
+      "requirement": "课程框架与既有技术逐字段承接",
+      "module": "composer",
+      "contract_schema": "#/$defs/AssemblyDefinition",
+      "data_invariant": "精确依赖DAG/确定拓扑/槽类型/必需AND不削弱；同锁同canonical hash；field origins保留全部路径与专业差异",
+      "implementation_path_proposal": "src/composer.rs",
+      "test_ids": [
+        "T45",
+        "T56",
+        "T75",
+        "T90",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/atom-composition-spec.md"
+      ],
+      "schema_paths": [
+        "#/$defs/AssemblyDefinition"
+      ]
+    },
+    {
+      "id": "R71",
+      "requirement": "专业叶节点/风格包与角色MoE统一",
+      "module": "catalog",
+      "contract_schema": "#/$defs/AssemblyDefinition",
+      "data_invariant": "不可变catalog定义和manifest为唯一权威；active指针仅registry；leaf/method/style/workflow分型；共享专家无永久owner",
+      "implementation_path_proposal": "src/catalog.rs",
+      "test_ids": [
+        "T91"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/AssemblyDefinition"
+      ]
+    },
+    {
+      "id": "R72",
+      "requirement": "最新决定覆盖历史路由与阶段授权",
+      "module": "policy",
+      "contract_schema": "#/$defs/ResearchDecision",
+      "data_invariant": "受信ActorContext、scope/用途/读写根/授权/有效期与最小正确；proposal不能提升user/host authority；禁止费用/发布/安装越权",
+      "implementation_path_proposal": "src/policy.rs",
+      "test_ids": [
+        "T01",
+        "T26",
+        "T82",
+        "T92",
+        "T93"
+      ],
+      "implementation": "not_written",
+      "verification": "not_run",
+      "design_refs": [
+        "docs/architecture.md",
+        "docs/cli-state-contracts.md",
+        "docs/graph-data-model.md"
+      ],
+      "schema_paths": [
+        "#/$defs/ResearchDecision"
+      ]
+    }
+  ]
+}

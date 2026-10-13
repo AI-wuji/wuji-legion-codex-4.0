@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "revision": 3,
+  "release": "p2-native-preparation-1",
+  "state": "prepared",
+  "runtime_admission": false,
+  "effectiveness": "not_run",
+  "phase": "P2",
+  "catalog_status": "minimum_candidates_not_P3_or_active_release",
+  "mandatory_invariants": [
+    "aji_only_communication",
+    "minimum_correct_path",
+    "white_hat",
+    "research_before_experiment",
+    "scope_and_exact_version",
+    "independent_acceptance",
+    "unknown_retains_slot",
+    "no_fee_unknown_no_submission",
+    "no_model_fallback"
+  ],
+  "source_policy": "Use reviewed methods only; no old implementation, configuration, template, database or test imported.",
+  "baseline": {
+    "path": "docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  },
+  "id": "p2/validation/scoped-code-review",
+  "kind": "validation",
+  "design_scope": [
+    "software.quality/code-review",
+    "G2 independent validator preparation"
+  ],
+  "five_elements": {
+    "goal": "对指定补丁和当前产物给出独立、可触发、带锚点的专业审查，不代写、不泛评整仓。",
+    "inputs": [
+      "ScopedDiff与author/producer身份",
+      "当前BehaviorSpec、实际artifact/hash/revision与保持项",
+      "EnvironmentLock、原始RegressionReport/日志；缺失保留unknown"
+    ],
+    "process": [
+      "核实际产物精确版本与授权scope；输入摘要不等于原文件回读。",
+      "逐项对照目标行为、受影响接口及保持项；引用已有公开方法，不套万能检查清单。",
+      "对每个问题列文件/行或符号、触发条件、用户可见后果、根因机制、证据和影响；假说与已证实问题分开。",
+      "独立读取真实日志与产物，按required AND检查汇总；硬失败或未跑不准用总分覆盖，局部返原owner。"
+    ],
+    "output": [
+      "LineFinding：精确锚点、触发/后果/证据、影响范围",
+      "ValidationReport：每个required结果及当前产物绑定",
+      "RemainingGap与局部返工/取消检查点"
+    ],
+    "acceptance": [
+      "评审者独立于producer；评审不写实现文件，也不替阿极发布或改用户决定。",
+      "所有结论绑定具体变化和当前版本；可触发后果不足时只保留假说，不编造失败。",
+      "缺资料/未知环境/未执行回归保留UNKNOWN或NOT_RUN；此职责本身未经真实模型验证不得宣称专业有效。"
+    ]
+  },
+  "required_checks": [
+    "validation.artifact-current",
+    "validation.behavior-current",
+    "validation.regression-evidence",
+    "validation.independent"
+  ],
+  "anti_triggers": [
+    "泛泛讨论质量不触发生产验收",
+    "未给ScopedDiff/行为依据不扫描整仓",
+    "代码实现请求不拿评审者充当作者"
+  ],
+  "failure_contract": {
+    "missing_input": "BLOCKED_INPUT with exact missing ref; return to owner",
+    "self_review": "SELF_REVIEW; no acceptance",
+    "stale_artifact": "VALIDATION_STALE; invalidate affected current link only",
+    "hard_failure": "FAIL with matched finding/evidence; no score override",
+    "cancel": "return version-bound checkpoint; slot release requires trusted host close"
+  },
+  "atom_refs": [
+    "G01",
+    "G03",
+    "J06",
+    "J07"
+  ],
+  "field_origins": {
+    "five_elements": {
+      "path": "docs/expert-design-map.json",
+      "sha256": "575744fc656bf079e153c48482812dd5f3a433934930da659cab31e6fa1035de",
+      "pointer": "/responsibilities/1/five_elements"
+    },
+    "methods": [
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/48/method_source_bindings",
+        "candidate_id": "G01"
+      },
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/50/method_source_bindings",
+        "candidate_id": "G03"
+      },
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/77/method_source_bindings",
+        "candidate_id": "J06"
+      },
+      {
+        "path": "outputs/p0/atom-evidence-ledger.json",
+        "sha256": "41f79cf68ca76bf37f895edc623730294a2ca2f368fb1430998ab2755befe5d0",
+        "pointer": "/atoms/78/method_source_bindings",
+        "candidate_id": "J07"
+      }
+    ],
+    "G2_minimum": {
+      "path": "docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+      "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+      "version": "1.6",
+      "lines": [
+        1485,
+        1497
+      ]
+    }
+  }
+}

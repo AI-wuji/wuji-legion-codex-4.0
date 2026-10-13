@@ -1,0 +1,15 @@
+/.dev/
+/target/
+/%SystemDrive%/
+/outputs/
+/release/
+**/__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite
+*.sqlite3
+
+# local source backups
+/catalog/p3/*.bak*
+

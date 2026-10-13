@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "version": "1.7",
+    "plan": "E:/wuji-projects/wuji-legion-codex-4.0/docs/wuji-legion-4.0-execution-plan-v1.7-2026-10-04.md",
+    "sha256": "e2566ae6327e72d62b0a56ea16ace83d1c4981aeb8223cbf50d1c957b658f824"
+  },
+  "updated_at": "2026-10-06T14:01:13.7622231+00:00",
+  "authority": "This file describes reviewed phase state, not any tool execution receipt.",
+  "gates": {
+    "G0": {
+      "status": "passed",
+      "report": "E:/wuji-projects/wuji-legion-codex-4.0/outputs/p0/g0-review-2026-10-03.json"
+    },
+    "G1": {
+      "status": "passed",
+      "release": "baseline-1.1",
+      "manifest": "docs/design-baseline-1.json",
+      "report": "outputs/p1/g1-review-2026-10-03.json",
+      "kind": "design_only",
+      "delta": "docs/design-deltas/001-schema-alias-hash.md",
+      "approved_revision_integrity_report": "outputs/p1/plan-1.7-review.json"
+    },
+    "G2": {
+      "status": "passed",
+      "native_host_verified": false,
+      "local_component_report": "outputs/p2/core-build-review.json",
+      "acceptance_component_report": "outputs/p2/acceptance-component-evidence.json",
+      "native_portion": "independent_acceptance_passed_for_bounded_isolated_task; host capability attestation remains unknown",
+      "unknowns": [
+        "effective gpt-6.1-sol identity",
+        "effective medium/high/xhigh per invocation",
+        "native capacity/quota",
+        "fee/billing attestation",
+        "formal model-expert effectiveness"
+      ],
+      "formal_model_experts": 0,
+      "P3_batch_generation_allowed": true,
+      "prepared_native_interface": {
+        "status": "implemented_no_dispatch",
+        "roles": 2,
+        "formal_model_experts": 0,
+        "review": "outputs/p2/native-preparation-review.json"
+      },
+      "user_authorized_probes": {
+        "date": "2026-10-03",
+        "parallel_delegation": true,
+        "zero_additional_fee_scope_confirmed": true,
+        "backend_billing_attestation": false,
+        "current_configuration_modified": false
+      },
+      "actual_isolated_worker_threads": 4,
+      "builtin_native_children_created": 0,
+      "native_real_execution_report": "outputs/p2/native-real-execution-report-2026-10-03.json",
+      "native_acceptance": {
+        "status": "accepted",
+        "workspace": ".dev/native-p2-workspace-20261003-u",
+        "task_id": "p2-native-real-20261003-u",
+        "artifact_hash": "acab97289f3fa6cb0bd1912d72f21a7b1734863e4a02a70358641eead5539593",
+        "review_hash": "c3acee210634941e5b81b4efc11e05fd283b0146f13d53262ef8923bcc3afddc",
+        "producer_reviewer_different": true,
+        "g2_closed": true
+      },
+      "scope_note": "G2 pass is limited to the P2 isolated bounded task and does not claim backend identity, quota, billing or professional effectiveness.",
+      "current_release_native_retest": "not_retested_current_release; previous isolated workers observed 429, current rate availability unknown; legacy bounded acceptance preserved, not rerun for schema6 and prepared role revisions [3]",
+      "prepared_source_refresh": "outputs/p2/prepared-role-source-refresh.json",
+      "bounded_legion_task": "outputs/p2/legion-first-task-receipt.json",
+      "bounded_legion_task_current_recheck": "outputs/p2/legion-first-task-current-recheck.json",
+      "project_local_framework_smoke": "outputs/p2/framework-doctor-current.json",
+      "project_local_capability_view": "outputs/p2/framework-capabilities-current.json"
+    },
+    "G3": {
+      "status": "passed",
+      "release": "p3-catalog-1",
+      "catalog": "catalog/p3/experts.json",
+      "assemblies": "catalog/p3/atom-assemblies.json",
+      "composition_manifest": "catalog/p3/composition-manifest.json",
+      "quality_report": "outputs/p3/p3-quality-report.json",
+      "quality_tests": "tools/test_p3_catalog.py",
+      "role_count": 57,
+      "runtime_admission": false,
+      "formal_model_experts": 0,
+      "scope_note": "Structured cold catalog only; professional effectiveness and runtime activation remain separate gates."
+    },
+    "G4": {
+      "status": "blocked",
+      "manifests": "catalog/p4/tool-manifests.json",
+      "adapter_report": "outputs/p4/software-repair-u-evidence.json",
+      "adapter_tests": "tools/test_p4_adapters.py",
+      "available_local_chain": [
+        "software-repair/local-dag-validator",
+        "video-render/ffmpeg-bounded",
+        "officecli/native-text-pptx",
+        "officecli/native-word-xlsx-bounded"
+      ],
+      "blocked_chains": [
+        "comfyui/current-endpoint",
+        "audio-render/REAPER",
+        "professional-effectiveness-holdouts"
+      ],
+      "reason": "Existing OfficeCLI text-PPTX, bounded Word/XLSX document workflow and independent PNG-to-video workflow have current actual evidence; DOCX rendering, ComfyUI, audio/REAPER and professional holdouts remain incomplete.",
+      "comfyui_bounded_evidence": "outputs/p4/comfyui-probe-evidence.json",
+      "ffmpeg_bounded_evidence": "outputs/p4/ffmpeg-probe-evidence.json",
+      "runtime_admission": false,
+      "professional_artifact_scope": "local deterministic software artifact plus bounded ComfyUI image and ffmpeg video artifacts; professional effectiveness not claimed",
+      "officecli_bounded_evidence": "outputs/p4/officecli-probe-evidence.json",
+      "historical_local_chain": [
+        "comfyui/bounded-load-scale-save"
+      ],
+      "current_comfyui_failure": "outputs/p4/media-framework-failure-evidence.json",
+      "independent_video_evidence": "outputs/p4/video-framework-workflow-evidence.json",
+      "office_document_bounded_evidence": "outputs/p4/office-document-workflow-evidence.json"
+    },
+    "G5": {
+      "status": "in_progress_full_scope",
+      "release": "p5-governance-1",
+      "source": "src/governance.rs",
+      "report": "outputs/p5/p5-governance-report.json",
+      "tests": "outputs/p5/governance-tests.log",
+      "resident_service_count": 0,
+      "runtime_admission": false,
+      "scope_note": "Isolated local persistence, task actions, transfers and exact dependencies are implemented. One exact local experience was reviewed, used in followup manifest regression and rejected after source change. Current supplementary T22 evidence passes Windows single-owner token SID/ACL and project-scope rechecks; multi-tenant authorization, complete DACL auditing and administrator/same-SID tamper resistance are not established. Autonomous model evolution and public admission remain incomplete.",
+      "current_local_acl_report": "outputs/p6/continuation-2026-10-06/core-completion-execution.json",
+      "local_persistence_report": "outputs/p5/resource-persistence-report-2026-10-04.json",
+      "deterministic_governance_core_passed": true,
+      "implementation_delta": "docs/design-deltas/005-received-content-delta-2026-10-04.md",
+      "bounded_legion_experience": "outputs/p5/legion-experience-task-receipt.json",
+      "experience_workflow_regressions": "outputs/p5/experience-workflow-evidence.json"
+    },
+    "G6": {
+      "status": "in_progress_internal_work_and_explicit_external_limits",
+      "report": "outputs/p6/full-audit-report.json",
+      "required_followups": [
+        "Use selected existing professional/native tools for real task artifacts; no new universal dispatch platform",
+        "Professional timeline/sound adapter execution and independent holdouts",
+        "92 G6-scoped scenarios; 3 G7 scenarios remain separately authorized",
+        "Actual model/effort/quota/fee and professional image/video/audio holdouts"
+      ],
+      "P7": false,
+      "release_manifest": "outputs/p6/release-manifest.json",
+      "local_package": "outputs/p6/wuji-legion-4.0-p6-package.zip",
+      "acceptance_execution": "outputs/p6/acceptance-execution.json",
+      "acceptance_summary": {
+        "total": 95,
+        "status_counts": {
+          "not_run": 25,
+          "passed": 22,
+          "partial": 36,
+          "blocked_external": 9,
+          "deferred_p7": 3
+        },
+        "required_for_g6": 92,
+        "passed_for_g6": 22,
+        "g6_scenarios_passed": false
+      },
+      "checks_authority": "outputs/p6/full-audit-report.json evaluated against current source/receipt/package",
+      "acceptance_summary_scope_note": "Historical formal 22 passed / 36 partial / 25 not_run / 9 blocked_external / 3 deferred_p7 ledger retained unchanged; supplementary current T19/T22 bounded local passes do not backfill these counts or establish full G6/P7 acceptance.",
+      "current_scoped_core_report": "outputs/p6/continuation-2026-10-06/core-completion-execution.json",
+      "current_scoped_core_closeout": "outputs/p6/continuation-2026-10-06/final-core-closeout.json"
+    },
+    "G7": {
+      "status": "in_progress_full_scope",
+      "user_authorized_core_cutover": {
+        "date": "2026-10-05",
+        "scope": "Global 4.0-only entry, retirement of the 3.0 runtime mount, and no shutdown",
+        "report": "outputs/p7/global-4-only-cutover-2026-10-05.json"
+      },
+      "core_cutover_status": "global_entry_cutover_verified",
+      "current_core_skill_report": "outputs/p6/continuation-2026-10-06/core-completion-execution.json",
+      "current_core_skill_observation": {
+        "installed": true,
+        "state": "source_match",
+        "file_count": 7
+      },
+      "isolated_restore_report": "outputs/p6/continuation-2026-10-06/remaining-48-execution.json",
+      "isolated_restore_case_count": 4,
+      "isolated_restore_scope_note": "T44/T74 share four executed isolated inverse-patch cases: exact restoration, preservation of later non-target edits, target-config conflict refusal and Skill conflict refusal; both conflict cases wrote nothing. Synthetic TOML and public Skill copies only, not installed production recovery tooling.",
+      "production_restore_executed": false,
+      "full_acceptance_passed": false,
+      "required_followups": [
+        "Independent new-chat automatic entry, task-specific staffing and actual task actions",
+        "Explicitly requested production recovery, preservation of later user changes and concurrent-edit atomicity"
+      ],
+      "rollback_scope_note": "Restore only on an explicit user request; check current hashes, preserve later user changes and refuse target conflicts with zero writes. Do not automatically restore the retired 3.0 runtime.",
+      "scope_note": "Authorization, actual core cutover, current 7-file source/install match and isolated drills are bounded facts, not full G7 acceptance. Historical deferred_p7 counts remain frozen; P7:false denotes pending full acceptance, not blanket absence of authorization."
+    }
+  },
+  "P7": false,
+  "shutdown": false,
+  "requirements_origin": {
+    "plan": "E:\\wuji-projects\\wuji-legion-codex-4.0\\docs\\wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+    "version": "1.6"
+  }
+}

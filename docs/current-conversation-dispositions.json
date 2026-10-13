@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "kind": "current_conversation_disposition_not_implementation_certificate",
+  "original_map_sha256": "8772911e6bee4406c8cf6955acca178accbf8175be6a0ce58161ce001de52444",
+  "active_plan_sha256": "e2566ae6327e72d62b0a56ea16ace83d1c4981aeb8223cbf50d1c957b658f824",
+  "authority": "本轮继续非软件核心范围；历史动作不自动继承",
+  "preserved_topic_count": 48,
+  "original_map_not_rewritten": true,
+  "full_professional_acceptance": false,
+  "topics": [
+    {
+      "id": "CHAT01",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT01",
+      "original_decision": "小白只说人话，自动调齐合适能力完成任务，越用越强",
+      "acceptance_locator": "2.1/6/13/16.5；R01/R14/R69",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT02",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT02",
+      "original_decision": "白帽融合阿极，实际应用必须体现，不另开常驻白帽",
+      "acceptance_locator": "11.2/16.5；T03/T04/T89",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT03",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT03",
+      "original_decision": "对话/思考/代码/模板/图谱都取最小正确路径",
+      "acceptance_locator": "3/9.6/11/F；R05/R64",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT04",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT04",
+      "original_decision": "小任务阿极直接做；复杂/跨域/高风险才组织",
+      "acceptance_locator": "5/8.1；T01/T02/T07",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT05",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT05",
+      "original_decision": "6.1 Sol medium交流文字、high代码、xhigh修复规划",
+      "acceptance_locator": "14.1—14.3；T72/T73",
+      "current_disposition": "请求模型和档位规则保留；有效模型/档位/额度不可观测部分unknown，不改现用配置或探测补证",
+      "evidence_scope": "host",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT06",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT06",
+      "original_decision": "不按ChatGPT账户目录误判接口；请求与真实结果分开",
+      "acceptance_locator": "14/16.1；R19/R55",
+      "current_disposition": "请求模型和档位规则保留；有效模型/档位/额度不可观测部分unknown，不改现用配置或探测补证",
+      "evidence_scope": "host",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT07",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT07",
+      "original_decision": "已决定不接Laya/Jev/Clef做判断或路由",
+      "acceptance_locator": "2.3/21.4；T93",
+      "current_disposition": "已排除当前建设：不接本地判断小模型，不造DSH宿主或多模式切换；不恢复旧模型链",
+      "evidence_scope": "excluded",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT08",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT08",
+      "original_decision": "先做Codex原生版，不做DSH或多模式切换",
+      "acceptance_locator": "2.3/16.1/21.4；T92/T93",
+      "current_disposition": "已排除当前建设：不接本地判断小模型，不造DSH宿主或多模式切换；不恢复旧模型链",
+      "evidence_scope": "excluded",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT09",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT09",
+      "original_decision": "父目录下独立4.0，全部重写，旧项目只参考",
+      "acceptance_locator": "2/4/12.4/17；T94",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT10",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT10",
+      "original_decision": "不删掉技术价值，不直接搬旧封装、模板/测试/状态",
+      "acceptance_locator": "12/A/C/D；T56/T90",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT11",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT11",
+      "original_decision": "采用前核最新来源、版本、许可/安全及差异",
+      "acceptance_locator": "12.5/12.6/P0/P4；T55/T82",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT12",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT12",
+      "original_decision": "专家和专家团按W5/W6现成模板或书写规则",
+      "acceptance_locator": "3.1—3.4/12/22；T45/T90",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT13",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT13",
+      "original_decision": "专家团ZIP、源目录、research及外来Skill都要先读",
+      "acceptance_locator": "12.1/17.2/22.1；T75/T90",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT14",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT14",
+      "original_decision": "不要两套旧新专家并行，只保留一套有效能力",
+      "acceptance_locator": "4.3/12.7/19；T24/T42/T90",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT15",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT15",
+      "original_decision": "长短篇/平台/幽默等不压成万能文案；其它域同理",
+      "acceptance_locator": "6.3/6.9；T31/T91",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT16",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT16",
+      "original_decision": "区分专业差异与表现差异，按用户选择加载",
+      "acceptance_locator": "6.4/6.9；T49/T91",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT17",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT17",
+      "original_decision": "交付负责人是预定义专家团配方，任务小队按需组",
+      "acceptance_locator": "5.4/6.2/10；T07/T91",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT18",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT18",
+      "original_decision": "女娲治理专家/能力进化；阿极和参谋部管任务路线",
+      "acceptance_locator": "5.4/13；T54/T84",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT19",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT19",
+      "original_decision": "未用不加载，用完即退，各角色同样按需",
+      "acceptance_locator": "5.4/8.6/9/16；T15/T16/T69",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT20",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT20",
+      "original_decision": "阿极/参谋部/负责人/专家/官员等各有自己的图",
+      "acceptance_locator": "7.6/5.4；T09/T91",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT21",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT21",
+      "original_decision": "多负责人、多专家、审查角色都可有独立实例",
+      "acceptance_locator": "5.3/5.4/8/9.5；T09/T68",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT22",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT22",
+      "original_decision": "总目录→类别→专业，快速定位，减少上下文",
+      "acceptance_locator": "6.1/6.7/7/9.6；T83",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT23",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT23",
+      "original_decision": "按任务组队，但分工/工具/产物/流程提前定义",
+      "acceptance_locator": "3.3/6.2/10/G1；T07/T87",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT24",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT24",
+      "original_decision": "外部知识/规则与真实使用经验独立，不混成记忆",
+      "acceptance_locator": "6.6/13.6/15；T77/T84",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT25",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT25",
+      "original_decision": "新技术与经验都能改善相关专家和负责人",
+      "acceptance_locator": "13.5/13.6/G-LINEAGE；T51/T54/T84",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT26",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT26",
+      "original_decision": "规则/模板/图/代码/接口打散共用，升级快速传递",
+      "acceptance_locator": "3/7.8/15/F；T59—T67",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT27",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT27",
+      "original_decision": "能蒸馏的方法蒸馏，不能等价浓缩的软件保留工具",
+      "acceptance_locator": "12.4—12.7；T56/T86",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT28",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT28",
+      "original_decision": "分析、逆推、融合、新插件/软件功能是高频主线",
+      "acceptance_locator": "6.3/10.2/P4；T25/T27",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT29",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT29",
+      "original_decision": "Python/Rust/Go/C++专业与Comfy注册/接口协作",
+      "acceptance_locator": "10.2/10.3；T26/T27",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT30",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT30",
+      "original_decision": "漫剧之外的解说/宣传/片花/片头片尾等都覆盖",
+      "acceptance_locator": "10.4/6.3；T32/T87",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT31",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT31",
+      "original_decision": "制作前收集素材，明确叙事/解说、人称身份和风格",
+      "acceptance_locator": "V0/CreativeBrief；T30/T87",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT32",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT32",
+      "original_decision": "先有故事和节奏，再重组镜头，不照剧本顺序流水账",
+      "acceptance_locator": "V1/V3/10.4.1；T33/T87",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT33",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT33",
+      "original_decision": "基础故事/情绪后、详细分镜前规划音乐与预剪",
+      "acceptance_locator": "V2/10.4.1/10.5；T34/T87",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT34",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT34",
+      "original_decision": "快慢悲喜随剧情，适度切换，不一曲铺到底/几秒换歌",
+      "acceptance_locator": "MusicCuePlan；T33/T87",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT35",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT35",
+      "original_decision": "能音频驱动最好；已有视频可时间线先行替声",
+      "acceptance_locator": "10.5；T34/T35",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT36",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT36",
+      "original_decision": "对白SRT、环境、拟音、BGM、空间运动/混音统一",
+      "acceptance_locator": "V6/14.6；T35/T37/T80",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT37",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT37",
+      "original_decision": "jianying editor候选，草稿继续编辑/分轨转换需验证",
+      "acceptance_locator": "14.5/12.6；T36/T65",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT38",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT38",
+      "original_decision": "不替换日常即插即用声卡麦克风，不改系统机架",
+      "acceptance_locator": "14.6；T81",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT39",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT39",
+      "original_decision": "GPT文本/视觉，Agnes主要图像、视频按需；GPT生图备用不默认用",
+      "acceptance_locator": "14.4；T78/T79",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT40",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT40",
+      "original_decision": "必须作为办公实际接入目标，不仅写个工具名",
+      "acceptance_locator": "14.5/P4；R28/T29/T95",
+      "current_disposition": "当前明确不运行需要软件的部分；要求保留，真实消费者和必要输入到位再执行，不当作取消或通过",
+      "evidence_scope": "software",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT41",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT41",
+      "original_decision": "OpenViking/ACE/WikiSkill/CUE/工具发现等有益点入主线",
+      "acceptance_locator": "12.6/13.6；T82—T86",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT42",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT42",
+      "original_decision": "用户不主动叫专家，但能核对实际执行与结果",
+      "acceptance_locator": "16.4/16.5；T43/T89",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT43",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT43",
+      "original_decision": "有界上下文、错误与恢复检查点，不宿主二进制打补丁",
+      "acceptance_locator": "9.4/16.3/21.4；T41",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT44",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT44",
+      "original_decision": "无常驻/限并发，清4.0拥有的临时产物，保留必要证据",
+      "acceptance_locator": "9/19.4/18.4；T41/T57/T83",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT45",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT45",
+      "original_decision": "不只读4个；58入口/104来源/57职责需逐项去向，不追虚数",
+      "acceptance_locator": "P0/22.4/A/C/D；T75/T90",
+      "current_disposition": "保留来源/方法/专业差异要求；已有消费者优先复用，尚缺原文/资产或专业证据的部分保留未闭合，不批量建能力",
+      "evidence_scope": "source",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT46",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT46",
+      "original_decision": "交付前检查bug/遗漏，批准范围内修根因并复验",
+      "acceptance_locator": "P6/G6/21.4；T28/T82—T95",
+      "current_disposition": "按当前4.0核心入口及实际消费者执行；每项效果仍查对应场景，不由主题对账宣布通过",
+      "evidence_scope": "core",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT47",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT47",
+      "original_decision": "4.0要交付README/更新日志与可安装包",
+      "acceptance_locator": "20.2/21.2/P6；T42",
+      "current_disposition": "历史GitHub/安装/关机等请求不成为永久自动指令；本轮不推送、不生产安装/恢复、不关机，P7动作独立取得有效授权",
+      "evidence_scope": "protected",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    },
+    {
+      "id": "CHAT48",
+      "original_locator": "outputs/p0/conversation-requirement-map.json#/topics/CHAT48",
+      "original_decision": "项目完成与Codex生效分开；历史关机只属当时任务",
+      "acceptance_locator": "19/P7/21.4；T74/T93",
+      "current_disposition": "历史GitHub/安装/关机等请求不成为永久自动指令；本轮不推送、不生产安装/恢复、不关机，P7动作独立取得有效授权",
+      "evidence_scope": "protected",
+      "full_topic_implemented": false,
+      "scenario_status_source": "docs/acceptance-29-closeout.md and docs/current-acceptance-status-2026-10-07.md"
+    }
+  ]
+}

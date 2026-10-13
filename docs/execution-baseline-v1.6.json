@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "version": "1.6",
+  "plan": "E:/wuji-projects/wuji-legion-codex-4.0/docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+  "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",
+  "approved_date": "2026-10-03",
+  "approval": "用户要求先修订1.5方案再执行，承接已讨论Rust核心与研究先行原则",
+  "prior_baseline": {
+    "version": "1.5",
+    "plan": "E:/wuji-projects/wuji-legion-codex-3.0/outputs/wuji-legion-4.0-execution-plan-2026-10-02.md",
+    "sha256": "fe81f7f8c4fa7b1b0ebbceb63e2cffcf863b997715ec04be42a78ab5abf83732",
+    "retained_read_only": true
+  },
+  "core_language": "Rust",
+  "state_storage": "SQLite",
+  "research_policy": "external-practice-first; experiment only decisive evidence gaps",
+  "material_scope": "WorkBuddy summaries first; L2 own notes as needed; other originals, no duplicate beautified decks",
+  "approved_stages": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "P7": "separate_approval",
+  "shutdown": false,
+  "preserved_baseline_counts": {
+    "requirements": 72,
+    "acceptance_scenarios": 95,
+    "responsibilities": 57,
+    "historical_sources": 104,
+    "atom_candidates": 128,
+    "conversation_topics": 48
+  },
+  "boundary": "Approval of revised plan is not a passed stage gate or implemented runtime."
+}

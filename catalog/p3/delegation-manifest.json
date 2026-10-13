@@ -1,0 +1,1786 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_staff_delegation_manifest",
+  "state": "cold_recipe_catalog",
+  "authority": "Recipe selection and handoff shape only; no model execution or tool permission",
+  "catalog": "catalog/p3/experts.json",
+  "leader_family_count": 17,
+  "workflow_role_count": 18,
+  "recipe_count": 26,
+  "leader_family_ids": [
+    "lead.comfyui",
+    "lead.software",
+    "lead.bugfix",
+    "lead.research",
+    "lead.writing",
+    "lead.office",
+    "lead.data",
+    "lead.web",
+    "lead.image",
+    "lead.video",
+    "lead.audio",
+    "lead.business",
+    "lead.learning",
+    "lead.automation",
+    "lead.publish",
+    "lead.governance",
+    "lead.meta-instruction"
+  ],
+  "rules": {
+    "simple_tasks": "aji_direct",
+    "matching": "exact_structured_domain_or_intent",
+    "score": "domain=3; typed_intent=2; ties=selection_gap",
+    "unknown_match": "selection_gap",
+    "all_expert_fallback": false,
+    "expert_ownership": "shared_task_instance_only",
+    "return_contract": "expert_to_leader_to_staff_to_aji",
+    "selection_scope": "one_leader_per_explicit_subtask",
+    "expert_selection": "required_or_explicit_condition",
+    "unused_experts": "cold"
+  },
+  "expert_coverage": {
+    "source_role_count": 57,
+    "unbound_role_ids": [
+      "p3/leaf/comfyui-cpp-kernel",
+      "p3/leaf/comfyui-debug-performance",
+      "p3/leaf/comfyui-go-integration",
+      "p3/leaf/comfyui-rust-extension",
+      "p3/leaf/comfyui-test-verification"
+    ],
+    "meaning": "Catalog roles not referenced by current recipes remain cold/unbound; external or foreign references remain declared and block only when selected. No declaration admits an external role into the 4.0 catalog.",
+    "out_of_catalog_role_ids": [
+      "p3/leaf/comfyui-deployment",
+      "p3/leaf/comfyui-frontend-backend",
+      "p3/leaf/comfyui-native-extension",
+      "p3/leaf/comfyui-solution-benchmark",
+      "p3/leaf/comfyui-spec-ecosystem",
+      "p3/leaf/comfyui-verification-diagnosis",
+      "p3/leaf/model-dedup",
+      "p3/leaf/objective-critic",
+      "p3/leaf/scoring-expert",
+      "p3/leaf/soundstage-architect",
+      "p3/leaf/storyboard-director",
+      "p3/leaf/video-editing-architect",
+      "p3/leaf/video-prompt-architect",
+      "p3/leaf/visual-asset-designer",
+      "p3/meta_instruction/image-prompt-architect",
+      "p3/meta_instruction/narrative-architect",
+      "p3/meta_instruction/objective-critic",
+      "p3/meta_instruction/precedent-researcher",
+      "p3/meta_instruction/scoring-expert",
+      "p3/meta_instruction/skill-evolution",
+      "p3/method/comfyui-spec-ecosystem",
+      "p3/workflow/comfyui-deployment",
+      "p3/workflow/comfyui-ecosystem-search",
+      "p3/workflow/comfyui-frontend-backend",
+      "p3/workflow/comfyui-workflow"
+    ],
+    "normalized_aliases": {}
+  },
+  "recipes": [
+    {
+      "recipe_id": "meta-instruction-revision",
+      "domains": [
+        "governance",
+        "prompt_meta"
+      ],
+      "typed_intents": [
+        "meta_instruction",
+        "prompt_engineering",
+        "instruction_revision"
+      ],
+      "leader": {
+        "id": "leader/prompt-governance",
+        "family_id": "lead.governance",
+        "kind": "delivery_recipe",
+        "responsibility": "组织元指令变更的需求拆解、影响审查与回交"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/method/requirement-decomposition",
+          "assignment": "把用户请求转换为可确认的目标、交付物和验收条件",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/governance/evolution-review",
+          "assignment": "检查指令变更的影响范围、消费者、回归与撤销闭合",
+          "selection": {
+            "required": true
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "goal-explicit",
+        "deliverables-explicit",
+        "impact-and-reversal-identified"
+      ]
+    },
+    {
+      "recipe_id": "research-decision",
+      "domains": [
+        "research"
+      ],
+      "typed_intents": [
+        "research",
+        "source_review",
+        "technology_selection",
+        "compatibility_analysis"
+      ],
+      "leader": {
+        "id": "leader/research-decision",
+        "family_id": "lead.research",
+        "kind": "delivery_recipe",
+        "responsibility": "组织研究问题、证据范围、反例和决策回交"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/research",
+          "assignment": "按问题、决策需要和约束形成研究决策与来源回交",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/method/knowledge-base-qa",
+          "selection": {
+            "any_intents": [
+              "knowledge_base_qa"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "primary-sources-or-known-gap",
+        "counterevidence-addressed",
+        "version-scope-stated"
+      ]
+    },
+    {
+      "recipe_id": "software-delivery",
+      "domains": [
+        "software",
+        "engineering"
+      ],
+      "typed_intents": [
+        "code_change",
+        "software_review",
+        "implementation"
+      ],
+      "leader": {
+        "id": "leader/software-delivery",
+        "family_id": "lead.software",
+        "kind": "delivery_recipe",
+        "responsibility": "组织软件交付、实现与独立审查的输入输出和写集"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/leaf/software-reverse",
+          "assignment": "在有授权和真实输入时提取行为、协议与边界契约",
+          "selection": {
+            "any_intents": [
+              "behavior_analysis",
+              "reverse_engineering"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/software-architecture",
+          "selection": {
+            "any_intents": [
+              "architecture_design",
+              "module_design"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/selector/code-implementation",
+          "selection": {
+            "any_intents": [
+              "implementation",
+              "code_change"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/python-engineer",
+          "selection": {
+            "any_intents": [
+              "python_implementation"
+            ],
+            "any_languages": [
+              "python"
+            ]
+          }
+        },
+        {
+          "role_id": "p3/leaf/rust-engineer",
+          "selection": {
+            "any_intents": [
+              "rust_implementation"
+            ],
+            "any_languages": [
+              "rust"
+            ]
+          }
+        },
+        {
+          "role_id": "p3/leaf/go-engineer",
+          "selection": {
+            "any_intents": [
+              "go_implementation"
+            ],
+            "any_languages": [
+              "go"
+            ]
+          }
+        },
+        {
+          "role_id": "p3/leaf/cpp-engineer",
+          "selection": {
+            "any_intents": [
+              "cpp_implementation"
+            ],
+            "any_languages": [
+              "cpp"
+            ]
+          }
+        },
+        {
+          "role_id": "p3/leaf/code-review",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/model-dedup",
+          "selection": {
+            "any_intents": [
+              "model_file_rewrite",
+              "hash_divergence"
+            ]
+          },
+          "assignment": "只在需要改写模型文件字节以改变哈希、且必须保持权重可加载时参与；产出新文件不覆盖原件，并回交新旧哈希对照"
+        }
+      ],
+      "acceptance_defaults": [
+        "scope-locked",
+        "write-set-unique",
+        "regression-or-review-evidence"
+      ]
+    },
+    {
+      "recipe_id": "bugfix-delivery",
+      "domains": [
+        "bugfix",
+        "engineering"
+      ],
+      "typed_intents": [
+        "bug_fix",
+        "root_cause",
+        "regression_fix",
+        "incident_diagnosis"
+      ],
+      "leader": {
+        "id": "lead.bugfix",
+        "family_id": "lead.bugfix",
+        "kind": "delivery_recipe",
+        "responsibility": "组织复现、根因定位、最小修复和回归交付"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/code-repair",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/incident-diagnosis",
+          "selection": {
+            "any_intents": [
+              "incident_diagnosis",
+              "root_cause"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/code-review",
+          "selection": {
+            "any_intents": [
+              "code_review",
+              "software_review",
+              "bug_fix",
+              "regression_fix"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/delivery-acceptance",
+          "selection": {
+            "any_intents": [
+              "delivery_acceptance"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "reproduction-or-known-gap",
+        "root-cause-recorded",
+        "regression-evidence"
+      ]
+    },
+    {
+      "recipe_id": "comfyui-delivery",
+      "domains": [
+        "comfyui"
+      ],
+      "typed_intents": [
+        "comfyui_analysis",
+        "comfyui_workflow",
+        "comfyui_fusion",
+        "comfyui_packaging"
+      ],
+      "leader": {
+        "id": "lead.comfyui",
+        "family_id": "lead.comfyui",
+        "kind": "delivery_recipe",
+        "responsibility": "组织 ComfyUI 插件的检索、对标、规范、实现、双平台部署与验收",
+        "title": "ComfyUI插件研发主帅"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/ai-workflow-engineer",
+          "selection": {
+            "required": true
+          },
+          "assignment": "生态/API/取消/权利边界，外部集成的真实动作分专项"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-reverse",
+          "selection": {
+            "any_intents": [
+              "comfyui_analysis",
+              "comfyui_fusion"
+            ]
+          },
+          "assignment": "解析既有节点/插件的注册入口、张量类型、错误与数据流"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-workflow",
+          "selection": {
+            "any_intents": [
+              "comfyui_workflow"
+            ]
+          },
+          "assignment": "搭建与解析工作流，保证 UI/API/图数据与执行依赖一致"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-python-node",
+          "selection": {
+            "any_intents": [
+              "comfyui_node"
+            ]
+          },
+          "assignment": "实现节点后端：真实注册、输入输出、错误、数值、取消"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-native-extension",
+          "selection": {
+            "any_intents": [
+              "comfyui_native_extension",
+              "measured_performance_gap"
+            ]
+          },
+          "assignment": "仅在有实测性能缺口时引入原生扩展，必留 Python 回退"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-spec-ecosystem",
+          "selection": {
+            "any_intents": [
+              "comfyui_spec_research"
+            ]
+          },
+          "assignment": "提供 ComfyUI 规范、官方节点与整合包事实底座"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-frontend-backend",
+          "selection": {
+            "any_intents": [
+              "comfyui_frontend",
+              "comfyui_i18n",
+              "comfyui_compat"
+            ]
+          },
+          "assignment": "前后端实现、v2/v3 双兼容、中文界面 i18n"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-deployment",
+          "selection": {
+            "any_intents": [
+              "comfyui_deployment"
+            ]
+          },
+          "assignment": "Windows 本地与 Linux 服务器双平台部署并跑通"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-verification-diagnosis",
+          "selection": {
+            "any_intents": [
+              "comfyui_verification",
+              "comfyui_diagnosis"
+            ]
+          },
+          "assignment": "真实用例验证与根因诊断，出证据不改代码"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-distillation",
+          "selection": {
+            "any_intents": [
+              "comfyui_fusion"
+            ]
+          },
+          "assignment": "复刻融合时比较两套行为，保证单一新实现且保留专业差异"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-packaging",
+          "selection": {
+            "any_intents": [
+              "comfyui_packaging"
+            ]
+          },
+          "assignment": "精确依赖、许可证、干净环境与目标注册"
+        }
+      ],
+      "acceptance_defaults": [
+        "authorized-inputs",
+        "actual-registry-or-known-gap",
+        "workflow-and-runtime-evidence",
+        "dual-platform-evidence",
+        "schema-compat-evidence"
+      ]
+    },
+    {
+      "recipe_id": "office-delivery",
+      "domains": [
+        "office",
+        "documents"
+      ],
+      "typed_intents": [
+        "document",
+        "word",
+        "spreadsheet",
+        "presentation",
+        "pdf",
+        "office_render"
+      ],
+      "leader": {
+        "id": "lead.office",
+        "family_id": "lead.office",
+        "kind": "delivery_recipe",
+        "responsibility": "组织Word、Excel、PPT和PDF的内容、格式、渲染与交付"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/document-deck",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/data-analysis",
+          "selection": {
+            "any_intents": [
+              "data_analysis",
+              "statistics"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/delivery-acceptance",
+          "selection": {
+            "any_intents": [
+              "delivery_acceptance"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "editable-source-preserved",
+        "format-scope-stated",
+        "render-or-known-gap"
+      ]
+    },
+    {
+      "recipe_id": "writing-delivery",
+      "domains": [
+        "writing",
+        "content"
+      ],
+      "typed_intents": [
+        "article",
+        "fiction",
+        "copywriting",
+        "scriptwriting",
+        "translation",
+        "structural_edit",
+        "topic_selection"
+      ],
+      "leader": {
+        "id": "lead.writing",
+        "family_id": "lead.writing",
+        "kind": "delivery_recipe",
+        "responsibility": "组织事实或设定、结构、窄领域创作、编辑与交付"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/writing",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/screenwriter",
+          "selection": {
+            "any_intents": [
+              "scriptwriting"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/video-copywriter",
+          "selection": {
+            "any_intents": [
+              "video_copywriting"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/method/multi-platform-distribution",
+          "selection": {
+            "any_intents": [
+              "distribution",
+              "platform_adaptation"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/method/topic-selection",
+          "selection": {
+            "any_intents": [
+              "topic_selection"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/method/comic-storyboard",
+          "selection": {
+            "any_intents": [
+              "comic_storyboard"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "brief-and-audience-locked",
+        "facts-or-setting-scoped",
+        "style-and-format-checked"
+      ]
+    },
+    {
+      "recipe_id": "web-frontend-delivery",
+      "domains": [
+        "web",
+        "frontend"
+      ],
+      "typed_intents": [
+        "frontend",
+        "webapp",
+        "interface",
+        "interaction",
+        "browser_qa"
+      ],
+      "leader": {
+        "id": "lead.web",
+        "family_id": "lead.web",
+        "kind": "delivery_recipe",
+        "responsibility": "组织网站和界面的功能、交互、视觉、实现与实际检查"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/frontend-visual",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/code-review",
+          "selection": {
+            "any_intents": [
+              "code_review",
+              "software_review"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/file-operations",
+          "selection": {
+            "any_intents": [
+              "file_operations"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "behavior-scope-locked",
+        "actual-page-check",
+        "write-set-unique"
+      ]
+    },
+    {
+      "recipe_id": "web-workbench-delivery",
+      "domains": [
+        "workbench"
+      ],
+      "typed_intents": [
+        "workbench",
+        "dashboard_ui",
+        "offline_export",
+        "tool_interface"
+      ],
+      "leader": {
+        "id": "lead.web",
+        "family_id": "lead.web",
+        "kind": "delivery_recipe",
+        "responsibility": "组织工作台的功能、数据、离线能力、导出和界面验收"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/workbench-builder",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/workflow/frontend-visual",
+          "selection": {
+            "any_intents": [
+              "frontend",
+              "interface",
+              "interaction"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/workflow/dashboard-review",
+          "selection": {
+            "any_intents": [
+              "dashboard_review"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/file-operations",
+          "selection": {
+            "any_intents": [
+              "file_operations",
+              "offline_export"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "functional-path-checked",
+        "data-contract-stated",
+        "offline-or-export-evidence"
+      ]
+    },
+    {
+      "recipe_id": "image-delivery",
+      "domains": [
+        "image",
+        "visual"
+      ],
+      "typed_intents": [
+        "image_generation",
+        "image_edit",
+        "visual_asset",
+        "style_direction"
+      ],
+      "leader": {
+        "id": "lead.image",
+        "family_id": "lead.image",
+        "kind": "delivery_recipe",
+        "responsibility": "组织视觉Brief、资产规格、生成或编辑、权利与检查"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/image-creation",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/art-director",
+          "selection": {
+            "any_intents": [
+              "style_direction",
+              "art_direction"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "visual-brief-locked",
+        "rights-and-inputs-stated",
+        "artifact-review"
+      ]
+    },
+    {
+      "recipe_id": "video-production-delivery",
+      "domains": [
+        "video"
+      ],
+      "typed_intents": [
+        "video_production",
+        "short_video",
+        "film",
+        "narrative_video",
+        "video_prompt"
+      ],
+      "leader": {
+        "id": "lead.video",
+        "family_id": "lead.video",
+        "kind": "delivery_recipe",
+        "responsibility": "组织情报、表达、节奏、分镜、素材、制作、声场和交付",
+        "title": "视频创作主帅"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/video-production",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/workflow/studio-producer",
+          "selection": {
+            "any_intents": [
+              "studio_production",
+              "video_preproduction"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/screenwriter",
+          "selection": {
+            "any_intents": [
+              "scriptwriting"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/visual-storyboard",
+          "selection": {
+            "any_intents": [
+              "visual_storyboard"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/art-director",
+          "selection": {
+            "any_intents": [
+              "style_direction",
+              "creative_direction"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/media-quality-review",
+          "selection": {
+            "any_intents": [
+              "media_quality_review"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/video-prompt-architect",
+          "selection": {
+            "required": true
+          },
+          "assignment": "视频提示词架构师：负责本配方中该环节的专业设计与产物回交"
+        }
+      ],
+      "acceptance_defaults": [
+        "story-and-shot-scope",
+        "rights-and-source-lock",
+        "timeline-or-known-gap"
+      ]
+    },
+    {
+      "recipe_id": "video-studio-delivery",
+      "domains": [
+        "studio_video"
+      ],
+      "typed_intents": [
+        "studio_production",
+        "series_video",
+        "video_preproduction",
+        "creative_direction",
+        "storyboard",
+        "visual_asset"
+      ],
+      "leader": {
+        "id": "lead.video",
+        "family_id": "lead.video",
+        "kind": "delivery_recipe",
+        "responsibility": "组织系列化视频前期、创作方向、分镜和制作计划",
+        "title": "视频创作主帅"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/studio-producer",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/workflow/writing",
+          "selection": {
+            "any_intents": [
+              "copywriting",
+              "structural_edit"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/screenwriter",
+          "selection": {
+            "any_intents": [
+              "scriptwriting"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/visual-storyboard",
+          "selection": {
+            "any_intents": [
+              "visual_storyboard"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/art-director",
+          "selection": {
+            "any_intents": [
+              "style_direction",
+              "creative_direction"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/storyboard-director",
+          "selection": {
+            "required": true
+          },
+          "assignment": "分镜导演：负责本配方中该环节的专业设计与产物回交"
+        },
+        {
+          "role_id": "p3/leaf/visual-asset-designer",
+          "selection": {
+            "required": true
+          },
+          "assignment": "视觉资产设计师：负责本配方中该环节的专业设计与产物回交"
+        }
+      ],
+      "acceptance_defaults": [
+        "series-bible-or-brief",
+        "creative-scope-locked",
+        "production-handoff"
+      ]
+    },
+    {
+      "recipe_id": "video-post-production",
+      "domains": [
+        "post_production"
+      ],
+      "typed_intents": [
+        "post_production",
+        "timeline_edit",
+        "subtitle_timing",
+        "color_finishing",
+        "export_qa",
+        "sound_design"
+      ],
+      "leader": {
+        "id": "lead.video",
+        "family_id": "lead.video",
+        "kind": "delivery_recipe",
+        "responsibility": "组织素材、时间线、字幕、调色、导出和交付检查",
+        "title": "视频创作主帅"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/post-production",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/media-quality-review",
+          "selection": {
+            "any_intents": [
+              "media_quality_review",
+              "export_qa"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/visual-storyboard",
+          "selection": {
+            "any_intents": [
+              "visual_storyboard"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/soundstage-architect",
+          "selection": {
+            "required": true
+          },
+          "assignment": "声音设计与声场架构师：负责本配方中该环节的专业设计与产物回交"
+        },
+        {
+          "role_id": "p3/leaf/video-editing-architect",
+          "selection": {
+            "required": true
+          },
+          "assignment": "视频剪辑架构师：负责本配方中该环节的专业设计与产物回交"
+        }
+      ],
+      "acceptance_defaults": [
+        "source-assets-locked",
+        "timeline-and-export-scope",
+        "delivery-review"
+      ]
+    },
+    {
+      "recipe_id": "audio-delivery",
+      "domains": [
+        "audio",
+        "sound"
+      ],
+      "typed_intents": [
+        "voiceover",
+        "music_production",
+        "sound_design",
+        "mix_mastering",
+        "audio_alignment"
+      ],
+      "leader": {
+        "id": "lead.audio",
+        "family_id": "lead.audio",
+        "kind": "delivery_recipe",
+        "responsibility": "组织配音、音乐、声场、对白对齐、混音和母带交付"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/voice-audio",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/media-quality-review",
+          "selection": {
+            "any_intents": [
+              "media_quality_review"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "track-and-time-scope",
+        "rights-and-source-lock",
+        "mix-or-known-gap"
+      ]
+    },
+    {
+      "recipe_id": "business-delivery",
+      "domains": [
+        "business"
+      ],
+      "typed_intents": [
+        "requirement_analysis",
+        "proposal",
+        "quotation",
+        "contract_risk",
+        "delivery_management",
+        "studio_positioning"
+      ],
+      "leader": {
+        "id": "lead.business",
+        "family_id": "lead.business",
+        "kind": "delivery_recipe",
+        "responsibility": "组织需求、定位、方案、报价、合同风险和交付管理"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/business-library",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/method/requirement-decomposition",
+          "selection": {
+            "any_intents": [
+              "requirement_analysis"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/studio-owner",
+          "selection": {
+            "any_intents": [
+              "studio_positioning"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/client-proposal",
+          "selection": {
+            "any_intents": [
+              "proposal",
+              "quotation"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/contract-risk",
+          "selection": {
+            "any_intents": [
+              "contract_risk"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/delivery-acceptance",
+          "selection": {
+            "any_intents": [
+              "delivery_management",
+              "delivery_acceptance"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "scope-and-assumptions",
+        "commercial-risk-stated",
+        "delivery-criteria-explicit"
+      ]
+    },
+    {
+      "recipe_id": "learning-delivery",
+      "domains": [
+        "learning",
+        "education"
+      ],
+      "typed_intents": [
+        "course",
+        "lesson",
+        "exercise",
+        "learning_review",
+        "template_curation"
+      ],
+      "leader": {
+        "id": "lead.learning",
+        "family_id": "lead.learning",
+        "kind": "delivery_recipe",
+        "responsibility": "组织学习成果、课程设计、讲解、练习、模板和掌握度复核"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/learning-coach",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/course-design",
+          "selection": {
+            "any_intents": [
+              "course",
+              "lesson"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/template-curator",
+          "selection": {
+            "any_intents": [
+              "template_curation"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/method/requirement-decomposition",
+          "selection": {
+            "any_intents": [
+              "requirement_analysis"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "learner-outcome-measurable",
+        "materials-and-exercises-linked",
+        "review-path-defined"
+      ]
+    },
+    {
+      "recipe_id": "automation-delivery",
+      "domains": [
+        "automation"
+      ],
+      "typed_intents": [
+        "automation",
+        "workflow_design",
+        "scheduled_action",
+        "connector_integration"
+      ],
+      "leader": {
+        "id": "lead.automation",
+        "family_id": "lead.automation",
+        "kind": "delivery_recipe",
+        "responsibility": "组织触发、动作、权限、排程、取消和真实回执"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/automation-design",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/file-operations",
+          "selection": {
+            "any_intents": [
+              "file_operations"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "authorization-scoped",
+        "trigger-and-cancel-defined",
+        "actual-receipt-or-known-gap"
+      ]
+    },
+    {
+      "recipe_id": "publishing-operations",
+      "domains": [
+        "content_operations"
+      ],
+      "typed_intents": [
+        "content_operations",
+        "distribution",
+        "platform_adaptation",
+        "content_review"
+      ],
+      "leader": {
+        "id": "lead.publish",
+        "family_id": "lead.publish",
+        "kind": "delivery_recipe",
+        "responsibility": "组织定稿物料、平台适配、运营建议与发布前核验"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/content-operations",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/method/multi-platform-distribution",
+          "selection": {
+            "any_intents": [
+              "distribution",
+              "platform_adaptation"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/delivery-acceptance",
+          "selection": {
+            "any_intents": [
+              "content_review",
+              "delivery_acceptance"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "final-materials-locked",
+        "platform-scope-stated",
+        "no-unauthorized-publish"
+      ]
+    },
+    {
+      "recipe_id": "publishing-delivery",
+      "domains": [
+        "publish",
+        "release"
+      ],
+      "typed_intents": [
+        "publication_delivery",
+        "release_package",
+        "publishing_connector",
+        "skill_packaging"
+      ],
+      "leader": {
+        "id": "lead.publish",
+        "family_id": "lead.publish",
+        "kind": "delivery_recipe",
+        "responsibility": "组织已定稿内容或Skill包的权限、草稿、发布核验和回执"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/publication-delivery",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/skill-packager",
+          "selection": {
+            "any_intents": [
+              "skill_packaging"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/leaf/delivery-acceptance",
+          "selection": {
+            "any_intents": [
+              "delivery_acceptance"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "authorization-explicit",
+        "package-or-draft-reproducible",
+        "publish-receipt-or-known-gap"
+      ]
+    },
+    {
+      "recipe_id": "data-delivery",
+      "domains": [
+        "data",
+        "analytics"
+      ],
+      "typed_intents": [
+        "data_analysis",
+        "statistics",
+        "dashboard",
+        "metric_definition",
+        "business_review"
+      ],
+      "leader": {
+        "id": "lead.data",
+        "family_id": "lead.data",
+        "kind": "delivery_recipe",
+        "responsibility": "组织数据口径、计算、图表、看板和业务结论"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/dashboard-review",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/data-analysis",
+          "selection": {
+            "any_intents": [
+              "data_analysis",
+              "statistics"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/workflow/business-library",
+          "selection": {
+            "any_intents": [
+              "business_review"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "data-scope-and-metric-lock",
+        "calculation-traceable",
+        "chart-or-conclusion-reviewed"
+      ]
+    },
+    {
+      "recipe_id": "governance-evolution",
+      "domains": [
+        "governance",
+        "evolution"
+      ],
+      "typed_intents": [
+        "skill_evolution",
+        "capability_intake",
+        "fusion_review",
+        "experience_curation",
+        "release_audit"
+      ],
+      "leader": {
+        "id": "lead.governance",
+        "family_id": "lead.governance",
+        "kind": "delivery_recipe",
+        "responsibility": "组织来源、重叠、提案、回归、经验和发布审计"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/governance/evolution-review",
+          "selection": {
+            "required": true
+          }
+        },
+        {
+          "role_id": "p3/leaf/skill-packager",
+          "selection": {
+            "any_intents": [
+              "skill_packaging"
+            ],
+            "any_languages": []
+          }
+        },
+        {
+          "role_id": "p3/method/knowledge-base-qa",
+          "selection": {
+            "any_intents": [
+              "knowledge_base_qa"
+            ],
+            "any_languages": []
+          }
+        }
+      ],
+      "acceptance_defaults": [
+        "source-and-scope-bound",
+        "regression-and-reversal",
+        "release-state-honest"
+      ]
+    },
+    {
+      "recipe_id": "meta-instruction-design",
+      "domains": [
+        "meta_instruction",
+        "prompt_meta"
+      ],
+      "typed_intents": [
+        "meta_instruction_design",
+        "prompt_system_design",
+        "prompt_meta"
+      ],
+      "leader": {
+        "id": "leader/meta-instruction",
+        "family_id": "lead.meta-instruction",
+        "kind": "delivery_recipe",
+        "responsibility": "组织元指令从零设计的检索、创作、评审与打分，不代写成员制品"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/meta_instruction/precedent-researcher",
+          "selection": {
+            "required": true
+          },
+          "assignment": "前置全网参考检索与成品比对；阶段门 G0 必走，产出参考档案供全体下游消费"
+        },
+        {
+          "role_id": "p3/meta_instruction/narrative-architect",
+          "selection": {
+            "required": true
+          },
+          "assignment": "叙事元指令：剧本适配、选题入口、钩子结构；不越界写分镜表或模型字段"
+        },
+        {
+          "role_id": "p3/meta_instruction/image-prompt-architect",
+          "selection": {
+            "required": true
+          },
+          "assignment": "图像元指令：qwen-image 2.1 / GPT image 2.5 语法、跨模型铁律、格式归属判定"
+        },
+        {
+          "role_id": "p3/meta_instruction/objective-critic",
+          "selection": {
+            "required": true
+          },
+          "assignment": "第三方客观评审：站在生产链之外做独立定性诊断与 verdict 建议，不重写"
+        },
+        {
+          "role_id": "p3/meta_instruction/scoring-expert",
+          "selection": {
+            "required": true
+          },
+          "assignment": "量化打分：按产物类型给档位与改进优先级，消费诊断后评分，不替代确定性检查"
+        },
+        {
+          "role_id": "p3/meta_instruction/skill-evolution",
+          "selection": {
+            "any_intents": [
+              "skill_packaging",
+              "asset_governance"
+            ]
+          },
+          "assignment": "能力资产入库、分类、查重、索引、演化、回归与分发一致性；不代写专业产物"
+        }
+      ],
+      "acceptance_defaults": [
+        "target-model-declared",
+        "five-elements-complete",
+        "evidence-graded",
+        "pure-artifact"
+      ]
+    },
+    {
+      "recipe_id": "meta-instruction-governance",
+      "domains": [
+        "meta_instruction",
+        "governance",
+        "evolution"
+      ],
+      "typed_intents": [
+        "skill_packaging",
+        "asset_governance",
+        "evolution_review"
+      ],
+      "leader": {
+        "id": "leader/meta-instruction",
+        "family_id": "lead.meta-instruction",
+        "kind": "delivery_recipe",
+        "responsibility": "组织元指令与技能资产的入库、演化、回归与分发一致性"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/meta_instruction/skill-evolution",
+          "selection": {
+            "required": true
+          },
+          "assignment": "入库/分类/查重/索引/演化/回归/分发一致性"
+        },
+        {
+          "role_id": "p3/meta_instruction/scoring-expert",
+          "selection": {
+            "any_intents": [
+              "change_impact_scoring"
+            ]
+          },
+          "assignment": "变更前后档位对比"
+        }
+      ],
+      "acceptance_defaults": [
+        "provenance-recorded",
+        "regression-checked",
+        "distribution-consistent"
+      ]
+    },
+    {
+      "recipe_id": "meta-instruction-model-rewrite",
+      "domains": [
+        "meta_instruction",
+        "prompt_meta"
+      ],
+      "typed_intents": [
+        "meta_instruction_revision",
+        "model_syntax_migration",
+        "format_attribution"
+      ],
+      "leader": {
+        "id": "leader/meta-instruction",
+        "family_id": "lead.meta-instruction",
+        "kind": "delivery_recipe",
+        "responsibility": "组织既有元指令的改写，锁定目标模型语法并记录被拒绝格式"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/meta_instruction/image-prompt-architect",
+          "selection": {
+            "required": true
+          },
+          "assignment": "格式归属判定与目标模型语法锁定；目标模型语法优先于用户参考格式"
+        },
+        {
+          "role_id": "p3/meta_instruction/objective-critic",
+          "selection": {
+            "required": true
+          },
+          "assignment": "独立诊断改写是否引入回归，不重写"
+        },
+        {
+          "role_id": "p3/meta_instruction/scoring-expert",
+          "selection": {
+            "required": true
+          },
+          "assignment": "量化评估改写前后档位变化"
+        }
+      ],
+      "acceptance_defaults": [
+        "original-format-classified",
+        "rejected-formats-recorded",
+        "no-silent-regression"
+      ]
+    },
+    {
+      "recipe_id": "comfyui-plugin-research",
+      "domains": [
+        "comfyui",
+        "comfyui_plugin_research"
+      ],
+      "typed_intents": [
+        "comfyui_ecosystem_search",
+        "comfyui_benchmark",
+        "plugin_research"
+      ],
+      "leader": {
+        "id": "lead.comfyui",
+        "family_id": "lead.comfyui",
+        "kind": "delivery_recipe",
+        "responsibility": "组织同类插件的检索与对标分析，产出可决策的取长补短结论",
+        "title": "ComfyUI插件研发主帅"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/workflow/comfyui-ecosystem-search",
+          "selection": {
+            "required": true
+          },
+          "assignment": "全网检索同类插件，产出原始情报档案（硬事实，不做结论）"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-solution-benchmark",
+          "selection": {
+            "required": true
+          },
+          "assignment": "基于档案产出优缺点对照矩阵与取长补短建议"
+        },
+        {
+          "role_id": "p3/method/comfyui-spec-ecosystem",
+          "selection": {
+            "any_intents": [
+              "comfyui_benchmark"
+            ]
+          },
+          "assignment": "提供官方节点与生态事实，避免对标结论与官方实现冲突"
+        },
+        {
+          "role_id": "p3/leaf/objective-critic",
+          "selection": {
+            "any_intents": [
+              "comfyui_benchmark"
+            ]
+          },
+          "assignment": "站在生产链外评审对标结论，主动找出遗漏的缺点与迎合性好评（克隆实例）"
+        }
+      ],
+      "acceptance_defaults": [
+        "searchable-provenance",
+        "evidence-graded-claims",
+        "no-unanimous-praise"
+      ]
+    },
+    {
+      "recipe_id": "comfyui-plugin-delivery",
+      "domains": [
+        "comfyui",
+        "comfyui_plugin_dev"
+      ],
+      "typed_intents": [
+        "comfyui_plugin_dev",
+        "comfyui_frontend",
+        "comfyui_i18n",
+        "comfyui_compat",
+        "comfyui_deployment",
+        "comfyui_node",
+        "comfyui_verification"
+      ],
+      "leader": {
+        "id": "lead.comfyui",
+        "family_id": "lead.comfyui",
+        "kind": "delivery_recipe",
+        "responsibility": "组织 ComfyUI 插件从规范确认到双平台双版本交付的全流程",
+        "title": "ComfyUI插件研发主帅"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/method/comfyui-spec-ecosystem",
+          "selection": {
+            "required": true
+          },
+          "assignment": "锁定目标 ComfyUI 版本下的规范、官方节点与整合包事实"
+        },
+        {
+          "role_id": "p3/workflow/comfyui-frontend-backend",
+          "selection": {
+            "required": true
+          },
+          "assignment": "实现后端节点与前端扩展，落实 v2/v3 双兼容与中文界面"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-python-node",
+          "selection": {
+            "required": true
+          },
+          "assignment": "实现节点业务逻辑：真实注册、输入输出、错误、数值、取消"
+        },
+        {
+          "role_id": "p3/workflow/comfyui-deployment",
+          "selection": {
+            "required": true
+          },
+          "assignment": "Windows 与 Linux 双平台部署并各自跑通，出双平台证据"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-verification-diagnosis",
+          "selection": {
+            "required": true
+          },
+          "assignment": "真实用例验证与根因诊断，出证据不改代码"
+        },
+        {
+          "role_id": "p3/workflow/comfyui-workflow",
+          "selection": {
+            "any_intents": [
+              "comfyui_plugin_dev",
+              "comfyui_node"
+            ]
+          },
+          "assignment": "搭建/解析测试工作流，保证图数据与执行依赖一致"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-reverse",
+          "selection": {
+            "any_intents": [
+              "comfyui_plugin_dev",
+              "comfyui_compat"
+            ]
+          },
+          "assignment": "需要解析既有插件实现时提供行为规格"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-distillation",
+          "selection": {
+            "any_intents": [
+              "comfyui_compat"
+            ]
+          },
+          "assignment": "需要复刻或融合既有节点时保证单一新实现并保留专业差异"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-native-extension",
+          "selection": {
+            "any_intents": [
+              "comfyui_native_extension",
+              "measured_performance_gap"
+            ]
+          },
+          "assignment": "仅在有实测性能缺口时引入原生扩展，必留 Python 回退"
+        },
+        {
+          "role_id": "p3/leaf/comfyui-packaging",
+          "selection": {
+            "any_intents": [
+              "comfyui_packaging",
+              "comfyui_deployment"
+            ]
+          },
+          "assignment": "需要发布时处理依赖、许可证、干净环境与目标注册"
+        },
+        {
+          "role_id": "p3/workflow/ai-workflow-engineer",
+          "selection": {
+            "any_intents": [
+              "comfyui_plugin_dev",
+              "comfyui_node"
+            ]
+          },
+          "assignment": "涉及外部服务集成时明确生态/API/取消/权利边界"
+        },
+        {
+          "role_id": "p3/leaf/objective-critic",
+          "selection": {
+            "required": true
+          },
+          "assignment": "交付前独立第三方评审，主动找出遗漏与自我迎合（克隆实例）"
+        },
+        {
+          "role_id": "p3/leaf/scoring-expert",
+          "selection": {
+            "any_intents": [
+              "comfyui_verification"
+            ]
+          },
+          "assignment": "需要量化验收档位时按技术维度打分（按需，克隆实例）"
+        }
+      ],
+      "acceptance_defaults": [
+        "authorized-inputs",
+        "dual-platform-evidence",
+        "schema-compat-evidence",
+        "i18n-without-behavior-change",
+        "actual-runtime-evidence"
+      ]
+    }
+  ]
+}

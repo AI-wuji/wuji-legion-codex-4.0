@@ -1,0 +1,17 @@
+# 005：移交资源的目标内容delta与精确依赖版本
+
+日期：2026-10-04。依据v1.6第13.6节、evolution-impact-spec、ADR002以及已有资源/移交来源账；不改冻结设计、不复制旧实现、不修改现用Codex配置。
+
+接收资源的原始TransferPayload仍是不可变origin snapshot，不能被目标delta改写，也不能把目标内容伪装成新的KnowledgeRecord/ExperienceCandidate源版本。schema6新增received_resource_versions：内容revision与ownership revision分开，revision 1由原始移交快照派生，后续版本必须精确引用前一版本ReceivedResourceVersion及完整hash。
+
+目标更新必须带ResourceDelta的expected_revision、scope、实际当前证据、非空reason、idempotency_key和完整revalidation_refs；只允许有界update/显式merge/retire。受保护的scope、origin、evidence、authority、身份和依赖外的字段不能被覆盖；merge不能以最后写入者替换冲突专业标量，集合增量去重，空变化不是进步。目标先写candidate，独立的隔离本地复核才能active_local；同key同payload重放，不同payload冲突，CAS只有一个胜者。
+
+KnowledgeBinding把原始knowledge ExactRef和目标持有的ReceivedResourceVersion ExactRef分开。Experience目标内容每次复用重查目标ACK、owner state、version hash、源文件新鲜度和绑定版本；不能跟随latest，旧review不能激活新候选，知识目标退役/证据变化/版本篡改均拒绝。源端保持冻结只读，目标内容delta不制造第二份可写源事实，不自动晋升领域或全局。
+
+本轮新增真实Rust正反例覆盖：重启与CAS、权限/来源字段保护、父引用和证据重验证、集合merge、单进程竞态、源变动/目标证据变动/篡改、目标退役与历史重放，以及精确知识改版后经验重新绑定。schema5观察型打开仍不迁移；schema6明确init迁移失败整体回滚。T77/T84只在这些完整当前证据通过时计入正式确定性验收，不代表专业效果、原生模型效果或P7。
+
+## 时间线与声音契约补充
+
+媒体准备链继续保持“真实本地输入、精确引用、非专业效果声明”的边界。`TimelineManifest` 在隔离核心内做确定性检查：Story/Shot/MusicCue列表必须逐项绑定当前请求；`TimeBase` 的 origin、Rate及profile证据重新读取；clip span必须一一覆盖请求镜头、正序且不越过Story时长，转场重叠只允许落在当前片段声明范围内。后续复查纠正了此前将任意profile字节称为支持、将引用检查称为最小下游重验的问题，当前真实范围及反例见006。
+
+早期retiming map仅以`timeline_id`+`revision`绑定，不能证明父内容未变；006增加无循环的作用域及时间线内容指纹，并要求完整连续映射。`SoundPackage`绑定精确时间线与MusicCue，重查所有引用；006增加真实PCM stem/render格式检查，但bus/automation/validation语义及专业重验仍未实现。该层不宣称REAPER/剪映执行、声场效果或专业成片质量。

@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "release": "p4-adapters-1",
+  "phase": "P4",
+  "baseline": "docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+  "tools": [
+    {
+      "id": "software-repair/local-dag-validator",
+      "owner": "p4-software-repair",
+      "status": "available-local",
+      "version": "p4-adapter-1",
+      "source": "adapters/p4/software_repair_adapter.py",
+      "action_contract": {
+        "input": "bounded UTF-8 Python source under project root",
+        "output": "hash-bound deterministic validation evidence JSON",
+        "permissions": "read source; write only declared report",
+        "failure": [
+          "path-denied",
+          "size-exceeded",
+          "validator-failed",
+          "unknown-subprocess"
+        ],
+        "recovery": "retain report and rerun only with a new artifact hash"
+      },
+      "runtime_admission": true,
+      "professional_effectiveness": "not_claimed"
+    },
+    {
+      "id": "comfyui",
+      "owner": "comfyui-workflow",
+      "status": "blocked",
+      "reason": "Latest framework task observed connection refused at 127.0.0.1:8898; the earlier successful probe is historical evidence only",
+      "current_health_evidence": "outputs/p4/media-framework-failure-evidence.json",
+      "health_basis": "last bounded task receipt, not a live health check",
+      "version": "0.37.0-observed",
+      "source": "existing local process at 127.0.0.1:8898; no installation or configuration change performed",
+      "endpoint": "http://127.0.0.1:8898",
+      "action_contract": {
+        "input": "existing local image input",
+        "output": "bounded LoadImage -> ImageScale -> SaveImage artifact",
+        "permissions": "read declared input; write one declared probe artifact under existing ComfyUI output and copied project evidence",
+        "failure": [
+          "server-unavailable",
+          "node-error",
+          "artifact-mismatch"
+        ],
+        "recovery": "retain evidence and require a new prompt_id for a new probe"
+      },
+      "runtime_admission": false,
+      "professional_effectiveness": "not_claimed",
+      "bounded_evidence": "outputs/p4/comfyui-probe-evidence.json"
+    },
+    {
+      "id": "officecli",
+      "owner": "document-deck",
+      "status": "available-local-bounded",
+      "version": "1.0.152-exact-original-release-observed",
+      "source": "https://github.com/iOfficeAI/OfficeCLI/releases/tag/v1.0.152",
+      "entrypoint": "C:/Users/Administrator/AppData/Local/OfficeCli/officecli.exe",
+      "adapter": "adapters/p4/officecli_adapter.py",
+      "bounded_evidence": "outputs/p4/officecli-probe-evidence.json",
+      "action_contract": {
+        "input": "new project-isolated text PPTX only",
+        "output": "native editable PPTX and HTML export with exact shape edits and close receipt",
+        "permissions": "only files created by this adapter; no external assets, installer, global config, watcher or resident",
+        "failure": [
+          "version-or-hash-mismatch",
+          "path-denied",
+          "artifact-failed",
+          "protected-configuration-changed"
+        ],
+        "recovery": "retain evidence; do not retry unknown writes or replace existing files"
+      },
+      "professional_effectiveness": "not_claimed",
+      "public_candidate_research": "outputs/p4/tool-discovery-2026-10-04.json",
+      "public_candidate_not_runtime_binding": false,
+      "runtime_admission": true
+    },
+    {
+      "id": "officecli-documents",
+      "owner": "document-workflow",
+      "status": "available-local-bounded",
+      "version": "office-document-adapter-1",
+      "source": "adapters/p4/office_document_workflow.py",
+      "adapter": "adapters/p4/office_document_workflow.py",
+      "workflow_entrypoint": "tools/wuji4.py run-office-doc",
+      "bounded_evidence": "outputs/p4/office-document-workflow-evidence.json",
+      "action_contract": {
+        "input": "new isolated Word or XLSX request using the strict schema; word title plus 1..12 paragraphs or sheet title plus 1..20 label/quantity/unit-price rows",
+        "output": "new direct-child DOCX or XLSX plus receipt; XLSX formula and cached-value checks; Word structure and required-render evidence",
+        "permissions": "read only declared request and pinned local OfficeCLI; create only new direct-child office artifact and receipt; no external assets, global config change, macro, formula parameter, resident process, watcher, MCP or installation",
+        "failure": [
+          "schema-rejected",
+          "path-denied",
+          "artifact-failed",
+          "officecli-observation-failed",
+          "render-unavailable",
+          "protected-configuration-changed"
+        ],
+        "recovery": "retain artifact and evidence; do not overwrite or retry an unknown write; use a new isolated workspace and output path"
+      },
+      "runtime_admission": true,
+      "professional_effectiveness": "not_claimed",
+      "rendering_note": "XLSX bounded workflow passed; DOCX structure and OfficeCLI readback can pass while the required approved renderer remains externally blocked"
+    },
+    {
+      "id": "video-render",
+      "owner": "video-production",
+      "status": "available-local-bounded",
+      "version": "ffmpeg-7.1-observed",
+      "source": "existing imageio_ffmpeg binary under local ComfyUI environment; no installation or PATH change performed",
+      "adapter": "adapters/p4/ffmpeg_workflow.py",
+      "workflow_entrypoint": "tools/wuji4.py run-video",
+      "workflow_evidence": "outputs/p4/video-framework-workflow-evidence.json",
+      "reviewed_binding": {
+        "revision": 4,
+        "identity": {
+          "server": "local-process",
+          "tool": "video-render/png-to-mp4",
+          "entrypoint": "E:/COMFYUI_dapao1/python_dapao313/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "binary_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+          "version_prefix": "ffmpeg version 7.1-essentials_build-"
+        },
+        "interface": {
+          "schema_version": 1,
+          "input_format": "png",
+          "input_direct_child": true,
+          "max_input_bytes": 8388608,
+          "even_dimensions": true,
+          "dimension_range": [
+            2,
+            2048
+          ],
+          "output_format": "mp4",
+          "codec": "libx264",
+          "duration_us": 1000000,
+          "frames": 8,
+          "audio": false,
+          "protocol_whitelist": "file,pipe",
+          "pattern_type": "none",
+          "overwrite": false,
+          "receipt_direct_child": true,
+          "comfyui_fallback": false
+        },
+        "implementation_hashes": {
+          "adapters/p4/ffmpeg_workflow.py": "9f0bd9476624da97db9e7a9dc5fcd49adf3e3fe2e98e76652ab4b97989e0b523",
+          "adapters/p4/media_workflow.py": "d44a10202d5aebf44cb810b4ef67be9ebf48c35870a91e152dfc1b0575ba67ee",
+          "tools/wuji4.py": "e2ef85c4ba509f0acca2406a2af65bfaab2b49a439c0ca0223660550fdfb8731"
+        }
+      },
+      "action_contract": {
+        "input": "one declared direct-child PNG in an isolated task workspace; even dimensions 2..2048 and at most 8 MiB",
+        "output": "bounded one-second eight-frame silent H.264 MP4 with independent process decode and configuration hash checks",
+        "permissions": "read declared input; exclusively create new direct-child video and receipt; no ComfyUI, audio devices or installation",
+        "failure": [
+          "binary-unavailable",
+          "render-failed",
+          "decode-failed",
+          "binding-drift-before-dispatch"
+        ],
+        "recovery": "retain evidence and require a new output path for a new probe"
+      },
+      "runtime_admission": true,
+      "professional_effectiveness": "not_claimed",
+      "bounded_evidence": "outputs/p4/ffmpeg-probe-evidence.json"
+    },
+    {
+      "id": "audio-render",
+      "owner": "voice-audio",
+      "status": "blocked",
+      "reason": "REAPER entrypoint is not found; microphone and audio-device chain remains untouched",
+      "runtime_admission": false
+    }
+  ],
+  "rules": {
+    "no_install": true,
+    "no_fee": true,
+    "no_config_change": true,
+    "blocked_is_not_supported": true,
+    "mock_is_not_native_proof": true
+  }
+}

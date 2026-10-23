@@ -44,6 +44,16 @@ def ref(path: Path, kind: str):
 
 def main() -> None:
     design = read_json(DESIGN_PATH)
+    # This historical generator owns the frozen design only. New consumer roles
+    # must never disappear merely because the old P3 build command is rerun.
+    existing = ROOT / "catalog/p3/experts.json"
+    if existing.is_file():
+        frozen = {f"p3/{item['kind']}/{item['baseline_id']}" for item in design["responsibilities"]}
+        extensions = [role["id"] for role in read_json(existing).get("roles", [])
+                      if role.get("id") not in frozen]
+        if extensions:
+            raise ValueError("Frozen P3 rebuild would discard task-scoped roles; existing catalog preserved: "
+                             + ", ".join(extensions))
     ledger = read_json(LEDGER_PATH)
     requirements = read_json(REQUIREMENT_PATH)
     atom_by_id = {atom["candidate_id"]: atom for atom in ledger["atoms"]}

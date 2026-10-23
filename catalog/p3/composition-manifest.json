@@ -1462,6 +1462,38 @@
         "comfyui-workflow",
         "software-reverse"
       ]
+    },
+    {
+      "role_id": "p3/leaf/motion-graphics",
+      "baseline_id": "motion-graphics",
+      "shared_components": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "professional_difference": {
+        "design_target": "media.motion-graphics/editable-code-animation",
+        "inputs": "MotionBrief+事实/资产/声音权利+画幅/时长/帧率/字幕/声音要求+授权工程路径；修改任务还需工程版本、studio 评论或帧位置及保留项。 专业指引：legion/skills/wuji-legion-4-0/references/motion-graphics.md；真实工具入口：node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs（先 doctor/--help）。",
+        "outputs": "EditableMotionProject(index.html及必要资产)+实际可回读的导出文件+按帧修改记录+画面/时序/字幕/适用声音检查+产物路径/SHA256/工具回执与未测边界。 专业指引：legion/skills/wuji-legion-4-0/references/motion-graphics.md；真实工具入口：node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs（先 doctor/--help）。",
+        "acceptance": "工程可编辑且版本可追溯；要求的评论修改有前后帧/处理回执；独立帧查看及 ffprobe/解码核验实际导出、时长/帧率和适用音轨；确认非目标内容保持。未实际执行项标 unknown/not_run；未通过本次真实验收不更新专业效果或准入，不扩大为其他角色/格式/口播能力通过。",
+        "anti_trigger": "真人/实拍或通用视频生成、纯提示词或普通剪辑请求不据此宣称动效交付；缺授权、工程或真实工具则返回局部缺口。"
+      },
+      "unique_owner": "aji-integration-owner",
+      "write_scope": "role-instance-only; shared definitions are referenced, not copied",
+      "reverse_dependencies": [],
+      "reference_bindings": [
+        "legion/skills/wuji-legion-4-0/references/motion-graphics.md"
+      ],
+      "call_binding": {
+        "launcher": "legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs",
+        "thin_entry": "tools/wuji4.py run-motion",
+        "upstream_skill": "skills/huashu-motion/SKILL.md",
+        "upstream_commit": "5f2608c2e12abcf518f74dde86093b19f7f88603",
+        "reference": "legion/skills/wuji-legion-4-0/references/motion-graphics.md",
+        "configuration_scope": "project_and_request_only; no_global_PATH_provider_or_credentials_change",
+        "failure_policy": "nonzero_or_missing_tool_returns_localized_gap"
+      }
     }
   ],
   "rules": {

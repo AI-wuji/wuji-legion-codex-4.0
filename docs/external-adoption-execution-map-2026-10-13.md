@@ -11,6 +11,10 @@
 
 来源锁中 12 个仓库的运行验证均为 `runtime_verification=not_run`，许可证字段均为 `verification=unknown`。融合记录中的 MIT/Apache/ELv2 描述不等于逐执行资产准入完成；运行接入前应按已有锁和已读许可证文本补判，不把本文档变成重新全量调研。文章 4 个名称由既有融合记录承接；来源锁的 `article_group_13` 当前是空数组，不能声称这 4 项均有独立仓库或全文锁。
 
+## 2026-10-14 补充
+
+Context Mode 方法已有实际脚本消费者：Codex 核心 Skill 的 `scripts/tool-output.mjs` 提供命令捕获、文件短回执和 hash 绑定的有界回读；DSH 接通情况及本次基准见 `docs/tool-output-adoption-2026-10-14.md`。以下 10 月 13 日表保留历史检查点，不能用于否认后续已落地入口；Context Mode 本身仍未安装运行。
+
 ## 16 项逐项映射
 
 | 项目与处置 | 已直接执行的行为/证据 | 当前消费点与生产状态 | 具体缺口 | 按需模式的验收与停止条件 |
@@ -96,3 +100,7 @@
 - `docs/source-decisions.md`：旧来源逐条差异与限制；`catalog/p3/delegation-manifest.json`、`experts.json`：当前目录快照。
 
 交付状态：**本文档已完成；16 个外部运行时未由本次接入或验证，全局 Skill 同步与生产流水线接通未由本次执行。**
+
+## 2026-10-19：新增动效制作真实消费者
+
+新增 `p3/leaf/motion-graphics`（动效制作专家）和现有 `lead.video` 下的 `motion-graphics-delivery` 配方，复用作者固定 npm 发布包。Windows 原生专家实际制作18秒有声可编辑工程，并完成真实 studio 点选评论、局部修改与第二版导出；来源绑定、安装版核心入口、独立复核及具体边界见 [动效制作专家](motion-graphics-expert.md)。这项有界结果不把 HyperFrames 候选状态、原57项职责或95场景历史验收自动改成通过。

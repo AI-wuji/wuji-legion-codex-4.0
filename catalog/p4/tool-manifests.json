@@ -113,7 +113,7 @@
       "workflow_entrypoint": "tools/wuji4.py run-video",
       "workflow_evidence": "outputs/p4/video-framework-workflow-evidence.json",
       "reviewed_binding": {
-        "revision": 4,
+        "revision": 5,
         "identity": {
           "server": "local-process",
           "tool": "video-render/png-to-mp4",
@@ -145,7 +145,7 @@
         "implementation_hashes": {
           "adapters/p4/ffmpeg_workflow.py": "9f0bd9476624da97db9e7a9dc5fcd49adf3e3fe2e98e76652ab4b97989e0b523",
           "adapters/p4/media_workflow.py": "d44a10202d5aebf44cb810b4ef67be9ebf48c35870a91e152dfc1b0575ba67ee",
-          "tools/wuji4.py": "e2ef85c4ba509f0acca2406a2af65bfaab2b49a439c0ca0223660550fdfb8731"
+          "tools/wuji4.py": "19bf4bf64e002a03021df8352639309aa1fda5a087bfc607b400abb6bdaca8cc"
         }
       },
       "action_contract": {
@@ -170,6 +170,38 @@
       "status": "blocked",
       "reason": "REAPER entrypoint is not found; microphone and audio-device chain remains untouched",
       "runtime_admission": false
+    },
+    {
+      "id": "motion-graphics",
+      "owner": "p3/leaf/motion-graphics",
+      "status": "available-local-bounded",
+      "version": "huashu-motion-0.1.1",
+      "source": "https://github.com/alchaincyf/huashu-motion",
+      "adapter": "legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs",
+      "entrypoint": "node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs --root <project-root>",
+      "workflow_entrypoint": "tools/wuji4.py run-motion",
+      "bounded_evidence": "outputs/motion-graphics/integration-evidence.json",
+      "source_lock": {
+        "package": "huashu-motion@0.1.1",
+        "integrity": "sha512-RJAUfR4/kP4FwE/41xwMMTx/Ua5KAGDqg6gwUFcg2DLsLvWaZCDtzL6DYD4FuCoPgCfd+Ek/EMB/xZrwq7QjUg==",
+        "runtime_source": "npm-published-package",
+        "commit_byte_equivalence": "not_claimed"
+      },
+      "action_contract": {
+        "input": "task-scoped motion brief, authorized local assets, editable HTML composition and optional actual audio",
+        "output": "editable project, point-at-frame revision, keyframes, soundtrack, versioned render and actual checks",
+        "permissions": "project-scoped original files and native loopback studio; process-local runtime; publishing, payment, voice-model download and global configuration require separate authority",
+        "failure": [
+          "source-integrity-mismatch",
+          "missing-runtime",
+          "project-scope-conflict",
+          "native-command-failed",
+          "visual-or-audio-check-failed"
+        ],
+        "recovery": "retain original project, versioned outputs and concrete failures; no automatic paid fallback or overwrite"
+      },
+      "professional_effectiveness": "bounded_original_animation_and_real_comment_revision_verified",
+      "runtime_admission": true
     }
   ],
   "rules": {

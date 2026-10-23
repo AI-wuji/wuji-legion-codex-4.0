@@ -198,6 +198,114 @@ class LegionTaskTests(unittest.TestCase):
             self.assertFalse(result["model_generation_submitted"])
             self.assertTrue(all(item.get("role_id") and item.get("catalog_ref") for item in result["selected_expert_refs"]))
 
+    def test_motion_bounded_catalog_admission_never_grants_host_execution(self):
+        request = {"task_id": "motion-admission", "task_class": "complex", "goal": "prepare a bounded motion task",
+                   "domain": "motion_graphics", "typed_intents": ["motion_graphics"], "inputs": [],
+                   "deliverables": ["editable-project"], "acceptance_ids": ["motion-check"]}
+        result = legion.delegate(request)
+        catalog, roles = legion._load_expert_metadata()
+        selected = result["selected_expert_refs"][0]
+        self.assertEqual(roles["p3/leaf/motion-graphics"]["runtime_admission"] is True,
+                         selected["runtime_admission"])
+        self.assertFalse(result["execution_authority"])
+        self.assertFalse(result["runtime_admission"])
+        self.assertEqual(0, result["actual_agents_started"])
+        self.assertEqual("prepared_not_executed", result["state"])
+
+    def test_motion_intents_route_to_one_expert_without_video_prompt_gap_or_score_tie(self):
+        manifest = json.loads(legion.DELEGATION_MANIFEST.read_text(encoding="utf-8"))
+        recipe = next(item for item in manifest["recipes"] if item["recipe_id"] == "motion-graphics-delivery")
+        for domain, intents in [(domain, [intent]) for domain in ("motion_graphics", "animation", "general")
+                                for intent in recipe["typed_intents"]] + [("motion_graphics", []), ("animation", [])]:
+            with self.subTest(domain=domain, intents=intents):
+                request = {"task_id": "motion-route", "goal": "制作可编辑动画并按评论局部修改",
+                           "domain": domain, "typed_intents": intents, "inputs": ["bounded-brief"],
+                           "deliverables": ["editable-project"], "acceptance_ids": ["motion-check"],
+                           "task_class": "complex"}
+                normalized = legion._validate_delegation_request(request)
+                matches = legion._recipe_matches(manifest, normalized["subtasks"][0])
+                self.assertEqual(["motion-graphics-delivery"], [item["recipe_id"] for item in matches])
+                result = legion.delegate(request)
+                self.assertEqual("recipe_selected", result["staff_decision"], result)
+                self.assertEqual("lead.video", result["leader_recipe"]["family_id"])
+                self.assertEqual(["p3/leaf/motion-graphics"], [item["role_id"] for item in result["selected_expert_refs"]])
+                selected = result["selected_expert_refs"][0]
+                for field in ("process", "inputs", "output"):
+                    for required in ("references/motion-graphics.md", "scripts/motion-graphics.mjs"):
+                        self.assertIn(required, selected["five_elements"][field])
+                self.assertEqual([], result["cold_expert_refs"])
+                self.assertEqual(0, result["actual_agents_started"])
+                self.assertFalse(result["runtime_admission"])
+        # Existing video production still uses its original recipe and keeps its real missing reference.
+        legacy = legion.delegate({"task_id": "legacy-video", "goal": "已有视频制作请求", "domain": "video",
+                                  "typed_intents": ["video_production"], "inputs": [],
+                                  "deliverables": ["video"], "acceptance_ids": ["video-check"]})
+        self.assertEqual("selection_gap", legacy["staff_decision"])
+        self.assertEqual("video-production-delivery", legacy["leader_recipe"])
+        self.assertIn("p3/leaf/video-prompt-architect", legacy["missing_expert_refs"])
+        short = legion.delegate({"task_id": "motion-short", "goal": "单专家代码动效", "domain": "motion_graphics",
+                                 "typed_intents": ["animation"], "inputs": [], "deliverables": ["project"],
+                                 "acceptance_ids": ["motion-check"], "task_class": "auto", "requested_expert_count": 1})
+        self.assertEqual(["aji"], short["activation_chain"])
+        self.assertEqual("simple", short["routing_signals"]["resolved_task_class"])
+        unrelated = legion.delegate({"task_id": "unrelated", "goal": "只审查软件", "domain": "software",
+                                     "typed_intents": ["software_review"], "inputs": [],
+                                     "deliverables": ["review"], "acceptance_ids": ["review-check"]})
+        self.assertNotIn("p3/leaf/motion-graphics", [item["role_id"] for item in unrelated["selected_expert_refs"]])
+
+    def test_execute_delegation_passes_complete_motion_assignment_with_fixture_bridge(self):
+        # Exercises the real execution boundary; this bridge proves contracts, not native media quality.
+        with tempfile.TemporaryDirectory(dir=self.root) as temporary:
+            root = Path(temporary).resolve()
+            expert_output = root / "expert.json"
+            final_output = root / "final.json"
+            request = {"task_id": "motion-execute", "goal": "制作和修改有界代码动效",
+                       "domain": "motion_graphics", "typed_intents": ["product_animation"],
+                       "inputs": [], "deliverables": [str(final_output)], "acceptance_ids": ["motion-check"],
+                       "write_roots": [str(root)], "constraints": ["fixture-only"], "task_class": "complex"}
+            calls = []
+            assignment = []
+
+            def bridge(role_kind, contract):
+                calls.append((role_kind, contract["phase"], contract["role_id"]))
+                if contract["phase"] == "plan":
+                    self.assertEqual(["p3/leaf/motion-graphics"], [item["role_id"] for item in contract["candidates"]])
+                    candidate = contract["candidates"][0]
+                    for text in candidate["five_elements"].values():
+                        self.assertIn(text, candidate["assignment"])
+                    assignment.append(candidate["assignment"])
+                    return {"status": "completed", "tasks": [{
+                        "task_id": "motion-expert", "role_id": candidate["role_id"],
+                        "assignment": candidate["assignment"], "inputs": [], "deliverables": [str(expert_output)],
+                        "acceptance_ids": ["motion-check"], "write_roots": [str(root)],
+                        "depends_on": [], "forbidden_actions": [],
+                    }], "host_evidence": {"kind": "python_fixture_not_native"}}
+                if contract["phase"] == "execute":
+                    task = contract["task"]
+                    self.assertEqual(assignment[0], task["assignment"])
+                    self.assertEqual("p3/leaf/motion-graphics", task["role_id"])
+                    for required in ("references/motion-graphics.md", "scripts/motion-graphics.mjs", "run-motion",
+                                     "skills/huashu-motion/SKILL.md", "inbox/look", "ffprobe"):
+                        self.assertIn(required, task["assignment"])
+                    work = task
+                else:
+                    work = contract["work_item"]
+                path = Path(work["deliverables"][0])
+                path.write_text("fixture-contract-only", encoding="utf-8")
+                return {"status": "completed", "producer_task_id": work["task_id"],
+                        "artifacts": [{"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}],
+                        "scope": [str(root)], "acceptance_passed": True, "acceptance_ids": ["motion-check"],
+                        "revision": contract["revision"], "host_evidence": {"kind": "python_fixture_not_native"}}
+
+            result = legion.execute_delegation(request, bridge, max_rework=0)
+            self.assertEqual("completed", result["execution"]["status"], result)
+            self.assertEqual([("leader", "plan", "lead.video"),
+                              ("expert", "execute", "p3/leaf/motion-graphics"),
+                              ("leader", "aggregate", "lead.video")], calls)
+            self.assertEqual(3, result["execution"]["role_callbacks_invoked"])
+            self.assertFalse(result["execution"]["native_execution_observed"])
+            self.assertEqual("not_claimed", result["execution"]["professional_effectiveness"])
+
     def test_shared_experts_can_be_reused_and_broad_leader_match_stays_selection_gap(self):
         software = legion.delegate({
             "task_id": "shared-software",
@@ -468,6 +576,150 @@ class LegionTaskTests(unittest.TestCase):
             self.assertFalse(result["execution"]["native_execution_observed"])
             self.assertEqual("not_claimed", result["execution"]["professional_effectiveness"])
             self.assertEqual("final", final_output.read_text(encoding="utf-8"))
+
+    def test_execute_delegation_keeps_simple_task_direct_to_aji(self):
+        request = {
+            "task_id": "simple-execute",
+            "goal": "解释一个术语",
+            "domain": "general",
+            "typed_intents": ["explanation"],
+            "inputs": [],
+            "deliverables": ["short-answer"],
+            "acceptance_ids": ["direct-answer"],
+            "task_class": "simple",
+        }
+        bridge_called = []
+
+        def bridge(role_kind, contract):
+            bridge_called.append((role_kind, contract))
+            return {"status": "completed", "tasks": []}
+
+        result = legion.execute_delegation(request, bridge)
+        self.assertEqual("direct_to_aji", result["execution"]["status"])
+        self.assertEqual(0, result["execution"]["role_callbacks_invoked"])
+        self.assertEqual([], bridge_called)
+
+    def test_branch_receipt_rejects_forged_style_hash_and_outside_workspace_scope(self):
+        with tempfile.TemporaryDirectory(dir=execution_baseline.ROOT / ".dev" / "core-test-workspaces") as temporary:
+            root = Path(temporary).resolve()
+            artifact = root / "artifact.json"
+            artifact.write_text("{}", encoding="utf-8")
+            digest = hashlib.sha256(artifact.read_bytes()).hexdigest()
+            base = {"status": "completed", "producer_task_id": "upstream", "revision": 1,
+                    "acceptance_passed": True, "scope": [str(root)],
+                    "artifacts": [{"path": str(artifact), "sha256": digest}]}
+            self.assertFalse(legion._validate_branch_receipt({**base, "artifacts": [
+                {"path": str(artifact), "sha256": digest.upper()}]}, "upstream")["accepted"])
+            self.assertFalse(legion._validate_branch_receipt({**base, "artifacts": [
+                {"path": str(artifact), "sha256": "0" * 64}]}, "upstream")["accepted"])
+            self.assertFalse(legion._validate_branch_receipt(
+                {**base, "scope": [str(execution_baseline.ROOT.parent / "outside")]}, "upstream")["accepted"])
+
+    def test_execute_delegation_passes_verified_branch_receipts_to_downstream_leader_and_expert(self):
+        with tempfile.TemporaryDirectory(dir=execution_baseline.ROOT / ".dev" / "core-test-workspaces") as temporary:
+            root = Path(temporary).resolve()
+            source = root / "source.txt"
+            first_output = root / "first.json"
+            second_output = root / "second.json"
+            first_expert = root / "first-expert.json"
+            second_expert = root / "second-expert.json"
+            source.write_text("source", encoding="utf-8")
+            request = {
+                "task_id": "branch-input-gate",
+                "goal": "验证跨主帅分支输入门",
+                "subtasks": [
+                    {"subtask_id": "first", "goal": "先产出资料", "domain": "software",
+                     "typed_intents": ["implementation"], "inputs": [str(source)],
+                     "deliverables": [str(first_output)], "acceptance_ids": ["first-check"],
+                     "write_roots": [str(root)]},
+                    {"subtask_id": "second", "goal": "消费上游资料", "domain": "prompt_meta",
+                     "typed_intents": ["instruction_revision"], "inputs": [str(source)],
+                     "deliverables": [str(second_output)], "acceptance_ids": ["second-check"],
+                     "write_roots": [str(root)], "depends_on": ["first"]},
+                ],
+                "max_parallel_instances": 1,
+            }
+            seen = []
+
+            def bridge(role_kind, contract):
+                phase = contract["phase"]
+                if phase == "plan":
+                    task_id = contract["work_item"]["task_id"]
+                    output = first_expert if task_id == "first" else second_expert
+                    return {"status": "completed", "tasks": [{
+                        "task_id": f"{task_id}-expert", "role_id": contract["candidates"][0]["role_id"],
+                        "assignment": "执行分支专家任务", "inputs": list(contract["work_item"]["inputs"]),
+                        "deliverables": [str(output)], "acceptance_ids": [f"{task_id}-check"],
+                        "write_roots": [str(root)], "depends_on": [], "forbidden_actions": [],
+                    }]}
+                if phase == "execute":
+                    task = contract["task"]
+                    if task["task_id"] == "second-expert":
+                        upstream = contract.get("branch_upstream_receipts", [])
+                        seen.extend(upstream)
+                        self.assertEqual(["first"], [item["producer_task_id"] for item in upstream])
+                    path = Path(task["deliverables"][0])
+                    path.write_text(task["task_id"], encoding="utf-8")
+                    return {"status": "completed", "producer_task_id": task["task_id"],
+                            "artifacts": [{"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}],
+                            "scope": [str(root)], "acceptance_passed": True,
+                            "acceptance_ids": list(task["acceptance_ids"]), "revision": contract["revision"]}
+                work = contract["work_item"]
+                path = first_output if work["task_id"] == "first" else second_output
+                path.write_text(work["task_id"], encoding="utf-8")
+                return {"status": "completed", "producer_task_id": work["task_id"],
+                        "artifacts": [{"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}],
+                        "scope": [str(root)], "acceptance_passed": True,
+                        "acceptance_ids": list(work["acceptance_ids"]), "revision": contract["revision"]}
+
+            result = legion.execute_delegation(request, bridge, max_rework=1)
+            self.assertEqual("completed", result["execution"]["status"], result)
+            self.assertEqual(["first"], [item["producer_task_id"] for item in seen])
+            self.assertIn(str(first_output), result["execution"]["branch_receipts"]["first"]["artifacts"][0]["path"])
+
+    def test_execute_delegation_runs_independent_branch_when_another_branch_has_selection_gap(self):
+        with tempfile.TemporaryDirectory(dir=execution_baseline.ROOT / ".dev" / "core-test-workspaces") as temporary:
+            root = Path(temporary).resolve()
+            output = root / "independent.json"
+            request = {
+                "task_id": "partial-selection-gap",
+                "goal": "缺口只影响相关分支",
+                "subtasks": [
+                    {"subtask_id": "gap", "goal": "没有匹配配方", "domain": "unmapped-domain",
+                     "typed_intents": ["unmapped-intent"], "inputs": [],
+                     "deliverables": [str(root / "gap.json")], "acceptance_ids": ["gap-check"],
+                     "write_roots": [str(root)]},
+                    {"subtask_id": "independent", "goal": "执行独立软件分支", "domain": "software",
+                     "typed_intents": ["implementation"], "inputs": [],
+                     "deliverables": [str(output)], "acceptance_ids": ["independent-check"],
+                     "write_roots": [str(root)]},
+                ],
+                "max_parallel_instances": 1,
+            }
+            calls = []
+
+            def bridge(role_kind, contract):
+                calls.append((role_kind, contract["phase"], contract.get("work_item", {}).get("task_id")))
+                if contract["phase"] == "plan":
+                    return {"status": "completed", "tasks": [{
+                        "task_id": "independent-expert", "role_id": contract["candidates"][0]["role_id"],
+                        "assignment": "执行独立分支", "inputs": [], "deliverables": [str(output)],
+                        "acceptance_ids": ["independent-check"], "write_roots": [str(root)],
+                        "depends_on": [], "forbidden_actions": [],
+                    }]}
+                work = contract.get("task") or contract["work_item"]
+                path = Path(work["deliverables"][0])
+                path.write_text("independent", encoding="utf-8")
+                return {"status": "completed", "producer_task_id": work["task_id"],
+                        "artifacts": [{"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}],
+                        "scope": [str(root)], "acceptance_passed": True,
+                        "acceptance_ids": list(work["acceptance_ids"]), "revision": contract["revision"]}
+
+            result = legion.execute_delegation(request, bridge, max_rework=0)
+            self.assertEqual("selection_gap", result["execution"]["status"], result)
+            self.assertEqual("selection_gap", result["execution"]["branches"]["gap"]["status"])
+            self.assertEqual("completed", result["execution"]["branches"]["independent"]["status"])
+            self.assertTrue(any(task_id == "independent" for _, _, task_id in calls))
 
     def test_wrong_permission_outside_workspace_and_unassigned_parent_paths_are_rejected(self):
         (self.root / "source.txt").write_text("safe", encoding="utf-8")

@@ -1,6 +1,6 @@
 # 主帅/专家团路由摘要
 
-本文件是4.0入口的路由摘要，不是57项专家正文，也不代表任何模型专家已经启动。完整职责、来源、组合依赖和边界以项目 `catalog/p3/experts.json`、`catalog/p3/composition-manifest.json` 与 `catalog/p3/delegation-manifest.json` 为准。
+本文件是4.0入口的路由摘要，不是完整专家正文，也不代表任何模型专家已经启动。完整职责、来源、组合依赖和边界以项目 `catalog/p3/experts.json`、`catalog/p3/composition-manifest.json` 与 `catalog/p3/delegation-manifest.json` 为准。
 
 ## 固定通路
 
@@ -14,11 +14,11 @@
 - 主帅按子任务条件只引用必要专家，未用专家保持冷态；不默认读取或启动配方全部候选成员。
 - 多个主帅及必要专家在工作独立、依赖已满足、写集不冲突且共享预算与并发槽允许时可并发；依赖未满足或写集冲突时按依赖顺序执行，未知退出仍占槽。不为并发强拆步骤，不扩建新平台。
 - 某个子任务没有精确匹配或最高分并列时，对该子任务返回 `selection_gap`；不得全专家兜底或临时创造主帅。缺口只阻塞该子任务及依赖它的分支，无依赖的其他子任务可继续。
-- 当前目录的 `prepared_not_executed`、`runtime_admission=false`、`formal_model_experts=0`、`effectiveness=not_run` 必须如实保留。执行桥的回执只能证明当前调用的角色桥和产物检查；fixture 回调不等于原生模型执行，未提供原生桥时仍返回具体阻塞。`prepared_not_executed` 只表示准备契约，不证明主帅、专家或并发分支已启动、运行或完成；本通路是行为要求，不是现有脚本已完成多分支真实执行的证明。
+- 原57项职责与全局正式模型准入仍保留冷态和未实测边界；新增动效制作角色仅按当前项目 Windows 工具与真实产物证据记录有界准入。`delegate` 的 `prepared_not_executed`、顶层 `runtime_admission=false` 和 `execution_authority=false` 仍只表示准备，选中角色的有界工具准入不授予宿主执行权限。执行桥的回执只能证明当前调用的角色桥和产物检查；fixture 回调不等于原生模型执行，未提供原生桥时仍返回具体阻塞。`prepared_not_executed` 只表示准备契约，不证明主帅、专家或并发分支已启动、运行或完成；本通路是行为要求，不是现有脚本已完成多分支真实执行的证明。
 
 ## 主帅族与配方
 
-当前共有17个主帅族（目录称负责人族）、26条有界配方；其中18条直接承接方案中的workflow职责。配方提供主帅SOP、条件成员和验收模板，不增加指挥层；实际专家定义仅按子任务需要读取，候选成员不等于必用成员。
+当前共有17个主帅族（目录称负责人族）、27条有界配方；其中18条直接承接方案中的workflow职责。配方提供主帅SOP、条件成员和验收模板，不增加指挥层；实际专家定义仅按子任务需要读取，候选成员不等于必用成员。
 
 | 主帅族（负责人标识） | 配方 | 典型领域/意图 | 条件成员示例 |
 |---|---|---|---|
@@ -31,7 +31,7 @@
 | `lead.writing` | `writing-delivery` | 文章、小说、文案、剧本、翻译、结构编辑 | `writing`、`screenwriter`、平台分发/选题方法 |
 | `lead.web` | `web-frontend-delivery`、`web-workbench-delivery` | 网站、前端、工作台、界面、浏览器检查 | `frontend-visual`、`workbench-builder`、`dashboard-review` |
 | `lead.image` | `image-delivery` | 图像生成、编辑、视觉资产、风格方向 | `image-creation`、`art-director` |
-| `lead.video` | `video-production-delivery`、`video-studio-delivery`、`video-post-production` | 成片、系列视频、前期、后期、时间线、导出 | `video-production`、`studio-producer`、`post-production`、媒体审查 |
+| `lead.video` | `video-production-delivery`、`video-studio-delivery`、`motion-graphics-delivery`、`video-post-production` | 成片、系列视频、前期、后期、时间线、导出 | `video-production`、`studio-producer`、`post-production`、媒体审查 |
 | `lead.audio` | `audio-delivery` | 配音、音乐、声音设计、混音、对白对齐 | `voice-audio`、媒体质量审查 |
 | `lead.business` | `business-delivery` | 需求、定位、方案、报价、合同风险、交付 | `business-library`、`client-proposal`、`contract-risk` |
 | `lead.learning` | `learning-delivery` | 课程、讲解、练习、学习复核、模板 | `learning-coach`、`course-design`、`template-curator` |
@@ -72,3 +72,6 @@
 - 仅实际跨代理/上下文交接时，沿现有文件或消息机制保存当前目标、已做、剩余、证据、禁止动作和下一步；不强制每任务建文件或造记忆服务。
 - 缺口只暂停依赖部分；已达到本次交付和必要检查条件即结束，不追加目标、常驻监控或把文字补丁计作正式验收通过。
 
+
+## 动效制作的新增入口
+`motion-graphics-delivery` 隶属现有 `lead.video`，精确匹配 `motion_graphics`/`animation` 域与代码动效、产品动画、动画解说或动效修改意图，只必选 `p3/leaf/motion-graphics`（动效制作专家）。专业方法和真实工具调用见 [motion-graphics](motion-graphics.md)。本配方不消费其他视频配方中尚缺正文的提示词角色；单个简单动效仍可由阿极直接调用新专家。新增角色的实际准入和证据单独核对，不改变原有角色的冷态/未实测状态。

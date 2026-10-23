@@ -70,7 +70,7 @@ def _work_contract(work_item):
     if not isinstance(work_item, dict):
         raise ContractError("work_item: object required")
     task_id = _text(work_item.get("task_id", work_item.get("subtask_id")), "task_id", 128)
-    return {
+    contract = {
         "task_id": task_id,
         "goal": _text(work_item.get("goal"), "goal"),
         "inputs": _strings(work_item.get("inputs"), "inputs"),
@@ -81,6 +81,12 @@ def _work_contract(work_item):
         "forbidden_actions": _strings(work_item.get("forbidden_actions", []),
                                       "forbidden_actions"),
     }
+    upstream = work_item.get("upstream_receipts", [])
+    if not isinstance(upstream, list) or len(upstream) > 16 or any(not isinstance(item, dict) for item in upstream):
+        raise ContractError("upstream_receipts: bounded receipt list required")
+    if upstream:
+        contract["upstream_receipts"] = deepcopy(upstream)
+    return contract
 
 
 def _validate_plan(raw_tasks, work, candidates):
@@ -389,6 +395,8 @@ def execute_branch(branch, work_item, invoke_role, parallel_cap=2, max_rework=1,
                                "constraints": work["constraints"],
                                "forbidden_actions": list(tasks[key]["forbidden_actions"]),
                                "upstream_receipts": [receipts[dep] for dep in tasks[key]["depends_on"]]}
+                    if work.get("upstream_receipts"):
+                        payload["branch_upstream_receipts"] = deepcopy(work["upstream_receipts"])
                     if attempts[key] > 1:
                         payload["rework_reason"] = next((event["reason"] for event in reversed(reworks)
                                                         if event["producer_task_id"] == key),

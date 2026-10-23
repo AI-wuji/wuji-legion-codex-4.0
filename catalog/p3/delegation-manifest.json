@@ -6,7 +6,7 @@
   "catalog": "catalog/p3/experts.json",
   "leader_family_count": 17,
   "workflow_role_count": 18,
-  "recipe_count": 26,
+  "recipe_count": 27,
   "leader_family_ids": [
     "lead.comfyui",
     "lead.software",
@@ -39,7 +39,7 @@
     "unused_experts": "cold"
   },
   "expert_coverage": {
-    "source_role_count": 57,
+    "source_role_count": 58,
     "unbound_role_ids": [
       "p3/leaf/comfyui-cpp-kernel",
       "p3/leaf/comfyui-debug-performance",
@@ -1780,6 +1780,42 @@
         "schema-compat-evidence",
         "i18n-without-behavior-change",
         "actual-runtime-evidence"
+      ]
+    },
+    {
+      "recipe_id": "motion-graphics-delivery",
+      "domains": [
+        "motion_graphics",
+        "animation"
+      ],
+      "typed_intents": [
+        "motion_graphics",
+        "product_animation",
+        "animated_explainer",
+        "animation",
+        "code_animation",
+        "motion_revision"
+      ],
+      "leader": {
+        "id": "lead.video",
+        "family_id": "lead.video",
+        "kind": "delivery_recipe",
+        "responsibility": "组织代码动效、可编辑工程、局部修改和实际导出验收；不激活无关视频角色",
+        "title": "视频制作主帅"
+      },
+      "expert_refs": [
+        {
+          "role_id": "p3/leaf/motion-graphics",
+          "selection": {
+            "required": true
+          },
+          "assignment": "动效制作专家（p3/leaf/motion-graphics）。目标：按已授权简报制作代码动效、产品动画或解释动画，交付可编辑工程、局部修改及实际导出证据。；输入：MotionBrief+事实/资产/声音权利+画幅/时长/帧率/字幕/声音要求+授权工程路径；修改任务还需工程版本、studio 评论或帧位置及保留项。 专业指引：legion/skills/wuji-legion-4-0/references/motion-graphics.md；真实工具入口：node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs（先 doctor/--help）。；过程与失败：先读 legion/skills/wuji-legion-4-0/references/motion-graphics.md 和唯一上游 alchaincyf/huashu-motion@5f2608c2e12abcf518f74dde86093b19f7f88603 的 skills/huashu-motion/SKILL.md；用 node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs doctor 检查真实工具，通过同一 launcher 的 new/studio/inbox/look/done/set/check/still/voice/sound/render/qa/learn/undo 按需调用上游 om，CLI 参数以正文及真实 --help 为准。薄入口 tools/wuji4.py run-motion 复用同一 launcher。按需制作可编辑 HTML 动画、检查画面/时序/字幕/适用声音，评论修改须 inbox/look→局部修改→done。只写任务授权范围，保留既有修改；不自动激活其他角色。缺输入、工具、权限、声音资产或命令非零时返回具体缺口及已产物，不伪造导出、QA 或模型/原生调用回执。；输出：EditableMotionProject(index.html及必要资产)+实际可回读的导出文件+按帧修改记录+画面/时序/字幕/适用声音检查+产物路径/SHA256/工具回执与未测边界。 专业指引：legion/skills/wuji-legion-4-0/references/motion-graphics.md；真实工具入口：node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs（先 doctor/--help）。；验收：工程可编辑且版本可追溯；要求的评论修改有前后帧/处理回执；独立帧查看及 ffprobe/解码核验实际导出、时长/帧率和适用音轨；确认非目标内容保持。未实际执行项标 unknown/not_run；未通过本次真实验收不更新专业效果或准入，不扩大为其他角色/格式/口播能力通过。；反触发：真人/实拍或通用视频生成、纯提示词或普通剪辑请求不据此宣称动效交付；缺授权、工程或真实工具则返回局部缺口。"
+        }
+      ],
+      "acceptance_defaults": [
+        "editable-motion-project",
+        "frame-timing-and-subtitle-review",
+        "requested-audio-and-export-evidence"
       ]
     }
   ]

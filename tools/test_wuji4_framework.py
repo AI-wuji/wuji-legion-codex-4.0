@@ -244,7 +244,8 @@ class Wuji4FrameworkTests(unittest.TestCase):
             return read_text(path, *args, **kwargs)
 
         def bounded_inventory(path):
-            self.assertIn(path, {source, source / "references", installed, installed / "references"})
+            self.assertIn(path, {source, source / "references", source / "scripts",
+                                 installed, installed / "references", installed / "scripts"})
             return iterdir(path)
 
         with mock.patch.object(Path, "read_bytes", bounded_bytes), mock.patch.object(

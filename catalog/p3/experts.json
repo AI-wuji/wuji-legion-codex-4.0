@@ -23,7 +23,7 @@
     "sha256": "ddb0924a39736195bbc7d5c69c71f5a19876dc32846060b2c87b24bc79a0dcca",
     "kind": "p0_requirement_map"
   },
-  "role_count": 57,
+  "role_count": 58,
   "roles": [
     {
       "id": "p3/workflow/code-repair",
@@ -13166,9 +13166,86 @@
       "effectiveness": "not_run",
       "active_release": false,
       "cold_reason": "P3 catalog contract is written, but professional effectiveness and required source/asset coverage remain unverified."
+    },
+    {
+      "id": "p3/leaf/motion-graphics",
+      "title": "动效制作专家",
+      "baseline_id": "motion-graphics",
+      "kind": "leaf",
+      "design_target": "media.motion-graphics/editable-code-animation",
+      "five_elements": {
+        "goal": "按已授权简报制作代码动效、产品动画或解释动画，交付可编辑工程、局部修改及实际导出证据。",
+        "inputs": "MotionBrief+事实/资产/声音权利+画幅/时长/帧率/字幕/声音要求+授权工程路径；修改任务还需工程版本、studio 评论或帧位置及保留项。 专业指引：legion/skills/wuji-legion-4-0/references/motion-graphics.md；真实工具入口：node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs（先 doctor/--help）。",
+        "process": "先读 legion/skills/wuji-legion-4-0/references/motion-graphics.md 和唯一上游 alchaincyf/huashu-motion@5f2608c2e12abcf518f74dde86093b19f7f88603 的 skills/huashu-motion/SKILL.md；用 node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs doctor 检查真实工具，通过同一 launcher 的 new/studio/inbox/look/done/set/check/still/voice/sound/render/qa/learn/undo 按需调用上游 om，CLI 参数以正文及真实 --help 为准。薄入口 tools/wuji4.py run-motion 复用同一 launcher。按需制作可编辑 HTML 动画、检查画面/时序/字幕/适用声音，评论修改须 inbox/look→局部修改→done。只写任务授权范围，保留既有修改；不自动激活其他角色。缺输入、工具、权限、声音资产或命令非零时返回具体缺口及已产物，不伪造导出、QA 或模型/原生调用回执。",
+        "output": "EditableMotionProject(index.html及必要资产)+实际可回读的导出文件+按帧修改记录+画面/时序/字幕/适用声音检查+产物路径/SHA256/工具回执与未测边界。 专业指引：legion/skills/wuji-legion-4-0/references/motion-graphics.md；真实工具入口：node legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs（先 doctor/--help）。",
+        "acceptance": "工程可编辑且版本可追溯；要求的评论修改有前后帧/处理回执；独立帧查看及 ffprobe/解码核验实际导出、时长/帧率和适用音轨；确认非目标内容保持。未实际执行项标 unknown/not_run；未通过本次真实验收不更新专业效果或准入，不扩大为其他角色/格式/口播能力通过。"
+      },
+      "anti_trigger": "真人/实拍或通用视频生成、纯提示词或普通剪辑请求不据此宣称动效交付；缺授权、工程或真实工具则返回局部缺口。",
+      "owner_rule": "task node assignment only; shared leaf is not permanently owned by leader",
+      "scope_rule": "read and write grant required for every exact ref; no inferred user decision",
+      "cancellation": "return localized checkpoint and existing project/export hashes; external completion unknown remains unknown",
+      "atom_refs": [],
+      "composition_dependencies": [
+        "course-five-elements",
+        "minimum-correct",
+        "white-hat",
+        "versioned-handoff"
+      ],
+      "source_refs": [
+        {
+          "kind": "upstream_skill",
+          "repository": "alchaincyf/huashu-motion",
+          "commit": "5f2608c2e12abcf518f74dde86093b19f7f88603",
+          "package_version": "0.1.1",
+          "path": "skills/huashu-motion/SKILL.md",
+          "sha256": "8c836ae7d729a1f433012dfd23d5f8603f83eea181fe0f42edaef5a8553f6e7c",
+          "adoption_scope": "one_upstream_skill_via_project_scoped_launcher; no_other_role_or_service_import"
+        }
+      ],
+      "catalog_extension": {
+        "kind": "task_scoped_consumer_extension",
+        "consumer": "motion-graphics-delivery",
+        "baseline_role_count": 57,
+        "frozen_design_membership": false,
+        "meaning": "New task-authorized role; not retroactively added to the frozen P1 design or historical atom ledger."
+      },
+      "reference_bindings": [
+        "legion/skills/wuji-legion-4-0/references/motion-graphics.md"
+      ],
+      "call_binding": {
+        "launcher": "legion/skills/wuji-legion-4-0/scripts/motion-graphics.mjs",
+        "thin_entry": "tools/wuji4.py run-motion",
+        "upstream_skill": "skills/huashu-motion/SKILL.md",
+        "upstream_commit": "5f2608c2e12abcf518f74dde86093b19f7f88603",
+        "reference": "legion/skills/wuji-legion-4-0/references/motion-graphics.md",
+        "configuration_scope": "project_and_request_only; no_global_PATH_provider_or_credentials_change",
+        "failure_policy": "nonzero_or_missing_tool_returns_localized_gap"
+      },
+      "body_state": "task_scoped_reference_and_call_contract_written",
+      "runtime_admission": true,
+      "effectiveness": "bounded_actual_task_verified",
+      "active_release": true,
+      "cold_reason": "On-demand instances only; bounded Windows toolchain verified, no autonomous host permissions.",
+      "runtime_admission_basis": {
+        "scope": "current_project_local_windows_code_animation_and_comment_revision",
+        "evidence": "outputs/motion-graphics/integration-evidence.json",
+        "source": "npm:huashu-motion@0.1.1",
+        "native_role_tool": "multi_agent_v1",
+        "formal_model_admission": false,
+        "excludes": [
+          "generated_voice_backends",
+          "transparent_exports",
+          "other_platforms",
+          "all_professional_roles",
+          "unattended_publication"
+        ]
+      }
     }
   ],
   "runtime_admission": false,
   "formal_model_experts": 0,
-  "effectiveness": "not_run"
+  "effectiveness": "not_run",
+  "bounded_runtime_extensions": [
+    "p3/leaf/motion-graphics"
+  ]
 }

@@ -225,7 +225,17 @@ impl Store {
         }
         let plan_hash = strict_json::object_digest(envelope)?;
         let binding_hash = catalog.map(|binding| binding.digest()).transpose()?;
-        let event_hash = strict_json::digest(&json!({"plan_hash":plan_hash,"catalog_binding_hash":binding_hash}))?;
+        // Plan replay is keyed by the semantic proposal. Timestamps and the
+        // content hash are derived metadata, so a replay with fresh metadata
+        // must remain idempotent instead of becoming a conflicting payload.
+        let mut replay_identity = envelope.clone();
+        if let Some(metadata) = replay_identity.get_mut("metadata").and_then(Value::as_object_mut) {
+            metadata.remove("created_at_utc_ms");
+            metadata.remove("updated_at_utc_ms");
+            metadata.remove("content_hash");
+        }
+        let replay_plan_hash = strict_json::object_digest(&replay_identity)?;
+        let event_hash = strict_json::digest(&json!({"plan_hash":replay_plan_hash,"catalog_binding_hash":binding_hash}))?;
         let key = format!("plan:{}",strict_json::digest(&json!([self.scope,workflow.workflow_id]))?);
         let now = wall_clock()?;
         let duration = i64::try_from(workflow.budget.wall_ms).map_err(|_| Error::new(ErrorKind::BudgetExhausted, "deadline overflow"))?;
@@ -598,6 +608,10 @@ mod tests {
         let mut store = Store::open(&root).unwrap();
         let mut blueprint = plan(&store,"task",&[("write","result.txt")],&[],1);
         let result = store.plan(&blueprint).unwrap();
+        assert_eq!(store.plan(&blueprint).unwrap(),result);
+        blueprint["metadata"]["created_at_utc_ms"] = json!(2);
+        blueprint["metadata"]["updated_at_utc_ms"] = json!(2);
+        rehash(&mut blueprint);
         assert_eq!(store.plan(&blueprint).unwrap(),result);
         assert_eq!(count(&store,"tasks"),1);
         blueprint["payload"]["budget"]["wall_ms"] = json!(60001);

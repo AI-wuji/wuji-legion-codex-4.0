@@ -14,6 +14,8 @@ import importlib
 import json
 import stat
 import sys
+import shutil
+import subprocess
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -40,6 +42,10 @@ CORE_SKILL_FILES = (
     "references/media.md",
     "references/research.md",
     "references/external-capability-adoption-2026-10-13.md",
+    "references/tool-output.md",
+    "scripts/tool-output.mjs",
+    "references/motion-graphics.md",
+    "scripts/motion-graphics.mjs",
 )
 
 
@@ -92,11 +98,11 @@ def _core_skill_inventory(root: Path, boundary: Path) -> dict[str, Path]:
     files = {}
     for child in root.iterdir():
         _observation_path(child, boundary)
-        if child.name == "references" and child.is_dir():
+        if child.name in {"references", "scripts"} and child.is_dir():
             for reference in child.iterdir():
                 _observation_path(reference, boundary)
                 suffix = "/" if reference.is_dir() else ""
-                files[f"references/{reference.name}{suffix}"] = reference
+                files[f"{child.name}/{reference.name}{suffix}"] = reference
         else:
             suffix = "/" if child.is_dir() else ""
             files[f"{child.name}{suffix}"] = child
@@ -380,12 +386,28 @@ def _office_document_workflow_result(workspace: str, request_json: str, receipt_
             "professional_effectiveness": "not_claimed", "P7": False, "shutdown": False}
 
 
+def run_motion(arguments: list[str]) -> int:
+    """Forward one motion task to the project-bound native CLI, preserving its exit code."""
+    launcher = SOURCE_SKILL / "scripts/motion-graphics.mjs"
+    if not launcher.is_file():
+        raise ValueError("Motion graphics launcher is missing")
+    node = shutil.which("node")
+    if node is None:
+        raise ValueError("Node.js 22 or newer is required for motion graphics")
+    if not arguments:
+        raise ValueError("A motion command is required; use run-motion doctor")
+    return subprocess.run([node, str(launcher), "--root", str(ROOT), *arguments],
+                          cwd=ROOT, check=False).returncode
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Wuji Legion 4.0 project-local framework shell")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("status")
     commands.add_parser("doctor")
     commands.add_parser("capabilities")
+    motion_parser = commands.add_parser("run-motion", help="Run the motion graphics expert tool")
+    motion_parser.add_argument("motion_arguments", nargs=argparse.REMAINDER)
     route_parser = commands.add_parser("route")
     route_parser.add_argument("kind")
     delegation_parser = commands.add_parser("delegate")
@@ -418,8 +440,12 @@ def main() -> None:
     office_document_parser.add_argument("request_json")
     office_document_parser.add_argument("confirmation")
     office_document_parser.add_argument("--receipt", default=None)
-    arguments = parser.parse_args()
+    # REMAINDER alone still rejects an option before the first positional operand.
+    arguments = (argparse.Namespace(command="run-motion", motion_arguments=sys.argv[2:])
+                 if sys.argv[1:2] == ["run-motion"] else parser.parse_args())
     try:
+        if arguments.command == "run-motion":
+            raise SystemExit(run_motion(arguments.motion_arguments))
         if arguments.command == "status":
             result = status()
         elif arguments.command == "doctor":

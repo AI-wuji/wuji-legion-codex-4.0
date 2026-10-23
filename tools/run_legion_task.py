@@ -5,6 +5,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import time
 import uuid
 from pathlib import Path
 
@@ -114,7 +115,8 @@ def _load_delegation_manifest():
 def _load_expert_metadata():
     catalog = strict_json(EXPERT_CATALOG.read_text(encoding="utf-8"))
     roles = catalog.get("roles")
-    if catalog.get("role_count") != 57 or not isinstance(roles, list):
+    if (type(catalog.get("role_count")) is not int
+            or not 1 <= catalog["role_count"] <= 128 or not isinstance(roles, list)):
         raise ValueError("Cold expert catalog is malformed")
     metadata = {}
     for role in roles:
@@ -332,7 +334,7 @@ def _select_experts(recipe, task, expert_metadata):
             "composition_dependencies": role.get("composition_dependencies", []),
             "scope_rule": role.get("scope_rule"),
             "cancellation": role.get("cancellation"),
-            "runtime_admission": False,
+            "runtime_admission": role.get("runtime_admission") is True,
             "active_release": role.get("active_release") is True,
             "effectiveness": role.get("effectiveness"),
             "selection_basis": reason,
@@ -512,6 +514,68 @@ def _validate_upstream_receipt(contract, receipt):
     return {"accepted": True, "decision": "continue", "missing_fields": []}
 
 
+def _branch_work(source, branch, upstream_receipts=()):
+    context = branch.get("required_context", {})
+    acceptance = context.get("acceptance_ids") or branch.get("leader_recipe", {}).get("acceptance_defaults", [])
+    inputs = list(context.get("inputs", source["inputs"]))
+    for receipt in upstream_receipts:
+        for artifact in receipt.get("artifacts", []):
+            path = artifact.get("path") if isinstance(artifact, dict) else None
+            if isinstance(path, str) and path not in inputs:
+                inputs.append(path)
+    work = {"task_id": source["subtask_id"], "subtask_id": source["subtask_id"], "goal": source["goal"],
+            "inputs": inputs,
+            "deliverables": list(source["deliverables"]),
+            "acceptance_ids": list(acceptance),
+            "write_roots": list(context.get("write_roots", source["write_roots"])),
+            "constraints": list(context.get("constraints", source["constraints"])),
+            "forbidden_actions": list(context.get("forbidden_actions", source.get("forbidden_actions", [])))}
+    if upstream_receipts:
+        work["upstream_receipts"] = [dict(receipt) for receipt in upstream_receipts]
+    return work
+
+
+def _validate_branch_receipt(receipt, producer_task_id):
+    if not isinstance(receipt, dict):
+        return {"accepted": False, "reason": "branch receipt is not an object"}
+    if receipt.get("status") != "completed":
+        return {"accepted": False, "reason": "branch did not complete"}
+    if receipt.get("producer_task_id") != producer_task_id:
+        return {"accepted": False, "reason": "branch producer_task_id does not match dependency"}
+    if type(receipt.get("revision")) is not int or receipt["revision"] < 1:
+        return {"accepted": False, "reason": "branch revision is invalid"}
+    if receipt.get("acceptance_passed") is not True:
+        return {"accepted": False, "reason": "branch acceptance did not pass"}
+    artifacts = receipt.get("artifacts")
+    if not isinstance(artifacts, list) or not artifacts:
+        return {"accepted": False, "reason": "branch supplied no artifacts"}
+    scope = receipt.get("scope")
+    if isinstance(scope, str):
+        scope = [scope]
+    if not isinstance(scope, list) or any(not isinstance(item, str) or not item.strip() for item in scope):
+        return {"accepted": False, "reason": "branch scope is malformed"}
+    project_root = str((ROOT).resolve())
+    if any(not _root_contains(project_root, item) for item in scope):
+        return {"accepted": False, "reason": "branch scope is outside the workspace"}
+    for artifact in artifacts:
+        if not isinstance(artifact, dict):
+            return {"accepted": False, "reason": "branch artifact is malformed"}
+        path_value = artifact.get("path")
+        digest = artifact.get("sha256")
+        if (not isinstance(path_value, str) or not isinstance(digest, str) or len(digest) != 64
+                or any(character not in "0123456789abcdef" for character in digest)):
+            return {"accepted": False, "reason": "branch artifact path/hash is invalid"}
+        path = (ROOT / path_value).resolve()
+        if (not path.is_file() or not _root_contains(project_root, str(path))
+                or (scope and not any(_root_contains(scope_root, str(path)) for scope_root in scope))):
+            return {"accepted": False, "reason": "branch artifact is missing or outside its declared scope"}
+        with path.open("rb") as stream:
+            actual = hashlib.file_digest(stream, "sha256").hexdigest()
+        if actual != digest:
+            return {"accepted": False, "reason": f"branch artifact hash changed: {path_value}"}
+    return {"accepted": True, "reason": "current branch receipt and artifact hashes are valid"}
+
+
 def _staff_subtask(manifest, catalog, expert_metadata, task, parallel_cap=3):
     matches = _recipe_matches(manifest, task)
     common = {"subtask_id": task["subtask_id"], "task_id": task["task_id"], "goal": task["goal"],
@@ -648,63 +712,127 @@ def execute_delegation(request, invoke_role, *, max_rework=1):
         return {**prepared, "execution": {"status": "direct_to_aji",
                                          "role_callbacks_invoked": 0,
                                          "native_execution_observed": False}}
-    if prepared.get("state") == "selection_gap":
+    raw_branches = prepared.get("branches") if normalized["composite"] else [prepared]
+    if prepared.get("state") == "selection_gap" and not normalized["composite"]:
         return {**prepared, "execution": {"status": "selection_gap",
                                          "role_callbacks_invoked": 0,
                                          "native_execution_observed": False}}
+    preparation = prepared.get("parallel_preparation", {})
     if not callable(invoke_role):
+        if normalized["composite"] and prepared.get("state") == "selection_gap" and not preparation.get("groups"):
+            return {**prepared, "execution": {"status": "selection_gap",
+                                             "role_callbacks_invoked": 0,
+                                             "native_execution_observed": False}}
         raise ValueError("execute_delegation requires a caller-owned invoke_role bridge")
-    raw_branches = prepared.get("branches") if normalized["composite"] else [prepared]
     source_subtasks = {item["subtask_id"]: item for item in normalized["subtasks"]}
+    branch_by_id = {branch["subtask_id"]: branch for branch in raw_branches}
     parallel_cap = normalized["max_parallel_instances"]
     results = {}
     branch_receipts = {}
+    branch_attempts = {branch_id: 0 for branch_id in branch_by_id}
+    branch_rework_events = []
     execution_slots = BoundedSemaphore(parallel_cap)
 
-    def run_one(branch):
-        subtask_id = branch["subtask_id"]
-        source = source_subtasks[subtask_id]
-        context = branch.get("required_context", {})
-        acceptance = context.get("acceptance_ids") or branch.get("leader_recipe", {}).get("acceptance_defaults", [])
-        work = {"task_id": subtask_id, "subtask_id": subtask_id, "goal": source["goal"],
-                "inputs": list(context.get("inputs", source["inputs"])),
-                "deliverables": list(source["deliverables"]),
-                "acceptance_ids": list(acceptance),
-                "write_roots": list(context.get("write_roots", source["write_roots"])),
-                "constraints": list(context.get("constraints", source["constraints"])),
-                "forbidden_actions": list(context.get("forbidden_actions", source.get("forbidden_actions", [])))}
-        result = execute_branch(branch, work, invoke_role, parallel_cap=parallel_cap,
-                               max_rework=max_rework, execution_slots=execution_slots)
-        return subtask_id, result
-
-    groups = prepared.get("parallel_preparation", {}).get("groups", [])
-    if not groups:
-        groups = [[branch["subtask_id"] for branch in raw_branches if branch.get("state") != "selection_gap"]]
-    for group in groups:
-        runnable = [branch for branch in raw_branches if branch["subtask_id"] in group
-                    and branch.get("state") != "selection_gap"]
-        if not runnable:
-            continue
-        if len(runnable) == 1:
-            subtask_id, result = run_one(runnable[0])
-            results[subtask_id] = result
+    blocked_by_gap = preparation.get("blocked_branches", {})
+    gap_ids = {branch["subtask_id"] for branch in raw_branches if branch.get("state") == "selection_gap"}
+    for branch_id, blockers in blocked_by_gap.items():
+        if branch_id in gap_ids:
+            results[branch_id] = {"status": "selection_gap", "failures": [{
+                "decision": "selection_gap", "producer_task_id": branch_id,
+                "reason": "leader or expert selection is unresolved"}]}
         else:
+            results[branch_id] = {"status": "blocked", "failures": [{
+                "decision": "blocked", "producer_task_id": branch_id,
+                "reason": f"blocked by selection gap: {', '.join(blockers)}"}]}
+
+    def execute_once(branch_id, upstream_receipts):
+        branch = branch_by_id[branch_id]
+        source = source_subtasks[branch_id]
+        work = _branch_work(source, branch, upstream_receipts)
+        branch_attempts[branch_id] += 1
+        result = execute_branch(branch, work, invoke_role, parallel_cap=parallel_cap,
+                                max_rework=max_rework, execution_slots=execution_slots)
+        results[branch_id] = result
+        if result.get("status") == "completed" and result.get("receipt") is not None:
+            branch_receipts[branch_id] = result["receipt"]
+        else:
+            branch_receipts.pop(branch_id, None)
+        return result
+
+    def ensure_branch_ready(branch_id, stack=()):
+        if branch_id in gap_ids or branch_id in blocked_by_gap:
+            return None
+        if branch_id in stack:
+            return None
+        existing = results.get(branch_id)
+        if existing and existing.get("status") == "completed":
+            receipt = branch_receipts.get(branch_id)
+            checked = _validate_branch_receipt(receipt, branch_id)
+            if checked["accepted"]:
+                return receipt
+            branch_rework_events.append({"producer_task_id": branch_id,
+                                         "decision": "rework_upstream",
+                                         "reason": checked["reason"]})
+        elif existing and existing.get("status") in {"failed", "unknown"}:
+            return None
+        if branch_attempts[branch_id] >= 1 + max_rework:
+            branch_rework_events.append({"producer_task_id": branch_id,
+                                         "decision": "rework_exhausted",
+                                         "reason": "branch re-execution limit reached"})
+            return None
+        source = source_subtasks[branch_id]
+        upstream = []
+        for dependency in source["depends_on"]:
+            receipt = ensure_branch_ready(dependency, (*stack, branch_id))
+            if receipt is None:
+                return None
+            upstream.append(receipt)
+        result = execute_once(branch_id, upstream)
+        if result.get("status") != "completed":
+            return None
+        checked = _validate_branch_receipt(branch_receipts.get(branch_id), branch_id)
+        return branch_receipts[branch_id] if checked["accepted"] else None
+
+    def collect_upstream(branch_id):
+        upstream = []
+        for dependency in source_subtasks[branch_id]["depends_on"]:
+            receipt = ensure_branch_ready(dependency, (branch_id,))
+            if receipt is None:
+                return None
+            upstream.append(receipt)
+        return upstream
+
+    groups = preparation.get("groups", [])
+    for group in groups:
+        runnable = [branch_id for branch_id in group
+                    if branch_id in branch_by_id and branch_id not in gap_ids
+                    and branch_id not in blocked_by_gap]
+        ready = {}
+        for branch_id in runnable:
+            upstream = collect_upstream(branch_id)
+            if upstream is None:
+                results[branch_id] = {"status": "blocked", "failures": [{
+                    "decision": "blocked", "producer_task_id": branch_id,
+                    "reason": "required upstream branch is unavailable or failed input validation"}]}
+                continue
+            ready[branch_id] = upstream
+        if len(ready) == 1:
+            branch_id, upstream = next(iter(ready.items()))
+            execute_once(branch_id, upstream)
+        elif ready:
             with ThreadPoolExecutor(max_workers=parallel_cap) as pool:
-                futures = [pool.submit(run_one, branch) for branch in runnable]
+                futures = {pool.submit(execute_once, branch_id, upstream): branch_id
+                           for branch_id, upstream in ready.items()}
                 for future in futures:
-                    subtask_id, result = future.result()
-                    results[subtask_id] = result
-        for subtask_id in group:
-            if subtask_id in results and results[subtask_id].get("status") == "completed":
-                branch_receipts[subtask_id] = results[subtask_id].get("receipt")
-        for subtask_id in group:
-            if subtask_id not in results:
-                results[subtask_id] = {"status": "blocked", "failures": [{
-                    "decision": "blocked", "producer_task_id": subtask_id,
-                    "reason": "selection gap or unavailable upstream branch"}]}
+                    future.result()
+
     statuses = {key: value.get("status") for key, value in results.items()}
     if any(value == "unknown" for value in statuses.values()):
         status = "unknown"
+    elif any(value == "failed" for value in statuses.values()):
+        status = "failed"
+    elif gap_ids:
+        status = "selection_gap"
     elif any(value != "completed" for value in statuses.values()):
         status = "failed"
     else:
@@ -712,6 +840,7 @@ def execute_delegation(request, invoke_role, *, max_rework=1):
     return {**prepared, "state": status, "execution_state": status,
             "execution": {"status": status, "branches": results,
                            "branch_receipts": branch_receipts,
+                           "rework_events": branch_rework_events,
                            "role_callbacks_invoked": sum(result.get("callback_invocations", 0)
                                                          for result in results.values()),
                            "native_execution_observed": any(
@@ -719,8 +848,9 @@ def execute_delegation(request, invoke_role, *, max_rework=1):
                                for result in results.values() for event in result.get("execution_evidence", [])),
                            "formal_runtime_admission": False,
                            "professional_effectiveness": "not_claimed"},
-            "not_done": (["professional validation"] if status == "completed" else
-                         ["successful role execution", "professional validation"])}
+            "not_done": (["selection gaps and their dependent branches"] if status == "selection_gap" else
+                          ["professional validation"] if status == "completed" else
+                          ["successful role execution", "professional validation"])}
 
 def route(kind):
     active = load_active()
@@ -790,6 +920,7 @@ def run_copy(workspace, task, source, output, confirmation):
     state = call("init", workspace)
     reference = call("register-input", workspace, "user/legion-copy-source", source)
     role = state["admitted_local_program_ref"]
+    now_ms = time.time_ns() // 1_000_000
     plan = {"schema_version": 1, "contract_type": "WorkflowPlan", "payload": {
         "workflow_id": task, "version": "1", "catalog_version": role["release"],
         "nodes": [{"id": "copy", "role_ref": role, "owner": "local-executor", "revision": 1,
@@ -802,7 +933,8 @@ def run_copy(workspace, task, source, output, confirmation):
                    "max_parallel_workers": 1, "max_extra_retries": 0, "max_point_revisions": 2, "max_no_progress": 1}},
         "metadata": {"id": task, "type": "WorkflowPlan", "scope": state["scope"], "schema_version": 1,
                      "revision": 1, "owner": "aji-local", "authority": "review_proposal", "status": "proposal",
-                     "source_refs": [], "evidence_refs": [], "created_at_utc_ms": 1, "updated_at_utc_ms": 1,
+                     "source_refs": [], "evidence_refs": [], "created_at_utc_ms": now_ms,
+                     "updated_at_utc_ms": now_ms,
                      "valid_until_utc_ms": None, "classification": "project_private", "parent_refs": []}}
     directory = ROOT / ".dev/legion-invocations" / uuid.uuid4().hex
     directory.mkdir(parents=True)
@@ -810,7 +942,22 @@ def run_copy(workspace, task, source, output, confirmation):
     proposal.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
     plan["metadata"]["content_hash"] = call("object-hash", proposal)["sha256"]
     proposal.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
-    call("plan", workspace, proposal)
+    try:
+        call("plan", workspace, proposal)
+    except ValueError as error:
+        # The plan carries fresh observational timestamps, while the existing
+        # Rust store keys replay by task identity. Treat a conflict as a
+        # replay only when that task already has an invocation; a changed
+        # source/output still reaches run-local and is rejected by its stale
+        # input/write binding checks.
+        if not str(error).startswith("EventConflict:"):
+            raise
+        try:
+            existing = call("execution-summary", workspace, task)
+        except ValueError:
+            raise error
+        if existing.get("recorded_invocations", 0) < 1:
+            raise error
     executed = call("run-local", workspace, task, "copy", source, output)
     summary = call("execution-summary", workspace, task)
     completed = summary["result_state"] == "completed_bounded_task"

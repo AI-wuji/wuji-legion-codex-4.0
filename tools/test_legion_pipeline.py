@@ -460,5 +460,107 @@ class LegionPipelineFixtureTests(unittest.TestCase):
         self.assertEqual(1, result["callback_invocations"])
 
 
+
+
+class DirectExpertExecutionTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="legion-direct-experts-")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        self.source = self.root / "source.txt"
+        self.source.write_text("declared source", encoding="utf-8")
+        self.work = {"task_id": "branch", "goal": "bounded direct work",
+                     "inputs": [str(self.source)], "deliverables": [str(self.root / "final.txt")],
+                     "acceptance_ids": ["final-checked"], "write_roots": [str(self.root)],
+                     "constraints": ["fixture-only"], "forbidden_actions": ["publish-external"]}
+
+    def task(self, key, *, role="expert/search", dependencies=None):
+        output_dir = self.root / key
+        return {"task_id": key, "role_id": role, "assignment": f"local assignment {key}",
+                "inputs": [str(self.source)], "deliverables": [str(output_dir / "artifact.txt")],
+                "acceptance_ids": [f"checked-{key}"], "write_roots": [str(output_dir)],
+                "depends_on": dependencies or []}
+
+    def receipt(self, task, revision):
+        artifacts = []
+        for name in task["deliverables"]:
+            path = Path(name)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(f"{task['task_id']} revision {revision}", encoding="utf-8")
+            artifacts.append({"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
+        return {"status": "completed", "producer_task_id": task["task_id"], "artifacts": artifacts,
+                "scope": list(task["write_roots"]), "acceptance_passed": True,
+                "acceptance_ids": list(task["acceptance_ids"]), "revision": revision,
+                "host_evidence": {"kind": "python_fixture_not_native"}}
+
+    def test_direct_experts_skips_leader_and_runs_same_role_instances_in_parallel(self):
+        from legion_pipeline import execute_direct_experts
+        tasks = [self.task("direct-a"), self.task("direct-b")]
+        barrier = threading.Barrier(2)
+        def bridge(role_kind, contract):
+            self.assertEqual("expert", role_kind)
+            self.assertEqual("execute", contract["phase"])
+            barrier.wait(timeout=5)
+            return self.receipt(contract["task"], contract["revision"])
+        result = execute_direct_experts(self.work, tasks, bridge, parallel_cap=2)
+        self.assertEqual("completed", result["status"], result["failures"])
+        self.assertEqual("aji", result["aggregation_owner"])
+        self.assertEqual({"direct-a", "direct-b"}, set(result["expert_receipts"]))
+        self.assertEqual(2, result["callback_invocations"])
+
+    def test_direct_expert_dependencies_wait_for_completed_upstream(self):
+        from legion_pipeline import execute_direct_experts
+        first = self.task("direct-first")
+        second = self.task("direct-second", dependencies=["direct-first"])
+        completed = set()
+        def bridge(role_kind, contract):
+            task = contract["task"]
+            if task["task_id"] == "direct-second":
+                self.assertEqual({"direct-first"}, {item["producer_task_id"]
+                                                     for item in contract["upstream_receipts"]})
+            result = self.receipt(task, contract["revision"])
+            completed.add(task["task_id"])
+            return result
+        result = execute_direct_experts(self.work, [first, second], bridge, parallel_cap=2)
+        self.assertEqual("completed", result["status"], result["failures"])
+        self.assertEqual({"direct-first", "direct-second"}, completed)
+
+    def test_direct_read_only_expert_returns_structured_result_without_acceptance_gate(self):
+        from legion_pipeline import execute_direct_experts
+        work = {"task_id": "read-task", "goal": "Search read-only sources", "inputs": [],
+                "deliverables": ["source findings"], "acceptance_ids": ["source-findings"],
+                "write_roots": [], "constraints": [], "forbidden_actions": ["write-files"]}
+        task = {"task_id": "github-search", "role_id": "expert/search",
+                "assignment": "Search only GitHub sources", "inputs": [],
+                "deliverables": ["source findings"], "acceptance_ids": ["source-findings"],
+                "write_roots": [], "depends_on": []}
+        def bridge(role_kind, contract):
+            return {"status": "completed", "producer_task_id": contract["task"]["task_id"],
+                    "revision": contract["revision"], "result": {"findings": ["project A"]},
+                    "sources": ["https://github.com/example/project"]}
+        result = execute_direct_experts(work, [task], bridge)
+        self.assertEqual("completed", result["status"], result["failures"])
+        receipt = result["expert_receipts"]["github-search"]
+        self.assertEqual({"findings": ["project A"]}, receipt["result"])
+        self.assertNotIn("acceptance_passed", receipt)
+    def test_direct_expert_unknown_blocks_only_dependents_and_continues_independent(self):
+        from legion_pipeline import execute_direct_experts
+        tasks = [self.task("direct-a"),
+                 self.task("direct-downstream", dependencies=["direct-a"]),
+                 self.task("direct-independent")]
+        calls = []
+        def bridge(role_kind, contract):
+            task_id = contract["task"]["task_id"]
+            calls.append(task_id)
+            if task_id == "direct-a":
+                return {"status": "unknown"}
+            return self.receipt(contract["task"], contract["revision"])
+        result = execute_direct_experts(self.work, tasks, bridge, parallel_cap=1)
+        self.assertEqual("unknown", result["status"])
+        self.assertEqual(["direct-a", "direct-independent"], calls)
+        self.assertNotIn("direct-downstream", calls)
+        self.assertIn("direct-independent", result["expert_receipts"])
+        self.assertEqual("blocked", result["task_states"]["direct-downstream"])
+
 if __name__ == "__main__":
     unittest.main()

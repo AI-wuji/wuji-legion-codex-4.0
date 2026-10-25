@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "wuji-legion-5-0",
+  "status": "active_project_entry",
+  "entry": "skills/wuji-legion-5-0/SKILL.md",
+  "routes": {
+    "research": "skills/wuji-legion-5-0/references/multi-source-research.md",
+    "expert_capabilities": "skills/wuji-legion-5-0/references/expert-capability-index.md",
+    "direct_expert_execution": "Codex current-session native subagents; tools/run_legion_task.py CLI is auxiliary only",
+    "context_continuity": "skills/wuji-legion-5-0/references/context-continuity.md"
+  },
+  "activation": {
+    "installed": true,
+    "automatic_discovery_enabled": true,
+    "replaces_current_entry": true,
+    "requires_explicit_user_authorization": false,
+    "cli_route": "Auxiliary/diagnostic only; not native current-session delegation",
+    "expert_execution": "Codex current-session native subagents: spawn_agent/send_input/wait_agent/close_agent; CLI and app-server are auxiliary/diagnostic only and are not equivalent to current-session native delegation",
+    "expert_execution_scope": "Use current conversation model, sandbox, permissions and tools; MoE cold activation per task; no auto-confirm permission escalation",
+    "default_cli_route": "python tools/run_legion_task.py route research",
+    "compatibility_cli_route": "python tools/run_legion_task.py route research --version 4.0"
+  },
+  "execution_contract": {
+    "default_executor": "aji",
+    "staff_layer_required": false,
+    "leader_agent_required": false,
+    "workflow_recipes_are_loadable_knowledge": true,
+    "experts_are_task_scoped_roles": true,
+    "expert_fanout": "same_specialist_may_run_multiple_disjoint_instances_when_native_host_supports_it",
+    "concurrency": "start_all_ready_independent_authorized_branches_early",
+    "serial_only_for": [
+      "real_data_dependency",
+      "shared_write_conflict",
+      "permission_or_resource_limit",
+      "user_authorization_boundary"
+    ],
+    "user_interruption": "answer_interruption_then_resume_original_unless_explicitly_cancelled_or_replaced",
+    "acceptance": "only_on_user_request_or_specific_material_risk_or_unobservable_result_that_changes_next_action",
+    "role_activation": {
+      "all_roles_are_moe": true,
+      "default_state": "cold_suspended",
+      "activate": "only_selected_task_scoped_instances",
+      "load": "only_required_role_brief_and_capability_refs",
+      "unused_roles": "remain_cold_not_loaded_not_invoked",
+      "completion": "close_release_instance_retain_definition",
+      "dependency_wait": "retain_minimal_checkpoint_or_host_suspend",
+      "unsupported_suspend": "close_and_resume_via_native_host_state_without_claiming_residency"
+    },
+    "context_continuity": {
+      "persist": "only_long_or_cross_context_tasks",
+      "reuse_native_handoff": true,
+      "resume_fields": [
+        "goal_and_authority",
+        "completed_actions_and_artifact_refs",
+        "open_branches_and_dependencies",
+        "status_and_blockers",
+        "source_refs",
+        "single_next_action"
+      ],
+      "no_second_memory_store": true,
+      "interruption": "answer_then_resume_unless_explicitly_cancelled"
+    },
+    "native_host": "Codex native subagents: spawn_agent/send_input/wait_agent/close_agent; direct Aji orchestration; only selected experts active; reuse current conversation model and permissions"
+  },
+  "authority": "References define routing and task contracts only; they do not grant tool permissions, install capabilities, or prove runtime execution."
+}

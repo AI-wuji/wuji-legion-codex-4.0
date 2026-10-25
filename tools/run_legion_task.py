@@ -695,6 +695,48 @@ def delegate(request):
             "not_done": ["native model execution", "expert runtime admission", "professional validation"]}
 
 
+def execute_aji_direct_experts(work_item, expert_tasks, invoke_role, *, parallel_cap=2,
+                               execution_slots=None):
+    """5.0 opt-in entry: Aji routes straight to selected experts.
+
+    Unlike ``delegate``/``execute_delegation``, this path does not load the
+    staff recipe manifest, select a leader, or invoke a leader. It reuses the
+    existing bounded role bridge and receipt checks. 4.0 entrypoints remain
+    unchanged; callers must explicitly choose this function.
+    """
+    from legion_pipeline import execute_direct_experts
+
+    _, roles = _load_expert_metadata()
+    if not isinstance(expert_tasks, list) or not expert_tasks:
+        raise ValueError("5.0 direct expert execution requires explicit expert tasks")
+    unknown = sorted({item.get("role_id") for item in expert_tasks
+                      if isinstance(item, dict) and item.get("role_id") not in roles})
+    malformed = any(not isinstance(item, dict) or not isinstance(item.get("role_id"), str)
+                    for item in expert_tasks)
+    if malformed or unknown:
+        return {"communicator": "aji", "operation": "5.0-direct-experts",
+                "state": "selection_gap", "unknown_expert_roles": unknown,
+                "actual_agents_started": 0, "staff_invoked": False,
+                "leader_invoked": False, "execution": {"status": "selection_gap"}}
+    result = execute_direct_experts(work_item, expert_tasks, invoke_role,
+                                    parallel_cap=parallel_cap,
+                                    execution_slots=execution_slots)
+    return {"communicator": "aji", "operation": "5.0-direct-experts",
+            "task_id": work_item.get("task_id") if isinstance(work_item, dict) else None,
+            "state": result.get("status"),
+            "activation_chain": ["aji", "selected_expert_instances"],
+            "staff_invoked": False, "leader_invoked": False,
+            "actual_agents_started": result.get("callback_invocations", 0),
+            "runtime_admission": False,
+            "native_execution_observed": any(
+                isinstance(item.get("callback_result"), dict)
+                and isinstance(item["callback_result"].get("host_evidence"), dict)
+                and item["callback_result"]["host_evidence"].get("native") is True
+                for item in result.get("execution_evidence", [])),
+            "execution": result,
+            "aggregation_owner": "aji",
+            "not_done": [] if result.get("status") == "completed" else
+                        ["resolve reported direct-expert failures or blocked dependencies"]}
 def execute_delegation(request, invoke_role, *, max_rework=1):
     """Run selected branches through a caller-owned role bridge once.
 
@@ -852,9 +894,42 @@ def execute_delegation(request, invoke_role, *, max_rework=1):
                           ["professional validation"] if status == "completed" else
                           ["successful role execution", "professional validation"])}
 
-def route(kind):
+def route(kind, *, version="5.0"):
     active = load_active()
-    manifest = strict_json((PACK / "task-entry.json").read_text(encoding="utf-8"))
+    if version not in {"4.0", "5.0"}:
+        raise ValueError("Only explicit 4.0 or 5.0 task routes are supported")
+    manifest_name = "task-entry-5.0.json" if version == "5.0" else "task-entry.json"
+    manifest = strict_json((PACK / manifest_name).read_text(encoding="utf-8"))
+    if version == "5.0":
+        activation = manifest.get("activation", {})
+        if (manifest.get("schema_version") != 1 or manifest.get("name") != "wuji-legion-5-0"
+                or activation.get("installed") is not True
+                or activation.get("automatic_discovery_enabled") is not True):
+            raise ValueError("Only the installed 5.0 entry is supported")
+        guidance_routes = {"research", "expert_capabilities", "context_continuity"}
+        relative_paths = [manifest.get("entry")]
+        if kind in guidance_routes:
+            relative_paths.append(manifest["routes"][kind])
+        elif kind not in {"chat", "rewrite", "engineering", "documents", "media", "evolution"}:
+            raise ValueError("Unknown 5.0 guidance kind; use the explicit direct-experts command for execution")
+        context = []
+        for relative in relative_paths:
+            if not isinstance(relative, str) or not relative or Path(relative).is_absolute():
+                raise ValueError("5.0 guidance requires a nonempty relative pack path")
+            path = (PACK / relative).resolve()
+            if not path.is_relative_to(PACK.resolve()) or not path.is_file():
+                raise ValueError("5.0 guidance must exist within the independent pack")
+            data = path.read_bytes()
+            if len(data) > 32 * 1024:
+                raise ValueError("5.0 guidance exceeds the bounded context target")
+            context.append({"path": path.relative_to(ROOT).as_posix(), "sha256": hashlib.sha256(data).hexdigest(),
+                            "content": data.decode("utf-8"), "bytes": len(data)})
+        return {"communicator": "aji", "version": "5.0", "kind": kind,
+                "state": "guidance_loaded_not_executed", "context": context,
+                "direct_experts_supported": True, "staff_graph_required": False,
+                "actual_agents_started": 0, "model_generation_submitted": False,
+                "execution_authority": False, "P7": False,
+                "not_done": ["model execution", "professional validation"]}
     if (manifest.get("schema_version") != 1 or manifest.get("installed") is not False
             or manifest.get("automatic_discovery_enabled") is not False or manifest.get("P7") is not False):
         raise ValueError("Only the isolated uninstalled task entry is supported")
@@ -916,7 +991,7 @@ def run_copy(workspace, task, source, output, confirmation):
     workspace = isolated_workspace(workspace)
     if not task or len(task.encode("utf-8")) > 128 or any(ord(character) < 32 for character in task):
         raise ValueError("Task identity must be nonempty and bounded")
-    guidance = route("engineering")
+    guidance = route("engineering", version="4.0")
     state = call("init", workspace)
     reference = call("register-input", workspace, "user/legion-copy-source", source)
     role = state["admitted_local_program_ref"]
@@ -971,11 +1046,73 @@ def run_copy(workspace, task, source, output, confirmation):
         "P7": False, "shutdown": False}
 
 
+def make_local_codex_expert_invoker(*, timeout=180, close_timeout=90):
+    """Build an ephemeral Codex expert bridge with per-task read/write scope."""
+    import shutil
+    from native_host_session import NativeSession
+    from legion_pipeline import make_native_role_invoker
+    codex = shutil.which("codex")
+    if not codex:
+        raise ValueError("Codex CLI is unavailable; no alternate host is selected")
+    def session_factory(role_kind, contract):
+        return NativeSession([codex, "app-server", "--listen", "stdio://"], ROOT)
+    def request_builder(role_kind, contract):
+        if role_kind != "expert" or contract.get("phase") != "execute":
+            raise ValueError("5.0 bridge accepts expert execute turns only")
+        task = contract.get("task")
+        if not isinstance(task, dict):
+            raise ValueError("Expert task contract required")
+        work_roots = [Path(item).resolve() for item in task.get("write_roots", [])]
+        for root in work_roots:
+            if not root.is_relative_to(ROOT.resolve()):
+                raise ValueError("Writable expert roots must stay inside this project")
+        writable = bool(work_roots)
+        _, roles = _load_expert_metadata()
+        role = roles.get(task.get("role_id"))
+        if not role:
+            raise ValueError("Unknown expert role")
+        prompt = {"instruction": "完成分配的专家任务。仅使用当前宿主确实提供且本次已授权的能力；严格遵守write_roots和forbidden_actions，不外发、不安装。只输出一个JSON对象，不输出markdown或思考过程。只在所有指定交付物已经存在、且回执内容与结果一致时报告completed；能力/来源不可用时写入limitations。",
+                  "role": {key: role.get(key) for key in ("id", "kind", "design_target", "five_elements", "anti_trigger", "scope_rule") if key in role},
+                  "contract": contract,
+                  "receipt_shape": {"status": "completed", "producer_task_id": task["task_id"], "revision": contract["revision"], "result": {}, "sources": [], "limitations": []}}
+        return {"thread": {"ephemeral": True, "cwd": str(ROOT),
+                            "sandbox": "workspace-write" if writable else "read-only",
+                            "approvalPolicy": "on-request"},
+                "turn": {"input": [{"type": "text", "text": json.dumps(prompt, ensure_ascii=False)}],
+                         "sandboxPolicy": ({"type": "workspaceWrite", "writableRoots": [str(root) for root in work_roots], "networkAccess": False}
+                                           if writable else {"type": "readOnly", "networkAccess": True}),
+                         "approvalPolicy": "on-request"}}
+    return make_native_role_invoker(session_factory, request_builder, timeout=timeout, close_timeout=close_timeout)
+
+def run_direct_experts(request_path, *, parallel_cap=2, confirm_model_call=False):
+    if confirm_model_call is not True:
+        raise ValueError("A real model call requires --confirm-model-call for this invocation")
+    path = Path(request_path).resolve(strict=True)
+    if not path.is_file() or path.stat().st_size > 128 * 1024:
+        raise ValueError("5.0 direct-expert request must be a bounded JSON file")
+    request = strict_json(path.read_text(encoding="utf-8"))
+    if not isinstance(request, dict) or set(request) - {"work_item", "expert_tasks", "parallel_cap"}:
+        raise ValueError("5.0 direct-expert request has unsupported fields")
+    if "parallel_cap" in request:
+        parallel_cap = request["parallel_cap"]
+    tasks = request.get("expert_tasks")
+    if type(parallel_cap) is not int or not 1 <= parallel_cap <= 3:
+        raise ValueError("parallel_cap must be in 1..3")
+    work_item = request.get("work_item")
+    if not isinstance(work_item, dict):
+        raise ValueError("5.0 parent work_item is required")
+    if not isinstance(tasks, list) or not tasks:
+        raise ValueError("5.0 expert_tasks are required")
+    return execute_aji_direct_experts(work_item, tasks,
+                                      make_local_codex_expert_invoker(), parallel_cap=parallel_cap)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Lightweight isolated task entry; existing CLI owns task state")
     commands = parser.add_subparsers(dest="command", required=True)
     routing = commands.add_parser("route")
     routing.add_argument("kind")
+    routing.add_argument("--version", choices=("4.0", "5.0"), default="5.0")
     delegation = commands.add_parser("delegate")
     delegation.add_argument("request_json")
     copying = commands.add_parser("run-copy")
@@ -984,18 +1121,25 @@ def main():
     copying.add_argument("source")
     copying.add_argument("output")
     copying.add_argument("confirmation")
+    direct = commands.add_parser("direct-experts")
+    direct.add_argument("request_json")
+    direct.add_argument("--parallel-cap", type=int, default=2)
+    direct.add_argument("--confirm-model-call", action="store_true")
     summary = commands.add_parser("summary")
     summary.add_argument("workspace")
     summary.add_argument("task")
     arguments = parser.parse_args()
     try:
         if arguments.command == "route":
-            result = route(arguments.kind)
+            result = route(arguments.kind, version=arguments.version)
         elif arguments.command == "delegate":
             request_path = Path(arguments.request_json).resolve(strict=True)
             if not request_path.is_file() or request_path.stat().st_size > 32 * 1024:
                 raise ValueError("Delegation request must be a bounded JSON file")
             result = delegate(strict_json(request_path.read_text(encoding="utf-8")))
+        elif arguments.command == "direct-experts":
+            result = run_direct_experts(arguments.request_json, parallel_cap=arguments.parallel_cap,
+                                        confirm_model_call=arguments.confirm_model_call)
         elif arguments.command == "summary":
             result = call("execution-summary", isolated_workspace(arguments.workspace), arguments.task)
         else:
@@ -1010,4 +1154,3 @@ if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     sys.stderr.reconfigure(encoding="utf-8")
     main()
-

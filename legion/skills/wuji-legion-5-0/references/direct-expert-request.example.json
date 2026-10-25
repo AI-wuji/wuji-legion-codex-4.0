@@ -1,0 +1,60 @@
+{
+  "work_item": {
+    "task_id": "research-task",
+    "goal": "比较所提供问题的相关证据，只读并简要交付",
+    "inputs": [],
+    "deliverables": [
+      "research findings"
+    ],
+    "acceptance_ids": [
+      "findings-returned"
+    ],
+    "write_roots": [],
+    "constraints": [
+      "只读取当前会话允许访问的来源"
+    ],
+    "forbidden_actions": [
+      "write-files",
+      "external-send"
+    ]
+  },
+  "expert_tasks": [
+    {
+      "task_id": "github-sources",
+      "role_id": "p3/workflow/research",
+      "assignment": "仅研究GitHub来源并返回结论、来源与限制",
+      "inputs": [],
+      "deliverables": [
+        "GitHub findings"
+      ],
+      "acceptance_ids": [
+        "findings-returned"
+      ],
+      "write_roots": [],
+      "depends_on": [],
+      "forbidden_actions": [
+        "write-files",
+        "external-send"
+      ]
+    },
+    {
+      "task_id": "official-sources",
+      "role_id": "p3/workflow/research",
+      "assignment": "仅研究官方文档来源并返回结论、来源与限制",
+      "inputs": [],
+      "deliverables": [
+        "official-source findings"
+      ],
+      "acceptance_ids": [
+        "findings-returned"
+      ],
+      "write_roots": [],
+      "depends_on": [],
+      "forbidden_actions": [
+        "write-files",
+        "external-send"
+      ]
+    }
+  ],
+  "parallel_cap": 2
+}

@@ -19,22 +19,22 @@ class LegionTaskTests(unittest.TestCase):
         self.root = self.fixture.workspace
 
     def test_simple_and_professional_route_load_only_needed_context_without_agents(self):
-        simple = legion.route("chat")
+        simple = legion.route("chat", version="4.0")
         self.assertTrue(simple["direct_answer"])
         self.assertFalse(simple["staff_graph_required"])
         self.assertEqual(len(simple["context"]), 1)
-        professional = legion.route("engineering")
+        professional = legion.route("engineering", version="4.0")
         self.assertEqual(len(professional["context"]), 2)
         self.assertIn("engineering.md", professional["context"][1]["path"])
         self.assertEqual(professional["actual_agents_started"], 0)
         self.assertFalse(professional["execution_authority"])
         for kind in ("research", "documents", "media", "evolution"):
-            related = legion.route(kind)
+            related = legion.route(kind, version="4.0")
             self.assertEqual(len(related["context"]), 2)
             self.assertIn(f"{kind}.md", related["context"][1]["path"])
             self.assertFalse(related["model_generation_submitted"])
         with self.assertRaises(ValueError):
-            legion.route("all-experts")
+            legion.route("all-experts", version="4.0")
 
     def test_complex_delegation_builds_aji_staff_leader_expert_return_contract_without_execution(self):
         result = legion.delegate({
@@ -750,11 +750,11 @@ class LegionTaskTests(unittest.TestCase):
                     changed = dict(manifest, **{field: True})
                     path.write_text(json.dumps(changed), encoding="utf-8")
                     with self.assertRaisesRegex(ValueError, "isolated uninstalled"):
-                        legion.route("engineering")
+                        legion.route("engineering", version="4.0")
                     value = json.dumps(manifest)
                     path.write_text(value[:-1] + "," + json.dumps(field) + ":false}", encoding="utf-8")
                     with self.assertRaisesRegex(ValueError, "Duplicate"):
-                        legion.route("engineering")
+                        legion.route("engineering", version="4.0")
 
     def test_malformed_routes_do_not_fall_back_to_all_experts_or_load_external_content(self):
         manifest = json.loads((legion.PACK / "task-entry.json").read_text(encoding="utf-8"))
@@ -769,13 +769,62 @@ class LegionTaskTests(unittest.TestCase):
                                {**manifest["routes"], "chat": "references/media.md"}):
                     (pack / "task-entry.json").write_text(json.dumps(dict(manifest, routes=routes)), encoding="utf-8")
                     with self.assertRaises(ValueError):
-                        legion.route("engineering")
+                        legion.route("engineering", version="4.0")
 
 
+class DirectExpertRoutingTests(unittest.TestCase):
+    def test_explicit_5_route_loads_target_guidance_and_4_remains_compatible(self):
+        current = legion.route("research", version="4.0")
+        target = legion.route("research", version="5.0")
+        self.assertEqual("1.7", current["active_plan_version"])
+        self.assertIn("wuji-legion-4-0", current["context"][0]["path"])
+        self.assertIn("wuji-legion-5-0", target["context"][0]["path"])
+        self.assertFalse(target["staff_graph_required"])
+        self.assertTrue(target["direct_experts_supported"])
+        self.assertEqual(0, target["actual_agents_started"])
+        self.assertFalse(target["model_generation_submitted"])
+        with self.assertRaisesRegex(ValueError, "explicit direct-experts command"):
+            legion.route("direct_expert_execution", version="5.0")
+
+    def test_default_route_is_5_0_after_codex_activation(self):
+        self.assertEqual("5.0", legion.route("research")["version"])
+
+    def test_direct_experts_requires_per_invocation_model_call_confirmation(self):
+        with mock.patch.object(legion, "make_local_codex_expert_invoker") as bridge:
+            with self.assertRaisesRegex(ValueError, "--confirm-model-call"):
+                legion.run_direct_experts("does-not-need-to-exist.json")
+        bridge.assert_not_called()
+
+    def test_aji_direct_expert_opt_in_skips_staff_and_leader(self):
+        request = {"task_id": "direct-one", "goal": "Use the selected research expert",
+                   "inputs": [], "deliverables": ["short research result"],
+                   "acceptance_ids": ["answer-bound-to-sources"], "write_roots": [],
+                   "constraints": [], "forbidden_actions": ["external-send"]}
+        expert_tasks = [{"task_id": "source-a", "role_id": "p3/workflow/research",
+                         "assignment": "Research one independent source range",
+                         "inputs": [], "deliverables": ["short research result"],
+                         "acceptance_ids": ["answer-bound-to-sources"], "write_roots": [],
+                         "depends_on": []}]
+        with mock.patch("legion_pipeline.execute_direct_experts") as execute:
+            execute.return_value = {"status": "completed", "callback_invocations": 1,
+                                    "execution_evidence": [{"callback_result": {"host_evidence": {"native": True}}}],
+                                    "expert_receipts": {}, "task_states": {}, "failures": []}
+            result = legion.execute_aji_direct_experts(request, expert_tasks, lambda *_: None)
+        execute.assert_called_once()
+        self.assertEqual("5.0-direct-experts", result["operation"])
+        self.assertEqual(["aji", "selected_expert_instances"], result["activation_chain"])
+        self.assertFalse(result["staff_invoked"])
+        self.assertFalse(result["leader_invoked"])
+        self.assertTrue(result["native_execution_observed"])
+
+    def test_aji_direct_experts_rejects_unknown_roles_without_invocation(self):
+        with mock.patch("legion_pipeline.execute_direct_experts") as execute:
+            result = legion.execute_aji_direct_experts(
+                {"task_id": "gap"},
+                [{"task_id": "x", "role_id": "p3/unknown/expert"}], lambda *_: None)
+        execute.assert_not_called()
+        self.assertEqual("selection_gap", result["state"])
+        self.assertFalse(result["staff_invoked"])
+        self.assertFalse(result["leader_invoked"])
 if __name__ == "__main__":
     unittest.main()
-
-
-
-
-

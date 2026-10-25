@@ -115,7 +115,7 @@ def _validate_plan(raw_tasks, work, candidates):
         if any(not _inside(root, parent_roots) for root in _roots(task["write_roots"])):
             raise ContractError("plan: write_roots exceed branch scope")
         allowed = _roots(task["write_roots"] or task["inputs"])
-        if any(not _inside(_path(path), allowed) for path in task["deliverables"]):
+        if task["write_roots"] and any(not _inside(_path(path), allowed) for path in task["deliverables"]):
             raise ContractError("plan: deliverables exceed task scope")
         tasks[task["task_id"]] = task
     seen = set()
@@ -239,6 +239,158 @@ def make_native_role_invoker(session_factory, request_builder, *, timeout=180, c
     return invoke
 
 
+def _validate_direct_receipt(task, raw, revision):
+    """Validate value-only read results lightly; retain hash/scope checks for writes."""
+    if not isinstance(raw, dict) or raw.get("status") != "completed":
+        raise ContractError("direct receipt: completed object required")
+    if raw.get("producer_task_id") != task["task_id"]:
+        raise ContractError("direct receipt: exact producer task required")
+    if type(raw.get("revision")) is not int or raw["revision"] != revision:
+        raise ContractError("direct receipt: exact revision required")
+    if task["write_roots"]:
+        return _validate_receipt(task, raw, revision)
+    if "result" not in raw:
+        raise ContractError("read-only direct receipt: result required")
+    try:
+        encoded = __import__("json").dumps(raw["result"], ensure_ascii=False,
+                                           allow_nan=False, separators=(",", ":")).encode("utf-8")
+    except (TypeError, ValueError, RecursionError) as error:
+        raise ContractError("read-only direct receipt: result must be finite JSON") from error
+    if len(encoded) > 1_048_576:
+        raise ContractError("read-only direct receipt: result exceeds 1 MiB")
+    return {"status": "completed", "producer_task_id": task["task_id"],
+            "revision": revision, "result": deepcopy(raw["result"]),
+            "sources": deepcopy(raw.get("sources", [])),
+            "limitations": deepcopy(raw.get("limitations", []))}
+def execute_direct_experts(work_item, tasks, invoke_role, *, parallel_cap=2, execution_slots=None):
+    """Run Aji-selected expert instances directly, without staff/leader calls.
+
+    This reuses the bounded task/receipt contract and caller-owned native role
+    bridge. It performs no leader planning or aggregation; Aji owns final merge.
+    Each task's role_id is selected by the caller from a 5.0 recipe. Same-role
+    instances are allowed when their task ids/scopes are disjoint.
+    """
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import BoundedSemaphore
+
+    evidence, receipts, failures, states = [], {}, [], {}
+    try:
+        if type(parallel_cap) is not int or not 1 <= parallel_cap <= 3:
+            raise ContractError("parallel_cap: integer in 1..3 required")
+        if not callable(invoke_role):
+            raise ContractError("invoke_role: caller-owned bridge required")
+        if execution_slots is not None and not hasattr(execution_slots, "acquire"):
+            raise ContractError("execution_slots: semaphore-like shared budget required")
+        work = _work_contract(work_item)
+        if not isinstance(tasks, list) or not 1 <= len(tasks) <= 16:
+            raise ContractError("direct expert tasks: 1..16 required")
+        candidates = {_text(task.get("role_id"), "role_id", 256)
+                      for task in tasks if isinstance(task, dict)}
+        if len(candidates) == 0:
+            raise ContractError("direct expert tasks: selected role ids required")
+        normalized = _validate_plan(tasks, work, candidates)
+        for key, task in normalized.items():
+            states[key] = "pending"
+    except (ContractError, OSError, TypeError, KeyError, ValueError) as error:
+        return {"status": "failed", "producer_task_id": None,
+                "expert_receipts": {}, "task_states": {},
+                "execution_evidence": [], "failures": [{"decision": "invalid_contract",
+                                                            "reason": str(error)[:512]}],
+                "runtime_admission": False, "formal_admission": False}
+
+    slots = execution_slots or BoundedSemaphore(parallel_cap)
+
+    def invoke(task, upstream):
+        payload = {"phase": "execute", "role_id": task["role_id"],
+                   "task": task, "revision": 1,
+                   "constraints": work["constraints"],
+                   "forbidden_actions": list(task["forbidden_actions"]),
+                   "upstream_receipts": upstream}
+        try:
+            slots.acquire()
+            raw = invoke_role("expert", deepcopy(payload))
+            return raw, payload
+        except Exception as error:
+            return {"status": "unknown", "failure": f"{type(error).__name__}: {str(error)[:512]}"}, payload
+        finally:
+            slots.release()
+
+    pending = set(normalized)
+    pool = ThreadPoolExecutor(max_workers=parallel_cap)
+    try:
+        while pending:
+            ready = [key for key in sorted(pending)
+                     if all(states.get(dep) == "completed" for dep in normalized[key]["depends_on"])]
+            failed_dependencies = [key for key in pending if any(
+                states.get(dep) in {"failed", "unknown", "blocked"}
+                for dep in normalized[key]["depends_on"])]
+            for key in failed_dependencies:
+                states[key] = "blocked"
+                pending.remove(key)
+                failures.append({"decision": "blocked", "producer_task_id": key,
+                                 "reason": "required direct-expert dependency did not complete"})
+            if not ready:
+                if pending:
+                    for key in pending:
+                        states[key] = "blocked"
+                        failures.append({"decision": "blocked", "producer_task_id": key,
+                                         "reason": "dependency cycle or unavailable upstream"})
+                break
+            group = []
+            for key in ready:
+                if len(group) >= parallel_cap:
+                    break
+                if all(not _conflict(normalized[key]["write_roots"], normalized[other]["write_roots"])
+                       for other in group):
+                    group.append(key)
+            if not group:
+                # Conflicting writable instances remain serialized; select one
+                # deterministic task and let the next loop recompute readiness.
+                group = [ready[0]]
+            futures = {}
+            for key in group:
+                task = normalized[key]
+                upstream = [deepcopy(receipts[dep]) for dep in task["depends_on"]]
+                states[key] = "running"
+                futures[key] = pool.submit(invoke, task, upstream)
+            unknown = False
+            for key, future in futures.items():
+                raw, payload = future.result()
+                evidence.append({"phase": "execute", "role_id": normalized[key]["role_id"],
+                                 "task_id": key, "callback_result": deepcopy(raw)})
+                if not isinstance(raw, dict) or raw.get("status") not in ("completed", "failed"):
+                    states[key] = "unknown"
+                    failures.append({"decision": "unknown", "producer_task_id": key,
+                                     "reason": "submission/completion unknown; no retry"})
+                    unknown = True
+                    continue
+                if raw.get("status") != "completed":
+                    states[key] = "failed"
+                    failures.append({"decision": "failed", "producer_task_id": key,
+                                     "reason": str(raw.get("failure", "expert failed"))[:512]})
+                    continue
+                try:
+                    receipts[key] = _validate_direct_receipt(normalized[key], raw, 1)
+                    states[key] = "completed"
+                except (ContractError, OSError) as error:
+                    states[key] = "failed"
+                    failures.append({"decision": "receipt_invalid", "producer_task_id": key,
+                                     "reason": str(error)[:512]})
+            for key in group:
+                pending.discard(key)
+
+    finally:
+        pool.shutdown(wait=True)
+
+    status = ("unknown" if "unknown" in states.values() else
+              "failed" if any(value != "completed" for value in states.values()) else "completed")
+    return {"status": status, "producer_task_id": work["task_id"],
+            "expert_receipts": receipts, "task_states": states,
+            "execution_evidence": evidence, "failures": failures,
+            "callback_invocations": len(evidence), "runtime_admission": False,
+            "formal_admission": False, "professional_effectiveness": "not_claimed",
+            "execution_basis": "caller_owned_role_callbacks_and_current_file_hash_checks",
+            "aggregation_owner": "aji"}
 def execute_branch(branch, work_item, invoke_role, parallel_cap=2, max_rework=1, execution_slots=None):
     """Execute one selected branch using actual caller-supplied role callbacks.
 

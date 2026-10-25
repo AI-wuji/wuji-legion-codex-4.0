@@ -4,7 +4,7 @@
 
 ## MoE角色生命周期（所有角色统一）
 
-阿极本身是轻量常驻协调入口；其余角色定义均冷态保存，只有匹配当前子任务时才启动对应的一次性分身。这里的MoE是运行路由/激活策略，不代表特定神经网络模型内部的MoE结构。
+阿极本身是轻量常驻协调入口；其余角色定义均冷态保存，只有匹配当前子任务时才启动对应的一次性分身；任务需要单一专家时可直接启用一个，不必先扩成复杂团队。这里的MoE是运行路由/激活策略，不代表特定神经网络模型内部的MoE结构。
 
 生命周期：`cold → active(task_instance) → suspended(checkpoint, if host supports) → active(resume)`；任务完成、取消或不可继续时转`closed`并释放会话/并发槽。角色定义和能力引用可以保留，模型上下文与活跃实例不常驻。无原生暂停时以最小checkpoint结束旧实例，后续新实例按宿主机制恢复，不假称原进程仍挂起。
 
@@ -12,8 +12,10 @@
 
 ## 通用派发约定
 
+本索引按5.0直派专家解释能力映射。历史4.0及更早Skill不作为可加载运行能力。专业知识如有必要，由阿极在任务契约中提炼，不调用其旧路由、角色链或流程。
+
 - 角色身份取自P3专家ID；以下映射提供专业边界，目标Skill提供方法和工具流程。两者互补，不将Skill名称当作执行结果。
-- 一个专家角色可为互斥来源/对象范围开多个分身；分身共享角色能力，独立写集和简短回执。只有独立方法边界明显不同时才选不同角色。
+- 一个专家角色可为互斥来源/对象范围开多个分身并行；分身共享角色能力，各自限定读写范围并简短回执。只有独立方法边界明显不同时才选不同角色。
 - 对用户或专家只传当前任务、必须上下文、范围/权限、产物与阻塞；不传冗长思考过程。
 - 没有对应Skill时先用P3职责和当前宿主原生工具；不因此阻塞不依赖它的分支，也不自动安装。
 
@@ -21,9 +23,9 @@
 
 | P3专家职责 | 直接加载的Skill | 可派发任务 | 不自动获得的能力 |
 |---|---|---|---|
-| `p3/workflow/research` | `wuji-legion-codex-4-0/references/research.md`（经4.0入口Skill按需引用）；本包 `references/multi-source-research.md` | 研究问题拆分、来源范围分支、原始依据/反证、决策建议 | 浏览器/GitHub/MCP是否可用须按当前会话确认 |
-| `p3/method/knowledge-base-qa` | `wuji-legion-codex-4-0/references/research.md` | 基于已授权文档回答并逐项绑定来源、标明缺口 | 私有知识库访问权、云盘/文档授权 |
-| `p3/workflow/code-repair`、`p3/leaf/code-review`、`p3/leaf/software-architecture`及语言专家 | `wuji-legion-codex-4-0/references/engineering.md`，必要时才加载对应语言/框架现有Skill | 缺陷定位、限定范围修改、代码审阅、架构或语言实现 | 仓库写权限、运行环境、测试工具不由角色声明赋予 |
+| `p3/workflow/research` | 本包 `references/multi-source-research.md` | 研究问题拆分、来源范围分支、原始依据/反证、决策建议 | 浏览器/GitHub/MCP是否可用须按当前会话确认 |
+| `p3/method/knowledge-base-qa` | 本包任务契约 | 基于已授权文档回答并逐项绑定来源、标明缺口 | 私有知识库访问权、云盘/文档授权 |
+| `p3/workflow/code-repair`、`p3/leaf/code-review`、`p3/leaf/software-architecture`及语言专家 | 本包任务契约，必要时才加载对应语言/框架现有Skill | 缺陷定位、限定范围修改、代码审阅、架构或语言实现 | 仓库写权限、运行环境、测试工具不由角色声明赋予 |
 | `p3/workflow/document-deck` | 可用时加载`documents:documents`或`presentations:Presentations` | Word/PDF/演示文件的解析、创建、编辑与必要的视觉检查 | 文件写权限、编译/渲染成功不由派发本身保证 |
 | `p3/leaf/data-analysis`、`p3/workflow/dashboard-review` | 可用时加载`spreadsheets:Spreadsheets`；在线Excel会话才用`spreadsheets:excel-live-control` | 表格分析、公式/图表操作、数据口径与不确定性 | 云端数据授权及实时工作簿连接 |
 | `p3/workflow/business-library`、`p3/workflow/workbench-builder` | 按实际文件选`documents:documents`、`spreadsheets:Spreadsheets`、`presentations:Presentations`或`pdf:pdf` | 办公交付、多格式结构保全、可编辑文件生成 | 实际渲染/解析能力以当前工具回执为准 |
@@ -39,7 +41,7 @@
 
 ## 执行桥与边界
 
-Codex当前会话原生 `spawn_agent` / `send_input` / `wait_agent` / `close_agent` 是首选执行桥；阿极直接派发任务范围明确的专家分身并管理并发与局部阻塞。专家定义/能力映射不代表分身已经启动。`tools/run_legion_task.py`、`tools/legion_pipeline.py`及app-server适配仅作为CLI辅助/诊断，尚未接通与当前会话等价的原生委派桥；本轮入口同步不调用真实模型。4.0 staff/leader执行链保持原状并作为兼容通路。
+Codex当前会话原生 `spawn_agent` / `send_input` / `wait_agent` / `close_agent` 是首选执行桥；阿极直接派发任务范围明确的专家分身并管理并发与局部阻塞。专家定义/能力映射不代表分身已经启动。`tools/run_legion_task.py`、`tools/legion_pipeline.py`及app-server适配仅作为CLI辅助/诊断，尚未接通与当前会话等价的原生委派桥；本轮入口同步不调用真实模型。历史staff/leader实现仅留档，不得由当前运行时路由或启动。
 
 ## 后续补全规则
 

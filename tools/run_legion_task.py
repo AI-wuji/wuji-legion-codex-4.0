@@ -628,81 +628,14 @@ def _staff_subtask(manifest, catalog, expert_metadata, task, parallel_cap=3):
 
 
 def delegate(request):
-    request = _validate_delegation_request(request)
-    active = load_active()
-    if request["task_class"] == "simple":
-        entry = route("chat")
-        return {**entry, "operation": "aji-direct", "task_id": request["task_id"],
-                "goal": request["goal"], "staff_decision": "direct_to_aji",
-                "routing_signals": request["routing_signals"],
-                "activation_chain": ["aji"], "execution_state": "direct_answer",
-                "return_path": ["aji"],
-                "not_done": ["professional delegation", "model execution"]}
-
-    manifest = _load_delegation_manifest()
-    catalog, expert_metadata = _load_expert_metadata()
-    if manifest["expert_coverage"]["source_role_count"] != catalog["role_count"]:
-        raise ValueError("Leader catalog source role count does not match the expert catalog")
-    workflow_count = sum(role.get("kind") == "workflow" for role in expert_metadata.values())
-    if manifest.get("workflow_role_count") != workflow_count:
-        raise ValueError("Leader catalog workflow role count does not match the expert catalog")
-    referenced_role_ids = set()
-    for recipe in manifest["recipes"]:
-        for reference in recipe["expert_refs"]:
-            role_id = reference if isinstance(reference, str) else reference.get("role_id")
-            if isinstance(role_id, str):
-                referenced_role_ids.add(role_id)
-    coverage = manifest["expert_coverage"]
-    declared_unbound = set(coverage["unbound_role_ids"])
-    declared_out_of_catalog = set(coverage["out_of_catalog_role_ids"])
-    catalog_roles = set(expert_metadata)
-    expected_references = (catalog_roles - declared_unbound) | declared_out_of_catalog
-    if referenced_role_ids != expected_references:
-        missing = sorted(expected_references - referenced_role_ids)
-        extra = sorted(referenced_role_ids - expected_references)
-        raise ValueError(f"Leader catalog coverage drift: missing={missing}, extra={extra}")
-    if declared_out_of_catalog != referenced_role_ids - catalog_roles:
-        raise ValueError("Leader catalog out-of-catalog declaration is stale")
-    if declared_unbound != catalog_roles - referenced_role_ids:
-        raise ValueError("Leader catalog unbound-role declaration is stale")
-    branches = [_staff_subtask(manifest, catalog, expert_metadata, task, request["max_parallel_instances"]) for task in request["subtasks"]]
-    preparation = _parallel_schedule(request["subtasks"], branches, request["max_parallel_instances"])
-    common = {"communicator": "aji", "operation": "staff-delegation", "task_id": request["task_id"],
-              "goal": request["goal"], "active_plan_version": active["version"],
-              "active_plan_sha256": active["sha256"], "staff_graph_required": True,
-              "routing_signals": request["routing_signals"],
-              "activation_chain": ["aji", "staff", "leader", "experts"],
-              "leader_required_before_experts": True,
-              "expert_selection_owner": "leader",
-              "return_path": ["expert", "leader", "staff", "aji"], "runtime_admission": False,
-              "actual_agents_started": 0, "formal_experts_activated": 0,
-              "model_generation_submitted": False, "execution_authority": False,
-              "professional_effectiveness": "not_claimed", "P7": False,
-              "shared_budget": {"max_parallel_instances": request["max_parallel_instances"],
-                                "applies_to": "all_leader_and_expert_instances",
-                                "effective_host_quota": "unknown", "native_admission": False},
-              "parallel_preparation": preparation}
-    if not request["composite"]:
-        return {**branches[0], **common}
-    has_gap = any(branch["state"] == "selection_gap" for branch in branches)
-    for branch in branches:
-        branch["dependency_blockers"] = preparation["blocked_branches"].get(branch["subtask_id"], [])
-    return {**common, "state": "selection_gap" if has_gap else "prepared_not_executed",
-            "staff_decision": "selection_gap" if has_gap else "recipes_selected",
-            "branches": branches,
-            "required_context": {field: request[field] for field in
-                                 ("inputs", "deliverables", "acceptance_ids", "write_roots", "constraints")},
-            "not_done": ["native model execution", "expert runtime admission", "professional validation"]}
-
-
+    """Reject the retired staff/leader execution route."""
+    raise ValueError("Legacy 4.0 staff/leader delegation is disabled; use the 5.0 Aji-direct expert route")
 def execute_aji_direct_experts(work_item, expert_tasks, invoke_role, *, parallel_cap=2,
                                execution_slots=None):
     """5.0 opt-in entry: Aji routes straight to selected experts.
 
-    Unlike ``delegate``/``execute_delegation``, this path does not load the
-    staff recipe manifest, select a leader, or invoke a leader. It reuses the
-    existing bounded role bridge and receipt checks. 4.0 entrypoints remain
-    unchanged; callers must explicitly choose this function.
+    This path does not load historical routing data or invoke a staff/leader.
+    It uses the bounded expert bridge and receipt checks directly.
     """
     from legion_pipeline import execute_direct_experts
 
@@ -738,230 +671,41 @@ def execute_aji_direct_experts(work_item, expert_tasks, invoke_role, *, parallel
             "not_done": [] if result.get("status") == "completed" else
                         ["resolve reported direct-expert failures or blocked dependencies"]}
 def execute_delegation(request, invoke_role, *, max_rework=1):
-    """Run selected branches through a caller-owned role bridge once.
-
-    ``delegate`` remains the selection/contract boundary. This function is the
-    finite execution boundary: the bridge must start/observe the actual host
-    role and return structured plan, expert, and aggregate receipts. A fixture
-    bridge can verify contract mechanics, but its evidence is never promoted to
-    native admission or professional effectiveness.
-    """
-    from legion_pipeline import execute_branch
-
-    normalized = _validate_delegation_request(request)
-    prepared = delegate(request)
-    if normalized["task_class"] == "simple":
-        return {**prepared, "execution": {"status": "direct_to_aji",
-                                         "role_callbacks_invoked": 0,
-                                         "native_execution_observed": False}}
-    raw_branches = prepared.get("branches") if normalized["composite"] else [prepared]
-    if prepared.get("state") == "selection_gap" and not normalized["composite"]:
-        return {**prepared, "execution": {"status": "selection_gap",
-                                         "role_callbacks_invoked": 0,
-                                         "native_execution_observed": False}}
-    preparation = prepared.get("parallel_preparation", {})
-    if not callable(invoke_role):
-        if normalized["composite"] and prepared.get("state") == "selection_gap" and not preparation.get("groups"):
-            return {**prepared, "execution": {"status": "selection_gap",
-                                             "role_callbacks_invoked": 0,
-                                             "native_execution_observed": False}}
-        raise ValueError("execute_delegation requires a caller-owned invoke_role bridge")
-    source_subtasks = {item["subtask_id"]: item for item in normalized["subtasks"]}
-    branch_by_id = {branch["subtask_id"]: branch for branch in raw_branches}
-    parallel_cap = normalized["max_parallel_instances"]
-    results = {}
-    branch_receipts = {}
-    branch_attempts = {branch_id: 0 for branch_id in branch_by_id}
-    branch_rework_events = []
-    execution_slots = BoundedSemaphore(parallel_cap)
-
-    blocked_by_gap = preparation.get("blocked_branches", {})
-    gap_ids = {branch["subtask_id"] for branch in raw_branches if branch.get("state") == "selection_gap"}
-    for branch_id, blockers in blocked_by_gap.items():
-        if branch_id in gap_ids:
-            results[branch_id] = {"status": "selection_gap", "failures": [{
-                "decision": "selection_gap", "producer_task_id": branch_id,
-                "reason": "leader or expert selection is unresolved"}]}
-        else:
-            results[branch_id] = {"status": "blocked", "failures": [{
-                "decision": "blocked", "producer_task_id": branch_id,
-                "reason": f"blocked by selection gap: {', '.join(blockers)}"}]}
-
-    def execute_once(branch_id, upstream_receipts):
-        branch = branch_by_id[branch_id]
-        source = source_subtasks[branch_id]
-        work = _branch_work(source, branch, upstream_receipts)
-        branch_attempts[branch_id] += 1
-        result = execute_branch(branch, work, invoke_role, parallel_cap=parallel_cap,
-                                max_rework=max_rework, execution_slots=execution_slots)
-        results[branch_id] = result
-        if result.get("status") == "completed" and result.get("receipt") is not None:
-            branch_receipts[branch_id] = result["receipt"]
-        else:
-            branch_receipts.pop(branch_id, None)
-        return result
-
-    def ensure_branch_ready(branch_id, stack=()):
-        if branch_id in gap_ids or branch_id in blocked_by_gap:
-            return None
-        if branch_id in stack:
-            return None
-        existing = results.get(branch_id)
-        if existing and existing.get("status") == "completed":
-            receipt = branch_receipts.get(branch_id)
-            checked = _validate_branch_receipt(receipt, branch_id)
-            if checked["accepted"]:
-                return receipt
-            branch_rework_events.append({"producer_task_id": branch_id,
-                                         "decision": "rework_upstream",
-                                         "reason": checked["reason"]})
-        elif existing and existing.get("status") in {"failed", "unknown"}:
-            return None
-        if branch_attempts[branch_id] >= 1 + max_rework:
-            branch_rework_events.append({"producer_task_id": branch_id,
-                                         "decision": "rework_exhausted",
-                                         "reason": "branch re-execution limit reached"})
-            return None
-        source = source_subtasks[branch_id]
-        upstream = []
-        for dependency in source["depends_on"]:
-            receipt = ensure_branch_ready(dependency, (*stack, branch_id))
-            if receipt is None:
-                return None
-            upstream.append(receipt)
-        result = execute_once(branch_id, upstream)
-        if result.get("status") != "completed":
-            return None
-        checked = _validate_branch_receipt(branch_receipts.get(branch_id), branch_id)
-        return branch_receipts[branch_id] if checked["accepted"] else None
-
-    def collect_upstream(branch_id):
-        upstream = []
-        for dependency in source_subtasks[branch_id]["depends_on"]:
-            receipt = ensure_branch_ready(dependency, (branch_id,))
-            if receipt is None:
-                return None
-            upstream.append(receipt)
-        return upstream
-
-    groups = preparation.get("groups", [])
-    for group in groups:
-        runnable = [branch_id for branch_id in group
-                    if branch_id in branch_by_id and branch_id not in gap_ids
-                    and branch_id not in blocked_by_gap]
-        ready = {}
-        for branch_id in runnable:
-            upstream = collect_upstream(branch_id)
-            if upstream is None:
-                results[branch_id] = {"status": "blocked", "failures": [{
-                    "decision": "blocked", "producer_task_id": branch_id,
-                    "reason": "required upstream branch is unavailable or failed input validation"}]}
-                continue
-            ready[branch_id] = upstream
-        if len(ready) == 1:
-            branch_id, upstream = next(iter(ready.items()))
-            execute_once(branch_id, upstream)
-        elif ready:
-            with ThreadPoolExecutor(max_workers=parallel_cap) as pool:
-                futures = {pool.submit(execute_once, branch_id, upstream): branch_id
-                           for branch_id, upstream in ready.items()}
-                for future in futures:
-                    future.result()
-
-    statuses = {key: value.get("status") for key, value in results.items()}
-    if any(value == "unknown" for value in statuses.values()):
-        status = "unknown"
-    elif any(value == "failed" for value in statuses.values()):
-        status = "failed"
-    elif gap_ids:
-        status = "selection_gap"
-    elif any(value != "completed" for value in statuses.values()):
-        status = "failed"
-    else:
-        status = "completed"
-    return {**prepared, "state": status, "execution_state": status,
-            "execution": {"status": status, "branches": results,
-                           "branch_receipts": branch_receipts,
-                           "rework_events": branch_rework_events,
-                           "role_callbacks_invoked": sum(result.get("callback_invocations", 0)
-                                                         for result in results.values()),
-                           "native_execution_observed": any(
-                               event.get("callback_result", {}).get("host_evidence", {}).get("native") is True
-                               for result in results.values() for event in result.get("execution_evidence", [])),
-                           "formal_runtime_admission": False,
-                           "professional_effectiveness": "not_claimed"},
-            "not_done": (["selection gaps and their dependent branches"] if status == "selection_gap" else
-                          ["professional validation"] if status == "completed" else
-                          ["successful role execution", "professional validation"])}
-
+    """Reject the retired staff/leader execution route."""
+    raise ValueError("Legacy 4.0 staff/leader execution is disabled")
 def route(kind, *, version="5.0"):
-    active = load_active()
-    if version not in {"4.0", "5.0"}:
-        raise ValueError("Only explicit 4.0 or 5.0 task routes are supported")
-    manifest_name = "task-entry-5.0.json" if version == "5.0" else "task-entry.json"
-    manifest = strict_json((PACK / manifest_name).read_text(encoding="utf-8"))
-    if version == "5.0":
-        activation = manifest.get("activation", {})
-        if (manifest.get("schema_version") != 1 or manifest.get("name") != "wuji-legion-5-0"
-                or activation.get("installed") is not True
-                or activation.get("automatic_discovery_enabled") is not True):
-            raise ValueError("Only the installed 5.0 entry is supported")
-        guidance_routes = {"research", "expert_capabilities", "context_continuity"}
-        relative_paths = [manifest.get("entry")]
-        if kind in guidance_routes:
-            relative_paths.append(manifest["routes"][kind])
-        elif kind not in {"chat", "rewrite", "engineering", "documents", "media", "evolution"}:
-            raise ValueError("Unknown 5.0 guidance kind; use the explicit direct-experts command for execution")
-        context = []
-        for relative in relative_paths:
-            if not isinstance(relative, str) or not relative or Path(relative).is_absolute():
-                raise ValueError("5.0 guidance requires a nonempty relative pack path")
-            path = (PACK / relative).resolve()
-            if not path.is_relative_to(PACK.resolve()) or not path.is_file():
-                raise ValueError("5.0 guidance must exist within the independent pack")
-            data = path.read_bytes()
-            if len(data) > 32 * 1024:
-                raise ValueError("5.0 guidance exceeds the bounded context target")
-            context.append({"path": path.relative_to(ROOT).as_posix(), "sha256": hashlib.sha256(data).hexdigest(),
-                            "content": data.decode("utf-8"), "bytes": len(data)})
-        return {"communicator": "aji", "version": "5.0", "kind": kind,
-                "state": "guidance_loaded_not_executed", "context": context,
-                "direct_experts_supported": True, "staff_graph_required": False,
-                "actual_agents_started": 0, "model_generation_submitted": False,
-                "execution_authority": False, "P7": False,
-                "not_done": ["model execution", "professional validation"]}
-    if (manifest.get("schema_version") != 1 or manifest.get("installed") is not False
-            or manifest.get("automatic_discovery_enabled") is not False or manifest.get("P7") is not False):
-        raise ValueError("Only the isolated uninstalled task entry is supported")
-    routes = manifest.get("routes")
-    if not isinstance(routes, dict) or set(routes) != {"chat", "rewrite", "engineering", "research", "documents", "media", "evolution"}:
-        raise ValueError("The complete bounded task route set is required")
-    if routes["chat"] is not None or routes["rewrite"] is not None:
-        raise ValueError("Simple tasks must not load professional references")
-    if kind not in routes:
-        raise ValueError("Unknown task kind; no all-expert fallback")
-    paths = [manifest.get("entry")]
-    if kind not in ("chat", "rewrite"):
-        paths.append(routes[kind])
+    if version != "5.0":
+        raise ValueError("Only the 5.0 runtime is supported; historical routes are read-only")
+    manifest = strict_json((PACK / "task-entry-5.0.json").read_text(encoding="utf-8"))
+    activation = manifest.get("activation", {})
+    if (manifest.get("schema_version") != 1 or manifest.get("name") != "wuji-legion-5-0"
+            or activation.get("installed") is not True
+            or activation.get("automatic_discovery_enabled") is not True):
+        raise ValueError("Only the installed 5.0 entry is supported")
+    guidance_routes = {"research", "expert_capabilities", "context_continuity"}
+    relative_paths = [manifest.get("entry")]
+    if kind in guidance_routes:
+        relative_paths.append(manifest["routes"][kind])
+    elif kind not in {"chat", "rewrite", "engineering", "documents", "media", "evolution"}:
+        raise ValueError("Unknown 5.0 guidance kind; use current-session direct experts for execution")
     context = []
-    for relative in paths:
+    for relative in relative_paths:
         if not isinstance(relative, str) or not relative or Path(relative).is_absolute():
-            raise ValueError("Task guidance requires a nonempty relative pack path")
+            raise ValueError("5.0 guidance requires a nonempty relative pack path")
         path = (PACK / relative).resolve()
         if not path.is_relative_to(PACK.resolve()) or not path.is_file():
-            raise ValueError("Task guidance must exist within the independent pack")
+            raise ValueError("5.0 guidance must exist within the independent pack")
         data = path.read_bytes()
         if len(data) > 32 * 1024:
-            raise ValueError("Task guidance exceeds the bounded context target")
+            raise ValueError("5.0 guidance exceeds the bounded context target")
         context.append({"path": path.relative_to(ROOT).as_posix(), "sha256": hashlib.sha256(data).hexdigest(),
                         "content": data.decode("utf-8"), "bytes": len(data)})
-    simple = kind in ("chat", "rewrite")
-    return {"communicator": "aji", "kind": kind, "state": "guidance_loaded_not_executed",
-            "active_plan_version": active["version"], "active_plan_sha256": active["sha256"],
-            "direct_answer": simple, "staff_graph_required": False, "context": context,
-            "actual_agents_started": 0, "model_generation_submitted": False, "execution_authority": False,
-            "P7": False, "not_done": ["model execution", "professional validation", "installation"]}
-
+    return {"communicator": "aji", "version": "5.0", "kind": kind,
+            "state": "guidance_loaded_not_executed", "context": context,
+            "direct_experts_supported": True, "staff_graph_required": False,
+            "actual_agents_started": 0, "model_generation_submitted": False,
+            "execution_authority": False, "P7": False,
+            "not_done": ["model execution", "professional validation"]}
 
 def isolated_workspace(value):
     path = Path(value).resolve(strict=True)
@@ -991,7 +735,7 @@ def run_copy(workspace, task, source, output, confirmation):
     workspace = isolated_workspace(workspace)
     if not task or len(task.encode("utf-8")) > 128 or any(ord(character) < 32 for character in task):
         raise ValueError("Task identity must be nonempty and bounded")
-    guidance = route("engineering", version="4.0")
+    guidance = route("engineering", version="5.0")
     state = call("init", workspace)
     reference = call("register-input", workspace, "user/legion-copy-source", source)
     role = state["admitted_local_program_ref"]
@@ -1038,9 +782,9 @@ def run_copy(workspace, task, source, output, confirmation):
     completed = summary["result_state"] == "completed_bounded_task"
     return {"communicator": "aji", "operation": "isolated-legion-utf8-file-copy", "context_refs": [
         {key: item[key] for key in ("path", "sha256", "bytes")} for item in guidance["context"]],
-        "active_plan_version": guidance["active_plan_version"], "actual_execution": executed,
+        "active_plan_version": "5.0", "actual_execution": executed,
         "summary": summary, "completed": completed, "model_generation_submitted": False,
-        "user_summary": ("完成声明范围内的本地文件任务，并核验当前内容/hash/UTF-8；未执行模型修复、专业质量评审或安装4.0。"
+        "user_summary": ("完成声明范围内的本地文件任务，并核验当前内容/hash/UTF-8；未执行模型修复或专业质量评审。"
                          if completed else "当前本地文件任务未通过完成检查；保留未满足项和历史回执，不自动重做、修复产物或宣称已完成。"),
         "task_state_authority": "existing Rust/SQLite workspace only; no second task database",
         "P7": False, "shutdown": False}
@@ -1112,9 +856,7 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     routing = commands.add_parser("route")
     routing.add_argument("kind")
-    routing.add_argument("--version", choices=("4.0", "5.0"), default="5.0")
-    delegation = commands.add_parser("delegate")
-    delegation.add_argument("request_json")
+    routing.add_argument("--version", choices=("5.0",), default="5.0")
     copying = commands.add_parser("run-copy")
     copying.add_argument("workspace")
     copying.add_argument("task")
@@ -1132,11 +874,6 @@ def main():
     try:
         if arguments.command == "route":
             result = route(arguments.kind, version=arguments.version)
-        elif arguments.command == "delegate":
-            request_path = Path(arguments.request_json).resolve(strict=True)
-            if not request_path.is_file() or request_path.stat().st_size > 32 * 1024:
-                raise ValueError("Delegation request must be a bounded JSON file")
-            result = delegate(strict_json(request_path.read_text(encoding="utf-8")))
         elif arguments.command == "direct-experts":
             result = run_direct_experts(arguments.request_json, parallel_cap=arguments.parallel_cap,
                                         confirm_model_call=arguments.confirm_model_call)

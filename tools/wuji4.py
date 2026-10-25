@@ -401,7 +401,7 @@ def run_motion(arguments: list[str]) -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Wuji Legion 4.0 project-local framework shell")
+    parser = argparse.ArgumentParser(description="Historical Wuji Legion shell (execution disabled; use 5.0 runtime)")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("status")
     commands.add_parser("doctor")
@@ -410,8 +410,6 @@ def main() -> None:
     motion_parser.add_argument("motion_arguments", nargs=argparse.REMAINDER)
     route_parser = commands.add_parser("route")
     route_parser.add_argument("kind")
-    delegation_parser = commands.add_parser("delegate")
-    delegation_parser.add_argument("request_json")
     copy_parser = commands.add_parser("run-copy")
     copy_parser.add_argument("workspace")
     copy_parser.add_argument("task")
@@ -454,11 +452,6 @@ def main() -> None:
             result = capabilities()
         elif arguments.command == "route":
             result = run_legion_task.route(arguments.kind)
-        elif arguments.command == "delegate":
-            request_path = Path(arguments.request_json).resolve(strict=True)
-            if not request_path.is_file() or request_path.stat().st_size > 32 * 1024:
-                raise ValueError("Delegation request must be a bounded JSON file")
-            result = run_legion_task.delegate(strict_json(request_path.read_text(encoding="utf-8")))
         elif arguments.command == "run-copy":
             result = run_legion_task.run_copy(arguments.workspace, arguments.task, arguments.source,
                                               arguments.output, arguments.confirmation)
@@ -503,4 +496,3 @@ if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     sys.stderr.reconfigure(encoding="utf-8")
     main()
-

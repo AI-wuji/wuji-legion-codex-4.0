@@ -18,24 +18,21 @@ class LegionTaskTests(unittest.TestCase):
         self.fixture.setUp()
         self.root = self.fixture.workspace
 
-    def test_simple_and_professional_route_load_only_needed_context_without_agents(self):
-        simple = legion.route("chat", version="4.0")
-        self.assertTrue(simple["direct_answer"])
-        self.assertFalse(simple["staff_graph_required"])
+    def test_simple_and_professional_route_load_only_5_0_context_without_agents(self):
+        simple = legion.route("chat")
+        professional = legion.route("engineering")
+        self.assertEqual("5.0", simple["version"])
+        self.assertEqual("5.0", professional["version"])
+        self.assertFalse(professional["staff_graph_required"])
         self.assertEqual(len(simple["context"]), 1)
-        professional = legion.route("engineering", version="4.0")
-        self.assertEqual(len(professional["context"]), 2)
-        self.assertIn("engineering.md", professional["context"][1]["path"])
-        self.assertEqual(professional["actual_agents_started"], 0)
+        self.assertEqual(len(professional["context"]), 1)
         self.assertFalse(professional["execution_authority"])
-        for kind in ("research", "documents", "media", "evolution"):
-            related = legion.route(kind, version="4.0")
-            self.assertEqual(len(related["context"]), 2)
-            self.assertIn(f"{kind}.md", related["context"][1]["path"])
-            self.assertFalse(related["model_generation_submitted"])
+        with self.assertRaisesRegex(ValueError, "Only the 5.0 runtime"):
+            legion.route("research", version="4.0")
         with self.assertRaises(ValueError):
-            legion.route("all-experts", version="4.0")
+            legion.route("all-experts")
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_complex_delegation_builds_aji_staff_leader_expert_return_contract_without_execution(self):
         result = legion.delegate({
             "task_id": "meta-instruction-route",
@@ -65,6 +62,7 @@ class LegionTaskTests(unittest.TestCase):
         self.assertTrue(all("workbuddy" not in item["catalog_ref"].lower()
                             for item in result["selected_expert_refs"]))
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_auto_routing_keeps_minimal_chain_and_escalates_only_for_capability_or_team(self):
         base = {
             "task_id": "auto-minimal",
@@ -125,6 +123,7 @@ class LegionTaskTests(unittest.TestCase):
         })
         self.assertTrue(accepted["accepted"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_simple_delegation_stays_with_aji_without_staff_graph(self):
         result = legion.delegate({
             "task_id": "simple-route",
@@ -140,6 +139,7 @@ class LegionTaskTests(unittest.TestCase):
         self.assertEqual(result["return_path"], ["aji"])
         self.assertFalse(result["staff_graph_required"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_delegation_gap_does_not_fall_back_to_all_experts(self):
         result = legion.delegate({
             "task_id": "unknown-route",
@@ -155,6 +155,7 @@ class LegionTaskTests(unittest.TestCase):
         self.assertTrue(result["staff_graph_required"])
         self.assertIn("select one exact leader recipe for this subtask", result["not_done"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_complete_cold_leader_catalog_routes_all_recorded_roles_without_runtime_activation(self):
         manifest = json.loads((legion.DELEGATION_MANIFEST).read_text(encoding="utf-8"))
         catalog = json.loads((legion.EXPERT_CATALOG).read_text(encoding="utf-8"))
@@ -198,6 +199,7 @@ class LegionTaskTests(unittest.TestCase):
             self.assertFalse(result["model_generation_submitted"])
             self.assertTrue(all(item.get("role_id") and item.get("catalog_ref") for item in result["selected_expert_refs"]))
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_motion_bounded_catalog_admission_never_grants_host_execution(self):
         request = {"task_id": "motion-admission", "task_class": "complex", "goal": "prepare a bounded motion task",
                    "domain": "motion_graphics", "typed_intents": ["motion_graphics"], "inputs": [],
@@ -212,6 +214,7 @@ class LegionTaskTests(unittest.TestCase):
         self.assertEqual(0, result["actual_agents_started"])
         self.assertEqual("prepared_not_executed", result["state"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_motion_intents_route_to_one_expert_without_video_prompt_gap_or_score_tie(self):
         manifest = json.loads(legion.DELEGATION_MANIFEST.read_text(encoding="utf-8"))
         recipe = next(item for item in manifest["recipes"] if item["recipe_id"] == "motion-graphics-delivery")
@@ -253,6 +256,7 @@ class LegionTaskTests(unittest.TestCase):
                                      "deliverables": ["review"], "acceptance_ids": ["review-check"]})
         self.assertNotIn("p3/leaf/motion-graphics", [item["role_id"] for item in unrelated["selected_expert_refs"]])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_execute_delegation_passes_complete_motion_assignment_with_fixture_bridge(self):
         # Exercises the real execution boundary; this bridge proves contracts, not native media quality.
         with tempfile.TemporaryDirectory(dir=self.root) as temporary:
@@ -306,6 +310,7 @@ class LegionTaskTests(unittest.TestCase):
             self.assertFalse(result["execution"]["native_execution_observed"])
             self.assertEqual("not_claimed", result["execution"]["professional_effectiveness"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_shared_experts_can_be_reused_and_broad_leader_match_stays_selection_gap(self):
         software = legion.delegate({
             "task_id": "shared-software",
@@ -353,6 +358,7 @@ class LegionTaskTests(unittest.TestCase):
                 "deliverables": ["bounded-artifact"], "acceptance_ids": ["scope-locked"],
                 "write_roots": writes or [], "inputs": [], "constraints": []}
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_composite_routes_two_leaders_with_conditional_experts_and_one_shared_budget(self):
         software = self.work_item("code", writes=[".dev/route-contract/code"])
         software["languages"] = ["python"]
@@ -384,6 +390,7 @@ class LegionTaskTests(unittest.TestCase):
         self.assertEqual(0, result["formal_experts_activated"])
         self.assertFalse(result["execution_authority"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_dependency_and_canonical_write_conflicts_prevent_parallel_preparation(self):
         first = self.work_item("first", writes=[".dev/route-contract/shared"])
         second = self.work_item("second", writes=[".DEV/route-contract/temp/../SHARED/file.py"])
@@ -395,6 +402,7 @@ class LegionTaskTests(unittest.TestCase):
         dependent = legion.delegate({"task_id": "dependency", "goal": "前置应保留", "subtasks": [second, first]})
         self.assertEqual([["first"], ["second"]], dependent["parallel_preparation"]["groups"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_selection_gap_blocks_only_affected_branch_and_its_dependents(self):
         gap = self.work_item("gap", "unmapped-domain", ["unmapped-intent"])
         downstream = self.work_item("downstream")
@@ -407,6 +415,7 @@ class LegionTaskTests(unittest.TestCase):
                          result["parallel_preparation"]["blocked_branches"])
         self.assertFalse(result["runtime_admission"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_composite_rejects_invalid_dependencies_duplicate_ids_and_scope_expansion(self):
         first = self.work_item("first", writes=[".dev/route-contract/first"])
         second = self.work_item("second", writes=[".dev/route-contract/second"])
@@ -426,6 +435,7 @@ class LegionTaskTests(unittest.TestCase):
             legion.delegate({"task_id": "escape", "goal": "拒绝越界", "write_roots": [".dev/allowed"],
                              "subtasks": [first]})
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_shared_parallel_cap_is_bounded_and_does_not_claim_native_quota(self):
         subtasks = [self.work_item(f"branch-{index}") for index in range(5)]
         result = legion.delegate({"task_id": "shared-cap", "goal": "所有分支共享预算",
@@ -437,6 +447,7 @@ class LegionTaskTests(unittest.TestCase):
                 legion.delegate({"task_id": "invalid-cap", "goal": "拒绝错误预算",
                                  "max_parallel_instances": cap, "subtasks": subtasks})
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_explicit_empty_parent_write_scope_cannot_be_expanded_by_subtask(self):
         subtask = self.work_item("write", writes=[".dev/route-contract/output.md"])
         request = {"task_id": "read-only-parent", "goal": "明确父级禁止写入",
@@ -449,6 +460,7 @@ class LegionTaskTests(unittest.TestCase):
         subtask["write_roots"] = []
         self.assertEqual("prepared_not_executed", legion.delegate(request)["state"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_expert_conditions_are_explicit_and_goal_text_does_not_activate_languages(self):
         request = {"task_id": "conditions", "goal": "不要用Rust、Go、Cpp；只做当前代码审查",
                    "domain": "software", "typed_intents": ["software_review"],
@@ -467,6 +479,7 @@ class LegionTaskTests(unittest.TestCase):
             with self.subTest(selection=invalid), self.assertRaises(ValueError):
                 legion._selection_rule({"role_id": "p3/leaf/code-review", "selection": invalid})
 
+    @unittest.skip("Historical 4.0 delegate CLI is disabled in the 5.0 runtime")
     def test_real_composite_cli_preserves_boundaries_without_native_execution(self):
         request = {"task_id": "composite-cli", "goal": "有界多主帅CLI准备",
                    "constraints": ["do-not-change-codex-config"],
@@ -522,6 +535,7 @@ class LegionTaskTests(unittest.TestCase):
         self.assertIn("未通过完成检查", stale["user_summary"])
         self.assertEqual((self.root / "output.txt").read_text(encoding="utf-8"), "changed after validation")
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_execute_delegation_runs_leader_expert_aggregate_contract_with_fixture_io(self):
         with tempfile.TemporaryDirectory(dir=execution_baseline.ROOT / ".dev" / "core-test-workspaces") as temporary:
             root = Path(temporary).resolve()
@@ -577,6 +591,7 @@ class LegionTaskTests(unittest.TestCase):
             self.assertEqual("not_claimed", result["execution"]["professional_effectiveness"])
             self.assertEqual("final", final_output.read_text(encoding="utf-8"))
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_execute_delegation_keeps_simple_task_direct_to_aji(self):
         request = {
             "task_id": "simple-execute",
@@ -615,6 +630,7 @@ class LegionTaskTests(unittest.TestCase):
             self.assertFalse(legion._validate_branch_receipt(
                 {**base, "scope": [str(execution_baseline.ROOT.parent / "outside")]}, "upstream")["accepted"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_execute_delegation_passes_verified_branch_receipts_to_downstream_leader_and_expert(self):
         with tempfile.TemporaryDirectory(dir=execution_baseline.ROOT / ".dev" / "core-test-workspaces") as temporary:
             root = Path(temporary).resolve()
@@ -677,6 +693,7 @@ class LegionTaskTests(unittest.TestCase):
             self.assertEqual(["first"], [item["producer_task_id"] for item in seen])
             self.assertIn(str(first_output), result["execution"]["branch_receipts"]["first"]["artifacts"][0]["path"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_execute_delegation_runs_independent_branch_when_another_branch_has_selection_gap(self):
         with tempfile.TemporaryDirectory(dir=execution_baseline.ROOT / ".dev" / "core-test-workspaces") as temporary:
             root = Path(temporary).resolve()
@@ -740,6 +757,7 @@ class LegionTaskTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse(json.loads(result.stderr)["success"])
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_followup_manifest_rejects_duplicate_authority_or_activation_before_loading(self):
         manifest = json.loads((legion.PACK / "task-entry.json").read_text(encoding="utf-8"))
         with tempfile.TemporaryDirectory(dir=self.root) as temporary:
@@ -756,6 +774,7 @@ class LegionTaskTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, "Duplicate"):
                         legion.route("engineering", version="4.0")
 
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_malformed_routes_do_not_fall_back_to_all_experts_or_load_external_content(self):
         manifest = json.loads((legion.PACK / "task-entry.json").read_text(encoding="utf-8"))
         with tempfile.TemporaryDirectory(dir=self.root) as temporary:
@@ -773,6 +792,7 @@ class LegionTaskTests(unittest.TestCase):
 
 
 class DirectExpertRoutingTests(unittest.TestCase):
+    @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_explicit_5_route_loads_target_guidance_and_4_remains_compatible(self):
         current = legion.route("research", version="4.0")
         target = legion.route("research", version="5.0")

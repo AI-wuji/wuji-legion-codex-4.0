@@ -17,8 +17,7 @@
     "cli_route": "Auxiliary/diagnostic only; not native current-session delegation",
     "expert_execution": "Codex current-session native subagents: spawn_agent/send_input/wait_agent/close_agent; CLI and app-server are auxiliary/diagnostic only and are not equivalent to current-session native delegation",
     "expert_execution_scope": "Use current conversation model, sandbox, permissions and tools; MoE cold activation per task; no auto-confirm permission escalation",
-    "default_cli_route": "python tools/run_legion_task.py route research",
-    "compatibility_cli_route": "python tools/run_legion_task.py route research --version 4.0"
+    "default_cli_route": "python tools/run_legion_task.py route research"
   },
   "execution_contract": {
     "default_executor": "aji",

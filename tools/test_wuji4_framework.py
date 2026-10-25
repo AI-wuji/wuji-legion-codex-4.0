@@ -279,46 +279,21 @@ class Wuji4FrameworkTests(unittest.TestCase):
         self.assertEqual(before_mtime, framework.CONFIG.stat().st_mtime_ns)
         self.assertFalse(result["P7"])
 
-    def test_route_loads_only_needed_chat_or_professional_context(self):
+    def test_route_loads_only_5_0_context_and_rejects_legacy_route(self):
         chat = framework.run_legion_task.route("chat")
         professional = framework.run_legion_task.route("engineering")
-
-        self.assertTrue(chat["direct_answer"])
-        self.assertFalse(professional["direct_answer"])
-        self.assertEqual(len(chat["context"]), 1)
-        self.assertEqual(len(professional["context"]), 2)
-        self.assertEqual(professional["context"][0], chat["context"][0])
-        self.assertTrue(professional["context"][1]["path"].endswith("references/engineering.md"))
+        self.assertEqual("5.0", chat["version"])
+        self.assertEqual("5.0", professional["version"])
+        self.assertFalse(professional["staff_graph_required"])
         self.assertFalse(professional["execution_authority"])
+        with self.assertRaisesRegex(ValueError, "Only the 5.0 runtime"):
+            framework.run_legion_task.route("engineering", version="4.0")
 
-    def test_delegate_command_exposes_staff_handoff_without_changing_codex_config(self):
-        request = {
-            "task_id": "cli-meta-route",
-            "goal": "检查元指令变更路径",
-            "domain": "prompt_meta",
-            "typed_intents": ["meta_instruction"],
-            "inputs": ["visible-agents-md"],
-            "deliverables": ["route-receipt"],
-            "acceptance_ids": ["goal-explicit"],
-        }
-        with tempfile.TemporaryDirectory(dir=framework.ROOT / ".dev" / "core-test-workspaces") as temporary:
-            request_path = Path(temporary) / "request.json"
-            request_path.write_text(json.dumps(request, ensure_ascii=False), encoding="utf-8")
-            config = Path(temporary) / "config.toml"
-            config.write_bytes(b"fixture configuration")
-            patcher = mock.patch.object(framework, "CONFIG", config)
-            patcher.start()
-            self.addCleanup(patcher.stop)
-            before_content = framework.CONFIG.read_bytes()
-            arguments = ["wuji4.py", "delegate", str(request_path)]
-            output = io.StringIO()
-            with mock.patch.object(sys, "argv", arguments), redirect_stdout(output):
+    def test_legacy_delegate_command_is_not_registered(self):
+        with mock.patch.object(sys, "argv", ["wuji4.py", "delegate", "missing.json"]):
+            with self.assertRaises(SystemExit) as error:
                 framework.main()
-            result = json.loads(output.getvalue())
-            self.assertEqual(result["staff_decision"], "recipe_selected")
-            self.assertEqual(result["return_path"], ["expert", "leader", "staff", "aji"])
-            self.assertFalse(result["runtime_admission"])
-            self.assertEqual(before_content, framework.CONFIG.read_bytes())
+        self.assertEqual(2, error.exception.code)
 
     def test_capabilities_reads_existing_tool_contracts_without_generic_dispatch(self):
         result = framework.capabilities()
@@ -331,7 +306,7 @@ class Wuji4FrameworkTests(unittest.TestCase):
         self.assertFalse(result["P7"])
 
     def test_unknown_route_is_rejected_without_all_expert_fallback(self):
-        with self.assertRaisesRegex(ValueError, "no all-expert fallback"):
+        with self.assertRaisesRegex(ValueError, "current-session direct experts"):
             framework.run_legion_task.route("all-experts")
 
     def test_run_copy_requires_confirmation_and_delegates_existing_workspace(self):

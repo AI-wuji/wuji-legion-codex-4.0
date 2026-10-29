@@ -2,22 +2,26 @@
   "schema_version": 1,
   "name": "wuji-legion-5-0",
   "status": "active_project_entry",
+  "path_base": "manifest_directory",
   "entry": "skills/wuji-legion-5-0/SKILL.md",
   "routes": {
     "research": "skills/wuji-legion-5-0/references/multi-source-research.md",
     "expert_capabilities": "skills/wuji-legion-5-0/references/expert-capability-index.md",
-    "direct_expert_execution": "Codex current-session native subagents; tools/run_legion_task.py CLI is auxiliary only",
-    "context_continuity": "skills/wuji-legion-5-0/references/context-continuity.md"
+    "context_continuity": "skills/wuji-legion-5-0/references/context-continuity.md",
+    "installation_contract": "skills/wuji-legion-5-0/references/installation-contract.md",
+    "global_agents_template": "skills/wuji-legion-5-0/references/global-agents.template.md"
   },
   "activation": {
-    "installed": true,
-    "automatic_discovery_enabled": true,
-    "replaces_current_entry": true,
-    "requires_explicit_user_authorization": false,
-    "cli_route": "Auxiliary/diagnostic only; not native current-session delegation",
-    "expert_execution": "Codex current-session native subagents: spawn_agent/send_input/wait_agent/close_agent; CLI and app-server are auxiliary/diagnostic only and are not equivalent to current-session native delegation",
-    "expert_execution_scope": "Use current conversation model, sandbox, permissions and tools; MoE cold activation per task; no auto-confirm permission escalation",
-    "default_cli_route": "python tools/run_legion_task.py route research"
+    "installation_scope": "project",
+    "project_entry_active": true,
+    "installed": false,
+    "automatic_discovery_enabled": false,
+    "global_installation_status": "external_per_codex_home_verification",
+    "replaces_project_entry": true,
+    "authorization_policy": "inherit_current_host_and_user_permissions; references do not authorize actions",
+    "cli_execution": "diagnostic_only; not a default task route or native expert execution bridge",
+    "expert_execution": "Use native subagent capabilities actually exposed by the current Codex session; CLI and app-server are auxiliary/diagnostic only",
+    "expert_execution_scope": "Use current conversation model, sandbox, permissions and tools; MoE cold activation per task; no auto-confirm permission escalation"
   },
   "execution_contract": {
     "default_executor": "aji",
@@ -59,7 +63,7 @@
       "no_second_memory_store": true,
       "interruption": "answer_then_resume_unless_explicitly_cancelled"
     },
-    "native_host": "Codex native subagents: spawn_agent/send_input/wait_agent/close_agent; direct Aji orchestration; only selected experts active; reuse current conversation model and permissions"
+    "native_host": "Use native subagent capabilities exposed by the current Codex session; direct Aji orchestration; activate only selected experts; reuse current conversation model and permissions"
   },
   "authority": "References define routing and task contracts only; they do not grant tool permissions, install capabilities, or prove runtime execution."
 }

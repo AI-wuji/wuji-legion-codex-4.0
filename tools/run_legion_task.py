@@ -678,11 +678,15 @@ def route(kind, *, version="5.0"):
         raise ValueError("Only the 5.0 runtime is supported; historical routes are read-only")
     manifest = strict_json((PACK / "task-entry-5.0.json").read_text(encoding="utf-8"))
     activation = manifest.get("activation", {})
+    project_entry_active = activation.get("project_entry_active") is True
+    globally_installed = (activation.get("installed") is True
+                          and activation.get("automatic_discovery_enabled") is True)
     if (manifest.get("schema_version") != 1 or manifest.get("name") != "wuji-legion-5-0"
-            or activation.get("installed") is not True
-            or activation.get("automatic_discovery_enabled") is not True):
-        raise ValueError("Only the installed 5.0 entry is supported")
-    guidance_routes = {"research", "expert_capabilities", "context_continuity"}
+            or manifest.get("path_base") != "manifest_directory"
+            or not (project_entry_active or globally_installed)):
+        raise ValueError("Only an active project or globally installed 5.0 entry is supported")
+    guidance_routes = {"research", "expert_capabilities", "context_continuity", "installation_contract",
+                       "global_agents_template"}
     relative_paths = [manifest.get("entry")]
     if kind in guidance_routes:
         relative_paths.append(manifest["routes"][kind])

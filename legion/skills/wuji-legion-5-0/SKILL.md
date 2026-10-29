@@ -1,6 +1,11 @@
+---
+name: wuji-legion-5-0
+description: "Use when the current Codex task should follow the Wuji Legion 5.0 direct-Aji workflow: handle simple work directly, activate only the necessary expert or existing Skill, preserve permission boundaries, and report evidence, failures, and unknowns without using the retired 4.0 staff/leader execution chain."
+---
+
 # 无极军团5.0：阿极直带专家入口
 
-本包承载无极军团5.0运行规则，是项目与已安装 Codex 的唯一活动军团入口。当前军团运行时仅支持5.0；4.0及更早内容只可作为静态历史/专业资料阅读，不得加载其角色链、路由、命令或执行流程。专家分身由阿极在任务确有专业能力需求时按需启用（可以只有一个专家，也可按独立任务启用多个），并通过Codex当前会话的原生 `spawn_agent`、`send_input`、`wait_agent`、`close_agent`能力调用并并发编排，无需用户手写JSON或确认CLI。原生子代理遵守当前会话模型、权限、Skill/MCP和沙箱边界。请求格式示例见 [direct-expert-request.example.json](references/direct-expert-request.example.json)。CLI不能启用旧版链路，也不等同于原生专家执行。
+本包承载无极军团5.0运行规则，是项目源和安装到 Codex 后的唯一活动军团入口。当前军团运行时仅支持5.0；4.0及更早内容只可作为静态历史/专业资料阅读，不得加载其角色链、路由、命令或执行流程。专家分身由阿极在任务确有专业能力需求时按需启用（可以只有一个专家，也可按独立任务启用多个），并通过Codex当前会话实际提供的原生子代理能力调用并编排；只有工具可用且分支独立时才并发，工具不可用时由阿极直办或如实降级。原生子代理遵守当前会话模型、权限、Skill/MCP和沙箱边界。请求格式示例见 [direct-expert-request.example.json](references/direct-expert-request.example.json)。CLI不能启用旧版链路，也不等同于原生专家执行。本 Skill 只提供行为和路由指引，不授予工具权限、模型调用权限或全局配置修改权。
 
 ## MoE冷态角色规则（全角色适用）
 

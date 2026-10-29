@@ -94,7 +94,7 @@ flowchart LR
 - Codex当前会话原生子代理是默认执行桥；项目内CLI/app-server仅作辅助/诊断，不冒充当前会话代理执行。
 ## 使用方式
 
-当前 Codex / 本项目默认采用5.0直接专家通路。普通使用无需运行CLI或输入激活语，直接告诉阿极目标即可；阿极按需直办或启用必要专家分身，并让独立分支尽早并发。4.0及更早资料仅作只读历史；所有旧版执行路由均禁用。本仓库CLI/app-server桥仅为辅助/诊断，不冒充当前会话原生委派。
+本项目源默认采用5.0直接专家通路。全局 Codex 是否已安装并加载5.0，以用户级 AGENTS/Skill 目标文件和新会话观察为准，不能由仓库内容推断。普通使用无需运行CLI或输入激活语，直接告诉阿极目标即可；阿极按需直办或启用必要专家分身，并让独立分支尽早并发。4.0及更早资料仅作只读历史；所有旧版执行路由均禁用。本仓库CLI/app-server桥仅为辅助/诊断，不冒充当前会话原生委派。
 
 复杂任务遵循以下原则：
 
@@ -103,7 +103,7 @@ flowchart LR
 3. 真实执行后独立检查产物、来源、权限和当前 hash。
 4. 交付结果、证据、失败和未知，不把计划或目录当成执行结果。
 
-项目内 tools/wuji4.py 是开发期的有界辅助入口，提供状态、诊断、按需路由和受控本地任务链；它不是新的常驻宿主或通用调度器。
+项目内 `tools/wuji4.py` 和 `tools/run_legion_task.py` 是开发期的有界诊断/辅助工具，不是5.0激活步骤、默认任务入口或原生专家委派替代品；日常使用直接向阿极描述目标即可。
 
 ## 当前入口与版本说明
 
@@ -161,7 +161,8 @@ flowchart LR
 - 5.0迁移差异与状态：docs/design-deltas/5.0-migration-map.md
 - 5.0 Skill入口：legion/skills/wuji-legion-5-0/SKILL.md
 - 4.0 执行方案 v1.7：docs/wuji-legion-4.0-execution-plan-v1.7-2026-10-04.md
-- 快速开始与边界：docs/legion-quickstart.md
+- 无极军团5.0快速开始：docs/wuji-legion-5.0-quickstart.md
+- 4.0历史快速开始（只读）：docs/legion-quickstart.md
 - 当前执行边界：docs/goal-execution-boundaries-2026-10-05.md
 - 模型基准与按需升级修订：docs/design-deltas/028-current-selection-baseline-and-upgrade-only-2026-10-08.md
 - 预算语义修订：docs/design-deltas/026-budget-semantics-and-gpt-6.1-sol-context-correction-2026-10-05.md
@@ -173,6 +174,12 @@ flowchart LR
 生成的本机审计输出、构建目录、临时工作区和运行产物默认不进入公共仓库；它们只用于本地复查和发布前证据闭合。
 
 ## 更新日志
+
+### 2026-10-29 · 5.0全局部署前修整
+
+- 补齐5.0 Skill标准元数据，并在活动manifest中区分项目源活动状态与Codex全局安装状态。
+- 明确项目CLI仅为辅助路由，增加全局部署和回读验收契约；Codex全局部署仍待用户确认后执行。
+- 将快速开始的当前指引更新为5.0；旧4.0部署记录保留为历史事实，不代表重装系统后的当前状态。
 
 ### 2026-10-25 · 无极军团5.0入口改造
 

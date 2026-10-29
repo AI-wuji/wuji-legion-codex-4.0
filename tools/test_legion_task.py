@@ -1,5 +1,6 @@
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -792,6 +793,41 @@ class LegionTaskTests(unittest.TestCase):
 
 
 class DirectExpertRoutingTests(unittest.TestCase):
+    def test_project_source_manifest_is_distinct_from_global_installation(self):
+        manifest = json.loads((legion.PACK / "task-entry-5.0.json").read_text(encoding="utf-8"))
+        activation = manifest["activation"]
+        self.assertEqual("manifest_directory", manifest["path_base"])
+        self.assertEqual("project", activation["installation_scope"])
+        self.assertTrue(activation["project_entry_active"])
+        self.assertFalse(activation["installed"])
+        self.assertFalse(activation["automatic_discovery_enabled"])
+        self.assertEqual("external_per_codex_home_verification", activation["global_installation_status"])
+        self.assertNotIn("requires_explicit_user_authorization", activation)
+        self.assertNotIn("default_cli_route", activation)
+        self.assertIn("diagnostic_only", activation["cli_execution"])
+        self.assertIn("inherit_current_host_and_user_permissions", activation["authorization_policy"])
+        self.assertTrue(all(isinstance(path, str) for path in manifest["routes"].values()))
+        self.assertNotIn("spawn_agent", manifest["execution_contract"]["native_host"])
+
+    def test_skill_package_has_codex_metadata_and_all_manifest_references_exist(self):
+        manifest = json.loads((legion.PACK / "task-entry-5.0.json").read_text(encoding="utf-8"))
+        entry_base = (legion.PACK / "task-entry-5.0.json").parent
+        skill = (entry_base / manifest["entry"]).read_text(encoding="utf-8")
+        self.assertRegex(skill, r"(?ms)^---\r?\n.*?^name:\s*wuji-legion-5-0\s*$")
+        self.assertRegex(skill, r"(?m)^description:\s*.+$")
+        for target in re.findall(r"\[[^\]]+\]\(([^)#]+)(?:#[^)]*)?\)", skill):
+            self.assertTrue((entry_base / "skills/wuji-legion-5-0" / target).is_file(), target)
+        for key, value in manifest["routes"].items():
+            self.assertTrue((entry_base / value).is_file(), key)
+
+    def test_installation_contract_is_loadable_as_guidance(self):
+        result = legion.route("installation_contract")
+        paths = {item["path"] for item in result["context"]}
+        self.assertIn("legion/skills/wuji-legion-5-0/references/installation-contract.md", paths)
+        global_rules = legion.route("global_agents_template")
+        self.assertIn("legion/skills/wuji-legion-5-0/references/global-agents.template.md",
+                      {item["path"] for item in global_rules["context"]})
+
     @unittest.skip("Historical 4.0 staff/leader execution path is intentionally disabled in 5.0")
     def test_explicit_5_route_loads_target_guidance_and_4_remains_compatible(self):
         current = legion.route("research", version="4.0")

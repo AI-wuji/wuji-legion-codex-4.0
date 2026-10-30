@@ -4,10 +4,16 @@
   "status": "active_project_entry",
   "path_base": "manifest_directory",
   "entry": "skills/wuji-legion-5-0/SKILL.md",
+  "catalog": {
+    "release": "../catalog/p3/catalog-release-5.0.json",
+    "expert_manifest": "../catalog/p3/direct-expert-manifest.json",
+    "expert_roles": "../catalog/p3/experts.json"
+  },
   "routes": {
     "research": "skills/wuji-legion-5-0/references/multi-source-research.md",
     "expert_capabilities": "skills/wuji-legion-5-0/references/expert-capability-index.md",
     "context_continuity": "skills/wuji-legion-5-0/references/context-continuity.md",
+    "motion_graphics": "skills/wuji-legion-5-0/references/motion-graphics.md",
     "installation_contract": "skills/wuji-legion-5-0/references/installation-contract.md",
     "global_agents_template": "skills/wuji-legion-5-0/references/global-agents.template.md"
   },

@@ -6,7 +6,7 @@
 
 仓库可以保留4.0及更早代码和资料作只读历史追溯，但项目与已装备Codex的运行入口只允许5.0；旧版角色链、路由、CLI命令和协作流程均已封锁，不作为兼容执行通路。5.0由阿极在当前会话按需直办或直接调用必要专家分身。
 
-动效制作已新增按功能命名的 **动效制作专家**，接入可编辑代码动画、画面评论修改和有声导出；本机有界验收、调用入口及限制见 [动效制作专家](docs/motion-graphics-expert.md)。
+动效制作有一个本机有界准入的 **动效制作专家**，范围限于代码动画及一次评论修改。5.0指引与调用入口见[动效制作专家](legion/skills/wuji-legion-5-0/references/motion-graphics.md)；不扩大为其他格式、平台或全专业目录通过。
 
 ## 初衷
 
@@ -164,16 +164,22 @@ flowchart LR
 - 无极军团5.0快速开始：docs/wuji-legion-5.0-quickstart.md
 - 4.0历史快速开始（只读）：docs/legion-quickstart.md
 - 当前执行边界：docs/goal-execution-boundaries-2026-10-05.md
+- 5.0复查与收敛记录：docs/5.0-review-2026-10-30.md
 - 模型基准与按需升级修订：docs/design-deltas/028-current-selection-baseline-and-upgrade-only-2026-10-08.md
 - 预算语义修订：docs/design-deltas/026-budget-semantics-and-gpt-6.1-sol-context-correction-2026-10-05.md
 - 研究先行 ADR：docs/adr/001-research-before-experiment.md
 - 进度记录：docs/progress.md
-- 4.0 Skill 入口：legion/skills/wuji-legion-4-0/SKILL.md
-- 专家委派配方：catalog/p3/delegation-manifest.json
+- 4.0 Skill 入口（只读历史）：legion/skills/wuji-legion-4-0/SKILL.md
+- 5.0动效专家有界指引与launcher：legion/skills/wuji-legion-5-0/references/motion-graphics.md；legion/skills/wuji-legion-5-0/scripts/motion-graphics.mjs
+- 5.0直接专家目录：catalog/p3/direct-expert-manifest.json；release与来源边界：catalog/p3/catalog-release-5.0.json；角色定义：catalog/p3/experts.json
+- 5.0目录一致性回读：`py -3.12 tools/validate_5_catalog.py`；该命令只核对目录契约，不证明专家已准入、被调用或有效。
+- 4.0历史委派目录（只读）：catalog/p3/delegation-manifest.json
 
 生成的本机审计输出、构建目录、临时工作区和运行产物默认不进入公共仓库；它们只用于本地复查和发布前证据闭合。
 
 ## 更新日志
+
+以下条目保留历史变更事实；当前活动契约以本 README 前文、`AGENTS.md`、`legion/task-entry-5.0.json` 和 `docs/5.0-review-2026-10-30.md` 为准。
 
 ### 2026-10-29 · 5.0全局部署前修整
 

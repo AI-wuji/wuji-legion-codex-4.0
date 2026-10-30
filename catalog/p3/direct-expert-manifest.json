@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "kind": "direct_expert_manifest",
+  "state": "cold_catalog_with_one_bounded_consumer_extension",
+  "authority": "Explicit role selection and handoff shape only; no model execution, permission, or installation authority",
+  "catalog": "catalog/p3/experts.json",
+  "release_record": "catalog/p3/catalog-release-5.0.json",
+  "bounded_extensions": [
+    {
+      "role_id": "p3/leaf/motion-graphics",
+      "release_state": "bounded_current_project_consumer",
+      "brief": "legion/skills/wuji-legion-5-0/references/motion-graphics.md",
+      "launcher": "legion/skills/wuji-legion-5-0/scripts/motion-graphics.mjs",
+      "legacy_call_binding_is_authoritative": false
+    }
+  ],
+  "role_count": 58,
+  "execution": {
+    "owner": "aji",
+    "return_path": ["expert", "aji"],
+    "staff_layer_required": false,
+    "leader_agent_required": false,
+    "workflow_recipes": "loadable_knowledge_only",
+    "expert_activation": "task_scoped_selected_instances_only",
+    "parallelism": "ready_independent_authorized_branches_with_nonconflicting_write_scopes",
+    "serial_conditions": [
+      "real_data_dependency",
+      "shared_write_conflict",
+      "permission_or_resource_limit",
+      "user_authorization_boundary"
+    ],
+    "unknown_submission": "query_or_retain_unknown; never_blindly_retry"
+  },
+  "receipt": {
+    "required": [
+      "producer_task_id",
+      "status",
+      "artifacts_or_findings",
+      "scope",
+      "sources_or_limitations",
+      "acceptance_state"
+    ],
+    "native_execution": "observed_only_when_current_host_returns_trusted_evidence",
+    "professional_effectiveness": "not_claimed_without_independent_domain_validation"
+  },
+  "historical_exclusion": {
+    "legacy_manifest": "catalog/p3/delegation-manifest.json",
+    "legacy_version": "4.0",
+    "loadable_by_5_0": false
+  }
+}

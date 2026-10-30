@@ -802,6 +802,8 @@ class DirectExpertRoutingTests(unittest.TestCase):
         self.assertFalse(activation["installed"])
         self.assertFalse(activation["automatic_discovery_enabled"])
         self.assertEqual("external_per_codex_home_verification", activation["global_installation_status"])
+        self.assertEqual("../catalog/p3/direct-expert-manifest.json", manifest["catalog"]["expert_manifest"])
+        self.assertEqual("../catalog/p3/experts.json", manifest["catalog"]["expert_roles"])
         self.assertNotIn("requires_explicit_user_authorization", activation)
         self.assertNotIn("default_cli_route", activation)
         self.assertIn("diagnostic_only", activation["cli_execution"])
@@ -882,5 +884,16 @@ class DirectExpertRoutingTests(unittest.TestCase):
         self.assertEqual("selection_gap", result["state"])
         self.assertFalse(result["staff_invoked"])
         self.assertFalse(result["leader_invoked"])
+
+    def test_direct_expert_manifest_is_active_and_legacy_manifest_is_excluded(self):
+        direct = json.loads(legion.DIRECT_EXPERT_MANIFEST.read_text(encoding="utf-8"))
+        legacy = json.loads(legion.DELEGATION_MANIFEST.read_text(encoding="utf-8"))
+        self.assertEqual("direct_expert_manifest", direct["kind"])
+        self.assertEqual(["expert", "aji"], direct["execution"]["return_path"])
+        self.assertFalse(direct["execution"]["staff_layer_required"])
+        self.assertFalse(direct["execution"]["leader_agent_required"])
+        self.assertEqual("legacy_read_only_4_0", legacy["status"])
+        self.assertFalse(legacy["runtime_entry"])
+        self.assertEqual("catalog/p3/direct-expert-manifest.json", legacy["superseded_by"])
 if __name__ == "__main__":
     unittest.main()

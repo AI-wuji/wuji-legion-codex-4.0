@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "release": "wuji-legion-5.0-catalog-2026-10-31.2",
+  "state": "one_bounded_role_admitted_57_design_roles_cold",
+  "catalog": {
+    "path": "catalog/p3/experts.json",
+    "sha256": "3fccb574dbcc4aff83cc1d63c85af767ddbfdfca521abc19eb4cfa89cf3da879",
+    "role_count": 58,
+    "baseline_design_role_count": 57,
+    "bounded_consumer_extension_count": 1
+  },
+  "direct_expert_manifest": {
+    "path": "catalog/p3/direct-expert-manifest.json",
+    "sha256": "7eb7e27b0c721361ea1297a6d82b0bfeee6eed5eef265730cd2faa0f0b2c6014"
+  },
+  "provenance": {
+    "design_source": "docs/expert-design-map.json",
+    "historical_source": "docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
+    "source_use": "read_only_semantic_lineage; not a 5.0 runtime baseline",
+    "evolution_rule": "retain source identity and differences; do not promote one-off success into global policy"
+  },
+  "rights": {
+    "catalog_status": "internal project design records",
+    "third_party_skill_bodies_redistributed": false,
+    "external_source_license_clearance": "not_claimed_for_historical_source_refs",
+    "activation_rule": "do not execute or redistribute a source asset until its exact source and license are admitted"
+  },
+  "role_contract": {
+    "trigger": "Aji task-specific selection; assignment must name the concrete task trigger",
+    "anti_trigger": "required from each role record; matching anti_trigger means do not activate",
+    "inputs": "five_elements.inputs plus exact authorized input references",
+    "outputs": "five_elements.output plus explicit task deliverables",
+    "scope": "explicit task write_roots and forbidden_actions; never inferred from catalog membership",
+    "dependencies": "composition_dependencies are design references, not runtime dependencies unless resolved for this task",
+    "acceptance": "five_elements.acceptance plus task-specific user acceptance",
+    "return_path": "expert -> aji",
+    "missing_trigger_behavior": "selection_gap"
+  },
+  "admitted_roles": [
+    {
+      "role_id": "p3/leaf/motion-graphics",
+      "state": "bounded_current_project_consumer",
+      "scope": "Current project-local Windows code animation creation and one actual browser-comment revision",
+      "brief": "legion/skills/wuji-legion-5-0/references/motion-graphics.md",
+      "brief_sha256": "e5011dd362aba746f0e90eed64343a3ccb966ef9acd29168fa620340894aa30c",
+      "launcher": "legion/skills/wuji-legion-5-0/scripts/motion-graphics.mjs",
+      "launcher_sha256": "9a8a50924fb4b0874832f8e14baeb60b4691665d1b7916144ff9f3091068d19e",
+      "evidence": {
+        "path": "outputs/motion-graphics/integration-evidence.json",
+        "sha256": "dfe0e58b98c3bf49a5622e5cca94db9b79eb29a411d2b54701c1ebd4605d9d9b",
+        "observed_at": "2026-10-19T15:38:34.958706+00:00",
+        "limitation": "Local ignored evidence; re-observe on another machine or after runtime/source changes"
+      },
+      "upstream": {
+        "name": "huashu-motion",
+        "version": "0.1.1",
+        "integrity": "sha512-RJAUfR4/kP4FwE/41xwMMTx/Ua5KAGDqg6gwUFcg2DLsLvWaZCDtzL6DYD4FuCoPgCfd+Ek/EMB/xZrwq7QjUg==",
+        "license": "MIT; retain bundled-component exceptions and THIRD_PARTY.md notices"
+      },
+      "excludes": [
+        "generated_voice_backends",
+        "transparent_exports",
+        "other_platforms",
+        "all_professional_roles",
+        "unattended_publication",
+        "global_professional_admission"
+      ]
+    }
+  ],
+  "host_capabilities": {
+    "native_spawn": "current-session-only; host capability must be observed at invocation",
+    "suspend_resume": "unknown",
+    "expert_close_receipt": "unknown",
+    "effective_model_effort_quota": "unknown"
+  }
+}

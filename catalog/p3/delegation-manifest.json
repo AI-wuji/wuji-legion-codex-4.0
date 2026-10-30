@@ -1,6 +1,9 @@
 {
   "schema_version": 1,
   "kind": "bounded_staff_delegation_manifest",
+  "status": "legacy_read_only_4_0",
+  "runtime_entry": false,
+  "superseded_by": "catalog/p3/direct-expert-manifest.json",
   "state": "cold_recipe_catalog",
   "authority": "Recipe selection and handoff shape only; no model execution or tool permission",
   "catalog": "catalog/p3/experts.json",

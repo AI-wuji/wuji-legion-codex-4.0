@@ -33,7 +33,7 @@
 | `p3/leaf/skill-packager` | `skill-creator`；飞书CLI自定义Skill才用`lark-skill-maker` | 创建/更新Codex Skill或lark-cli Skill | 不自动修改全局技能或凭据 |
 | `p3/workflow/publication-delivery`、`p3/workflow/content-operations` | 发布目标明确后再读对应平台Skill；飞书渠道按需使用`lark-im`、`lark-doc`或`lark-drive` | 准备平台交付、获准后操作发布/消息/文件 | 外发、发布、发送、删除需权限；拟稿不等于发出 |
 | `p3/workflow/image-creation` | 有图像生成/编辑任务时用`imagegen` | 生成/编辑图像资产 | 生成权限/成本/来源权利以工具及授权为准 |
-| `p3/leaf/motion-graphics` | `dashi-ppt`只在演示/动效交付符合该Skill范围时使用；其他视频/音频按当前可用专业Skill | 在已授权brief下输出动效/可编辑工程 | 不推断不存在的视频/音频Skill，不生成虚构媒体或外部接口 |
+| `p3/leaf/motion-graphics` | 本包 [5.0动效制作专家指引](motion-graphics.md) 与项目隔离 launcher | 在已授权 brief 下直接启用单个专家，输出动效/可编辑工程 | 仅当前 Windows 代码动画与评论修改有界准入；其他格式、平台、配音和发布不继承该准入 |
 
 ## 飞书能力按意图加载
 

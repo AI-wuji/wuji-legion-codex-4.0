@@ -14,13 +14,13 @@ REVIEW_PERMIT = "confirm-isolated-project-resource-review"
 TRIGGER = "legion-route-manifest"
 METHOD = json.dumps({
     "consumer": "isolated-manifest-regression",
-    "route": "engineering",
-    "reject_activation": ["installed", "automatic_discovery_enabled", "P7"],
-    "reject_duplicate_keys": ["authority", "installed", "automatic_discovery_enabled", "P7"],
+    "route": "expert_capabilities",
+    "reject_activation": ["project_entry_active"],
+    "reject_duplicate_keys": ["authority", "status"],
 }, sort_keys=True)
 COUNTEREXAMPLES = [
     "Repeated prose is not a duplicate JSON key.",
-    "This test consumer does not authorize installation, discovery, P7 or current Codex configuration changes.",
+    "This test consumer does not authorize installation, discovery or current Codex configuration changes.",
     "A local review is not automatic model learning, universal truth or all-professional effectiveness.",
 ]
 
@@ -84,14 +84,14 @@ class ExperienceWorkflowTests(unittest.TestCase):
     def observe_manifest_guards(self, method, label):
         parameters = json.loads(method)
         self.assertEqual(parameters["consumer"], "isolated-manifest-regression")
-        manifest = json.loads((test_core_cli.ROOT / "legion/task-entry.json").read_text(encoding="utf-8"))
+        manifest = json.loads((test_core_cli.ROOT / "legion/task-entry-5.0.json").read_text(encoding="utf-8"))
         pack = self.workspace / label
         pack.mkdir()
         for relative in (manifest["entry"], manifest["routes"][parameters["route"]]):
             path = pack / relative
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text("Independent 4.0 test guidance; no execution authority.", encoding="utf-8")
-        entry = pack / "task-entry.json"
+            path.write_text("Independent 5.0 test guidance; no execution authority.", encoding="utf-8")
+        entry = pack / "task-entry-5.0.json"
         observations = []
         with mock.patch.object(legion, "PACK", pack):
             entry.write_text(json.dumps(manifest), encoding="utf-8")
@@ -103,8 +103,10 @@ class ExperienceWorkflowTests(unittest.TestCase):
             self.assertFalse(valid["execution_authority"])
             for field in parameters["reject_activation"]:
                 with self.subTest(consumer=label, activation=field):
-                    entry.write_text(json.dumps(dict(manifest, **{field: True})), encoding="utf-8")
-                    with self.assertRaisesRegex(ValueError, "isolated uninstalled") as rejected:
+                    changed = copy.deepcopy(manifest)
+                    changed["activation"][field] = False
+                    entry.write_text(json.dumps(changed), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "active project") as rejected:
                         legion.route(parameters["route"])
                     observations.append({"case": field + "=true", "error": str(rejected.exception)})
             for field in parameters["reject_duplicate_keys"]:
@@ -238,7 +240,7 @@ class ExperienceWorkflowTests(unittest.TestCase):
         self.assertEqual(receipt["exact_method"], METHOD)
         self.assertEqual(receipt["evidence_refs_used"], [self.resources.source])
         self.assertEqual(receipt["counterexamples"], COUNTEREXAMPLES)
-        self.assertEqual(len(receipt["actual_followup"]["rejections"]), 7)
+        self.assertEqual(len(receipt["actual_followup"]["rejections"]), 3)
         self.assertTrue(receipt["actual_followup"]["repeated_prose_accepted"])
         self.assert_self_grants_and_stale_queries_rejected(knowledge, knowledge_ref, experience, experience_ref, evidence)
 

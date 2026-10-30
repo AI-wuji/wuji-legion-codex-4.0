@@ -1,5 +1,7 @@
 # 动效制作专家
 
+> 4.0迁移期记录，仅供历史证据追溯。当前5.0职责边界和调用方式以 `legion/skills/wuji-legion-5-0/references/motion-graphics.md` 为准；本页中的旧入口不得用于当前任务。
+
 职责 ID：`p3/leaf/motion-graphics`。该职责负责产品动画、UI 动效、动态图表、文字动画和代码动画解说，交付可编辑工程、成片和真实检查结果。单个明确动效由阿极直接调用；需要组织的任务由现有 `lead.video` 使用 `motion-graphics-delivery` 配方调用，不新增主帅或常驻调度器。
 
 ## 实际入口

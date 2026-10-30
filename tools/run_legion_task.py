@@ -17,6 +17,7 @@ EXECUTABLE = ROOT / ".dev/runtime-target/debug/wuji4.exe"
 PACK = ROOT / "legion"
 CATALOG = ROOT / "catalog/p3"
 DELEGATION_MANIFEST = CATALOG / "delegation-manifest.json"
+DIRECT_EXPERT_MANIFEST = CATALOG / "direct-expert-manifest.json"
 EXPERT_CATALOG = CATALOG / "experts.json"
 
 
@@ -113,6 +114,22 @@ def _load_delegation_manifest():
 
 
 def _load_expert_metadata():
+    from validate_5_catalog import validate_catalog
+
+    validate_catalog()
+    direct_manifest = strict_json(DIRECT_EXPERT_MANIFEST.read_text(encoding="utf-8"))
+    if (direct_manifest.get("schema_version") != 1
+            or direct_manifest.get("kind") != "direct_expert_manifest"
+            or direct_manifest.get("state") != "cold_catalog_with_one_bounded_consumer_extension"):
+        raise ValueError("5.0 direct expert manifest is malformed")
+    execution = direct_manifest.get("execution")
+    if (not isinstance(execution, dict) or execution.get("owner") != "aji"
+            or execution.get("staff_layer_required") is not False
+            or execution.get("leader_agent_required") is not False
+            or execution.get("return_path") != ["expert", "aji"]):
+        raise ValueError("5.0 direct expert manifest still requires a legacy delegation layer")
+    if direct_manifest.get("catalog") != "catalog/p3/experts.json":
+        raise ValueError("5.0 direct expert manifest points to an unexpected role catalog")
     catalog = strict_json(EXPERT_CATALOG.read_text(encoding="utf-8"))
     roles = catalog.get("roles")
     if (type(catalog.get("role_count")) is not int
@@ -125,6 +142,8 @@ def _load_expert_metadata():
         metadata[role["id"]] = role
     if len(metadata) != catalog["role_count"]:
         raise ValueError("Cold expert role count does not match the catalog")
+    if direct_manifest.get("role_count") != catalog["role_count"]:
+        raise ValueError("5.0 direct expert manifest role count does not match the catalog")
     return catalog, metadata
 
 
@@ -640,15 +659,21 @@ def execute_aji_direct_experts(work_item, expert_tasks, invoke_role, *, parallel
     from legion_pipeline import execute_direct_experts
 
     _, roles = _load_expert_metadata()
+    from validate_5_catalog import validate_catalog
+    admitted_role_ids = set(validate_catalog()["admitted_role_ids"])
     if not isinstance(expert_tasks, list) or not expert_tasks:
         raise ValueError("5.0 direct expert execution requires explicit expert tasks")
     unknown = sorted({item.get("role_id") for item in expert_tasks
                       if isinstance(item, dict) and item.get("role_id") not in roles})
+    not_admitted = sorted({item.get("role_id") for item in expert_tasks
+                           if isinstance(item, dict) and item.get("role_id") in roles
+                           and item.get("role_id") not in admitted_role_ids})
     malformed = any(not isinstance(item, dict) or not isinstance(item.get("role_id"), str)
                     for item in expert_tasks)
-    if malformed or unknown:
+    if malformed or unknown or not_admitted:
         return {"communicator": "aji", "operation": "5.0-direct-experts",
                 "state": "selection_gap", "unknown_expert_roles": unknown,
+                "roles_not_admitted_for_local_bridge": not_admitted,
                 "actual_agents_started": 0, "staff_invoked": False,
                 "leader_invoked": False, "execution": {"status": "selection_gap"}}
     result = execute_direct_experts(work_item, expert_tasks, invoke_role,
@@ -817,10 +842,14 @@ def make_local_codex_expert_invoker(*, timeout=180, close_timeout=90):
         writable = bool(work_roots)
         _, roles = _load_expert_metadata()
         role = roles.get(task.get("role_id"))
-        if not role:
-            raise ValueError("Unknown expert role")
+        if not role or task.get("role_id") != "p3/leaf/motion-graphics":
+            raise ValueError("Only the release-bound motion role is admitted for this auxiliary bridge")
+        brief_path = PACK / "skills/wuji-legion-5-0/references/motion-graphics.md"
+        brief = brief_path.read_bytes()
         prompt = {"instruction": "完成分配的专家任务。仅使用当前宿主确实提供且本次已授权的能力；严格遵守write_roots和forbidden_actions，不外发、不安装。只输出一个JSON对象，不输出markdown或思考过程。只在所有指定交付物已经存在、且回执内容与结果一致时报告completed；能力/来源不可用时写入limitations。",
-                  "role": {key: role.get(key) for key in ("id", "kind", "design_target", "five_elements", "anti_trigger", "scope_rule") if key in role},
+                  "role": {"id": task["role_id"], "brief_path": brief_path.relative_to(ROOT).as_posix(),
+                           "brief_sha256": hashlib.sha256(brief).hexdigest(),
+                           "brief": brief.decode("utf-8")},
                   "contract": contract,
                   "receipt_shape": {"status": "completed", "producer_task_id": task["task_id"], "revision": contract["revision"], "result": {}, "sources": [], "limitations": []}}
         return {"thread": {"ephemeral": True, "cwd": str(ROOT),

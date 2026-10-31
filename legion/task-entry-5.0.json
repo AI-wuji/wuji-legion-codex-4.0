@@ -45,7 +45,7 @@
       "user_authorization_boundary"
     ],
     "user_interruption": "answer_interruption_then_resume_original_unless_explicitly_cancelled_or_replaced",
-    "acceptance": "only_on_user_request_or_specific_material_risk_or_unobservable_result_that_changes_next_action",
+    "acceptance": "no_routine_per_step_checks; only_user_request_material_risk_critical_unobservable_result_affecting_next_action_or_delivery_necessity; minimum_cost_then_stop",
     "role_activation": {
       "all_roles_are_moe": true,
       "default_state": "cold_suspended",

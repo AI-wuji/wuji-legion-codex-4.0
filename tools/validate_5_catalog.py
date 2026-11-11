@@ -23,13 +23,18 @@ def _read_bound_file(record, label):
 
 
 def validate_catalog():
+    from validate_expert_roster import validate as validate_roster
+
+    roster_result = validate_roster()
     release = strict_json(RELEASE_PATH.read_text(encoding="utf-8"))
     if (release.get("schema_version") != 1
-            or release.get("state") != "one_bounded_role_admitted_57_design_roles_cold"):
+            or release.get("state") != "consolidated_26_expert_roster_one_bounded_local_tool_consumer"):
         raise ValueError("Unsupported or overstated 5.0 catalog release")
     catalog_path = _read_bound_file(release.get("catalog"), "role catalog")
+    active_roster_path = _read_bound_file(release.get("active_roster"), "active expert roster")
     direct_path = _read_bound_file(release.get("direct_expert_manifest"), "direct expert manifest")
     catalog = strict_json(catalog_path.read_text(encoding="utf-8"))
+    active_roster = strict_json(active_roster_path.read_text(encoding="utf-8"))
     direct = strict_json(direct_path.read_text(encoding="utf-8"))
     provenance = release.get("provenance")
     rights = release.get("rights")
@@ -41,7 +46,6 @@ def validate_catalog():
     expected_count = catalog_record.get("role_count")
     if (not isinstance(roles, list) or type(expected_count) is not int
             or len(roles) != expected_count or catalog.get("role_count") != expected_count
-            or direct.get("role_count") != expected_count
             or catalog_record.get("baseline_design_role_count") != 57
             or catalog_record.get("bounded_consumer_extension_count") != 1):
         raise ValueError("5.0 role counts disagree across release records")
@@ -92,29 +96,37 @@ def validate_catalog():
     if (not isinstance(contract, dict) or contract.get("return_path") != "expert -> aji"
             or contract.get("missing_trigger_behavior") != "selection_gap"):
         raise ValueError("5.0 direct expert role contract is incomplete")
-    if (direct.get("state") != "cold_catalog_with_one_bounded_consumer_extension"
+    if (direct.get("state") != "consolidated_26_expert_roster_with_bounded_motion_consumer"
             or direct.get("execution", {}).get("return_path") != ["expert", "aji"]):
         raise ValueError("Direct expert manifest return path drifted")
-    if direct.get("catalog") != "catalog/p3/experts.json":
-        raise ValueError("Direct expert manifest points to a different role catalog")
+    if (direct.get("catalog") != "catalog/p3/expert-roster-5.0.json"
+            or direct.get("source_catalog") != "catalog/p3/experts.json"
+            or direct.get("role_count") != roster_result["expert_count"]
+            or release["active_roster"].get("role_count") != roster_result["expert_count"]
+            or release["active_roster"].get("source_responsibility_count") != roster_result["source_responsibility_count"]
+            or active_roster.get("role_count") != roster_result["expert_count"]):
+        raise ValueError("Direct expert manifest does not target the consolidated 26-role roster")
     extension = direct.get("bounded_extensions")
     if (not isinstance(extension, list) or len(extension) != 1 or not isinstance(extension[0], dict)
-            or extension[0].get("role_id") != "p3/leaf/motion-graphics"
+            or extension[0].get("role_id") != "p5/expert/wuji-motion-graphics"
+            or extension[0].get("source_role_id") != "p3/leaf/motion-graphics"
             or extension[0].get("legacy_call_binding_is_authoritative") is not False
             or extension[0].get("brief") != admitted["p3/leaf/motion-graphics"]["brief"]
             or extension[0].get("launcher") != admitted["p3/leaf/motion-graphics"]["launcher"]):
         raise ValueError("The bounded motion role must resolve through its 5.0 entry")
     return {
-        "state": "catalog_contract_valid_with_one_bounded_role",
+        "state": "consolidated_roster_valid_with_one_bounded_local_tool_consumer",
         "release": release["release"],
-        "role_count": len(roles),
+        "role_count": roster_result["expert_count"],
+        "source_responsibility_count": roster_result["source_responsibility_count"],
         "catalog_sha256": release["catalog"]["sha256"],
         "direct_manifest_sha256": release["direct_expert_manifest"]["sha256"],
-        "runtime_admission_claim": "one_bounded_role_only; current invocation must still observe host and local tools",
-        "admitted_role_ids": sorted(admitted),
-        "cold_design_role_count": 57,
+        "profile_dispatchability": "26 defined profiles; native invocation must be observed per task",
+        "local_tool_admission": "one bounded role only; current invocation must still observe host and local tools",
+        "admitted_role_ids": sorted(item["role_id"] for item in extension),
+        "profiles_without_bounded_local_tool_evidence": roster_result["expert_count"] - len(extension),
         "historical_local_evidence_present": evidence_present,
-        "effectiveness": "one_bounded_role_only",
+        "effectiveness": "only_motion_has_bounded_local_tool_evidence; other_role_effectiveness_not_run",
     }
 
 

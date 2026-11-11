@@ -2,7 +2,7 @@
   "schema_version": 1,
   "release": "p3-catalog-1",
   "phase": "P3",
-  "state": "catalog_written_cold",
+  "state": "historical_design_source_not_active_roster",
   "baseline": {
     "path": "docs/wuji-legion-4.0-execution-plan-v1.6-2026-10-03.md",
     "sha256": "2837c3072f3dfb425274fa7e0bfe01ea93fd1d0247fad4326c2b4216e4932fe0",

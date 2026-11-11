@@ -18,7 +18,7 @@ PACK = ROOT / "legion"
 CATALOG = ROOT / "catalog/p3"
 DELEGATION_MANIFEST = CATALOG / "delegation-manifest.json"
 DIRECT_EXPERT_MANIFEST = CATALOG / "direct-expert-manifest.json"
-EXPERT_CATALOG = CATALOG / "experts.json"
+EXPERT_CATALOG = CATALOG / "expert-roster-5.0.json"
 
 
 def _bounded_text(value, field, limit=512):
@@ -114,13 +114,13 @@ def _load_delegation_manifest():
 
 
 def _load_expert_metadata():
-    from validate_5_catalog import validate_catalog
+    from validate_expert_roster import validate
 
-    validate_catalog()
+    validate()
     direct_manifest = strict_json(DIRECT_EXPERT_MANIFEST.read_text(encoding="utf-8"))
     if (direct_manifest.get("schema_version") != 1
             or direct_manifest.get("kind") != "direct_expert_manifest"
-            or direct_manifest.get("state") != "cold_catalog_with_one_bounded_consumer_extension"):
+            or direct_manifest.get("state") != "consolidated_26_expert_roster_with_bounded_motion_consumer"):
         raise ValueError("5.0 direct expert manifest is malformed")
     execution = direct_manifest.get("execution")
     if (not isinstance(execution, dict) or execution.get("owner") != "aji"
@@ -128,7 +128,7 @@ def _load_expert_metadata():
             or execution.get("leader_agent_required") is not False
             or execution.get("return_path") != ["expert", "aji"]):
         raise ValueError("5.0 direct expert manifest still requires a legacy delegation layer")
-    if direct_manifest.get("catalog") != "catalog/p3/experts.json":
+    if direct_manifest.get("catalog") != "catalog/p3/expert-roster-5.0.json":
         raise ValueError("5.0 direct expert manifest points to an unexpected role catalog")
     catalog = strict_json(EXPERT_CATALOG.read_text(encoding="utf-8"))
     roles = catalog.get("roles")
@@ -343,7 +343,7 @@ def _select_experts(recipe, task, expert_metadata):
         selected.append({
             "role_id": role_id,
             "assignment": assignment,
-            "catalog_ref": "catalog/p3/experts.json",
+            "catalog_ref": "catalog/p3/expert-roster-5.0.json",
             "baseline_id": role.get("baseline_id"),
             "kind": role.get("kind"),
             "design_target": role.get("design_target"),
@@ -659,8 +659,9 @@ def execute_aji_direct_experts(work_item, expert_tasks, invoke_role, *, parallel
     from legion_pipeline import execute_direct_experts
 
     _, roles = _load_expert_metadata()
-    from validate_5_catalog import validate_catalog
-    admitted_role_ids = set(validate_catalog()["admitted_role_ids"])
+    # Native host delegation can activate any role profile; local tool admission
+    # remains separately constrained inside the auxiliary invoker.
+    admitted_role_ids = set(roles)
     if not isinstance(expert_tasks, list) or not expert_tasks:
         raise ValueError("5.0 direct expert execution requires explicit expert tasks")
     unknown = sorted({item.get("role_id") for item in expert_tasks
@@ -842,9 +843,10 @@ def make_local_codex_expert_invoker(*, timeout=180, close_timeout=90):
         writable = bool(work_roots)
         _, roles = _load_expert_metadata()
         role = roles.get(task.get("role_id"))
-        if not role or task.get("role_id") != "p3/leaf/motion-graphics":
+        if not role or task.get("role_id") != "p5/expert/wuji-motion-graphics":
             raise ValueError("Only the release-bound motion role is admitted for this auxiliary bridge")
-        brief_path = PACK / "skills/wuji-legion-5-0/references/motion-graphics.md"
+        role_ref = role.get("profile")
+        brief_path = (PACK / "skills/wuji-legion-5-0/experts" / role_ref).resolve(strict=True)
         brief = brief_path.read_bytes()
         prompt = {"instruction": "完成分配的专家任务。仅使用当前宿主确实提供且本次已授权的能力；严格遵守write_roots和forbidden_actions，不外发、不安装。只输出一个JSON对象，不输出markdown或思考过程。只在所有指定交付物已经存在、且回执内容与结果一致时报告completed；能力/来源不可用时写入limitations。",
                   "role": {"id": task["role_id"], "brief_path": brief_path.relative_to(ROOT).as_posix(),

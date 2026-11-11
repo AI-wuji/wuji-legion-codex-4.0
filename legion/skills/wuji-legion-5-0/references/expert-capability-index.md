@@ -19,21 +19,49 @@
 - 对用户或专家只传当前任务、必须上下文、范围/权限、产物与阻塞；不传冗长思考过程。
 - 没有对应Skill时先用P3职责和当前宿主原生工具；不因此阻塞不依赖它的分支，也不自动安装。
 
-## 就绪能力映射
+## 26个按需专家
 
-| P3专家职责 | 直接加载的Skill | 可派发任务 | 不自动获得的能力 |
-|---|---|---|---|
-| `p3/workflow/research` | 本包 `references/multi-source-research.md` | 研究问题拆分、来源范围分支、原始依据/反证、决策建议 | 浏览器/GitHub/MCP是否可用须按当前会话确认 |
-| `p3/method/knowledge-base-qa` | 本包任务契约 | 基于已授权文档回答并逐项绑定来源、标明缺口 | 私有知识库访问权、云盘/文档授权 |
-| `p3/workflow/code-repair`、`p3/leaf/code-review`、`p3/leaf/software-architecture`及语言专家 | 本包任务契约，必要时才加载对应语言/框架现有Skill | 缺陷定位、限定范围修改、代码审阅、架构或语言实现 | 仓库写权限、运行环境、测试工具不由角色声明赋予 |
-| `p3/workflow/document-deck` | 可用时加载`documents:documents`或`presentations:Presentations` | Word/PDF/演示文件的解析、创建、编辑与必要的视觉检查 | 文件写权限、编译/渲染成功不由派发本身保证 |
-| `p3/leaf/data-analysis`、`p3/workflow/dashboard-review` | 可用时加载`spreadsheets:Spreadsheets`；在线Excel会话才用`spreadsheets:excel-live-control` | 表格分析、公式/图表操作、数据口径与不确定性 | 云端数据授权及实时工作簿连接 |
-| `p3/workflow/business-library`、`p3/workflow/workbench-builder` | 按实际文件选`documents:documents`、`spreadsheets:Spreadsheets`、`presentations:Presentations`或`pdf:pdf` | 办公交付、多格式结构保全、可编辑文件生成 | 实际渲染/解析能力以当前工具回执为准 |
-| `p3/workflow/automation-design` | 若任务涉及Codex自动化，按需读`openai-docs`；飞书任务/日历自动化分别读`lark-task`/`lark-calendar` | 设计并操作用户明确要求的宿主原生自动化 | 创建/修改定时任务、飞书对象仍受用户授权和工具可用性约束 |
-| `p3/leaf/skill-packager` | `skill-creator`；飞书CLI自定义Skill才用`lark-skill-maker` | 创建/更新Codex Skill或lark-cli Skill | 不自动修改全局技能或凭据 |
-| `p3/workflow/publication-delivery`、`p3/workflow/content-operations` | 发布目标明确后再读对应平台Skill；飞书渠道按需使用`lark-im`、`lark-doc`或`lark-drive` | 准备平台交付、获准后操作发布/消息/文件 | 外发、发布、发送、删除需权限；拟稿不等于发出 |
-| `p3/workflow/image-creation` | 有图像生成/编辑任务时用`imagegen` | 生成/编辑图像资产 | 生成权限/成本/来源权利以工具及授权为准 |
-| `p3/leaf/motion-graphics` | 本包 [5.0动效制作专家指引](motion-graphics.md) 与项目隔离 launcher | 在已授权 brief 下直接启用单个专家，输出动效/可编辑工程 | 仅当前 Windows 代码动画与评论修改有界准入；其他格式、平台、配音和发布不继承该准入 |
+正式专家集以 `catalog/p3/expert-roster-5.0.json` 为准；每位专家的用户可见中文功能名见 `display_name_zh`，角色定义和可用范围见本目录 `experts/`。面向用户展示或介绍专家时必须使用中文功能名，内部英文 ID 只用于路由和代码引用，不能单独作为展示名称。表内 P3 ID 是被合并的设计来源，不是额外可派发的角色。阿极按任务启用一个或多个互不冲突的专家实例，并把完整角色卡、当前目标、范围和验收条件放入原生子代理任务。
+
+| 中文功能名（内部ID） | 合并职责来源 | 可派发能力 |
+|---|---|---|
+| 软件架构设计专家 (`wuji-architect`) | `software-architecture`、`ai-workflow-engineer` | 只读架构、边界与接口方案 |
+| 自动化与工作台专家 (`wuji-automation`) | `automation-design`、`workbench-builder` | 本地自动化与工作台实现 |
+| 音视频制作专家 (`wuji-av-producer`) | `image-creation`、`video-production`、`post-production`、`voice-audio` | 图像与视听制作；按媒介任务限定范围 |
+| 商务方案与资料专家 (`wuji-business`) | `requirement-decomposition`、`studio-owner`、`business-library`、`client-proposal`、`delivery-acceptance` | 商务需求、定位、方案、资料和交付接收 |
+| 代码审查专家 (`wuji-code-reviewer`) | `code-review`、`evolution-review` | 独立代码审阅与能力演进审查 |
+| ComfyUI 工作流与节点专家 (`wuji-comfyui`) | 全部 `comfyui-*` 职责 | ComfyUI 分析、工作流、节点、性能、打包和验证；原生扩展须另证接口与实现能力 |
+| 合同风险审查专家 (`wuji-contract-reviewer`) | `contract-risk` | 合同条款风险审查 |
+| 课程与学习设计专家 (`wuji-course`) | `course-design`、`learning-coach`、`template-curator` | 课程、陪练与学习模板 |
+| 数据分析专家 (`wuji-data-analyst`) | `data-analysis`、`dashboard-review` | 数据分析与看板审查 |
+| 故障诊断专家 (`wuji-diagnostician`) | `incident-diagnosis`、`comfyui-debug-performance` | 只读故障诊断与性能证据分析 |
+| 文档与办公文件处理专家 (`wuji-document`) | `document-deck`、商务资料中的文件制作 | Word/PDF/表格/演示文档处理 |
+| 软件工程实现专家 (`wuji-engineer`) | `code-repair`、`code-implementation`、Python/Rust/Go/C++工程叶子、`ai-workflow-engineer`、`workbench-builder` | 软件实现、缺陷修复与语言/API专项 |
+| 代码与系统探查专家 (`wuji-explorer`) | `software-architecture`、`software-reverse` 的只读探查面 | 入口、调用链、数据流和副作用取证 |
+| 文件整理专家 (`wuji-file-operator`) | `file-operations` | 有界文件归类、映射与可恢复操作 |
+| 影视策划与分镜专家 (`wuji-film-planner`) | `screenwriter`、`visual-storyboard`、`art-director`、`comic-storyboard`、`video-copywriter`、`studio-producer` | 剧本、分镜、美术和影视生产计划 |
+| 影视拉片与二创专家 (`wuji-film-analysis-adaptation`) | `screenwriter`、`visual-storyboard`、`video-copywriter` | 影片拉片与证据化逐镜分析；基于影片改编/二创；也可独立原创；按需调用 `directors-eye` 和 `omni-script-director` |
+| 前端界面与视觉设计专家 (`wuji-frontend-visual`) | `frontend-visual`、工作台界面部分 | 前端实现、视觉与可用性审查 |
+| 音视频与媒体质量审查专家 (`wuji-media-reviewer`) | `media-quality-review` | 独立媒体质量与集成审查 |
+| 动效制作专家 (`wuji-motion-graphics`) | `motion-graphics` | 当前仅限已记录的动效工具链和格式范围 |
+| 内容发布与渠道交付专家 (`wuji-publisher`) | `publication-delivery`、`content-operations` 的发布动作 | 精确授权下发布并回读状态 |
+| 调研与资料核查专家 (`wuji-researcher`) | `research`、`knowledge-base-qa` | 有来源边界的调研与资料问答 |
+| 软件逆向分析专家 (`wuji-reverse`) | `software-reverse`、授权静态分析 | 授权目标的只读行为重建 |
+| Skill 设计与打包专家 (`wuji-skill-packager`) | `skill-packager`、演进审查中的打包面 | 项目内Skill与插件整理、许可和验证 |
+| 软件测试与交付验证专家 (`wuji-tester`) | 修复/ComfyUI/交付验收中的独立验证面 | 测试编写与独立验收，不实现被测源码 |
+| 安全威胁建模专家 (`wuji-threat-modeler`) | 架构/审阅/API集成中的威胁建模面 | 授权系统的只读 STRIDE 威胁建模 |
+| 内容写作与平台改写专家 (`wuji-writer`) | `writing`、`multi-platform-distribution`、`topic-selection`、`screenwriter`、`video-copywriter`、内容运营建议 | 内容写作、选题与渠道改写；不代发布 |
+
+同一P3来源可为不同消费者提供互补能力；它不会因此恢复成旧的独立派发角色。实际任务选择只使用26个 `p5/expert/*` 身份。没有列出的工具、格式、平台权限或专业验收均不由角色名称推定。
+
+### 影视拉片与二创路由
+
+- 用户要求拉片、镜头分析、导演手法或影片二创时，启用「影视拉片与二创专家」并按任务加载 `directors-eye`；用户要求基于影片二创时，先产出有来源、时间码和复核状态的拉片分析，再加载 `omni-script-director` 改写剧本。
+- 用户要求分镜时，待剧本定稿后再按 `omni-script-director` 的分镜契约处理；普通拉片不强制产生剧本或分镜。
+- 从零原创或只改写文字剧本，默认路由现有「影视策划与分镜专家」；用户明确指定影视拉片与二创专家时例外。
+- 两个 Skill 已在当前 Codex 环境提供时按需调用；当前会话仍须确认实际发现及依赖。没有真实观片/听音证据时保留 `unknown`，不把自动切点、帧差、字幕或 ASR 当成人工复核。
+
+`wuji-reverse` 的中文功能名为**软件逆向分析专家**。需要专用分析能力时，按需加载仓库级 `.agents/skills/software-reverse-analysis/SKILL.md`；附带工具只归该专家按任务使用，不作为全局常驻能力。该 Skill 当前包含离线 v8asm `.jsc` 分析器，版本 profile 和解析门槛以 Skill 文档为准；其他格式使用当前会话已有的本地工具，不自动下载或安装依赖。
 
 ## 飞书能力按意图加载
 

@@ -8,8 +8,8 @@ import { basename, delimiter, dirname, isAbsolute, join, relative, resolve, sep 
 import { fileURLToPath } from 'node:url';
 
 export const PACKAGE = Object.freeze({
-  name: 'huashu-motion', version: '0.1.1',
-  integrity: 'sha512-RJAUfR4/kP4FwE/41xwMMTx/Ua5KAGDqg6gwUFcg2DLsLvWaZCDtzL6DYD4FuCoPgCfd+Ek/EMB/xZrwq7QjUg==',
+  name: 'huashu-motion', version: '0.3.1',
+  integrity: 'sha512-iFH6Nxy9YcKOfUW78jJKAplO5Xn0VOWK8X0ceMZAV6cQb5ScJEha3ixt5I7alKpCeiiPOvBj3wPnsm9Sv+2SLw==',
 });
 export const COMMANDS = Object.freeze([
   'help', '--help', '-h', 'version', '--version', '-v', 'new', 'templates', 'demo',
@@ -151,12 +151,12 @@ export function archiveFiles(archive, integrity = PACKAGE.integrity) {
 
 export function verifySource(root, source) {
   if (!source || source.name !== PACKAGE.name || source.version !== PACKAGE.version || source.integrity !== PACKAGE.integrity) {
-    fail('Runtime source must bind the pinned huashu-motion@0.1.1 npm integrity');
+    fail('Runtime source must bind the pinned huashu-motion@0.3.1 archive integrity');
   }
   if (typeof source.install_dir !== 'string' || typeof source.archive !== 'string') fail('Source requires install_dir and archive paths');
-  const expected = resolve(root, '.dev/tools/huashu-motion-0.1.1');
+  const expected = resolve(root, '.dev/tools/huashu-motion-0.3.1');
   const install = canonicalPath(resolve(root, source.install_dir));
-  if (!samePath(install, expected)) fail('Source install_dir must be the real project-local .dev/tools/huashu-motion-0.1.1');
+  if (!samePath(install, expected)) fail('Source install_dir must be the real project-local .dev/tools/huashu-motion-0.3.1');
   const archive = canonicalPath(resolve(root, source.archive));
   if (!within(resolve(root, '.dev'), archive)) fail('Source archive must be project-local under .dev');
   const files = archiveFiles(fs.readFileSync(archive));
@@ -170,11 +170,11 @@ export function verifySource(root, source) {
   return { cli: join(install, 'cli/om.js'), cli_sha256: hash(files.get('cli/om.js')), install };
 }
 
-export function childEnvironment(inherited, runtime, scope) {
+export function childEnvironment(inherited, runtime, scope, command) {
   const env = { ...inherited };
   // Windows treats environment keys case-insensitively; Node's spawn does not deduplicate them.
   for (const key of Object.keys(env)) {
-    if (['PATH', 'OM_HOME', 'OM_CHROME', 'OM_SAMPLES', 'NODE_OPTIONS', 'NODE_PATH', 'HOME', 'USERPROFILE'].includes(key.toUpperCase())) delete env[key];
+    if (['PATH', 'OM_HOME', 'OM_CHROME', 'OM_SAMPLES', 'NODE_OPTIONS', 'NODE_PATH', 'HOME'].includes(key.toUpperCase())) delete env[key];
   }
   const originalPath = Object.entries(inherited).find(([key]) => key.toUpperCase() === 'PATH')?.[1] || '';
   env.PATH = [dirname(runtime.node), dirname(runtime.ffmpeg), originalPath].filter(Boolean).join(delimiter);
@@ -182,7 +182,8 @@ export function childEnvironment(inherited, runtime, scope) {
   env.OM_CHROME = runtime.chrome;
   env.OM_SAMPLES = join(scope.home, 'samples');
   // The upstream optional TTS/ASR cache uses os.homedir(), rather than OM_HOME.
-  env.HOME = env.USERPROFILE = join(scope.home, 'home');
+  env.HOME = join(scope.home, 'home');
+  if (command === 'voice') env.USERPROFILE = env.HOME;
   return env;
 }
 
@@ -205,7 +206,7 @@ export function prepareLaunch(argv, { cwd = process.cwd(), env = process.env } =
     if (!samePath(runtime[name], join(privateBin, name + ffSuffix))) fail(`${name} must be prepared in project-local .dev/motion-graphics/bin/${name}${ffSuffix}`);
   }
   const scope = projectScope(invocation);
-  const childEnv = childEnvironment(env, runtime, scope);
+  const childEnv = childEnvironment(env, runtime, scope, invocation.command);
   const version = spawnSync(runtime.node, ['--version'], { env: childEnv, encoding: 'utf8', timeout: 10_000, windowsHide: true });
   if (version.error || version.status !== 0 || !/^v(\d+)\./.test(version.stdout || '') || Number(/^v(\d+)\./.exec(version.stdout)[1]) < 22) {
     fail(`Configured process-local Node must be >=22: ${version.error?.message || (version.stdout || version.stderr || '').trim()}`);

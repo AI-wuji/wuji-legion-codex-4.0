@@ -1,27 +1,32 @@
 {
   "schema_version": 1,
   "kind": "direct_expert_manifest",
-  "state": "cold_catalog_with_one_bounded_consumer_extension",
+  "state": "consolidated_26_expert_roster_with_bounded_motion_consumer",
   "authority": "Explicit role selection and handoff shape only; no model execution, permission, or installation authority",
-  "catalog": "catalog/p3/experts.json",
+  "catalog": "catalog/p3/expert-roster-5.0.json",
+  "source_catalog": "catalog/p3/experts.json",
   "release_record": "catalog/p3/catalog-release-5.0.json",
   "bounded_extensions": [
     {
-      "role_id": "p3/leaf/motion-graphics",
+      "role_id": "p5/expert/wuji-motion-graphics",
+      "source_role_id": "p3/leaf/motion-graphics",
       "release_state": "bounded_current_project_consumer",
       "brief": "legion/skills/wuji-legion-5-0/references/motion-graphics.md",
       "launcher": "legion/skills/wuji-legion-5-0/scripts/motion-graphics.mjs",
       "legacy_call_binding_is_authoritative": false
     }
   ],
-  "role_count": 58,
+  "role_count": 26,
   "execution": {
     "owner": "aji",
-    "return_path": ["expert", "aji"],
+    "return_path": [
+      "expert",
+      "aji"
+    ],
     "staff_layer_required": false,
     "leader_agent_required": false,
     "workflow_recipes": "loadable_knowledge_only",
-    "expert_activation": "task_scoped_selected_instances_only",
+    "expert_activation": "task_scoped_selected_profiles_from_consolidated_roster",
     "parallelism": "ready_independent_authorized_branches_with_nonconflicting_write_scopes",
     "serial_conditions": [
       "real_data_dependency",

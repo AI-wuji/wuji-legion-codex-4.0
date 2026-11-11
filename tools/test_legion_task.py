@@ -803,7 +803,7 @@ class DirectExpertRoutingTests(unittest.TestCase):
         self.assertFalse(activation["automatic_discovery_enabled"])
         self.assertEqual("external_per_codex_home_verification", activation["global_installation_status"])
         self.assertEqual("../catalog/p3/direct-expert-manifest.json", manifest["catalog"]["expert_manifest"])
-        self.assertEqual("../catalog/p3/experts.json", manifest["catalog"]["expert_roles"])
+        self.assertEqual("../catalog/p3/expert-roster-5.0.json", manifest["catalog"]["expert_roles"])
         self.assertNotIn("requires_explicit_user_authorization", activation)
         self.assertNotIn("default_cli_route", activation)
         self.assertIn("diagnostic_only", activation["cli_execution"])
@@ -858,7 +858,7 @@ class DirectExpertRoutingTests(unittest.TestCase):
                    "inputs": [], "deliverables": ["short research result"],
                    "acceptance_ids": ["answer-bound-to-sources"], "write_roots": [],
                    "constraints": [], "forbidden_actions": ["external-send"]}
-        expert_tasks = [{"task_id": "source-a", "role_id": "p3/workflow/research",
+        expert_tasks = [{"task_id": "source-a", "role_id": "p5/expert/wuji-researcher",
                          "assignment": "Research one independent source range",
                          "inputs": [], "deliverables": ["short research result"],
                          "acceptance_ids": ["answer-bound-to-sources"], "write_roots": [],

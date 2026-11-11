@@ -175,8 +175,8 @@ PonyTail是跨领域的最短正确路径理念，不是开发专用Skill：简�
 - 进度记录：docs/progress.md
 - 4.0 Skill 入口（只读历史）：legion/skills/wuji-legion-4-0/SKILL.md
 - 5.0动效专家有界指引与launcher：legion/skills/wuji-legion-5-0/references/motion-graphics.md；legion/skills/wuji-legion-5-0/scripts/motion-graphics.mjs
-- 5.0直接专家目录：catalog/p3/direct-expert-manifest.json；release与来源边界：catalog/p3/catalog-release-5.0.json；角色定义：catalog/p3/experts.json
-- 5.0目录一致性回读：`py -3.12 tools/validate_5_catalog.py`；该命令只核对目录契约，不证明专家已准入、被调用或有效。
+- 5.0活动专家集：`catalog/p3/expert-roster-5.0.json`（26个按需专家）；58项P3目录 `catalog/p3/experts.json` 仅作合并来源，不参与并列派发。直接专家manifest与release：`catalog/p3/direct-expert-manifest.json`、`catalog/p3/catalog-release-5.0.json`。
+- 专家卡：`legion/skills/wuji-legion-5-0/experts/`；名录/来源映射校验：`py -3.12 tools/validate_expert_roster.py`；完整目录绑定校验：`py -3.12 tools/validate_5_catalog.py`。校验只确认结构、映射和哈希，不证明专业效果；本地工具链目前只有动效角色具备有界实测准入。
 - 4.0历史委派目录（只读）：catalog/p3/delegation-manifest.json
 
 生成的本机审计输出、构建目录、临时工作区和运行产物默认不进入公共仓库；它们只用于本地复查和发布前证据闭合。
